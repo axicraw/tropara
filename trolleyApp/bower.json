@@ -1,0 +1,18 @@
+{
+  "name": "trolleyin",
+  "dependencies": {
+    "foundation": "~5.5.3",
+    "velocity": "~1.2.3",
+    "slider-pro": "~1.2.2",
+    "slick-carousel": "~1.5.8",
+    "jquery.cookie": "~1.4.1",
+    "font-awesome": "~4.4.0",
+    "handlebars": "~4.0.4",
+    "react": "~0.14.2",
+    "dropzone": "~4.2.0",
+    "jsrender": "~1.0.0-rc.70",
+    "jquery-ui": "~1.11.4",
+    "select2": "~4.0.1",
+    "echojs": "~1.7.3"
+  }
+}

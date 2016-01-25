@@ -1,0 +1,30 @@
+<li>
+	<a href="" class="">
+		<div class="row">
+			<div class="medium-10 columns">
+				<?php echo e($category['category_name']); ?>
+
+			</div>
+			<div class="medium-2 columns">
+				<div class="text-right tree-controls">
+					
+					<?php echo Form::open(array('method'=>'delete', 'route'=>array('admin.category.destroy', $category['id']))); ?>
+
+						<input type="submit" class="button link delete alert" value=" ">
+					<!-- <button class="button link alert" data-src="<?php echo e(route('admin.category.destroy', $category['id'])); ?>" data-method="delete"><i class="fa fa-trash danger"></i></button> -->
+					<?php echo Form::close();; ?>
+
+					<button class="button link primary" data-src="admin/category/<?php echo e($category['id']); ?>" ><i class="fa fa-pencil-square-o"></i></button>
+				</div>
+			</div>
+		</div>
+	</a>
+	<?php if(count($category['children']) > 0): ?>
+	    <ul>
+	    <?php foreach($category['children'] as $category): ?>
+	        <?php echo $__env->make('admin.partials.category-tree', $category, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	    <?php endforeach; ?>
+	    </ul>
+	<?php endif; ?>
+</li>
+

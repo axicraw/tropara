@@ -1,0 +1,42 @@
+<?php $__env->startSection('content'); ?>
+	<div class="row page-title">
+		<div class="medium-6 columns">
+			<h3 class="title">Category</h3>
+		</div>
+		<div class="medium-6 columns">
+			<ul class="parent-controls">
+				<li>
+					<?php echo Form::open(array('route'=>'admin.category.destroy', 'method'=>'delete'));; ?>
+
+						<button type="submit" class="button tiny alert link"><i class="fa fa-trash fa-2x"></i></button>
+					<?php echo Form::close();; ?>
+
+				</li>
+				<li><a href="admin/category/create"><i class="fa fa-plus-square fa-2x"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row page-body">
+		<div class="medium-6 columns end">
+		
+			<?php if($categories->count() < 1): ?>
+				<p>No Categories Found!</p>
+			<?php endif; ?>
+			<ul class="mtree bubba">
+				<?php echo $__env->renderEach('admin.partials.category-tree', $categories, 'category'); ?>
+			</ul>
+
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scriptsContent'); ?>
+<script type="text/javascript" src="js/mtree.js"></script>
+<script type="text/javascript" src="js/modals.js"></script>
+<script>
+		$('a.cate').on('click', function(e){
+		e.preventDefault();
+	});
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

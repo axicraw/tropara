@@ -1,0 +1,49 @@
+<?php $__env->startSection('content'); ?>
+	<div class="row page-title">
+		<div class="medium-6 end columns">
+			<h3 class="title">Void Searches</h3>
+		</div>
+	</div>
+	<div class="row page-body">
+		<div class="medium-12 columns">
+			<div class="row">
+				<div class="medium-6 columns end">
+					<table role="grid" width="100%">
+						<tr>
+							
+							<th>Search keyword</th>
+							<th>User Mobile</th>
+							<th>User Area</th>
+						</tr>
+						<?php foreach( $searches as $search ): ?>
+							<tr>
+								
+								<td><?php echo e($search->keyword); ?></td>
+								<td>
+									<?php if($search->user->mobile): ?>
+										<?php echo e($search->user->mobile); ?>
+
+									<?php else: ?>
+										Anonymous
+									<?php endif; ?>
+								</td>
+								<td><?php echo e($search->user->area['area_name']); ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</table>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scriptsContent'); ?>
+<script type="text/javascript" src="js/modals.js"></script>
+<script>
+		$('a.cate').on('click', function(e){
+		e.preventDefault();
+	});
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

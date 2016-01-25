@@ -1,0 +1,259 @@
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('site.partials.header_top', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('site.partials.header_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="full-width content-top veg">
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <div class="row">
+        <ul class="side-menu">
+          
+          <?php if(count($main_category->children) > 1): ?>
+            <h5 class="highlight no-margin lshadow"><a class="cate-drop" href=""><i class="fi-list"></i> <span>Category</span></a> <i class="fa fa-angle-right"></i> <span class="sub-heading"><?php echo e($main_category->category_name); ?></span></h5>
+            <?php foreach( $main_category->children as $subcategory ): ?>
+                <li class="sub-cate"><a href="category/<?php echo e($subcategory->category_name); ?>"><?php echo e($subcategory->category_name); ?></a>         </li>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <h5 class="highlight no-margin lshadow"><a class="cate-drop" href=""><i class="fi-list"></i> <span>Category</span></a> <i class="fa fa-angle-right"></i> 
+              <span class="sub-heading">
+                <?php foreach( $categories as $category ): ?>
+                  <?php if($category->id === $main_category->parent_id): ?>
+                    <?php echo e($category->category_name); ?>
+
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </span>
+            </h5>
+            <?php foreach( $categories as $category ): ?>
+              <?php if($category->parent_id === $main_category->parent_id): ?>
+                <li class="sub-cate"><a href="category/<?php echo e($category->category_name); ?>"><?php echo e($category->category_name); ?></a>
+                  
+                </li>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </ul>
+      </div>
+    </div>
+    <div class="small-9 columns">
+      <div class="product-grid-1">
+          <?php if(count($cate_products) > 0): ?>
+            <div class="row caro-title collapse">
+              <div class="small-12 columns">
+                <h5 class="tight"><span class="inner-text">In <?php echo e($main_category->category_name); ?></span></h5>
+              </div>
+            </div>
+            <div class="row">
+              <?php foreach( $cate_products as $cate_product): ?>
+                <div class="small-3 end columns">
+                  <div class="product-wrapper">
+                    <a href="product/<?php echo e($cate_product->id); ?>" class="product-anchor">
+                      <div class="row">
+                        <div class="prod-image-wrapper">
+                          <img src="images/products/<?php echo e($cate_product->images[0]->image_name); ?>" alt="">
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="prod-title">
+                            <p class="tight title"><?php echo e($cate_product->product_name); ?></p>
+                            <p class="micro tight">this is a description</p>
+                        </div> 
+                        <div class="prod-det">
+                          <div class="small-12 columns">
+                            <p class="tight prod-mrp tiny">
+                              <?php if(($cate_product->mrp->mrp) > 0): ?>
+                                MRP Rs.<?php echo e($cate_product->mrp->mrp); ?>/
+                                <?php if( $cate_product->mrp->qty > 1 ): ?>
+                                  <?php echo e($cate_product->mrp->qty); ?>
+
+                                <?php endif; ?>
+                                <?php echo e($cate_product->mrp->unit->shortform); ?>
+
+                              <?php endif; ?>
+                            </p>
+                          </div>
+                          <!-- <div class="small-12 columns">
+                            <p class="tight prod-our-price ">
+                              <?php /**/ 
+                                $sorted_products = $cate_product->prices->sortBy('price');
+                                $lowest_product = $sorted_products->first();
+                                /**/ ?>
+                              Rs.<?php echo e($lowest_product->price); ?> / 
+                                <span class="qty-fix">
+                                  <?php if($lowest_product->qty > 1 ): ?>
+                                  <?php echo e($lowest_product->qty); ?>
+
+                                  <?php endif; ?>
+                                  <?php echo e($lowest_product->unit->shortform); ?>
+
+                                  
+                                </span>
+                            </p>
+                          </div> -->
+                        </div>
+                      </div>
+                    </a>
+                    <div class="row">
+                      <div class="quantity-wrapper">
+                        <div class="small-12 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label class="prefix">Qty</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <select name="" id="" class="quantity-price">
+                                <?php foreach($cate_product->prices->sortBy('price') as $price): ?>
+                                    <option data-price-id="<?php echo e($price->id); ?>" data-price="<?php echo e($price->price); ?>" value=""><?php echo e($price->qty); ?><?php echo e($price->unit->shortform); ?></option>
+                                <?php endforeach; ?>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="small-12 columns">
+                          <div class="row collapse qty-price-wrapper">
+                            <div class="small-7 columns">
+                              <p class="tight qty-price">
+                                Rs. <span class="price-num"></span>
+                              </p>
+                            </div>
+                            <div class="small-5 columns">
+                              <p class="text-right tight">
+                                <button data-pid="<?php echo e($cate_product->id); ?>" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+
+
+    <!--           <?php if(count($cate_products) < 1): ?>
+                <p>Sorry, No Products in <?php echo e($main_category->category_name); ?></p>
+              <?php endif; ?> -->
+            </div>
+          <?php endif; ?>
+          <?php if(count($sub_products) > 0): ?>
+            <div class="row">
+              <h5>In <?php echo e($main_category->category_name); ?></h5>
+              <?php foreach( $sub_products as $sub_product): ?>
+                <div class="small-3 end columns">
+                  <div class="product-wrapper">
+                    <a href="product/<?php echo e($sub_product->id); ?>" class="product-anchor">
+                      <div class="row">
+                        <div class="prod-image-wrapper">
+                          <img src="images/products/<?php echo e($sub_product->images[0]->image_name); ?>" alt="">
+                        </div>
+                      </div>
+                      <div class="row collapse">
+                        <div class="prod-title">
+                            <p class="tight title"><?php echo e($sub_product->product_name); ?></p>
+                            <p class="micro tight">this is a description</p>
+                        </div> 
+                        <div class="prod-det">
+                          <div class="small-12 columns">
+                            <p class="tight prod-mrp tiny">
+                              <?php if(($sub_product->mrp->mrp) > 0): ?>
+                                MRP Rs.<?php echo e($sub_product->mrp->mrp); ?>/
+                                <?php if( $sub_product->mrp->qty > 1 ): ?>
+                                  <?php echo e($sub_product->mrp->qty); ?>
+
+                                <?php endif; ?>
+                                <?php echo e($sub_product->mrp->unit->shortform); ?>
+
+                              <?php endif; ?>
+                            </p>
+                          </div>
+                          <div class="small-12 columns">
+                            <p class="tight prod-our-price ">
+                              <?php /**/ 
+                                $sorted_products = $sub_product->prices->sortBy('price');
+                                $lowest_product = $sorted_products->first();
+                                /**/ ?>
+                              Rs.<?php echo e($lowest_product->price); ?> / 
+                                <span class="qty-fix">
+                                  <?php if($lowest_product->qty > 1 ): ?>
+                                  <?php echo e($lowest_product->qty); ?>
+
+                                  <?php endif; ?>
+                                  <?php echo e($lowest_product->unit->shortform); ?>
+
+                                  
+                                </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="row">
+                      <div class="quantity-wrapper">
+                        <div class="small-12 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label class="prefix">Qty</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <select name="" id="" class="quantity-price">
+                                <?php foreach($sub_product->prices->sortBy('price') as $price): ?>
+                                    <option data-price-id="<?php echo e($price->id); ?>" data-price="<?php echo e($price->price); ?>" value=""><?php echo e($price->qty); ?><?php echo e($price->unit->shortform); ?></option>
+                                <?php endforeach; ?>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="small-12 columns">
+                          <div class="row collapse qty-price-wrapper">
+                            <div class="small-7 columns">
+                              <p class="tight qty-price">
+                                Rs. <span class="price-num"></span>
+                              </p>
+                            </div>
+                            <div class="small-5 columns">
+                              <p class="text-right tight">
+                                <button data-pid="<?php echo e($sub_product->id); ?>" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php echo $__env->make('site.partials.footer_top', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('site.partials.footer_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-modal'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scriptsContent'); ?>
+  <script type="text/javascript">
+    $('.offer-slider').slick({
+      vertical: true,
+      verticalSwiping: true,
+      autoplay:true,
+      arrows:false,
+      rows:2,
+
+    });
+    $('.recent-slider').slick({
+      vertical: false,
+      autoplay:true,
+      rows:2,
+      slidesPerRow:2,
+      arrows:false,
+    });
+    
+  </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

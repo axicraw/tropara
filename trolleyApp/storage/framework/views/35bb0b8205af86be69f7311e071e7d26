@@ -1,0 +1,136 @@
+
+    <div class="full-width footer-top">
+      <div class="row">
+        <div class="small-4 columns">
+
+          <div class="row left-section">
+           <div class="small-12 columns">
+              <h4 class="section-title tight">Recently Viewed</h4>
+             <div class="recent-slider">
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+             </div>
+           </div>
+          </div>
+        </div>
+        <div class="small-4 columns">
+          <div class="row middle-section">
+            <div class="small-12 columns">
+              <h4 class="section-title tight">
+                Success Recipies
+              </h4>
+              <div class="section-body">
+                <p class="tight text-center">Ever wanted to be a cooking maestro</p>
+                <h4 class="text-center">Read Success Recipes <br> and Stories</h4>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="small-4 columns">
+
+          <div class="row right-section">
+           <div class="small-12 columns">
+              <h4 class="section-title tight">Hot Selling</h4>
+             <div class="recent-slider">
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>

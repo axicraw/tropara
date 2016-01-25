@@ -1,0 +1,42 @@
+.sp-thumbnails-container{
+	background:$highlight-dark;
+	margin:0px;
+	cursor:pointer;
+	.sp-thumbnail{
+		color:#efefef;
+		h5{
+			font-size: 14px;
+			color:$white;
+			text-align: center;
+		}
+		p{
+			font-size: 12px;
+			color: $iron;
+			text-align: center;
+			line-height: 10px;
+
+		}
+		
+	}
+	.sp-thumbnail-container{
+		border-right: 1px $steel solid;
+		margin:0px;
+	}
+	.sp-thumbnail-container.sp-selected-thumbnail{
+		//border-top: 3px #1A2A42 solid;
+		margin:0px;
+	}
+}
+
+.row.home-slider .sp-selected-thumbnail{
+	border-bottom:none;
+	background:$primary-color;
+	h5{
+		font-size: 14px;
+		color:$white;
+	}
+	p{
+		font-size: 12px;
+		color: $white;
+	}
+}

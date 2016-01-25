@@ -1,0 +1,234 @@
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('site.partials.header_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="full-width page-content account-view">
+  <div class="row">
+    <div class="medium-8 columns medium-offset-2 account-wrapper">
+      <div class="row collapse">
+        <div class="medium-3 columns">
+          <div class="side-menu">
+            
+            <div class="row">
+              <ul>
+                <li class="active"><a href="/account">Profile</a></li>
+                <li><a href="/account/myorders">Orders</a></li>
+              </ul>
+            </div>  
+          </div>
+        </div>
+        <div class="medium-9 columns">
+         <div class="tab-content-wrapper"><div class="row">
+             <div class="medium-6 columns medium-offset-2">
+                <h3>Personal Profile</h3>
+             </div>
+           </div>
+            <?php echo Form::open(array('route'=>'account.save')); ?>
+
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="title" class="right inline">Title</label>
+                    </div>
+                    <div class="medium-3 end columns">
+                      <select name="title" id="title">
+                        <option 
+                          <?php if($user->title == "Mr."): ?>
+                            selected = "selected"
+                          <?php endif; ?>
+                        value="Mr.">Mr</option>
+                        <option 
+                          <?php if($user->title == "Mrs."): ?>
+                            selected = "selected"
+                          <?php endif; ?>
+                        value="Mrs.">Mrs</option>
+                        <option  
+                          <?php if($user->title == "Miss."): ?>
+                            selected = "selected"
+                          <?php endif; ?>
+                        value="Miss.">Miss</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="name" class="right inline">Name</label>
+                    </div>
+                    <div class="medium-6 end columns">
+                      <input id="name" type="text" name="name" value="<?php echo e($user->name); ?>">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="mobile" class="right inline">Mobile</label>
+                    </div>
+                    <div class="medium-6 end columns">
+                      <input id="mobile" type="text" name="mobile"  value="<?php echo e($user->mobile); ?>" required="required">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="email" class="right inline" >Email</label>
+                    </div>
+                    <div class="medium-6 end columns">
+                      <input id="email" type="email" name="email" value="<?php echo e($user->email); ?>" required="required">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="address" class="right inline">Address</label>
+                    </div>
+                    <div class="medium-6 end columns">
+                      <textarea id="address" name="address" cols="30" rows="4"><?php echo e($user->address); ?></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="area_id" class="right inline">Area</label>
+                    </div>
+                    <div class="medium-6 end columns">
+                      <select name="area_id" id="area_id">
+                        <?php if(count($areas) > 0): ?>
+                          <?php foreach($areas as $area): ?>
+                            <option value="<?php echo e($area->id); ?>"
+                                <?php if($user->area_id == $area->id): ?>
+                                  selected="selected"
+                                <?php endif; ?>
+                            ><?php echo e($area->area_name); ?></option>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-2 columns">
+                      <label for="email" class="right inline">Password</label>
+                    </div>
+                    <div class="medium-6 end columns">
+                      <a href="#" data-reveal-id="passwordModal">Change Password</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-8 columns">
+                  <p class="text-right"><button type="submit" class="button tiny">Save</button></p>
+                </div>
+              </div>
+           
+              <!-- <div class="row">
+                <div class="medium-12 columns">
+                  <div class="row">
+                    <div class="medium-3 columns">
+                      <label for="email" class="right inline">Date of Birth</label>
+                    </div>
+                    <div class="medium-9 columns">
+                      <input type="email" name="email">
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            <?php echo Form::close(); ?></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="passwordModal" class="reveal-modal small" data-reveal aria-hidden="false" role="dialog">
+  <div class="row collapse">
+    <div class="medium-6 columns">
+      <h4>Change Password</h4>
+    </div>
+  </div>
+  <div class="row reg-wrapper">
+    <div class="medium-12 columns">
+      <?php echo Form::open(array('route'=>'account.changepassword')); ?>
+
+        <div class="row">
+          <div class="medium-12 columns">
+            <label for="password">
+              New Password
+              <input type="password" name="password" id="password" >
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 columns">
+            <label for="cpassword">
+              Confirm Password
+              <input type="password" name="cpassword" id="cpassword" >
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <button class="submit button tiny">Change Password</button>
+          </div>
+        </div>
+      <?php echo Form::close(); ?>
+
+    </div>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php echo $__env->make('site.partials.footer_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-modal'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scriptsContent'); ?>
+  <script type="text/javascript">
+  //change the price based on quantity select
+   $(".quantity-price").on('change', function(){
+    var opt = $(this).find('option:selected');
+    var price = opt.data('qprice');
+    console.log(price);
+    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
+    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
+   });
+   $(".quantity-price").trigger('change');
+
+   //update cart nos
+   $('input.pnos').on('change', function(){
+    var rid = $(this).data('rid');
+    var nos = $(this).val();
+    var postData = {};
+    postData['nos'] = nos;
+    postData['id'] = rid;
+    console.log(rid);
+    $.when(http_post('cart/updateNos', postData)).then(function(response){
+      location.reload();
+    }, function(response){
+      console.log('cart update failed');
+    })
+   });
+
+  </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

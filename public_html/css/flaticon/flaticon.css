@@ -1,0 +1,51 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"].icon-large:before, [class*=" flaticon-"].icon-large:before,
+[class^="flaticon-"].icon-large:after, [class*=" flaticon-"].icon-large:after{
+	font-size: 32px;
+	margin-left: 10px;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}.flaticon-bread14:before {
+	content: "\e000";
+}
+.flaticon-broccoli:before {
+	content: "\e001";
+}
+.flaticon-chicken14:before {
+	content: "\e002";
+}
+.flaticon-deliverytruck5:before {
+	content: "\e003";
+}
+.flaticon-multiple25:before {
+	content: "\e004";
+}
+.flaticon-sale21:before {
+	content: "\e005";
+}
+.flaticon-tags10:before {
+	content: "\e006";
+}
+.flaticon-telephone5:before {
+	content: "\e007";
+}
+.flaticon-tomato6:before {
+	content: "\e008";
+}
+.flaticon-wheat13:before {
+	content: "\e009";
+}

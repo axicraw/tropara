@@ -1,0 +1,69 @@
+<?php $__env->startSection('content'); ?>
+	<div class="row page-title">
+		<div class="medium-6 columns">
+			<h3 class="title">Orders</h3>
+		</div>
+		<div class="medium-6 columns">
+			
+		</div>
+	</div>
+	<div class="row page-body">
+		<div class="medium-12 columns end">
+			<!-- <input type="text" id="search" placeholder="Search"> -->
+			<table role="grid" width="100%">
+				<tr>
+					<th>Checkout ID</th>
+					<th>Customer Name</th>
+					<th>Address</th>
+					<th>Items</th>
+					<th>Payment</th>
+					<th>Status</th>
+					<th></th>
+				</tr>
+				<?php foreach($checkouts as $checkout): ?>
+					<tr>
+						<td><?php echo e($checkout->id); ?></td>
+						<td><?php echo e($checkout->user->id); ?></td>
+						<td><?php echo e($checkout->address); ?></td>
+						<td><a href="admin/order/<?php echo e($checkout->id); ?>" class="button tiny">view</a></td>
+						<td>
+							<?php if($checkout->payment > 0): ?>
+								Received
+							<?php else: ?>
+								Cash On Delivery
+							<?php endif; ?>
+						</td>
+						<td>
+							<?php echo e($checkout->status); ?>
+
+						</td>
+						<td>							
+							<button href="#" data-dropdown="changeStatus" aria-controls="changeStatus" aria-expanded="false" class="button dropdown tiny">Change Status</button><br>
+							<ul id="changeStatus" data-dropdown-content class="f-dropdown" aria-hidden="true">
+							  <li><a href="admin/order/status/<?php echo e($checkout->id); ?>/1">Order Placed</a></li>
+							  <li><a href="admin/order/status/<?php echo e($checkout->id); ?>/2">Ready to Dispatch</a></li>
+							  <li><a href="admin/order/status/<?php echo e($checkout->id); ?>/3">In Transit</a></li>
+							  <li><a href="admin/order/status/<?php echo e($checkout->id); ?>/4">Delivered</a></li>
+							</ul>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</table>
+
+		</div>
+	</div>
+	<div id="itemList" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	  <h2 id="modalTitle">Item List</h2>
+	  <p class="lead">Your couch.  It is mine.</p>
+	  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scriptsContent'); ?>
+<script type="text/javascript" src="js/modals.js"></script>
+<script>
+	
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

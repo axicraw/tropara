@@ -1,0 +1,174 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <base href="http://localhost:8000/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title>Trolleyin</title>
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" />
+    <link rel="stylesheet" href="css/flaticon/flaticon.css" />
+    <link rel="stylesheet" href="css/slider-pro.min.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <?php echo $__env->yieldContent('cssContent'); ?>
+
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <?php echo $__env->yieldContent('content'); ?>
+    <div class="full-width footer-bottom">
+      <div class="row">
+        <div class="small-8 columns"></div>
+        <div class="small-4 columns"></div>
+      </div>
+    </div>
+    <div id="loginModal" class="reveal-modal medium" data-reveal aria-hidden="true" role="dialog">
+      <div class="row">
+        <h4>Login / Create Account</h4>
+      </div>
+      <div class="row login-wrapper">
+        <div class="medium-6 columns">
+          <h5>New to Trolleyin?</h5>
+          <p>Welome Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eum corporis nihil impedit autem numquam enim sapiente, iusto iure magnam dolores ea sunt unde dolore veniam, facilis temporibus blanditiis nemo.</p>
+          <a href="#" data-reveal-id="signupModal">Register Here.</a>
+        </div>
+        <div class="medium-6 columns">
+          <h5>Already Registered</h5>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="email">
+                  Email
+                  <input type="email" name="email" id="email" required="required">
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="password">
+                  Password
+                  <input type="password" name="password" id="password" required="required">
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-6 columns">
+                <button class="button" id="loginBtn">Login</button>
+              </div>
+              <div class="medium-6 columns">
+                <a href="#">Forgot Password?</a>
+              </div>
+            </div>
+            <div class="row">
+              &nbsp;
+              <?php if(count($errors) > 0): ?>
+                  <div class="alert alert-danger">
+                      <ul>
+                          <?php foreach($errors->all() as $error): ?>
+                              <li class="danger"><?php echo e($error); ?></li>
+                          <?php endforeach; ?>
+                      </ul>
+                  </div>
+              <?php endif; ?>
+            </div>
+            <div class="row">
+            <h6>Login with social accounts</h6>
+            <ul>
+              <li><a href="">Facebook</a></li>
+              <li><a href="">Google</a></li>
+              <li><a href="">Twitter</a></li>
+            </ul>
+            </div>
+        </div>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <div id="signupModal" class="reveal-modal small" data-reveal aria-hidden="true" role="dialog">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <h4>New Account</h4>
+        </div>
+        <div class="medium-6 columns">
+          <a href="#" data-reveal-id="loginModal">Already Registerd?</a>
+        </div>
+      </div>
+      <div class="row reg-wrapper">
+        <div class="medium-12 columns">
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="mobile">
+                  Mobile No
+                  <input type="text" name="mobile" id="mobile" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="email">
+                  Email
+                  <input type="email" name="email" id="email" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="password">
+                  Password
+                  <input type="password" name="password" id="password" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="cpassword">
+                  Confirm Password
+                  <input type="password" name="cpassword" id="cpassword" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-6 columns">
+                <button class="button" id="registerBtn">Create New Account</button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/sliderPro.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/ajax.js"></script>
+    <script src="js/trolleyin.js"></script>
+    <script src="js/trolleycart.js"></script>
+    <script type="text/javascript">
+
+      jQuery( document ).ready(function( $ ) {
+          $( '#tro-slider' ).sliderPro({
+            width:700,
+            height:310,
+            buttons:false,
+          });
+          $('.offer-slider').slick({
+            vertical: false,
+            autoplay:true,
+            rows:2,
+
+          });
+          $('.recent-slider').slick({
+            vertical: false,
+            autoplay:true,
+            rows:2,
+            slidesPerRow:2,
+          });
+      });
+    </script>
+    <?php echo $__env->yieldContent('scriptsContent'); ?>
+  </body>
+</html>
+

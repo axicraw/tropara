@@ -1,0 +1,456 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <base href="http://localhost:8000/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title>Trolleyin</title>
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" />
+    <link rel="stylesheet" href="css/flaticon/flaticon.css" />
+    <link rel="stylesheet" href="css/slider-pro.min.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <?php echo $__env->yieldContent('cssContent'); ?>
+
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="full-width header-top">
+      <div class="row">
+        <div class="small-2 columns right-sect">
+          <div class="row">
+            <div class="small-4 columns">
+              <p>Newbie?</p>
+            </div>
+            <div class="small-8 columns end">
+              <div class="tour-wrapper">
+                <p class="text-center">
+                  <a href="#">TAKE A TOUR</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="small-5 columns middle-sect">
+          <p><i class="fi-telephone"></i> 1800 3000 4545 (Toll Free)</p>
+        </div>
+        <div class="small-5 columns right-sect">
+          <div class="row">
+            <div class="small-5 columns">
+              <div class="row">
+                <div class="small-3 columns">
+                  <label class="right inline">City</label>
+                </div>
+                <div class="small-9 columns">
+                  <select name="" id="">
+                    <option value="">Trichy</option>
+                    <option value="">Tanjore</option>
+                    <option value="">Karur</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="small-7 columns">
+              <div class="row">
+                <div class="small-5 columns">
+                  <label class="right inline">Delivery Time</label>
+                </div>
+                <div class="small-7 columns">
+                  <select name="" id="">
+                    <option value="">08:00-11:00 am</option>
+                    <option value="">12:00-04:00 pm</option>
+                    <option value="">05:00-08:00 pm</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full-width header-middle">
+      <div class="row">
+        <div class="small-3 columns">
+          <div class="logo-wrapper">
+            <div class="row">
+              <div class="small-12 columns">
+                <p class="text-center tight">
+                  <img src="images/logo.png" alt="">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="small-7 columns">
+          <div class="row search-wrapper">
+            <div class="small-12 columns">
+              <div class="row collapse search-bar">
+                <div class="small-10 columns">
+                  <input type="text" placeholder="Search by Products, Brand or Category">
+                </div>
+                <div class="small-2 columns">
+                   <a href="#" class="button postfix"><i class="fi-magnifying-glass"></i> Search</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="small-2 columns">
+         <div class="row">
+          <div class="small-5 columns">
+            <ul class="login-list">
+
+                <li>
+                  <a href="#" data-reveal-id="loginModal">
+                  <h4 class="tight text-center"><i class="fi-torso"></i> </h4>
+                  <p class="text-center tight">Login</p></a>
+                </li>
+              </ul>
+          </div>
+           <div class="small-7 columns">
+             <div class="row cart-wrapper">
+               <h5 class="shop-cart text-center"><a href=""><i class="fi-shopping-cart"></i> Cart</a> <span class="label alert round">1</span></h5>
+               <p class="tight text-center">Price - &#8377;0</a></p>
+             </div>
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+    <?php echo $__env->yieldContent('content'); ?>
+    <div class="full-width footer-top">
+      <div class="row">
+        <div class="small-4 columns">
+
+          <div class="row left-section">
+           <div class="small-12 columns">
+              <h4 class="section-title tight">Recently Viewed</h4>
+             <div class="recent-slider">
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+             </div>
+           </div>
+          </div>
+        </div>
+        <div class="small-4 columns">
+          <div class="row middle-section">
+            <div class="small-12 columns">
+              <h4 class="section-title tight">
+                Success Recipies
+              </h4>
+              <div class="section-body">
+                <p class="tight text-center">Ever wanted to be a cooking maestro</p>
+                <h4 class="text-center">Read Success Recipes <br> and Stories</h4>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="small-4 columns">
+
+          <div class="row right-section">
+           <div class="small-12 columns">
+              <h4 class="section-title tight">Hot Selling</h4>
+             <div class="recent-slider">
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/apples.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Apples <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;100</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/eggs.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Eggs <span class="label round alert off">15% Off</span><br><span class="side-offer-price">&#8377;80</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/broccoli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Broccoli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;75</span></p>
+               </div>
+               <div class="recent-slide">
+                 <div class="img-wrapper">
+                   <img src="images/products/chilli.jpg" alt="">
+                 </div>
+                 <p class="side-offer-product tight text-center">Chilli <span class="label round alert off">10% Off</span><br><span class="side-offer-price">&#8377;20</span></p>
+               </div>
+             </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full-width footer-middle">
+      <div class="row">
+        <div class="small-3 columns">
+          <div class="row social-footer">
+            <h5 class="tight">Stay With Us Everywhere</h5>
+            <ul>
+              <li><a href=""><i class="fi-social-facebook"></i></a></li>
+              <li><a href=""><i class="fi-social-google-plus"></i></a></li>
+              <li><a href=""><i class="fi-social-twitter"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="small-6 columns">
+         <div class="security-footer">
+            <div class="payment">
+              <h5 class="tight">
+                Payment Options
+              </h5>
+              <p class="">We provide flexible way of purchasing. Which includes<br>
+                <span class="payment-options">Online Banking | Debit Card | Credit Card | Digital Wallets</span>
+              </p>
+            </div>
+            <div class="row privacy">
+              <div class="small-2 columns">
+                <div class="img-wrapper footer-logo">
+                  <img src="images/logo.png" alt="">
+                </div>
+              </div>
+              <div class="small-5 end columns">
+                <p class="tight micro">
+                 <a href="">Policies |</a>
+                 <a href="">Terms & Conditions |</a>
+                 <a href="">Privacy</a>
+                 </p>
+                 <p class="tight micro">
+                   © 2015 Trolleyin. All Rights Reserved.
+                 </p>
+              </div>
+            </div>
+         </div>
+        </div>
+        <div class="small-3 columns">
+          <div class="mobileapp-footer">
+            <h5 class="tight">
+              Try our mobile application
+            </h5>
+            <p class="tight">Shop on the fly</p>
+            <ul>
+
+              <li class="and"><a href=""><img src="images/android.png" alt=""></a></li>
+              <li class="ios"><a href=""><img src="images/ios.png" alt=""></a></li>
+              <li class="mic"><a href=""><img src="images/microsoft.png" alt=""></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full-width footer-bottom">
+      <div class="row">
+        <div class="small-8 columns"></div>
+        <div class="small-4 columns"></div>
+      </div>
+    </div>
+    <div id="loginModal" class="reveal-modal medium" data-reveal aria-hidden="true" role="dialog">
+      <div class="row">
+        <h4>Login / Create Account</h4>
+      </div>
+      <div class="row login-wrapper">
+        <div class="medium-6 columns">
+          <h5>New to Trolleyin?</h5>
+          <p>Welome Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eum corporis nihil impedit autem numquam enim sapiente, iusto iure magnam dolores ea sunt unde dolore veniam, facilis temporibus blanditiis nemo.</p>
+          <a href="#" data-reveal-id="signupModal">Register Here.</a>
+        </div>
+        <div class="medium-6 columns">
+          <h5>Already Registered</h5>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="email">
+                  Email
+                  <input type="email" name="email" id="email" required="required">
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="password">
+                  Password
+                  <input type="password" name="password" id="password" required="required">
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-6 columns">
+                <button class="button" id="loginBtn">Login</button>
+              </div>
+              <div class="medium-6 columns">
+                <a href="#">Forgot Password?</a>
+              </div>
+            </div>
+            <div class="row">
+            <h6>Login with social accounts</h6>
+            <ul>
+              <li><a href="">Facebook</a></li>
+              <li><a href="">Google</a></li>
+              <li><a href="">Twitter</a></li>
+            </ul>
+            </div>
+        </div>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <div id="signupModal" class="reveal-modal small" data-reveal aria-hidden="true" role="dialog">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <h4>New Account</h4>
+        </div>
+        <div class="medium-6 columns">
+          <a href="#" data-reveal-id="loginModal">Already Registerd?</a>
+        </div>
+      </div>
+      <div class="row reg-wrapper">
+        <div class="medium-12 columns">
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="mobile">
+                  Mobile No
+                  <input type="text" name="mobile" id="mobile" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="email">
+                  Email
+                  <input type="email" name="email" id="email" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="password">
+                  Password
+                  <input type="password" name="password" id="password" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <label for="cpassword">
+                  Confirm Password
+                  <input type="password" name="cpassword" id="cpassword" >
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-6 columns">
+                <button class="button" id="registerBtn">Create New Account</button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/sliderPro.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/ajax.js"></script>
+    <script src="js/trolleyin.js"></script>
+    <script type="text/javascript">
+
+      jQuery( document ).ready(function( $ ) {
+          $( '#tro-slider' ).sliderPro({
+            width:700,
+            height:310,
+            buttons:false,
+          });
+          $('.offer-slider').slick({
+            vertical: false,
+            autoplay:true,
+            rows:2,
+
+          });
+          $('.recent-slider').slick({
+            vertical: false,
+            autoplay:true,
+            rows:2,
+            slidesPerRow:2,
+          });
+      });
+    </script>
+    <?php echo $__env->yieldContent('scriptsContent'); ?>
+  </body>
+</html>
+

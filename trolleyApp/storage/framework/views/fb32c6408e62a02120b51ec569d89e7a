@@ -1,0 +1,100 @@
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('site.partials.header_minimal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="full-width login-wrapper">
+  <div class="row">
+    <div class="medium-4 medium-offset-8 columns">
+      <h4 >Login / Create Account</h4>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="medium-4 columns">
+      <p class="text-center"> 
+        <img src="images/gro_basket.png" alt="">
+      </p>
+    </div>
+    <div class="medium-4 columns">
+      <h5>New to Trolleyin?</h5>
+      <p>Welome Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eum corporis nihil impedit autem numquam enim sapiente, iusto iure magnam dolores ea sunt unde dolore veniam, facilis temporibus blanditiis nemo.</p>
+      <a href="#" data-reveal-id="signupModal">Register Here.</a>
+    </div>
+    <div class="medium-4 columns">
+      <h5>Already Registered</h5>
+        <?php echo Form::open(array('route'=>'authenticate')); ?>
+
+        <div class="row">
+          <div class="medium-12 columns">
+            <label for="email">
+              Email
+              <input type="email" name="email" id="email" required="required">
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 columns">
+            <label for="password">
+              Password
+              <input type="password" name="password" id="password" required="required">
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="medium-6 columns">
+            <!-- <button class="button" id="loginBtn">Login</button> -->
+            <button type="submit" class="button">Submit</button>
+          </div>
+          <div class="medium-6 columns">
+            <a href="#">Forgot Password?</a>
+          </div>
+        </div>
+        <?php echo Form::close(); ?>
+
+        <div class="row">
+          &nbsp;
+          <?php if(count($errors) > 0): ?>
+              <div class="alert alert-danger">
+                  <ul>
+                      <?php foreach($errors->all() as $error): ?>
+                          <li class="danger"><?php echo e($error); ?></li>
+                      <?php endforeach; ?>
+                  </ul>
+              </div>
+          <?php endif; ?>
+        </div>
+<!--         <div class="row">
+         <div class="social-login">
+            <h6>Login with social accounts</h6>
+           <ul>
+             <li><a href="">Facebook</a></li>
+             <li><a href="">Google</a></li>
+             <li><a href="">Twitter</a></li>
+           </ul>
+         </div>
+        </div> -->
+    </div>
+  </div>
+</div>
+
+<?php echo $__env->make('site.partials.footer_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-modal'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scriptsContent'); ?>
+  <script type="text/javascript">
+  //change the price based on quantity select
+   $(".quantity-price").on('change', function(){
+    var opt = $(this).find('option:selected');
+    var price = opt.data('qprice');
+    console.log(price);
+    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
+    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
+   });
+   $(".quantity-price").trigger('change');
+
+
+  </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

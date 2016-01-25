@@ -1,0 +1,163 @@
+<?php $__env->startSection('content'); ?>
+	
+	<div class="row page-title">
+		<div class="medium-6 columns">
+			<h3 class="title">Users</h3>
+		</div>
+		<div class="medium-6 columns">
+			<ul class="parent-controls">
+				<li>
+					
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row page-body">
+		<div class="medium-12 columns end">
+			<div class="tabs" data-tab>
+				<li class="tab-title active"><a href="#cust">Customers</a></li>
+				<li class="tab-title"><a href="#staff">Staffs</a></li>
+				<li class="tab-title"><a href="#admin">Admin</a></li>
+			</div>
+			<div class="tabs-content">
+				<div class="content active" id="cust">
+					<input type="text" id="search" placeholder="Search" class="data-table-search" data-search-table="product">
+					<table role="grid" width="100%" class="data-table" data-table="product">
+						<tr>
+							<th>Name</th>
+							<th>email</th>
+							<th>mobile</th>
+							<th>address</th>
+							<th>active</th>
+							<th>COD</th>
+							<th>Action</th>
+						</tr>
+						<?php $__empty_1 = true; foreach($customers as $user): $__empty_1 = false; ?>
+							<tr class="native-records">
+								<td><?php echo e($user->name); ?></td>
+								<td><?php echo e($user->email); ?></td>
+								<td><?php echo e($user->mobile); ?></td>
+								<td><?php echo e($user->address); ?></td>
+								<td><?php echo e($user->active); ?></td>
+								<td>
+									<ul class="table-row-controls">
+										<?php if($user->cod == 1): ?>
+											<a href="admin/user/allowcod/<?php echo e($user->id); ?>" class="button alert micro tight">Block</a>
+										<?php elseif( $user->cod == 0): ?>
+											<a href="admin/user/blockcod/<?php echo e($user->id); ?>" class="button success micro tight">Allow</a>
+										<?php endif; ?>
+									</ul>
+								</td>
+								<td>
+									<ul class="table-row-controls">
+										<?php if($user->active == 1): ?>
+											<a href="admin/user/suspend/<?php echo e($user->id); ?>" class="button alert micro tight">Suspend</a>
+										<?php elseif( $user->active == 0): ?>
+											<a href="admin/user/activate/<?php echo e($user->id); ?>" class="button success micro tight">Activate</a>
+										<?php endif; ?>
+									</ul>
+								</td>
+							</tr>
+						<?php endforeach; if ($__empty_1): ?>
+							<tr><td colspan="5">No Cusomers found!</td></tr>
+						<?php endif; ?>
+					</table>
+				</div>
+				<div class="content" id="staff">
+					<table role="grid" width="100%" class="data-table" data-table="product">
+						<tr>
+							<th>Name</th>
+							<th>email</th>
+							<th>mobile</th>
+							<th>address</th>
+							<th>Action</th>
+						</tr>
+						<?php $__empty_1 = true; foreach($staffs as $user): $__empty_1 = false; ?>
+							<tr class="native-records">
+								<td><?php echo e($user->name); ?></td>
+								<td><?php echo e($user->email); ?></td>
+								<td><?php echo e($user->mobile); ?></td>
+								<td><?php echo e($user->address); ?></td>
+								<td>
+									<ul class="table-row-controls">
+										<li>
+										<?php if($user->active == 1): ?>
+											<a href="admin/user/suspend/<?php echo e($user->id); ?>" class="button alert micro tight">Suspend</a>
+										<?php elseif( $user->active == 0): ?>
+											<a href="admin/user/activate/<?php echo e($user->id); ?>" class="button success micro tight">Activate</a>
+										<?php endif; ?>
+										</li>
+										<li>
+											<a class="primary" href="admin/user/staff/<?php echo e($user->id); ?>" ><i class="fa fa-pencil-square-o"></i></a>
+										</li>
+									</ul>
+								</td>
+							</tr>
+						<?php endforeach; if ($__empty_1): ?>
+							<tr><td colspan="5">No staffs found!</td></tr>
+						<?php endif; ?>
+					</table>
+					<div class="row">
+						<div class="medium-12 columns">
+							<a href="admin/user/staff/add" class="button tiny"><i class="fa fa-plus"></i> Add staff</a>
+						</div>
+					</div>
+				</div>
+				<div class="content" id="admin">
+					<table role="grid" width="100%" class="data-table" data-table="product">
+						<tr>
+							<th>Name</th>
+							<th>email</th>
+							<th>mobile</th>
+							<th>address</th>
+							<th>active</th>
+							<th>COD</th>
+							<th>Action</th>
+						</tr>
+						<?php $__empty_1 = true; foreach($admins as $user): $__empty_1 = false; ?>
+							<tr class="native-records">
+								<td><?php echo e($user->name); ?></td>
+								<td><?php echo e($user->email); ?></td>
+								<td><?php echo e($user->mobile); ?></td>
+								<td><?php echo e($user->address); ?></td>
+								<td><?php echo e($user->active); ?></td>
+								<td>
+									<ul class="table-row-controls">
+										<?php if($user->cod == 1): ?>
+											<a href="admin/user/allowcod/<?php echo e($user->id); ?>" class="button alert micro tight">Block</a>
+										<?php elseif( $user->cod == 0): ?>
+											<a href="admin/user/blockcod/<?php echo e($user->id); ?>" class="button success micro tight">Allow</a>
+										<?php endif; ?>
+									</ul>
+								</td>
+								<td>
+									<ul class="table-row-controls">
+										<?php if($user->active == 1): ?>
+											<a href="admin/user/suspend/<?php echo e($user->id); ?>" class="button alert micro tight">Suspend</a>
+										<?php elseif( $user->active == 0): ?>
+											<a href="admin/user/activate/<?php echo e($user->id); ?>" class="button success micro tight">Activate</a>
+										<?php endif; ?>
+									</ul>
+								</td>
+							</tr>
+						<?php endforeach; if ($__empty_1): ?>
+							<tr><td colspan="5">No admins found!</td></tr>
+						<?php endif; ?>
+					</table>
+					<div class="row">
+						<div class="medium-12 columns">
+							<a href="admin/user/admin/add" class="button tiny"><i class="fa fa-plus"></i> Add Admin</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scriptsContent'); ?>
+<script type="text/javascript" src="js/modals.js"></script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

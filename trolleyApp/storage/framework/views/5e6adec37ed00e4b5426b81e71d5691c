@@ -1,0 +1,29 @@
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('site.partials.header_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="full-width page-content payment-mode-wrapper">
+
+  <div class="row">
+    <div class="medium-8 columns medium-offset-2">
+      <div class="panel">
+        <p class="success text-center">  <?php echo html_entity_decode($notification); ?> .</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php echo $__env->make('site.partials.footer_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-modal'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scriptsContent'); ?>
+  <script type="text/javascript">
+  
+  $(document).ready(function(){
+
+  });
+  </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

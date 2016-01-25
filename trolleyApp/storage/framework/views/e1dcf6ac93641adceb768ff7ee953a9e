@@ -1,0 +1,72 @@
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('site.partials.header_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="full-width page-content login-wrapper">
+
+  <div class="row ">
+    <div class="medium-4 columns medium-offset-4">
+      <h4 class="text-center">Reset Password</h4>
+      <?php echo Form::open(array('route'=>'resetpassword')); ?>
+
+        <input type="hidden" hidden name="token" value="<?php echo e($token); ?>">
+        <input type="hidden" hidden name="user_id" value="<?php echo e($user->id); ?>">
+      <div class="row">
+        <div class="medium-12 columns">
+          <label for="password">New Password</label>
+          <input type="password" name="password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-12 columns">
+          <label for="password_confirmation">Confirm Password</label>
+          <input type="password" name="password_confirmation">
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-12 columns">
+          <?php if(count($errors) > 0): ?>
+              <div class="alert alert-danger">
+                  <ul>
+                      <?php foreach($errors->all() as $error): ?>
+                          <li class="danger"><?php echo e($error); ?></li>
+                      <?php endforeach; ?>
+                  </ul>
+              </div>
+          <?php endif; ?>
+        </div>
+      </div>
+      
+      <div class="row">
+        <p class="text-center">
+          <button type="button tiny" type="submit">Reset Password</button>
+        </p>
+      </div>
+
+      <?php echo Form::close(); ?>
+
+    </div>
+  </div>
+</div>
+
+<?php echo $__env->make('site.partials.footer_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-modal'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scriptsContent'); ?>
+  <script type="text/javascript">
+  //change the price based on quantity select
+   $(".quantity-price").on('change', function(){
+    var opt = $(this).find('option:selected');
+    var price = opt.data('qprice');
+    console.log(price);
+    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
+    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
+   });
+   $(".quantity-price").trigger('change');
+
+
+  </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

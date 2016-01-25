@@ -1,0 +1,175 @@
+
+.admin > .row{
+	margin-left:220px;
+	width:79%;
+	max-width:79%;
+}
+.side-nav.admin{
+	width:170px;
+	position:fixed;
+	z-index:100;
+	background:$admin-bg-primary;
+	height:100%;
+	padding:0px;
+	margin:0px;
+	.logo-wrapper{
+		width:150px;
+		padding: 10px;
+		img{
+			width:100%;
+		}
+		margin:0px;
+		background:$silver;
+		width: 100%;
+	}
+	ul.side-menu{
+		background: none;
+		li{
+			border:none;
+			a{
+				color:$silver;
+			}
+			ul.submenu{
+				width: 170px;
+				position:absolute;
+				background-color:$silver;
+				left:170px;
+				margin: -40px 0 0 0;
+				padding:0px;
+				display: none;
+				li{
+					float: left;
+					margin:0px;
+					padding:0px;
+					width:100%;
+					a{
+						display: block;
+						color:$admin-bg-primary;
+					}
+				}
+				li:hover{
+					a{
+						color:$admin-bg-primary;
+					}
+				}
+
+			}
+		}
+		li:hover{
+			a{color:$admin-bg-primary;}
+			ul.submenu{
+				display: block;
+			}
+		}
+	}
+
+}
+ul.parent-controls{
+	display: block;
+	li{
+		float:right;
+		margin:10px;
+	}
+}
+
+.tree-controls{
+	button.button.link, a.button.link{
+		margin:0px 5px;
+		float:right;
+	}
+}
+.row.page-title{
+	margin-bottom:30px;
+}
+
+.file-inp-container:before{
+	content: "\f055";
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	font-size:32px;
+	position:absolute;
+	padding:26px 0px 0px 38px;
+	color:$steel;
+}
+.file-inp-container{
+	width:100px;
+	height:100px;
+	background-color:$smoke;
+	background-size:100%;
+	padding:0px;
+}
+
+form input[type='file'].thumb-input{
+	display: block !important;
+    width: 100px !important;
+    height: 100px !important;
+    position:absolute;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+}
+.thumb-inputs-wrapper{
+	padding:5px;
+	margin-bottom:20px;
+}
+.quan-prices{
+	.quan-price.new{
+		background:$white;
+	}
+	.quan-price{
+		border:1px solid $iron;
+		background:$silver;
+		width:100%;
+		padding:5px;
+		overflow: hidden;
+		margin-bottom:15px;
+
+	}
+	.action-icons{
+		margin:0px 3px 0px 0px;
+		padding:0px;
+		li{
+			display: inline-block;
+			float:right;
+			margin:0px 3px;
+			height: 24px;
+			a{font-size:20px;}
+		}
+	}
+}
+
+.create-offer{
+	.content{
+		margin-top:20px;
+	}
+}
+
+table .button.tiny{
+	padding:5px;
+	margin:0px;
+}
+
+table .table-row-controls{
+	li{
+		float:left;
+		margin-right:5px;
+	}
+}
+
+//dashboard
+.dash-card{
+	background-color:$silver;
+	@include lshadow();
+	border-left:5px solid $primary-color;
+	margin:10px;
+	padding:5px 0px;
+}
+.dash-card-2{
+	background-color:$silver;
+	@include lshadow();
+	border-left:5px solid $primary-color;
+	margin:10px;
+	padding:5px 0px;
+}

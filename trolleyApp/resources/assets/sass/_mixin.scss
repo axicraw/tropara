@@ -1,0 +1,277 @@
+/**fonts**/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700,500italic,300italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+$primesans:Roboto, sans-serif;
+$primeserif:'Roboto Slab', serif;
+
+/***common***/
+body, p, div, li, a, label, input, option, h1, h2, h3, h4, h5, h6{
+	font-family:$primesans;
+}
+.full-width > .row{
+	min-width: 1170px !important;
+}
+.highlight{
+	background: $highlight-dark;
+	color:$white;
+}
+h5.highlight{
+	padding:5px 10px;
+}
+.no-margin{
+	margin:0px;
+}
+.highlight-spl{
+	// background: $warning-color;
+	// color
+}
+.full-width{
+	width:100%;
+	float:left;
+	clear:both;
+}
+.tight, p.tight, h5.tight{
+	padding: 0px;
+	margin: 0px;
+}
+li{list-style:none;}
+
+/***Typography***/
+.danger, a.danger, p.danger{
+	color:$alert-color;
+}
+.success, a.success{
+	color:$success-color;
+}
+.strike-through{
+	text-decoration:line-through;
+}
+.micro, p.micro, a.micro{
+	font-size: 12px;
+}
+.tiny, p.tiny, a.tiny, select.tiny, span.tiny{
+	font-size: 14px;
+}
+p.primary, h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, span.primary,
+li.primary, label.primary{
+	color:$primary-color;
+}
+/*inputs*/
+select, input[type='text'], input[type='password'], input[type='email']{
+	height: 30px;
+	padding:5px;
+}
+select {
+	padding: 0.3rem;
+}
+label.inline{
+	line-height: 14px;
+}
+input[type="submit"].delete.link{
+	background-color:none;
+	background-image:url(../images/delbtn.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:100%;
+	border:none;
+	color:#000;
+	width:15px;
+	padding:0px;
+	margin:0px;
+	float:right;
+}
+
+
+/**icons**/
+.icon-large, i.icon-large{
+	font-size:32px;
+}
+
+/***buttons**/
+.button.micro{
+	padding:5px 10px;
+}
+.button.tiny{
+	padding: 10px;
+	font-size: 14px;
+}
+
+.button{
+	padding: 10px 15px;
+}
+.button.link{
+	background:none;
+	padding:0px;
+}
+.button.link:hover{
+	background:none;
+}
+.button.link.alert, .button.link.danger{
+	color:$alert-color;
+	
+}
+.button.link.primary{
+	color:$primary-color;
+}
+.postfix.button{
+	height:30px;
+	padding-top:0px;
+	line-height:32px;
+}
+.prefix{
+	height:30px;
+	line-height:32px;
+}
+ul.social-login-btns{
+	margin:0px;
+	li{
+		float:left;
+		margin-right:10px;
+		.button{
+			width:100px;
+			text-align: left;
+			border-radius:5px;
+			i.fa{
+				border-right:$white 1px solid;
+				padding-right:3px;
+			}
+		}
+	}
+}
+.button.fb{
+	background-color:#365C98;
+}
+.button.go{
+	background-color:#E44A34;
+}
+.button.tw{
+	background-color:#44AEEE;
+}
+/****/
+
+
+/*******tables *************/
+table ul{
+	margin:0px;
+	padding:0px;
+}
+
+
+/***effects ************/
+
+@mixin lshadow(){
+	box-shadow:0px 0px 5px -2px $base;
+}
+@mixin hbshadow(){
+	box-shadow:0px 2px 5px -2px $base;
+}
+
+.lshadow{
+	@include lshadow();
+}
+
+.cart-wrapper-shadow
+{
+  position: relative;
+  height:62px;
+	background:#FFF;
+	//margin:40px auto;
+	z-index:10;
+}
+.cart-wrapper-shadow:before, .cart-wrapper-shadow:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 0;
+  width: 50%;
+  top: 20%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.cart-wrapper-shadow:after
+{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+.tabs-content > .content{
+	padding:0px;
+}
+
+/*********modals **************/
+.reveal-modal{
+	padding:0px;
+	//border-bottom:10px solid $primary-main;
+	.login-wrapper{
+		margin-top:20px;
+	}
+	.close-reveal-modal{
+		top:0px;
+	}
+	.logo-wrapper{
+		width:150px;
+		img{
+			width:100%;
+		}
+	}
+	.veg-bg{
+		// background-image:url('../images/veg_white.jpg');
+		// background-size:100%;
+		// padding:10px;
+		// background-position:10px 0px;
+		//margin-left:10px;
+	}
+	.white-overlay{
+		// background: rgba(255,255,255,.9);
+		// padding:10px;
+	}
+	.shop-image-wrapper{
+		width:220px !important;
+		overflow: visible;
+		img{
+			position:relative;
+			top:-30px;
+			left:-50px;
+		}
+	}
+	.modal-body{
+		padding:10px;
+	}
+}
+.modal-header{
+	
+	background-color:$primary-main;
+	color:$white;
+	h4{
+		color:$white;
+	}
+
+}
+.modal-header, .modal-body, .modal-footer{
+	padding:3px 20px
+}
+
+/*********gradient **************/
+
+@mixin grad1(){
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5bdc8+0,828c95+20,28343b+100 */
+background: #b5bdc8; /* Old browsers */
+background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 20%, #28343b 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #b5bdc8 0%,#828c95 20%,#28343b 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #b5bdc8 0%,#828c95 20%,#28343b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */}
