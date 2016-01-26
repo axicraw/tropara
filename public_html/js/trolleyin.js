@@ -14,6 +14,23 @@ $(document).ready(function(){
 	//set minimuin width for the desktop display
 	$('.full-width').css({'min-width':'1170px'});
 
+
+	//make sure the footer stays at the bottom
+	function reLayout()
+	{
+		var headerMiddleHeight = $('.header-middle').height();
+		var footMiddleHeight = $('.footer-middle').height();
+		var pageContent = $('.page-content');
+		var minheight = $(window).height() - (headerMiddleHeight + footMiddleHeight) -20;
+		console.log(minheight);
+		pageContent.css({'min-height': minheight+'px'});
+	}
+	reLayout();
+	$(window).resize(function(){
+		console.log('resized');
+		reLayout();
+	});
+
 	/////////////////////////////////
 
 	//delay function 
