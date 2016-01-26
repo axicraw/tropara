@@ -40,8 +40,8 @@ return [
         'redirect' => 'http://trolleyin.com/authsocial/facebook/callback',
     ],
     'twitter' => [
-        'client_id' => '522328167946919',
-        'client_secret' => '77aec6847816eafe3e3013709080eb30',
+        'client_id' => '108601946',
+        'client_secret' => 'NMXYteOOSCXvmYX07S7nubTxCjyMEggRSCah9xTpNZIqpvptim',
         'redirect' => 'http://trolleyin.com/authsocial/twitter/callback',
     ],
     'google' => [
