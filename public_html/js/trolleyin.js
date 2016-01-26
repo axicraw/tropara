@@ -1,7 +1,7 @@
 var idleTime = 0;
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > 4) { // 10 minutes
+    if (idleTime > 8) { // 10 minutes
         $.ajax({
 			type: 'get',
 			async: false,
