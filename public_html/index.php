@@ -33,7 +33,7 @@ require __DIR__.'/../trolleyApp/bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../trolleyApp/sbootstrap/app.php';
+$app = require_once __DIR__.'/../trolleyApp/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
