@@ -151,6 +151,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     
 });
 
-Route::get('initApp', 'GeneralController@initApp');
+//Route::get('initApp', 'GeneralController@initApp');
 
 
