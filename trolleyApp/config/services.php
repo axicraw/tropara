@@ -37,17 +37,17 @@ return [
     'facebook' => [
         'client_id' => '522328167946919',
         'client_secret' => '77aec6847816eafe3e3013709080eb30',
-        'redirect' => 'http://localhost:8000/authsocial/facebook/callback',
+        'redirect' => 'http://trolleyin.com/authsocial/facebook/callback',
     ],
     'twitter' => [
         'client_id' => '522328167946919',
         'client_secret' => '77aec6847816eafe3e3013709080eb30',
-        'redirect' => 'http://localhost:8000/authsocial/twitter/callback',
+        'redirect' => 'http://trolleyin.com/authsocial/twitter/callback',
     ],
     'google' => [
         'client_id' => '731877718949-6qeq0c251rv0mtsudid5u0lii9m096l4.apps.googleusercontent.com',
         'client_secret' => '779fMU_nvDRswiQMlB2W7GXa',
-        'redirect' => 'http://localhost:8000/authsocial/google/callback',
+        'redirect' => 'http://trolleyin.com/authsocial/google/callback',
     ],
 
 ];
