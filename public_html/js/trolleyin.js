@@ -1,3 +1,19 @@
+var idleTime = 0;
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 4) { // 10 minutes
+        $.ajax({
+			type: 'get',
+			async: false,
+			url: window.location.origin+'/logout',
+			success:function(){ 
+				unloaded = true; 
+				$('body').css('cursor','default');
+			},
+			timeout: 5000
+		});
+    }
+}
 $(document).ready(function(){
 	console.log('working');
 	// /***icons rounded**/
@@ -8,6 +24,40 @@ $(document).ready(function(){
 	// 	$(this).css('background-color', clr);
 	// 	console.log(parclr);
 	// });
+
+	/////////////////////////////////////////////////
+	/////////// Logout on close tab ////////////////
+	var unloaded = false;
+	$(window).on('beforeunload', unload);
+	$(window).on('unload', unload);	 
+	function unload(){		
+		if(!unloaded){
+			$('body').css('cursor','wait');
+			$.ajax({
+				type: 'get',
+				async: false,
+				url: window.location.origin+'/logout',
+				success:function(){ 
+					unloaded = true; 
+					$('body').css('cursor','default');
+				},
+				timeout: 5000
+			});
+		}
+	}
+
+	
+
+	    //Increment the idle time counter every minute.
+	    var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+	    //Zero the idle timer on mouse movement.
+	    $(this).mousemove(function (e) {
+	        idleTime = 0;
+	    });
+	    $(this).keypress(function (e) {
+	        idleTime = 0;
+	    });
 
 
 	///////////////////////////////////////////
