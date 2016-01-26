@@ -100,7 +100,7 @@
                   <ul class="social-login-btns">
                     <li><a href="authsocial/login/facebook" class="button micro fb"><i class="fa fa-facebook"></i> Facebook</a></li>
                     <li><a href="authsocial/login/google" class="button micro go"><i class="fa fa-google-plus"></i> Google</a></li>
-                    <li><a href="" class="button micro"><i class="fa fa-twitter tw"></i> Twitter</a></li>
+                    <li><a href="authsocial/login/twitter" class="button micro"><i class="fa fa-twitter tw"></i> Twitter</a></li>
                   </ul>
                 </div>
               </div>
