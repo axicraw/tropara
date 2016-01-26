@@ -40,7 +40,7 @@ return [
         'redirect' => 'http://trolleyin.com/authsocial/facebook/callback',
     ],
     'twitter' => [
-        'client_id' => '108601946',
+        'client_id' => '4k6fONFgf00x1xBy0Z7ulpVN1',
         'client_secret' => 'NMXYteOOSCXvmYX07S7nubTxCjyMEggRSCah9xTpNZIqpvptim',
         'redirect' => 'http://trolleyin.com/authsocial/twitter/callback',
     ],
