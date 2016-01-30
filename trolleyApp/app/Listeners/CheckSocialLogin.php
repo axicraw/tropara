@@ -30,7 +30,7 @@ class CheckSocialLogin
     {
         //
         $user_cred = $event->user_cred;
-        dd($user_cred);
+        //dd($user_cred);
         $input = ['social_id'=>$user_cred['social_id'], 'type' => $user_cred['type']];
         $user = User::where('social_id', $user_cred['social_id'])
                         ->where('type', $user_cred['type'])->first();
