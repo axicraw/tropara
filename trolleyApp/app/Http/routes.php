@@ -104,7 +104,7 @@ Route::group(['prefix' => 'admin/order', 'middleware' => ['admin', 'staff']], fu
 	Route::get('/returns/status/{id}/{status}', 'OrderController@returnsstatus');
 	Route::get('/', ['as'=>'orders', 'uses'=>'OrderController@index']);
 	Route::get('/{id}', 'OrderController@listItems');
-	Route::get('/status/{id}/{status}', 'OrderController@changeStatus');
+	Route::get('/changestatus/{id}/{status}', 'OrderController@changeStatus');
 	Route::get('/print/{id}', 'OrderController@printItems');
 
 });
