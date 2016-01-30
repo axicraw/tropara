@@ -38,12 +38,12 @@
 							{{$checkout->status}}
 						</td>
 						<td>							
-							<button href="#" data-dropdown="changeStatus" aria-controls="changeStatus" aria-expanded="false" class="button dropdown tiny">Change Status</button><br>
-							<ul id="changeStatus" data-dropdown-content class="f-dropdown" aria-hidden="true">
-							  <li><a href="admin/order/status/{{$checkout->id}}/1">Order Placed</a></li>
-							  <li><a href="admin/order/status/{{$checkout->id}}/2">Ready to Dispatch</a></li>
-							  <li><a href="admin/order/status/{{$checkout->id}}/3">In Transit</a></li>
-							  <li><a href="admin/order/status/{{$checkout->id}}/4">Delivered</a></li>
+							<button href="#" data-dropdown="changeStatus{{$checkout->id}}" aria-controls="changeStatus" aria-expanded="false" class="button dropdown tiny">Change Status</button><br>
+							<ul id="changeStatus{{$checkout->id}}" data-dropdown-content class="f-dropdown" aria-hidden="true">
+							  <li><a href="admin/order/changestatus/{{$checkout->id}}/1">Order Placed</a></li>
+							  <li><a href="admin/order/changestatus/{{$checkout->id}}/2">Ready to Dispatch</a></li>
+							  <li><a href="admin/order/changestatus/{{$checkout->id}}/3">In Transit</a></li>
+							  <li><a href="admin/order/changestatus/{{$checkout->id}}/4">Delivered</a></li>
 							</ul>
 						</td>
 					</tr>
