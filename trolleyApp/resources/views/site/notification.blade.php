@@ -7,7 +7,7 @@
   <div class="row">
     <div class="medium-8 columns medium-offset-2">
       <div class="panel">
-        <p class="success text-center">  {!! html_entity_decode($notification) !!} .</p>
+        <p class="text-center">  {!! html_entity_decode($notification) !!} .</p>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 var idleTime = 0;
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > 8) { // 10 minutes
+    if (idleTime >5) { // 10 minutes
         $.ajax({
 			type: 'get',
 			async: false,
@@ -27,24 +27,24 @@ $(document).ready(function(){
 
 	/////////////////////////////////////////////////
 	/////////// Logout on close tab ////////////////
-	var unloaded = false;
-	$(window).on('beforeunload', unload);
-	$(window).on('unload', unload);	 
-	function unload(){		
-		if(!unloaded){
-			$('body').css('cursor','wait');
-			$.ajax({
-				type: 'get',
-				async: false,
-				url: window.location.origin+'/logout',
-				success:function(){ 
-					unloaded = true; 
-					$('body').css('cursor','default');
-				},
-				timeout: 5000
-			});
-		}
-	}
+	// var unloaded = false;
+	// $(window).on('beforeunload', unload);
+	// $(window).on('unload', unload);	 
+	// function unload(){		
+	// 	if(!unloaded){
+	// 		$('body').css('cursor','wait');
+	// 		$.ajax({
+	// 			type: 'get',
+	// 			async: false,
+	// 			url: window.location.origin+'/logout',
+	// 			success:function(){ 
+	// 				unloaded = true; 
+	// 				$('body').css('cursor','default');
+	// 			},
+	// 			timeout: 5000
+	// 		});
+	// 	}
+	// }
 
 	
 
@@ -193,7 +193,8 @@ $(document).ready(function(){
 	// 	$(this).find('.add-to-wrapper').velocity("fadeOut", { duration: 300 });
 	// });
 
-	//register form
+	/////////////////////////////////////////////////////////////////////////
+	//////////////////////////register form/////////////////////////////////
 	function showToastr(msg, xtime){
 		
 	}
@@ -201,7 +202,6 @@ $(document).ready(function(){
 	var regWrapper = $('.reg-wrapper')
 	var registerForm = {};
 	regBtn.on('click', function(){
-
 		registerForm['mobile'] = regWrapper.find('input#mobile').val();
 		registerForm['email'] = regWrapper.find('input#email').val();
 		registerForm['password'] = regWrapper.find('input#password').val();
@@ -213,10 +213,10 @@ $(document).ready(function(){
 			delete registerForm['terms'];
 		}
 		registerForm['area_id'] = regWrapper.find('select#area_id').val();
-		//console.log(registerForm);
-		$.when(http_post('register', registerForm)).then(function(){
-			window.location.replace("/registration/success");
-			//$('#signupModal').foundation('reveal', 'close');
+		$.when(http_post('register', registerForm)).then(function(response){
+			$('#signupModal').foundation('reveal', 'close');
+			window.location.replace("/getpin?id="+response.id);
+			
 		}, function(response){
 			if(response.status === 422){
 				var j = 0;
@@ -331,23 +331,32 @@ $(document).ready(function(){
 		
 	});
 
-	toastr.options = {
-	  "closeButton": false,
-	  "debug": false,
-	  "newestOnTop": false,
-	  "progressBar": false,
-	  "positionClass": "toast-top-center",
-	  "preventDuplicates": false,
-	  "onclick": null,
-	  "showDuration": "300",
-	  "hideDuration": "700",
-	  "timeOut": "3000",
-	  "extendedTimeOut": "1000",
-	  "showEasing": "swing",
-	  "hideEasing": "linear",
-	  "showMethod": "fadeIn",
-	  "hideMethod": "fadeOut"
-	}
+	// toastr.options = {
+	//   "closeButton": false,
+	//   "debug": false,
+	//   "newestOnTop": false,
+	//   "progressBar": false,
+	//   "positionClass": "toast-top-center",
+	//   "preventDuplicates": false,
+	//   "onclick": null,
+	//   "showDuration": "300",
+	//   "hideDuration": "700",
+	//   "timeOut": "3000",
+	//   "extendedTimeOut": "1000",
+	//   "showEasing": "swing",
+	//   "hideEasing": "linear",
+	//   "showMethod": "fadeIn",
+	//   "hideMethod": "fadeOut"
+	// }
 
+	//align ajax loader
+	var ajaxLoader = $('.ajax-loader-content');
+	ajaxLoaderHeight = ajaxLoader.height();
+	ajaxLoaderWidth = ajaxLoader.width();
+
+	ajaxLoader.css({
+		top: ($(window).height()/2 - ajaxLoaderHeight/2)+'px',
+		left: ($(window).width()/2 - ajaxLoaderWidth/2)+'px'
+	});
 
 });

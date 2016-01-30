@@ -25,12 +25,21 @@ $.ajaxSetup({
     }
 });
 
+var alWrapper;
+$(document).ready(function(){
+	alWrapper = $('.ajax-loader-wrapper');
+});
+
 function http_post(url, postData){
-	console.log(postData);
+	alWrapper.show();
     return $.ajax({
 		url:url,
 		data: postData,
-		type: 'post'
+		type: 'post',
+		complete: function(){
+			console.log('complete');
+			alWrapper.hide();
+		},
 	});
 }
 

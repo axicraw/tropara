@@ -34,7 +34,7 @@ class MailNewUser
 
         $data['mobile'] = $user->mobile;
         Mail::send('email.newreg', $data, function ($message) use ($user) {
-                 $message->from('postmaster@sandbox832d8fcfab3c4dc6888feed3be7e49f3.mailgun.org');
+                 $message->from('welcome@trolleyin.com');
                  $message->to($user->email);
         });
     }

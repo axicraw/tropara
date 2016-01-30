@@ -21,6 +21,12 @@ Route::get('/login',['as'=>'login', 'uses'=>'AuthController@login']);
 Route::get('/logout',['as'=>'logout', 'uses'=>'AuthController@logout']);
 Route::post('register',['as'=>'register', 'uses'=>'AuthController@register']);
 Route::get('/registration/success',['as'=>'register', 'uses'=>'PagesController@registersuccess']);
+Route::get('/getpin', ['as'=>'getpin', 'uses'=>'AuthController@getpin']);
+Route::get('/sendpinagain', ['as'=>'resendpin', 'uses'=>'AuthController@resendpin']);
+//Route::post('/resendpinAfterMobile', ['as'=>'resendpinAfterMobile', 'uses'=>'AuthController@resendpinAfterMobile']);
+Route::get('/changemobile', 'AuthController@changemobile');
+Route::post('/savemobile', ['as'=>'savemobile', 'uses'=>'AuthController@savemobile']);
+Route::post('/activateuser', ['as'=>'activateuser','uses'=>'AuthController@doactivation']);
 Route::group(['prefix' => 'admin'], function () {
 	Route::post('authenticate',['as'=>'admin_authenticate', 'uses'=>'AuthController@admin_authenticate']);
 	Route::get('/logout',['as'=>'admin_logout', 'uses'=>'AuthController@admin_logout']);
@@ -43,6 +49,17 @@ Route::get('/forgotpassword', ['as'=>'forgotpassword', 'uses'=>'PagesController@
 Route::post('/forgotpassword', ['as'=>'forgotconfirm', 'uses'=>'PagesController@forgotconfirm']);
 Route::get('/resetpassword', ['as'=>'receivereset', 'uses'=>'PagesController@receivereset']);
 Route::post('/resetpassword', ['as'=>'resetpassword', 'uses'=>'PagesController@newpassword']);
+Route::get('/productreturn/{id}', ['as'=>'returnform', 'uses'=>'PagesController@returnform']);
+Route::post('/processreturn', ['as'=>'processreturn', 'uses'=>'PagesController@processreturn']);
+Route::get('/myorder/{id}', ['as'=>'orderdetail', 'uses'=>'PagesController@orderdetail']);
+Route::get('/contact', ['as'=>'contactus', 'uses'=>'PagesController@contactus']);
+
+/***
+** plain pages
+**/
+
+Route::get('/termsandconditions', 'PlainController@terms');
+
 
 /***
 *CART
@@ -59,16 +76,19 @@ Route::group(['prefix' => 'cart'], function(){
 	Route::get('/myaddress',['middleware' => 'customer', 'uses'=>'CartController@myaddress']);
 	Route::get('/confirmorder/{id}',['as'=>'cart.confirmorder','middleware' => 'customer', 'uses'=>'CartController@confirmOrder']);
 	Route::get('/orderplaced',['as'=>'cart.orderplaced','middleware' => 'customer', 'uses'=>'CartController@orderplaced']);
+
 });
 /***
 *User Account
 */
 Route::group(['prefix' => 'account', 'middleware'=>'customer'], function(){
 	Route::get('/',['as'=>'myaccount', 'uses'=>'PagesController@myaccount']);
+	Route::get('/myreturns', 'PagesController@myreturns');
 	Route::post('/saveaccount',['as'=>'account.save', 'uses'=>'PagesController@saveaccount']);
 	Route::get('/myorders', ['as'=>'myorders', 'uses'=>'PagesController@myorders']);
 	Route::post('/changepassword', ['as'=>'account.changepassword', 'uses'=>'PagesController@changepassword']);
 	Route::get('/tempcart', 'CartController@tempcart');
+
 });
 /***
 *AdminPanel
@@ -78,12 +98,15 @@ Route::post('/trolleyinoverseer', ['as'=>'adminauth', 'uses'=>'AuthController@ad
 Route::get('/staff', ['as'=>'stafflogin', 'uses'=>'AuthController@stafflogin']);
 Route::post('/staff', ['as'=>'staffauth', 'uses'=>'AuthController@staffauth']);
 
-Route::group(['prefix' => 'admin/order', 'middleware' => ['staff']], function(){
+Route::group(['prefix' => 'admin/order', 'middleware' => ['admin', 'staff']], function(){
 	//order
+	Route::get('/returns',['as'=>'admin.returns', 'uses'=>'OrderController@returns']);
+	Route::get('/returns/status/{id}/{status}', 'OrderController@returnsstatus');
 	Route::get('/', ['as'=>'orders', 'uses'=>'OrderController@index']);
 	Route::get('/{id}', 'OrderController@listItems');
 	Route::get('/status/{id}/{status}', 'OrderController@changeStatus');
 	Route::get('/print/{id}', 'OrderController@printItems');
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
@@ -151,6 +174,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     
 });
 
-//Route::get('initApp', 'GeneralController@initApp');
+Route::get('initApp', 'GeneralController@initApp');
 
 

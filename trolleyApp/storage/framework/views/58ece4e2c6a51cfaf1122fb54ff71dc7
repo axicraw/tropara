@@ -11,6 +11,7 @@
               <ul>
                 <li class="active"><a href="/account">Profile</a></li>
                 <li><a href="/account/myorders">Orders</a></li>
+                <li><a href="/account/myreturns">Returns</a></li>
               </ul>
             </div>  
           </div>

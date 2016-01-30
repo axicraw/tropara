@@ -264,6 +264,16 @@
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
       </div>
     @endif
+    <div class="ajax-loader-wrapper">
+      
+      <div class="ajax-loader-content">
+        <p class="tight text-center">
+          <img src="images/logo_color.png" class="logo" alt=""><br>Loading<br>
+          <img src="images/ajax_loader/loader.gif" alt="" class="ajax-loader">
+        </p>
+      </div>
+      
+    </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/foundation.min.js"></script>
@@ -299,7 +309,6 @@
 
       ///////////////////// php conditioned /////////////////
       @if(session()->has('toasttext'))
-          console.log('has session');
           {{--*/ $toasttext = session()->get('toasttext'); /*--}}
           {{--*/ $toasttype = session()->get('toasttype'); /*--}}
           toastr.{{$toasttype}}('{{$toasttext}}', {timeOut:3500});

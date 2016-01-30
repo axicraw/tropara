@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
-    <base href="http://localhost:8000/">
+    <base href="<?php echo e(url()); ?>">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
@@ -39,6 +39,7 @@
             <li><a href="admin/product">Products</a></li>
             <li><a href="admin/brand">Brands</a></li>
             <li><a href="admin/order">Orders</a></li>
+            <li><a href="admin/order/returns">Returns</a></li>
             <li><a href="admin/offer">Offers</a></li>
             <li><a href="admin/banner">Banners</a></li>
             <li><a href="admin/flashtext">Flash Text</a></li>

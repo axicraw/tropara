@@ -70,7 +70,7 @@ class GeneralController extends Controller
         $adminRole->save();
         //init Roles
         $staffRole = Sentinel::getRoleRepository()->createModel()->create([
-            'name' => 'admin',
+            'name' => 'staff',
             'slug' => 'staff',
             'permissions' => [
                 'product.manage' => false,

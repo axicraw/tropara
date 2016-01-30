@@ -8756,15 +8756,36 @@ li {
 .strike-through {
   text-decoration: line-through; }
 
-.micro, p.micro, a.micro {
+.nano, p.nano, a.nano, i.fa.nano {
+  font-size: 9px; }
+
+.micro, p.micro, a.micro, i.fa.micro {
   font-size: 12px; }
 
-.tiny, p.tiny, a.tiny, select.tiny, span.tiny {
+.tiny, p.tiny, a.tiny, select.tiny, span.tiny, li.tiny, i.fa.tiny {
   font-size: 14px; }
 
 p.primary, h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, span.primary,
-li.primary, label.primary {
+li.primary, label.primary, i.primary {
   color: #39A4EA; }
+
+p.success, h1.success, h2.success, h3.success, h4.success, h5.success, h6.success, span.success,
+li.success, label.success {
+  color: #43AC6A; }
+
+p.main, h1.main, h2.main, h3.main, h4.main, h5.main, h6.main, span.main,
+li.main, label.main {
+  color: #1A2A42; }
+
+p.danger, h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, span.danger,
+li.danger, label.danger, i.danger {
+  color: #f04124; }
+
+a.plain {
+  text-decoration: underline; }
+
+a.link-normal {
+  color: #333; }
 
 /*inputs*/
 select, input[type='text'], input[type='password'], input[type='email'] {
@@ -8888,6 +8909,11 @@ table ul {
 .tabs-content > .content {
   padding: 0px; }
 
+.detail-link-box {
+  box-shadow: 0px 0px 5px -2px #AAAAAA;
+  padding: 5px 8px;
+  width: 100px; }
+
 /*********modals **************/
 .reveal-modal {
   padding: 0px; }
@@ -8949,7 +8975,8 @@ table ul {
       .side-nav.admin ul.side-menu li ul.submenu {
         width: 170px;
         position: absolute;
-        background-color: #EFEFEF;
+        background-color: #FFFFFF;
+        border-right: 3px solid #1A2A42;
         left: 170px;
         margin: -40px 0 0 0;
         padding: 0px;
@@ -9077,6 +9104,16 @@ body > .row {
   overflow: hidden;
   height: auto;
   padding-top: 20px; }
+
+.plain-content {
+  background: #EFEFEF;
+  box-shadow: 0px 0px 5px -2px #AAAAAA;
+  padding: 20px;
+  height: 600px;
+  overflow: scroll; }
+  .plain-content .title {
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 10px; }
 
 .col5-unit {
   padding-left: 0.625rem;
@@ -9742,6 +9779,33 @@ a.caro-link {
 .payment-mode-wrapper .tabs-content .content .inner-content {
   position: relative;
   left: 20px; }
+
+/*****************************ajax loader******************************/
+.ajax-loader-wrapper {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  z-index: 2000;
+  width: 100%;
+  height: 100%; }
+  .ajax-loader-wrapper .ajax-loader-content {
+    overflow: hidden;
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    padding: 40px 10px;
+    border-radius: 50%;
+    border: 1px solid #39A4EA;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 10px -5px #333; }
+    .ajax-loader-wrapper .ajax-loader-content img.ajax-loader {
+      width: 64px; }
+    .ajax-loader-wrapper .ajax-loader-content img.logo {
+      width: 150px; }
+
+.activate-pin {
+  letter-spacing: 2px;
+  font-size: 20px; }
 
 .sp-thumbnails-container {
   background: #333333;

@@ -7,6 +7,7 @@ use PDF;
 use App\Order;
 use App\User;
 use App\Checkout;
+use App\Orderreturn;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -92,59 +93,45 @@ class OrderController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   public function returns()
+   {
+        $returns = Orderreturn::with('order_return', 'order_return.orders',  'order_return.orders.product', 'user')->get();
+        //dd($returns);
+        return view('admin.order.returns', compact('returns'));
+   }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+   public function returnsstatus($id, $status)
+   {
+        $return = Orderreturn::findOrFail($id);
+        switch ($status) {
+            case 1:
+                $return->status = 'Booked';
+                break;
+            
+            case 2:
+                $return->status = 'Not Reachable';
+                break;
+            
+            case 3:
+                $return->status = 'Returned';
+                break;
+            
+            case 4:
+                $return->status = 'Negotiated';
+                break;
+            
+            default:
+                 $return->status = 'Booked';
+                break;
+        }
+        $return->save();
+        return redirect()->route('admin.returns');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+   }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   public function viewreturn($id)
+   {
+        $return = Orderreturn::with('orders', 'user')->first();
+        return view('admin.order.viewreturn', compact('return'));
+   }
 }

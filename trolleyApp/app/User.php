@@ -52,5 +52,10 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Tempcart', 'user_id', 'id');
     }
 
+    public function returns()
+    {
+        return $this->hasMany('App\Orderreturn', 'user_id', 'id');
+    }
+
     
 }

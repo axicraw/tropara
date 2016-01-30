@@ -4,6 +4,8 @@ namespace App\Listeners;
 
 use Mail;
 use Log;
+use DB;
+use Sentinel;
 use App\Includes\Textlocal;
 use App\Events\MadeCheckout;
 use Illuminate\Queue\InteractsWithQueue;
@@ -31,10 +33,19 @@ class MailOrderConfirmation
     public function handle(MadeCheckout $event)
     {
 
+        $adminids = DB::role_users()->where('role_id', 1)->get();
+        $admins = User::whereIn('id', $adminids->user_id)->get();
         Mail::send('email.orderconfirmation', [], function ($message){
-             $message->from('postmaster@sandbox832d8fcfab3c4dc6888feed3be7e49f3.mailgun.org');
-             $message->to('abel.yellow@gmail.com');
+             $message->from('care@trolleyin.com');
+             $message->to($user->email);
         });
+        foreach ($admins as $admin) {
+            Mail::send('email.admin.orderconfirmation', [], function ($message){
+                $message->from('admin@trolleyin.com');
+                $message->to($admin->email);
+            });
+        }
+        
 
     }
 }

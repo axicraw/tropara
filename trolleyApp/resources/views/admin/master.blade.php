@@ -39,6 +39,7 @@
             <li><a href="admin/product">Products</a></li>
             <li><a href="admin/brand">Brands</a></li>
             <li><a href="admin/order">Orders</a></li>
+            <li><a href="admin/order/returns">Returns</a></li>
             <li><a href="admin/offer">Offers</a></li>
             <li><a href="admin/banner">Banners</a></li>
             <li><a href="admin/flashtext">Flash Text</a></li>

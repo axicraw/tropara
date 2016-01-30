@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Log;
 use Sentinel;
+use Activation;
 use Socialite;
 use Event;
 use Session;
 use Cart;
+use DB;
 use Illuminate\Support\MessageBag;
 use App\Flashtext;
 use App\Area;
 use App\Events\LoggedIn;
 use App\Events\SocialLogin;
 use App\Events\NewRegistration;
+use App\Events\ResendPin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -39,26 +42,38 @@ class AuthController extends Controller
 
         if($logged) //create temp cart
         {
-          if(Sentinel::inRole($customer)) ///check if is customer
+          //check if user is activated
+          $activation = Activation::exists($user);
+          if(!$activation)
           {
-             $user = Sentinel::check();
-             $user = User::findorfail($user->id);
-             $temporders = $user->tempcart()->get();
-             Event::fire(new LoggedIn($user));
-             if($request->ajax())
-             {
-                return response()->json($logged);
-             }
-             //dd($request->session());
-             return redirect()->intended();
-          }
-          else  //if not a customer
-          {
-            Sentinel::logout();
-            if($request->ajax()){
-                return response()->json(['error'=>'you are not a customer'], 422);
+
+            if(Sentinel::inRole($customer)) ///check if is customer
+            {
+               $user = Sentinel::check();
+               $user = User::findorfail($user->id);
+               $temporders = $user->tempcart()->get();
+               Event::fire(new LoggedIn($user));
+               if($request->ajax())
+               {
+                  return response()->json($logged);
+               }
+               //dd($request->session());
+               return redirect()->intended();
             }
-            return back()->withErrors();            
+            else  //if not a customer
+            {
+              Sentinel::logout();
+              if($request->ajax()){
+                  return response()->json(['error'=>'you are not a customer'], 422);
+              }
+              return back()->withErrors();            
+            }
+          }
+          else //if not activated
+          {
+            return redirect()->route('getpin', ['id'=>$user->id]);
+            //$notification = "";
+            //return view('notification', compact('notification'));
           }
         }
         else  //if not loggedin
@@ -76,11 +91,7 @@ class AuthController extends Controller
     {
       return view('site/adminlogin');
     }
-    public function stafflogin()
-    {
-      return view('site/stafflogin');
-    }
-    
+   
     public function adminauth(Request $request){
       $this->validate($request, [
         'email'=>'email|required',
@@ -108,8 +119,14 @@ class AuthController extends Controller
       }
       //dd('not logged in');
       $errors = new MessageBag(['password'=>'Invalid Login Credentials']);
-      return redirect()->back()->withInput()->withErrors($errors)->withInput();
-    }    
+      return redirect()->back()->withInput()->withErrors($errors);
+    }  
+
+    public function stafflogin()
+    {
+      return view('site/stafflogin');
+    }
+      
     public function staffauth(Request $request){
       $this->validate($request, [
         'email'=>'email|required',
@@ -160,7 +177,7 @@ class AuthController extends Controller
             'email'=> 'required|email|unique:users,email|max:255', 
             'password'=>'required|min:6|max:32|confirmed',
             'password_confirmation'=>'same:password',
-            'mobile'=>'required',
+            'mobile'=>'required|digits:10',
             'terms'=>'required'
         ]);
 
@@ -169,13 +186,13 @@ class AuthController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ];
-        $registered = Sentinel::registerAndActivate($new_user);
+        $registered = Sentinel::register($new_user);
         if($registered){
           $user = User::find($registered->id);
           $user->mobile = $request->mobile;
           $user->area_id = $request->area_id;
           $user->type = 'native';
-          $user->active = 1;
+          $user->active = 0;
           $user->cod = 1;
           $user->save();
           $role = Sentinel::findRoleBySlug('customer');
@@ -188,7 +205,6 @@ class AuthController extends Controller
           return response()->json($registered);
         }
         return back();
-
     }
 
     public function login(Request $request){
@@ -226,38 +242,100 @@ class AuthController extends Controller
         *
         * @return Response
         */
-       public function handleProviderCallback($type)
-       {
-         
-           $user = Socialite::driver($type)->user();
+   public function handleProviderCallback($type)
+   {
+     
+       $user = Socialite::driver($type)->user();
 
-           //dd($user->getID());
-           $user_cred = [
-               'social_id' => $user->getID(),
-               'name' => $user->getName(),
-               'email' => $user->getEmail(),
-            ];
-           switch($type){
-                case 'facebook':
-                    $user_cred['type'] = 'facebook';
-                break;
-                case 'twitter':
-                    $user_cred['type'] = 'twitter';
-                break;
-                case 'google':
-                     $user_cred['type'] = 'google';
-                break;
-                default:
-                    $user_cred['type'] = 'unkown';
-                break;
-           }
-          $response = Event::fire(new SocialLogin($user_cred));
-          $user = $response[0];
-
-          $user = Sentinel::findById($user->id);
-          Sentinel::login($user);
-          return redirect()->route('home');
-
+       //dd($user->getID());
+       $user_cred = [
+           'social_id' => $user->getID(),
+           'name' => $user->getName(),
+           'email' => $user->getEmail(),
+        ];
+       switch($type){
+            case 'facebook':
+                $user_cred['type'] = 'facebook';
+            break;
+            case 'twitter':
+                $user_cred['type'] = 'twitter';
+            break;
+            case 'google':
+                 $user_cred['type'] = 'google';
+            break;
+            default:
+                $user_cred['type'] = 'unkown';
+            break;
        }
-      
+      $response = Event::fire(new SocialLogin($user_cred));
+      $user = $response[0];
+
+      $user = Sentinel::findById($user->id);
+      Sentinel::login($user);
+      return redirect()->route('home');
+  }
+
+  public function getpin(Request $request)
+  {
+
+    $user_id = $request->get('id');
+    $user = Sentinel::findById($user_id);
+    return view('site.useractivate', compact('user'));
+  }
+  public function resendpin(Request $request)
+  {
+
+    $user_id = $request->get('id');
+    $user = Sentinel::findById($user_id);
+
+    $threshold = DB::table('activations')->where('user_id', $user_id)->get();
+    if(count($threshold) > 3){
+      $errors = new MessageBag(['pin'=>'Sorry no more sms can be sent to this customer.']);
+      return redirect()->route('getpin', ['id'=>$user_id])->withErrors($errors);
+    }
+    else
+    {
+      Event::fire(new ResendPin($user));
+    }
+    $success = 'Sms has been sent again';
+    return view('site.useractivate', compact('user', 'success'));
+  }
+ 
+  public function changemobile(Request $request)
+  {
+
+    $user_id = $request->get('id');
+    $user = Sentinel::findById($user_id);
+    return view('site.changemobile', compact('user'));
+  }   
+  public function savemobile(Request $request)
+  {
+    $this->validate($request, [
+        'mobile' => 'required | digits:10'
+      ]);
+    $user = User::findorfail($request->id);
+    $user->mobile = $request->mobile;
+    $user->save();
+
+    return redirect()->route('resendpin', ['id'=> $user->id]);
+  }   
+  public function doactivation(Request $request)
+  {
+    $this->validate($request, [
+        'pin'=>'required | digits:6'
+      ]);
+    $user = Sentinel::findById($request->get('id'));
+    $pin = $request->get('pin');
+    $activate = Activation::complete($user, $pin);
+    if($activate)
+    {
+        $notification = 'Your account has been successfully activated. Login from <a href="/login"><i clas="fa fa-sign-in"></i> here.</a>';
+        return view('site.notification', compact('notification'));
+    }
+    else
+    {
+        $errors = new MessageBag(['pin'=>'Invalid PIN. Try Again.']);
+        return redirect()->back()->withInput()->withErrors($errors);
+    }
+  }      
 }

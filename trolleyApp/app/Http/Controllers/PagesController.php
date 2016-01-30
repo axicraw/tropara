@@ -15,10 +15,13 @@ use App\User;
 use App\Banner;
 use App\Category;
 use App\Product;
+use App\Checkout;
 use App\Offer;
+use App\Order;
 use App\Resettoken;
 use App\Salesstats;
 use App\Viewstats;
+use App\Orderreturn;
 use App\Events\VoidSearch;
 use App\Events\ForgotPassword;
 use App\Events\ProductViewed;
@@ -124,9 +127,9 @@ class PagesController extends Controller
     {
         $user = Sentinel::check();
         $user = User::with('checkouts', 'checkouts.orders', 'checkouts.orders.product')->findorfail($user->id);
-        
         return view('site.myorders', compact('user'));
     }
+
 
     public function mainsearch(Request $request)
     {
@@ -202,6 +205,7 @@ class PagesController extends Controller
         }
         abort(404);
     }
+
     public function newpassword(Request $request)
     {
         $this->validate($request, [
@@ -230,4 +234,80 @@ class PagesController extends Controller
 
     }
 
+    public function returnform($id)
+    {
+        $user = Sentinel::check();
+        $user  = User::findorfail($user->id);
+        $checkout = Checkout::with('orders')->where('id', $id)->first();
+        $returns = Orderreturn::with('order_return', 'order_return.orders')->where('user_id', $user->id)->get();
+        //dd($returns);
+        return view('site.returnproduct', compact('checkout', 'returns'));
+    }
+    public function myreturns()
+    {
+        $user = Sentinel::check();
+        $user  = User::findorfail($user->id);
+        $returns = Orderreturn::with('order_return', 'order_return.orders', 'order_return.orders.product')->where('user_id', $user->id)->get();
+
+        ///dd($returns);
+        return view('site.myreturns', compact('returns'));
+
+    }
+    public function processreturn(Request $request)
+    {
+        $this->validate($request, [
+            'products' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required|digits:10',
+            'address' => 'required',
+            'reason' => 'required'
+        ]);
+        $order_ids = $request->get('products');
+        $orders = Order::whereIn('id', $order_ids)->get();
+        $user = Sentinel::check();
+        $user = User::findorfail($user->id);
+
+        $return_inputs = [
+            'user_id' => $user->id,
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'mobile' => $request->get('mobile'),
+            'address' => $request->get('address'),
+            'area_id' => $user->area_id,
+            'reason' => $request->get('reason'),
+            'status' => 'Booked'
+        ];
+
+        //dd($return_inputs);
+        $return  = Orderreturn::Create($return_inputs);
+
+        if($return)
+        {
+            $returns = [];
+            foreach($orders as $order)
+            {
+                array_push($returns, [
+                    'order_id' => $order->id,
+                    'return_id' => $return->id,
+                ]);
+            }
+            DB::table('order_return')->insert($returns);
+        }
+
+        $notification = "Sorry! We regret you did not like these products.These products you have selected has been registered for return. Our staff will reach to you and receive those products. Kindly dont not consume the product and make it ready for pickup. Thank you.";
+        return view('site.notification', compact('notification'));
+
+    }
+
+    public function orderdetail($id)
+    {
+
+        $checkout = Checkout::with('orders', 'orders.product')->findorfail($id);
+        return view('site.myorderdetail', compact('checkout'));
+    }
+
+    public function contactus(){
+        return view('site.contact');
+    }
 }

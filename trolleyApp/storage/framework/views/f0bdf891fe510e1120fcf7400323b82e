@@ -2,7 +2,7 @@
 <?php echo $__env->make('site.partials.header_middle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <div class="full-width account-view">
   <div class="row page-content">
-    <div class="medium-8 columns medium-offset-2 account-wrapper">
+    <div class="medium-10 columns medium-offset-1 account-wrapper">
       <div class="row collapse">
         <div class="medium-3 columns">
           <div class="side-menu">
@@ -11,6 +11,7 @@
               <ul>
                 <li><a href="/account">Profile</a></li>
                 <li class="active"><a href="/account/myorders">Orders</a></li>
+                <li><a href="/account/myreturns">Returns</a></li>
               </ul>
             </div>  
           </div>
@@ -36,17 +37,28 @@
                       <tr>
                         <td>
                           <?php foreach($checkout->orders as $order): ?>
-                            <span class="label"><?php echo e($order->product->product_name); ?> - <?php echo e($order->pqty); ?> x <?php echo e($order->nos); ?></span>
+                            <span class="label" ><?php echo e($order->product->product_name); ?> - <?php echo e($order->pqty); ?> x <?php echo e($order->nos); ?></span>
                           <?php endforeach; ?>
-                          <p class="micro tight">Shipping To: <br><?php echo e($checkout->address); ?></p>
+                          <p class="micro tight">
+                            Shipping To: <br><?php echo e($checkout->address); ?>
+
+                            <br>
+                            
+                          </p>
+                          
                         </td>
                         <td>
                           <?php echo e(Carbon\Carbon::parse($order->created_at)->format('d/m/Y')); ?>
 
                         </td>
                         <td>
-                          <?php echo e($checkout->status); ?>
+                          <a href="#" data-dropdown="id<?php echo e($checkout->id); ?>" aria-controls="drop1" aria-expanded="false">
+                            <?php echo e($checkout->status); ?>
 
+                          </a>
+                          <div id="id<?php echo e($checkout->id); ?>" class="f-dropdown detail-link-box" data-dropdown-content aria-hidden="true" tabindex="-1">
+                            <a href="/myorder/<?php echo e($checkout->id); ?>">Details</a>
+                          </div>
                         </td>
                       </tr>
                     <?php endif; ?>
@@ -74,8 +86,13 @@
 
                         </td>
                         <td>
-                          <?php echo e($checkout->status); ?>
+                          <a href="#" data-dropdown="id<?php echo e($checkout->id); ?>" aria-controls="drop1" aria-expanded="false">
+                            <?php echo e($checkout->status); ?>
 
+                          </a>
+                          <div id="id<?php echo e($checkout->id); ?>" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+                            <a href="/checkout/detail/<?php echo e($checkout->id); ?>"></a>
+                          </div>
                         </td>
                       </tr>
                     <?php endif; ?>

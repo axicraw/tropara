@@ -37,6 +37,7 @@ h5.highlight{
 li{list-style:none;}
 
 /***Typography***/
+
 .danger, a.danger, p.danger{
 	color:$alert-color;
 }
@@ -46,15 +47,37 @@ li{list-style:none;}
 .strike-through{
 	text-decoration:line-through;
 }
-.micro, p.micro, a.micro{
+.nano, p.nano, a.nano, i.fa.nano{
+	font-size: 9px;
+}
+.micro, p.micro, a.micro, i.fa.micro{
 	font-size: 12px;
 }
-.tiny, p.tiny, a.tiny, select.tiny, span.tiny{
+.tiny, p.tiny, a.tiny, select.tiny, span.tiny, li.tiny, i.fa.tiny{
 	font-size: 14px;
 }
 p.primary, h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary, span.primary,
-li.primary, label.primary{
+li.primary, label.primary, i.primary{
 	color:$primary-color;
+}
+p.success, h1.success, h2.success, h3.success, h4.success, h5.success, h6.success, span.success,
+li.success, label.success{
+	color:$success-color;
+}
+p.main, h1.main, h2.main, h3.main, h4.main, h5.main, h6.main, span.main,
+li.main, label.main{
+	color:$primary-main;
+}
+p.danger, h1.danger, h2.danger, h3.danger, h4.danger, h5.danger, h6.danger, span.danger,
+li.danger, label.danger, i.danger{
+	color:$alert-color;
+}
+a.plain{
+	text-decoration:underline;
+}
+
+a.link-normal{
+	color:#333;
 }
 /*inputs*/
 select, input[type='text'], input[type='password'], input[type='email']{
@@ -213,6 +236,11 @@ table ul{
 	padding:0px;
 }
 
+.detail-link-box{
+	@include lshadow();
+	padding:5px 8px;
+	width:100px;
+}
 /*********modals **************/
 .reveal-modal{
 	padding:0px;

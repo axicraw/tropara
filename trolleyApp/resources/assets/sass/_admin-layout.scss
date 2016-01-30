@@ -32,7 +32,8 @@
 			ul.submenu{
 				width: 170px;
 				position:absolute;
-				background-color:$silver;
+				background-color:$white;
+				border-right:3px solid $admin-bg-primary;
 				left:170px;
 				margin: -40px 0 0 0;
 				padding:0px;

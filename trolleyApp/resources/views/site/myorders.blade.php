@@ -4,7 +4,7 @@
 @include('site.partials.header_middle')
 <div class="full-width account-view">
   <div class="row page-content">
-    <div class="medium-8 columns medium-offset-2 account-wrapper">
+    <div class="medium-10 columns medium-offset-1 account-wrapper">
       <div class="row collapse">
         <div class="medium-3 columns">
           <div class="side-menu">
@@ -13,6 +13,7 @@
               <ul>
                 <li><a href="/account">Profile</a></li>
                 <li class="active"><a href="/account/myorders">Orders</a></li>
+                <li><a href="/account/myreturns">Returns</a></li>
               </ul>
             </div>  
           </div>
@@ -38,15 +39,25 @@
                       <tr>
                         <td>
                           @foreach($checkout->orders as $order)
-                            <span class="label">{{$order->product->product_name}} - {{$order->pqty}} x {{$order->nos}}</span>
+                            <span class="label" >{{$order->product->product_name}} - {{$order->pqty}} x {{$order->nos}}</span>
                           @endforeach
-                          <p class="micro tight">Shipping To: <br>{{$checkout->address}}</p>
+                          <p class="micro tight">
+                            Shipping To: <br>{{$checkout->address}}
+                            <br>
+                            
+                          </p>
+                          
                         </td>
                         <td>
                           {{ Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}
                         </td>
                         <td>
-                          {{$checkout->status}}
+                          <a href="#" data-dropdown="id{{$checkout->id}}" aria-controls="drop1" aria-expanded="false">
+                            {{$checkout->status}}
+                          </a>
+                          <div id="id{{$checkout->id}}" class="f-dropdown detail-link-box" data-dropdown-content aria-hidden="true" tabindex="-1">
+                            <a href="/myorder/{{$checkout->id}}">Details</a>
+                          </div>
                         </td>
                       </tr>
                     @endif
@@ -73,7 +84,12 @@
                           {{ Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}
                         </td>
                         <td>
-                          {{$checkout->status}}
+                          <a href="#" data-dropdown="id{{$checkout->id}}" aria-controls="drop1" aria-expanded="false">
+                            {{$checkout->status}}
+                          </a>
+                          <div id="id{{$checkout->id}}" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+                            <a href="/checkout/detail/{{$checkout->id}}"></a>
+                          </div>
                         </td>
                       </tr>
                     @endif

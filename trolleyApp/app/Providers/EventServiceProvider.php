@@ -29,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\MailNewUser',
             'App\Listeners\SmsNewUser',
         ],
+        'App\Events\ResendPin'=>[
+            'App\Listeners\ResendPinSms',
+        ],
         'App\Events\VoidSearch'=>[
             'App\Listeners\StoreVoidSearch',
         ],

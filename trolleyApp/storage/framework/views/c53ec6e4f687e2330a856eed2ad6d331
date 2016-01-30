@@ -5,10 +5,12 @@
           <div class="row social-footer">
             <h5 class="tight">Stay With Us Everywhere</h5>
             <ul>
-              <li><a href=""><i class="fi-social-facebook"></i></a></li>
+              <li><a href="https://www.facebook.com/Trolleyincom-349633465160538/
+"><i class="fi-social-facebook"></i></a></li>
               <li><a href=""><i class="fi-social-google-plus"></i></a></li>
               <li><a href=""><i class="fi-social-twitter"></i></a></li>
             </ul>
+            <p class="tight"><a href="/contact"><i class="fa fa-map-marker"></i> Contact Us</a></p>
           </div>
         </div>
         <div class="small-4 columns">
@@ -42,8 +44,9 @@
             <ul>
               <li><a href="">Shipping</a></li>
               <li><a href="">Return Policy</a></li>
-              <li><a href="">Terms & Conditions</a></li>
+              <li><a href="/termsandconditions">Terms & Conditions</a></li>
               <li><a href="">Privacy Policy</a></li>
+              <li><a href="">Disclaimer</a></li>
             </ul>
           </div>
         </div>
@@ -55,10 +58,17 @@
             <p class="tight">Shop on the fly</p>
             <ul>
 
-              <li class="and"><a href=""><i class="fa fa-apple fa-2x"></i></a></li>
-              <li class="ios"><a href=""><i class="fa fa-android fa-2x"></i></a></li>
-              <li class="mic"><a href=""><i class="fa fa-windows fa-2x"></i></a></li>
+              <li class="and"><a data-options="align:left" data-dropdown="appsoon" aria-controls="drop1" aria-expanded="false" href="#"><i class="fa fa-apple fa-2x"></i></a></li>
+              <li class="ios"><a data-options="align:left" data-dropdown="appsoon" aria-controls="drop1" aria-expanded="false" href=""><i class="fa fa-android fa-2x"></i></a></li>
+              <li class="mic"><a data-options="align:left" data-dropdown="appsoon" aria-controls="drop1" aria-expanded="false"appsoon=""><i class="fa fa-windows fa-2x"></i></a></li>
             </ul>
+            <div id="appsoon" class=" tiny f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+              <p class="text-center">
+                <span class="label-info">
+                  Apps Coming Soon!
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
