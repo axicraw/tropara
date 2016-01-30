@@ -53,13 +53,9 @@ class CheckSocialLogin
             $user->active = 1;
             $user->cod = 1;
             $user->save();
-            
             $role = Sentinel::findRoleBySlug('customer');
             $role->users()->attach($user);
             return $user;
-            //dd($user);
-            //register and login
-
         }
 
 

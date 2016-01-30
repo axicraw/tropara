@@ -8,7 +8,7 @@
               <li><a href="https://www.facebook.com/Trolleyincom-349633465160538/
 "><i class="fi-social-facebook"></i></a></li>
               <li><a href=""><i class="fi-social-google-plus"></i></a></li>
-              <li><a href=""><i class="fi-social-twitter"></i></a></li>
+              <li><a href="https://twitter.com/trolleytry"><i class="fi-social-twitter"></i></a></li>
             </ul>
             <p class="tight"><a href="/contact"><i class="fa fa-map-marker"></i> Contact Us</a></p>
           </div>
