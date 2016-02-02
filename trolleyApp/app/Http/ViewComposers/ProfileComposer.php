@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use Sentinel;
 use Carbon\Carbon;
+use DB;
 use App\User;
 use App\Area;
 use App\Offer;
@@ -46,6 +47,20 @@ class ProfileComposer
         $hotpros_id = $hotpros_id->lists('product_id');
         $hotpros = Product::with('images')->wherein('id', $hotpros_id)->get();
 
+        $globals = DB::table('globalsettings')->get();
+        $dts = DB::table('deliverytimes')->where('active', true)->get();
+        foreach($dts as $dt)
+        {
+            $dt->start =Carbon::parse($dt->start)->format('h:ia');
+            $dt->stop = Carbon::parse($dt->stop)->format('h:ia');
+        }
+        $settings = [];
+        foreach ($globals as $global) {
+            $name = $global->name;
+            $value = $global->value;
+            $settings[$name] = $value;
+        }
+
         $offers = Offer::with('products', 'products.images', 'products.prices')->where('active', true)
                     ->where('start', '<=', Carbon::today()->toDateString())
                     ->where('end', '>=', Carbon::today()->toDateString())
@@ -66,7 +81,9 @@ class ProfileComposer
                 'areas'=> $areas,
                 'hotpros'=>$hotpros,
                 'viewpros'=>$viewpros,
-                'offers'=>$offers
+                'offers'=>$offers,
+                'settings'=>$settings,
+                'dts'=>$dts,
                 ]);
         }
         else
@@ -77,7 +94,9 @@ class ProfileComposer
                 'flashes'=> $flashes,
                 'areas'=> $areas,
                 'hotpros'=>$hotpros,
-                'offers'=>$offers
+                'offers'=>$offers,
+                'settings'=>$settings,
+                'dts'=>$dts,
                 ]);
         }
     }

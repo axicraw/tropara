@@ -38,6 +38,20 @@
                     @else
                       Free
                     @endif
+                    </span><br>
+                    <span class="tiny">
+                      Delivery Time
+                      <select name="" id="deli-time" class="tiny">
+                        @foreach($dts as $dt)
+                          <option value="{{$dt->id}}"
+                            @if(Session::has('deli_time'))
+                              @if(Session::get('deli_time') == $dt->id)
+                                selected
+                              @endif
+                            @endif
+                          >{{$dt->start}}-{{$dt->stop}}</option>
+                        @endforeach
+                      </select>
                     </span>
                 </p>
               </div>

@@ -8,43 +8,34 @@
 		<div class="medium-3 columns ">
 			<div class="dash-card">
 				<h5 class="text-center">No of Users</h5>
-				<h3 class="text-center">50</h3>
+				<h3 class="text-center">{{$users->count()}}</h3>
 			</div>
 		</div>
 		<div class="medium-3 columns">
 			<div class="dash-card">
 				<h5 class="text-center">No of Categories</h5>
-				<h3 class="text-center">10</h3>
+				<h3 class="text-center">{{$categories->count()}}</h3>
 			</div>
 		</div>
 		<div class="medium-3 columns">
 			<div class="dash-card">
 				<h5 class="text-center">No of Products</h5>
-				<h3 class="text-center">5000</h3>
+				<h3 class="text-center">{{$products->count()}}</h3>
 			</div>
 		</div>
 		<div class="medium-3 columns">
 			<div class="dash-card">
 				<h5 class="text-center">No of Areas</h5>
-				<h3 class="text-center">20</h3>
+				<h3 class="text-center">{{$areas->count()}}</h3>
 			</div>
 		</div>
-		<!-- <div class="medium-3 columns dash-card">
-			<h5 class="text-center">No of Users</h5>
-			<h3 class="text-center">50</h3>
+		<div class="medium-3 columns end">
+			<div class="dash-card">
+				<h5 class="text-center">No of Items Sold</h5>
+				<h3 class="text-center">{{$orders->count()}}</h3>
+			</div>
 		</div>
-		<div class="medium-3 columns">
-			<h5 class="text-center">No of Categories</h5>
-			<h3 class="text-center">10</h3>
-		</div>
-		<div class="medium-3 columns">
-			<h5 class="text-center">No of Products</h5>
-			<h3 class="text-center">5000</h3>
-		</div>
-		<div class="medium-3 columns">
-			<h5 class="text-center">No of Areas</h5>
-			<h3 class="text-center">20</h3> -->
-		</div>
+		
 	</div>
 
 @stop

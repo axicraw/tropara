@@ -53,6 +53,7 @@ Route::get('/productreturn/{id}', ['as'=>'returnform', 'uses'=>'PagesController@
 Route::post('/processreturn', ['as'=>'processreturn', 'uses'=>'PagesController@processreturn']);
 Route::get('/myorder/{id}', ['as'=>'orderdetail', 'uses'=>'PagesController@orderdetail']);
 Route::get('/contact', ['as'=>'contactus', 'uses'=>'PagesController@contactus']);
+Route::get('/justvisit', ['as'=>'contactus', 'uses'=>'PagesController@justvisit']);
 
 /***
 ** plain pages
@@ -115,6 +116,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	Route::get('/dashboard', ['as'=>'dashboard', 'middleware'=>'admin', 'uses'=>'ApanelController@index']);
 	Route::get('/voidsearch', 'SettingsController@voidsearch');
 
+	Route::get('/globalsettings', ['as'=>'admin.settings', 'uses'=>'SettingsController@globalsettings']);
+	Route::post('/storesettings', ['as'=>'admin.settings.store', 'uses'=>'SettingsController@storesettings']);
+
 	//users
 	Route::get('/user', ['as'=>'admin.user', 'uses'=>'UserController@index']);
 	Route::get('/user/staff/add', ['as'=>'admin.addstaff', 'uses'=>'UserController@addStaff']);
@@ -154,6 +158,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	Route::resource('/flashtext', 'FlashtextController');
 	//areas
 	Route::resource('/area', 'AreaController');
+	//delivery
+	Route::resource('/delivery', 'DeliveryController');
 
 	//products
 	Route::resource('/product', 'ProductController');

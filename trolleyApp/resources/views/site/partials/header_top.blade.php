@@ -15,11 +15,11 @@
           </div>
         </div>
         <div class="small-2 columns middle-sect">
-          <p><i class="fa fa-phone"></i> <a href="#" data-dropdown="helpline" data-options="is_hover:true; hover_timeout:5000;align:bottom;">Helpline : 99521 10335</a></p>
+          <p><i class="fa fa-phone"></i> <a href="#" data-dropdown="helpline" data-options="is_hover:true; hover_timeout:5000;align:bottom;">Helpline : {{$settings['helpline']}}</a></p>
           <ul id="helpline" class="f-dropdown" data-dropdown-content>
-            <li><strong>Help</strong> 99433 53799</li>
-            <li><strong>Sales</strong> 75982 01024</li>
-            <li><strong>Delivery</strong> 99433 53799</li>
+            <li><strong>Help</strong> {{$settings['helpline']}}</li>
+            <li><strong>Sales</strong> {{$settings['sales']}}</li>
+            <li><strong>Delivery</strong> {{$settings['delivery']}}</li>
           </ul>
         </div>
         <div class="small-8 columns right-sect">
@@ -69,9 +69,15 @@
                 </div>
                 <div class="small-7 columns">
                   <select name="" id="deli-time" class="tiny">
-                    <option value="">08:00am-11:00am</option>
-                    <option value="">12:00am-04:00pm</option>
-                    <option value="">05:00pm-08:00pm</option>
+                    @foreach($dts as $dt)
+                      <option value="{{$dt->id}}"
+                        @if(Session::has('deli_time'))
+                          @if(Session::get('deli_time') == $dt->id)
+                            selected
+                          @endif
+                        @endif
+                      >{{$dt->start}}-{{$dt->stop}}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>

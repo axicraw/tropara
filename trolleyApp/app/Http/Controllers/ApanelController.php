@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+use App\User;
+use App\Category;
+use App\Product;
+use App\Area;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +22,12 @@ class ApanelController extends Controller
     public function index()
     {
         //
-        return view('admin.dashboard');
+        $users = User::select('id')->get();
+        $products = Product::select('id')->get();
+        $categories = Area::select('id')->get();
+        $areas = Category::select('id')->get();
+        $orders = Category::select('id')->get();
+        return view('admin.dashboard', compact('users', 'products', 'categories', 'areas', 'orders'));
     }
 
 

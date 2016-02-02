@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BrandBasicSeeder::class);
         $this->call(CateBasicSeeder::class);
         $this->call(AreaBasicSeeder::class);
+        $this->call(GlobalBasicSeeder::class);
 
         Model::reguard();
     }

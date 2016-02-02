@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Sentinel;
 use Cart;
 use Event;
+use DB;
+use Carbon\Carbon;
 use App\Tempcart;
 use App\User;
 use App\Area;
@@ -160,8 +162,9 @@ class CartController extends Controller
                 $area = Area::findorfail($id);
                 $delivery_cost = $area->delivery_cost;
             }
+            $delivery_cost = 20;
         }else{
-            $delivery_cost = 0;
+            $delivery_cost = 'unknown';
         }
         $flashes = Flashtext::where('active', '1')->get();
         $areas = Area::where('deliverable', '1')->get();
@@ -192,8 +195,8 @@ class CartController extends Controller
             if($checkout){
 
                 //get the user who made purchase
-                $user = Sentinel::getUser();
-
+                $user = Sentinel::check();
+                
                 //check if temp address is isset
                 if ($request->session()->has('tmp_address')) {
                     //
@@ -202,9 +205,20 @@ class CartController extends Controller
                     $address = $user->address;
                 }
                 //dd($address);
+                if ($request->session()->has('deli_time')) {
+                    //
+                    $deli_id = $request->session()->get('deli_time');
+                    $dt = DB::table('deliverytimes')->where('id', $deli_id)->first();
 
+                }else{
+                    $dt = DB::table('deliverytimes')->first();
+                }
+                //dd($dt);
+                $start =Carbon::parse($dt->start)->format('h:ia');
+                $stop = Carbon::parse($dt->stop)->format('h:ia');
+                $delivery_time = $start.'-'.$stop;
                 //create checkout and set user to it and also set payment status
-                $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$request->session()->get('deli_area'), 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed']);
+                $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$request->session()->get('deli_area'), 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed', 'deliverytime'=>$delivery_time]);
                 //if address is set then add to checkout 
                 if($address){
                     $checkout->address = $address;
@@ -252,7 +266,6 @@ class CartController extends Controller
         }
         $notification = "Thankyou. Your order has been successfully placed. <br> Continue <a href='/'>shopping</a>.";
         return view('site.notification', compact('notification'));
-        //return redirect()->route('cart.paymentmode', [$checkout->id]);
     }
 
     public function address(Request $request, $id){
@@ -339,6 +352,8 @@ class CartController extends Controller
 
         if($request->ajax())
         {
+
+            $request->session()->forget('vistor');
             return response()->json('changed successfully');
         }
         return back();

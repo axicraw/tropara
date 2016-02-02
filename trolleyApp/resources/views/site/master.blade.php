@@ -6,7 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trolleyin</title>
+    <style>
+      .page-loader-wrapper{
+        /*display: none;*/
+        background-color:#fff;
+        position:fixed;
+        z-index:2000;
+        width:100%;
+        height:100%;
+      }
+      .page-loader-wrapper .ajax-loader-content{
+        display: none;
+        overflow: hidden;
+        position:fixed;
+        width:150px;
+        height: 150px;
+        padding:40px 10px;
+        border-radius:50%;
 
+        border:1px solid $primary-color;
+        background-color: $white;
+        box-shadow:0px 3px 10px -5px #333;
+        //background:url('../images/pat1.png') repeat;
+      }
+      .page-loader-wrapper img.ajax-loader{
+        width:64px;
+      }
+      .page-loader-wrapper img.logo{
+        width:150px;
+      }
+    </style>
     <link rel="icon" href="favicon.png" type="image/ico"> 
     <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" />
     <link rel="stylesheet" href="css/flaticon/flaticon.css" />
@@ -17,6 +46,7 @@
     @yield ('cssContent')
 
     <script src="js/modernizr.js"></script>
+
   </head>
   <body>
     @yield ('content')
@@ -238,20 +268,25 @@
                   <label for="time">
                     Time Delivery
                   </label>
-                  <select name="time" id="time">
-                    <option value="08:00am - 11:00 am">08:00am - 11:00 am</option>
-                    <option value="12:00am - 04:00 pm">12:00am - 04:00 pm</option>
-                    <option value="05:00pm - 08:00 pm">05:00pm - 08:00 pm</option>
+                  <select name="time" id="time">0
+                    @foreach($dts as $dt)
+                      <option value="{{$dt->id}}">{{$dt->start}}-{{$dt->stop}}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>
               <div class="row">
-                <div class="medium-6 columns">
+                <div class="medium-4 columns">
                   <div class="logo-wrapper" style="width:100px">
                     <img src="images/logo_color.png" alt="">
                   </div>
                 </div>
-                <div class="medium-6 columns">
+                <div class="medium-4 columns">
+                  <p class="text-center">
+                    <a href="/justvisit" class="button warning tiny">JUST VISIT </a>
+                  </p>
+                </div>
+                <div class="medium-4 columns">
                   <p class="tight text-right">
                     <button type="submit" class="button">Select</button>
                   </p>
@@ -265,6 +300,17 @@
       </div>
     @endif
     <div class="ajax-loader-wrapper">
+      
+      <div class="ajax-loader-content">
+        <p class="tight text-center">
+          <img src="images/logo_color.png" class="logo" alt=""><br>Loading<br>
+          <img src="images/ajax_loader/loader.gif" alt="" class="ajax-loader">
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="page-loader-wrapper">
       
       <div class="ajax-loader-content">
         <p class="tight text-center">
@@ -289,6 +335,16 @@
     <script src="js/trolleycart.js"></script>
     <script src="js/jquery.marquee.min.js"></script>
     <script>
+    //preloader
+      pageWrapper = $('.page-loader-wrapper');
+      loader = pageWrapper.find('.ajax-loader-content');
+      loader.fadeIn("slow");
+      //alWrapper.show();
+      jQuery(window).load(function() {
+        pageWrapper.hide();
+      })
+
+
     echo.init({
       offset: 100,
       throttle: 250,
@@ -303,7 +359,10 @@
       gap:5,
       duplicated:false
     });
-    $('#areaSelectModal').foundation('reveal', 'open');
+    
+    @if(!Session::has('vistor'))
+      $('#areaSelectModal').foundation('reveal', 'open');
+    @endif
 
     $(document).ready(function(){
 

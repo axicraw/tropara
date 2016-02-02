@@ -251,7 +251,6 @@ class PagesController extends Controller
 
         ///dd($returns);
         return view('site.myreturns', compact('returns'));
-
     }
     public function processreturn(Request $request)
     {
@@ -297,17 +296,20 @@ class PagesController extends Controller
 
         $notification = "Sorry! We regret you did not like these products.These products you have selected has been registered for return. Our staff will reach to you and receive those products. Kindly dont not consume the product and make it ready for pickup. Thank you.";
         return view('site.notification', compact('notification'));
-
     }
-
+    
     public function orderdetail($id)
     {
-
         $checkout = Checkout::with('orders', 'orders.product')->findorfail($id);
         return view('site.myorderdetail', compact('checkout'));
     }
 
     public function contactus(){
         return view('site.contact');
+    }
+
+    public function justvisit(Request $request){
+        $request->session()->put('vistor', 'true');
+        return back();
     }
 }

@@ -30,6 +30,8 @@
             <li>
                 <a href="#">Global Settings</a>
                 <ul class="submenu">
+                    <li><a href="admin/globalsettings">Settings</a></li>
+                    <li><a href="admin/delivery">Delivery Time</a></li>
                     <li><a href="admin/voidsearch">Search</a></li>
                     <li><a href="admin/area">Location</a></li>
                 </ul>

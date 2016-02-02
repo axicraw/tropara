@@ -75,6 +75,7 @@ class UserController extends Controller
         $this->validate($request, [
             'email'=> 'required|email|unique:users,email|max:255', 
             'password'=>'required|min:6|max:32',
+            'mobile'=>'required|digits:10',
         ]);
 
         $new_user = [
@@ -85,6 +86,7 @@ class UserController extends Controller
         if($registered){
           $user = User::find($registered->id);
           $user->name = $requset->name;
+          $user->mobile = $request->mobile;
           $user->type = 'native';
           $user->active = 1;
           $user->save();
@@ -133,6 +135,7 @@ class UserController extends Controller
         if($user){
           $user->name = $request->name;
           $user->email = $request->email;
+          $user->mobile = $request->mobile;
           $user->save();
         }
 

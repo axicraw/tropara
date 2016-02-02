@@ -25,6 +25,14 @@
 			</div>	
 			<div class="row">
 				<div class="medium-2 columns">
+					<label for="mobile" class="right inline">Admin Mobile</label>
+				</div>
+				<div class="medium-5 end columns">
+					<input type="text" name="mobile" id="mobile" value="{{$admin->mobile}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="medium-2 columns">
 					<label for="email" class="right inline">Admin Email</label>
 				</div>
 				<div class="medium-5 end columns">

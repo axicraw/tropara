@@ -1,7 +1,7 @@
 var idleTime = 0;
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime >5) { // 10 minutes
+    if (idleTime >115) { // 10 minutes
         $.ajax({
 			type: 'get',
 			async: false,
@@ -272,7 +272,7 @@ $(document).ready(function(){
 	});
 	$('#deli-time').on('change', function(){
 		var postData = {};
-		postData['time'] = $(this).find('option:selected').text();
+		postData['time'] = $(this).find('option:selected').val();
 		//console.log
 		http_post('/changeArea', postData);
 	});

@@ -23,6 +23,7 @@ class Orders extends Migration
             $table->string('status', 255);
             $table->timestamps();
             $table->integer('area_id')->unsigned();
+            $table->string('deliverytime', 128);
         });
 
         //orders are indiv

@@ -1,6 +1,7 @@
-<h3>Your order has been placed..</h3>
+<h3>Hello <?=$user->name?>! <br>Your order has been placed..</h3>
 
-<table width="100%" class="cart-table">
+
+<table width="100%" class="cart-table" border="1">
   <tr>
     <th>Product</th>
     <th>Qty</th>
@@ -8,16 +9,20 @@
     <th width="80">NOS</th>
     <th>SUBTOTAL</th>
   </tr>
-  @foreach($orders as $order)
-  <tr>
-    <td>{{ $order->product->product_name }}
-        
-    </td>
-    <td>{{ $order->pqty }}</td>
-    <td>{{ $order->price }}</td>
-    <td>{{ $order->nos }}</td>
-    <td>{{ $order->price * $order->nos }}</td>
-  </tr>
-  @endforeach
+  <?php 
+    foreach ($orders as $order) {
+  ?>
+      <tr>
+        <td><?= $order->product->product_name ?>
+            
+        </td>
+        <td><?= $order->pqty ?></td>
+        <td>Rs. <?= $order->offered_price ?></td>
+        <td><?= $order->nos ?></td>
+        <td>Rs. <?= ($order->offered_price * $order->nos) ?></td>
+      </tr>
+  <?php
+    }
+  ?>
   
 </table>

@@ -51,6 +51,7 @@ class AuthController extends Controller
             {
                $user = Sentinel::check();
                $user = User::findorfail($user->id);
+               $request->session()->put('deli_area', $user->area_id);
                $temporders = $user->tempcart()->get();
                Event::fire(new LoggedIn($user));
                if($request->ajax())
@@ -271,6 +272,7 @@ class AuthController extends Controller
       $user = $response[0];
 
       $user = Sentinel::findById($user->id);
+      //if()
       Sentinel::login($user);
       return redirect()->route('home');
   }
