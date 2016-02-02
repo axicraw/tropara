@@ -24,9 +24,9 @@ class ApanelController extends Controller
         //
         $users = User::select('id')->get();
         $products = Product::select('id')->get();
-        $categories = Area::select('id')->get();
-        $areas = Category::select('id')->get();
-        $orders = Category::select('id')->get();
+        $categories = Category::select('id')->get();
+        $areas = Area::select('id')->get();
+        $orders = Order::select('id')->get();
         return view('admin.dashboard', compact('users', 'products', 'categories', 'areas', 'orders'));
     }
 
