@@ -9,6 +9,7 @@ use App\User;
 use App\Category;
 use App\Product;
 use App\Area;
+use App\Order;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
