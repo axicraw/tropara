@@ -50,6 +50,22 @@
     <div class="admin admin-content">
         @yield ('content')
     </div>
+    <div id="delalert" class="reveal-modal small" data-reveal aria-labelledby="Alert" aria-hidden="true" role="dialog">
+      <div class="row">
+          <div class="modal-header">
+              <h4 id="modalTitle">Alert</h4>
+          </div>
+          <div class="modal-body">
+              <p>Are you sure you want to do this action?</p>
+          </div>
+          <div class="modal-footer">
+              <p class="text-right">
+                  <a id="formyes" href="" class="button tiny" >Yes</a>
+              </p>
+          </div>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
     
     <script src="js/jquery.min.js"></script>
     <script src="js/jsrender.js"></script>
@@ -61,6 +77,19 @@
     <script src="js/trolleyin.js"></script>
     <script src="js/trolley_admin.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+
+
+        $(document).on('click', 'input.delalert, button.delalert', function(e){
+            console.log('clicked on del');
+            //e.stopPropagation();
+            $('#delalert').foundation('reveal', 'open');
+            var parForm = $(this).parents('form');
+            $(document).on('click', 'a#formyes', function(){
+                parForm.submit();
+            });
+        });
+    </script>
 
     @yield ('scriptsContent')
   </body>

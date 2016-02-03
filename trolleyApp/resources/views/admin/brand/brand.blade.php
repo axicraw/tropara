@@ -32,7 +32,7 @@
 							<ul class="table-row-controls">
 								<li>
 									{!! Form::open(array('method'=>'delete', 'route'=>array('admin.brand.destroy', $brand->id))) !!}
-										<input type="submit" class="button tiny delete alert link" value="">
+										<input type="submit" class="button tiny delete alert link delalert" value="">
 									{!! Form::close(); !!}
 								</li>
 								<li>

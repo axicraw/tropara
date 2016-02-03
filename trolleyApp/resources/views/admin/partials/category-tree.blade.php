@@ -8,7 +8,7 @@
 				<div class="text-right tree-controls">
 					
 					{!! Form::open(array('method'=>'delete', 'route'=>array('admin.category.destroy', $category['id']))) !!}
-						<input type="submit" class="button link delete alert" value=" ">
+						<input type="submit" class="button link delete alert link delalert" value=" ">
 					<!-- <button class="button link alert" data-src="{{ route('admin.category.destroy', $category['id']) }}" data-method="delete"><i class="fa fa-trash danger"></i></button> -->
 					{!! Form::close(); !!}
 					<button class="button link primary" data-src="admin/category/{{ $category['id'] }}" ><i class="fa fa-pencil-square-o"></i></button>

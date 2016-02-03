@@ -8,10 +8,10 @@
 			<ul class="parent-controls">
 				<li>
 					{!! Form::open(array('route'=>'admin.category.destroy', 'method'=>'delete')); !!}
-						<button type="submit" class="button tiny alert link"><i class="fa fa-trash fa-2x"></i></button>
+						<button class="button tiny alert link delalert"><i class="fa fa-trash fa-2x"></i></button>
 					{!! Form::close(); !!}
 				</li>
-				<li><a href="admin/category/create"><i class="fa fa-plus-square fa-2x"></i></a></li>
+				<li><a class="edit-btn" href="admin/category/create"><i class="fa fa-plus-square fa-2x"></i></a></li>
 			</ul>
 		</div>
 	</div>
@@ -32,9 +32,18 @@
 <script type="text/javascript" src="js/mtree.js"></script>
 <script type="text/javascript" src="js/modals.js"></script>
 <script>
-		$('a.cate').on('click', function(e){
+	$('a.cate').on('click', function(e){
 		e.preventDefault();
 	});
+	$('a').on('click', function(e){
+		if($(this).attr('href') == ''){
+			e.preventDefault();
+		}
+	});
+	$('a.edit-btn').on('click', function(e){
+		e.stopPropagation();
+	});
+
 </script>
 
 @stop
