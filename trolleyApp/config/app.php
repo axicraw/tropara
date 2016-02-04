@@ -141,6 +141,7 @@ return [
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -207,6 +208,7 @@ return [
         'Cart' => 'Gloudemans\Shoppingcart\Facades\Cart',
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Img' => Intervention\Image\Facades\Image::class
     ],
 
 ];
