@@ -35,6 +35,10 @@ require __DIR__.'/../trolleyApp/bootstrap/autoload.php';
 
 $app = require_once __DIR__.'/../trolleyApp/bootstrap/app.php';
 
+$app->bind('path.public', function() {
+    return __DIR__;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -56,3 +60,4 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
