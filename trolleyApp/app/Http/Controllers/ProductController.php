@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// include composer autoload
+//require 'vendor/autoload.php';
+
+// import the Intervention Image Manager Class
+use Img;
+
+
 use App\Product;
 use App\Category;
 use App\Brand;
@@ -211,16 +218,27 @@ class ProductController extends Controller
         if($request->hasFile('prod_image')){
            
             $images = $request->file('prod_image');
-            // dd($images);
-            foreach($images as $image){
-                if($image != null){
-                    $image_name = $image->getClientOriginalName();
-                    $image->move(public_path().'/images/products/', $image_name);
-                    $newImage = Image::create(['image_name'=>$image_name]);
-                    $product->images()->attach($newImage->id);
+            $files =$_FILES;
+
+            foreach ($_FILES['prod_image']['tmp_name'] as $key=>$tmp_name ) 
+            {
+                
+                if(strlen($_FILES['prod_image']['name'][$key]) > 0)
+                {
+                    $tmp_name = $_FILES['prod_image']['tmp_name'][$key];
+                    $img_name = $_FILES['prod_image']['name'][$key];
+                    $fileimage = Img::make($tmp_name);
+                    if($fileimage->save(public_path().'/images/products/'.$img_name))
+                    {
+                        $newImage = Image::create(['image_name'=>$img_name]);
+                        $product->images()->attach($newImage->id);
+                    }                   
+                    
                 }
             }
+
         }
+        //dd('images uploaded');
 
         $description = Description::firstOrNew(array('product_id'=>$id));
         $description->description = $request->description;
