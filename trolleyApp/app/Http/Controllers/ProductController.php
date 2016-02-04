@@ -217,9 +217,6 @@ class ProductController extends Controller
                     $image_name = $image->getClientOriginalName();
                     $image->move(public_path().'/images/products/', $image_name);
                     $status = $image->getError();
-                    if($status);{
-                        dd($status);
-                    }
                     $newImage = Image::create(['image_name'=>$image_name]);
                     $product->images()->attach($newImage->id);
                 }
