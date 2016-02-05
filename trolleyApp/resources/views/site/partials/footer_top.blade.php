@@ -11,46 +11,46 @@
               
               @foreach($offer->products as $product)
                 <div class="col5-unit columns">
-                            <div class="caro-prod">
-                              <a href="/product/{{$product->id}}">
-                                <div class="img-wrapper prod-img">
-                                  <p class="tight text-center">
-                                    <img src="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
-                                  </p>
-                                </div>
-                                
-                                <p class="prod-title text-center tight">
-                                  {{$product->product_name}} 
-                                  <span class="label alert">
-                                    {{$offer->amount}}
-                                    @if($offer->offer_type === 1)
-                                      %
-                                    @else
-                                      <i class="fa fa-rupee"></i>
-                                    @endif
-                                    Off
-                                  </span>
-                                </p>
-                              </a>
-                              <!-- <div class="prod-det">
-                                <div class="row">
-                                  <div class="small-6 columns">
+                  <div class="caro-prod">
+                    <a href="/product/{{$product->id}}">
+                      <div class="img-wrapper prod-img">
+                        <p class="tight text-center">
+                          <img src="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
+                        </p>
+                      </div>
+                      
+                      <p class="prod-title text-center tight">
+                        {{$product->product_name}} 
+                        <span class="label alert">
+                          {{$offer->amount}}
+                          @if($offer->offer_type === 1)
+                            %
+                          @else
+                            <i class="fa fa-rupee"></i>
+                          @endif
+                          Off
+                        </span>
+                      </p>
+                    </a>
+                    <!-- <div class="prod-det">
+                      <div class="row">
+                        <div class="small-6 columns">
 
-                                    <p class="prod-price tight"><i class="fa fa-rupee"></i> 20</p>
-                                  </div>
-                                  <div class="small-6 columns prod-rating">
-                                    <p class="text-right tight">
-                                      <i class="fi-star"></i>
-                                      <i class="fi-star"></i>
-                                      <i class="fi-star"></i>
-                                      <i class="fi-star"></i>
-                                      <i class="fi-star"></i>
-                                    </p>
-                                  </div>
-                                </div>
-                              </div> -->
-                            </div>
-                          </div>
+                          <p class="prod-price tight"><i class="fa fa-rupee"></i> 20</p>
+                        </div>
+                        <div class="small-6 columns prod-rating">
+                          <p class="text-right tight">
+                            <i class="fi-star"></i>
+                            <i class="fi-star"></i>
+                            <i class="fi-star"></i>
+                            <i class="fi-star"></i>
+                            <i class="fi-star"></i>
+                          </p>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
               @endforeach
             @endforeach
 
@@ -70,10 +70,12 @@
                 @if(count($viewpros) > 0)
                   @foreach($viewpros as $viewpro)
                     <div class="recent-slide">
-                      <div class="img-wrapper">
-                        <img src="images/products/{{$viewpro->images[0]['image_name']}}" alt="">
-                      </div>
-                      <p class="side-offer-product tight text-center">{{$viewpro->product_name}}</p>
+                      <a href="/product/{{$viewpro->id}}">
+                          <div class="img-wrapper">
+                            <img src="images/products/{{$viewpro->images[0]['image_name']}}" alt="">
+                          </div>
+                          <p class="side-offer-product tight text-center">{{$viewpro->product_name}}</p>
+                      </a>
                     </div>
                   @endforeach
                 @endif

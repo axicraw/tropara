@@ -57,7 +57,7 @@
                       <div class="row collapse">
                         <div class="prod-title">
                             <p class="tight title">{{ $cate_product->product_name }}</p>
-                            <p class="micro tight">this is a description</p>
+                            <p class="micro tight desc">{!! substr($cate_product->description->description, 0, 30) !!}...</p>
                         </div> 
                         <div class="prod-det">
                           <div class="small-12 columns">
@@ -143,6 +143,8 @@
                                   {{ $sub_product->mrp->qty }}
                                 @endif
                                 {{ $sub_product->mrp->unit->shortform }}
+                              @else
+                                &nbsp;
                               @endif
                             </p>
                           </div>

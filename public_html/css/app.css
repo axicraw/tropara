@@ -8938,7 +8938,7 @@ table ul {
 .modal-header {
   background-color: #1A2A42;
   color: #FFFFFF; }
-  .modal-header h4 {
+  .modal-header h4, .modal-header h2 {
     color: #FFFFFF; }
 
 .modal-header, .modal-body, .modal-footer {
@@ -9544,6 +9544,8 @@ a.caro-link {
     padding: 0px 10px; }
     .product-wrapper .prod-title .title {
       font-family: "Roboto Slab", serif; }
+    .product-wrapper .prod-title .desc {
+      color: #333; }
   .product-wrapper .prod-det .prod-mrp {
     text-decoration: line-through;
     color: #f04124; }
@@ -9648,17 +9650,21 @@ a.caro-link {
     border-bottom: 3px solid #CCCCCC; }
   .footer-top .recent-slider {
     padding: 10px;
-    background-color: #F6F6F6;
-    height: 365px; }
+    background-color: #EFEFEF;
+    height: 390px; }
     .footer-top .recent-slider .recent-slide {
       width: 45%;
-      height: 45%;
+      height: 175px;
       padding: 5px;
       overflow: hidden;
-      float: left; }
+      float: left;
+      box-shadow: 0px 0px 5px -2px #AAAAAA;
+      background-color: #FFFFFF; }
       .footer-top .recent-slider .recent-slide .img-wrapper {
-        height: 100px;
+        height: 140px;
         overflow: hidden; }
+        .footer-top .recent-slider .recent-slide .img-wrapper img {
+          padding: 5px; }
   .footer-top .middle-section h4.section-title {
     border-bottom: 3px solid #f04124; }
   .footer-top .middle-section .section-body {

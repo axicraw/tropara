@@ -97,7 +97,8 @@ Route::group(['prefix' => 'account', 'middleware'=>'customer'], function(){
 Route::get('/trolleyinoverseer', ['as'=>'adminlogin', 'uses'=>'AuthController@adminlogin']);
 Route::post('/trolleyinoverseer', ['as'=>'adminauth', 'uses'=>'AuthController@adminauth']);
 Route::get('/staff', ['as'=>'stafflogin', 'uses'=>'AuthController@stafflogin']);
-Route::post('/staff', ['as'=>'staffauth', 'uses'=>'AuthController@staffauth']);
+// Route::get('/staff/logout', ['as'=>'stafflogout', 'uses'=>'AuthController@stafflogout']);
+// Route::post('/staff', ['as'=>'staffauth', 'uses'=>'AuthController@staffauth']);
 
 Route::group(['prefix' => 'admin/order', 'middleware' => ['admin', 'staff']], function(){
 	//order
@@ -113,6 +114,7 @@ Route::group(['prefix' => 'admin/order', 'middleware' => ['admin', 'staff']], fu
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 
 	//dashboard
+	// Route::get('/admin/logout', ['as'=>'adminlogout', 'uses'=>'AuthController@adminlogout']);
 	Route::get('/dashboard', ['as'=>'dashboard', 'middleware'=>'admin', 'uses'=>'ApanelController@index']);
 	Route::get('/voidsearch', 'SettingsController@voidsearch');
 

@@ -166,6 +166,12 @@ class AuthController extends Controller
           Sentinel::logout();
           return redirect()->route($redirect);
         }
+        elseif(Sentinel::inRole('admin')) ///check if is customer
+        {
+          $redirect = 'adminlogin';
+          Sentinel::logout();
+          return redirect()->route($redirect);
+        }
         Sentinel::logout();
         Cart::destroy();
         return redirect()->back();

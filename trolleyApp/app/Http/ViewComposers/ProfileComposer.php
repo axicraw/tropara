@@ -74,7 +74,7 @@ class ProfileComposer
             $viewpros_id = Viewstats::where('user_id', $user->id)->take(16)->get();
             //dd($viewpros_id);
             $viewpros_id = $viewpros_id->lists('product_id');
-            $viewpros = Product::with('images')->wherein('id', $viewpros_id)->get();
+            $viewpros = Product::with('images')->has('images')->has('prices')->wherein('id', $viewpros_id)->get();
             $view->with([
                 'user' => $user,
                 'flashes'=> $flashes,
@@ -92,7 +92,7 @@ class ProfileComposer
             $areas = Area::where('deliverable', '1')->get();
             $viewpros_id = Viewstats::where('user_id', 0)->take(16)->get();
             $viewpros_id = $viewpros_id->lists('product_id');
-            $viewpros = Product::with('images')->wherein('id', $viewpros_id)->get();
+            $viewpros = Product::with('images')->has('images')->has('prices')->wherein('id', $viewpros_id)->get();
             $view->with([
                 'flashes'=> $flashes,
                 'areas'=> $areas,

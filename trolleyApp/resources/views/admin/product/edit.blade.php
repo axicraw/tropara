@@ -25,6 +25,14 @@
 				<div class="medium-5 end columns">
 					<input type="text" name="product_name" id="product_name" value="{{ $product->product_name }}">
 				</div>
+			</div>
+			<div class="row">
+				<div class="medium-2 columns">
+					<label for="local_name" class="right inline">Local Name</label>
+				</div>
+				<div class="medium-5 end columns">
+					<input type="text" name="local_name" id="local_name" value="{{ $product->local_name }}">
+				</div>
 			</div>		
 			<div class="row">
 				<div class="medium-2 columns">

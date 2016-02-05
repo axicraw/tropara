@@ -1,6 +1,7 @@
 @extends ('site/master')
 
 @section ('content')
+@include('site.partials.header_top')
 @include('site.partials.header_middle')
 
 <div class="full-width content-top veg">
@@ -268,6 +269,8 @@
                                     {{ $cate_product->mrp->qty }}
                                   @endif
                                   {{ $cate_product->mrp->unit->shortform }}
+                                @else
+                                  &nbsp;
                                 @endif
                               </p>
                             </div>

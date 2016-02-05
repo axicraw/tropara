@@ -629,6 +629,9 @@ a.caro-link{
 		.title{
 			font-family: $primeserif;
 		}
+		.desc{
+			color:#333;
+		}
 	}
 	.prod-det{
 		.prod-mrp{
@@ -767,17 +770,23 @@ a.caro-link{
 	}
 	.recent-slider{
 		padding: 10px;
-		background-color: $vapor;
-		height: 365px;
+		background-color: $silver;
+		height: 390px;
 		.recent-slide{
 			width: 45%;
-			height: 45%;
+			height: 175px;
 			padding: 5px;
 			overflow: hidden;
 			float:left;
+			@include lshadow();
+			background-color: $white;
 			.img-wrapper{
-				height:100px;
+
+				height:140px;
 				overflow: hidden;
+				img{
+					padding:5px;
+				}
 			}
 		}
 	}
