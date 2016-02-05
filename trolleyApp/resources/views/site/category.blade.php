@@ -71,22 +71,7 @@
                               @endif
                             </p>
                           </div>
-                          <!-- <div class="small-12 columns">
-                            <p class="tight prod-our-price ">
-                              {{--*/ 
-                                $sorted_products = $cate_product->prices->sortBy('price');
-                                $lowest_product = $sorted_products->first();
-                                /*--}}
-                              Rs.{{ $lowest_product->price }} / 
-                                <span class="qty-fix">
-                                  @if($lowest_product->qty > 1 )
-                                  {{ $lowest_product->qty }}
-                                  @endif
-                                  {{ $lowest_product->unit->shortform }}
-                                  
-                                </span>
-                            </p>
-                          </div> -->
+                          
                         </div>
                       </div>
                     </a>

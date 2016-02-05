@@ -226,7 +226,7 @@
                 <div class="row">
                   <div class="medium-12 columns">
                     <div class="prod-desc-wrapper">
-                      @if(count($product->description['description']) > 2)
+                      @if(strlen($product->description['description']) > 2)
                       <h4>Description</h4>
                       <p>{{$product->description['description']}}</p>
                       @endif

@@ -88,6 +88,9 @@
             $(document).on('click', 'a#formyes', function(){
                 parForm.submit();
             });
+
+
+            
         });
     </script>
 

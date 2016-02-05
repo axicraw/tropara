@@ -40,7 +40,7 @@ class PagesController extends Controller
     {
         //dd($request->session()->all());
         $categories = Category::with('children')->where('parent_id', '=', 0)->get();
-        $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->orderBy('created_at', 'desc')->take(8)->get();
+        $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(8)->get();
         $banners = Banner::all();
 
       
@@ -52,17 +52,17 @@ class PagesController extends Controller
         $categories = Category::all();
         $main_category = Category::with('parent', 'children', 'children.products')->where('category_name', $catename)->firstOrFail();
         $cate_products = Product::where('category_id', $main_category->id)
-                        ->with('images', 'prices', 'prices.unit')->has('images')
+                        ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
         $sub_categories = Category::with('children')->where('parent_id', $main_category->id)->lists('id');
-        //dd($sub_categories);
+        //dd($cate_products);
         $sub_products = Product::whereIn('category_id',$sub_categories)
-                        ->with('images', 'prices', 'prices.unit')->has('images')
+                        ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
         return view('site/category', compact('categories', 'main_category','cate_products', 'sub_products'));
     }
     public function product($id){
-        $product = Product::with('images', 'brand', 'prices', 'prices.unit', 'offers', 'category')->find($id);
+        $product = Product::with('images', 'brand', 'prices', 'prices.unit', 'offers', 'category', 'description')->find($id);
         $main_category = Category::with('offers', 'children', 'products')->find($product->category_id);
         $categories = Category::all();
         if($user = Sentinel::check())
