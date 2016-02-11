@@ -57,7 +57,7 @@ class ProductController extends Controller
         $key = trim($key);
         if(strlen($key) > 0){
 
-            $products = Product::with('category', 'brand')
+            $products = Product::with('category', 'brand', 'prices', 'prices.unit', 'mrp', 'mrp.unit')
                                 ->where('product_name', 'LIKE','%'.$key.'%')
                                 ->orWhereHas('category', function ($q) use ($key) {
                                     $q->where('category_name', 'LIKE', '%'.$key.'%');

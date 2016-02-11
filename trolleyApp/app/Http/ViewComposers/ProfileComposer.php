@@ -45,7 +45,7 @@ class ProfileComposer
     {
         $hotpros_id = Salesstats::groupBy('product_id')->take(16)->get();
         $hotpros_id = $hotpros_id->lists('product_id');
-        $hotpros = Product::with('images')->has('images')->has('prices')->wherein('id', $hotpros_id)->get();
+        $hotpros = Product::with('images')->has('images')->has('prices')->wherein('id', $hotpros_id)->take(16)->get();
 
         $globals = DB::table('globalsettings')->get();
         $dts = DB::table('deliverytimes')->where('active', true)->get();
@@ -74,7 +74,7 @@ class ProfileComposer
             $viewpros_id = Viewstats::where('user_id', $user->id)->take(16)->get();
             //dd($viewpros_id);
             $viewpros_id = $viewpros_id->lists('product_id');
-            $viewpros = Product::with('images')->has('images')->has('prices')->wherein('id', $viewpros_id)->get();
+            $viewpros = Product::with('images')->has('images')->has('prices')->wherein('id', $viewpros_id)->take(16)->get();
             $view->with([
                 'user' => $user,
                 'flashes'=> $flashes,
@@ -92,7 +92,7 @@ class ProfileComposer
             $areas = Area::where('deliverable', '1')->get();
             $viewpros_id = Viewstats::where('user_id', 0)->take(16)->get();
             $viewpros_id = $viewpros_id->lists('product_id');
-            $viewpros = Product::with('images')->has('images')->has('prices')->wherein('id', $viewpros_id)->get();
+            $viewpros = Product::with('images')->has('images')->has('prices')->wherein('id', $viewpros_id)->take(16)->get();
             $view->with([
                 'flashes'=> $flashes,
                 'areas'=> $areas,

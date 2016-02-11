@@ -252,13 +252,13 @@
                       <a href="product/{{ $cate_product->id }}" class="product-anchor">
                         <div class="row">
                           <div class="prod-image-wrapper">
-                            <img src="images/products/{{ $cate_product->images[0]->image_name }}" alt="">
+                            <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="">
                           </div>
                         </div>
                         <div class="row collapse">
                           <div class="prod-title">
                               <p class="tight title">{{ $cate_product->product_name }}</p>
-                              <p class="micro tight">this is a description</p>
+                              <p class="micro tight">{!! substr($cate_product->description->description, 0, 24) !!}...</p>
                           </div> 
                           <div class="prod-det">
                             <div class="small-12 columns">

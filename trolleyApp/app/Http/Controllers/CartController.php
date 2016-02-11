@@ -190,8 +190,11 @@ class CartController extends Controller
         //** if cod set payment status to cod
         if($cart = Cart::content())
         { 
+            //check for payment success 
             $checkout = true; //user paymet success
             $payment_type = 'cod';
+
+            
             if($checkout){
 
                 //get the user who made purchase
@@ -329,7 +332,11 @@ class CartController extends Controller
         $areas = Area::where('deliverable', '1')->get();
         if($total < 250)
         {
-            $delivery_cost = $areas->find($request->session()->get('deli_area'))->delivery_cost;
+            if($area_id = $request->session()->get('deli_area')){
+                $delivery_cost = $areas->find($area_id)->delivery_cost;
+            }else{
+                $delivery_cost = "unknown";
+            }
         }
         else
         {

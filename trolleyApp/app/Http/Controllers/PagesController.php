@@ -40,7 +40,7 @@ class PagesController extends Controller
     {
         //dd($request->session()->all());
         $categories = Category::with('children')->where('parent_id', '=', 0)->get();
-        $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(8)->get();
+        $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(12)->get();
         $banners = Banner::all();
 
       
@@ -94,6 +94,14 @@ class PagesController extends Controller
     {
         $user = Sentinel::check();
         $user = User::findorfail($user->id);
+        $this->validate($request, [
+            'name'=>'required',
+            'email'=> 'required|email|unique:users,email,'.$user->id, 
+            'mobile' => 'required|digits:10',
+            'address' => 'required|min:10',
+            'area_id' => 'required'
+        ]);
+
         $user->fill($request->all());
         $user->save();
 
@@ -309,7 +317,8 @@ class PagesController extends Controller
     }
 
     public function justvisit(Request $request){
-        $request->session()->put('vistor', 'true');
+        $set = $request->session()->put('vistor', 'true');
+        //dd($set);
         return back();
     }
 }

@@ -67,7 +67,7 @@ class OrderController extends Controller
     public function changeStatus($id, $status)
     {
         //
-        dd($id);
+        //dd($id);
         $current_status = "Order Placed";
         if($status === '1')
         {
@@ -89,7 +89,7 @@ class OrderController extends Controller
         $checkout = Checkout::find($id);
         $checkout->status = $current_status;
         $checkout->save();
-        dd($checkout);
+        //dd($checkout);
         return redirect()->route('orders');
 
     }

@@ -28,8 +28,20 @@
               <div class="row">
                 <div class="medium-12 columns">
                   <div class="row">
+                    &nbsp;
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="danger">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                  </div>
+                  <div class="row">
                     <div class="medium-2 columns">
-                      <label for="title" class="right inline">Title</label>
+                      <label for="title" class="inline">Title</label>
                     </div>
                     <div class="medium-3 end columns">
                       <select name="title" id="title">
@@ -57,10 +69,10 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="name" class="right inline">Name</label>
+                      <label for="name" class="inline">Name *</label>
                     </div>
                     <div class="medium-6 end columns">
-                      <input id="name" type="text" name="name" value="{{$user->name}}">
+                      <input id="name" type="text" name="name" value="{{$user->name}}" required="required">
                     </div>
                   </div>
                 </div>
@@ -69,7 +81,7 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="mobile" class="right inline">Mobile</label>
+                      <label for="mobile" class="inline">Mobile *</label>
                     </div>
                     <div class="medium-6 end columns">
                       <input id="mobile" type="text" name="mobile"  value="{{$user->mobile}}" required="required">
@@ -81,7 +93,7 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="email" class="right inline" >Email</label>
+                      <label for="email" class="inline" >Email *</label>
                     </div>
                     <div class="medium-6 end columns">
                       <input id="email" type="email" name="email" value="{{$user->email}}" required="required">
@@ -93,10 +105,10 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="address" class="right inline">Address</label>
+                      <label for="address" class="inline">Address *</label>
                     </div>
                     <div class="medium-6 end columns">
-                      <textarea id="address" name="address" cols="30" rows="4">{{$user->address}}</textarea>
+                      <textarea id="address" name="address" cols="30" rows="4" required="required">{{$user->address}}</textarea>
                     </div>
                   </div>
                 </div>
@@ -105,10 +117,10 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="area_id" class="right inline">Area</label>
+                      <label for="area_id" class="inline">Area *</label>
                     </div>
                     <div class="medium-6 end columns">
-                      <select name="area_id" id="area_id">
+                      <select name="area_id" id="area_id" required="required">
                         @if(count($areas) > 0)
                           @foreach($areas as $area)
                             <option value="{{$area->id}}"
@@ -127,7 +139,7 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="email" class="right inline">Password</label>
+                      <label for="email" class="">Password *</label>
                     </div>
                     <div class="medium-6 end columns">
                       <a href="#" data-reveal-id="passwordModal">Change Password</a>

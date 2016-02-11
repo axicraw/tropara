@@ -6,65 +6,116 @@
 
   <div class="row page-content">
     <div class="medium-8 columns medium-offset-2">
-      <ul class="accordion" data-accordion>
+      <ul class="accordion" data-accordion id="paymentaccordin">
         <li class="accordion-navigation">
           <a href="#to">
             <div class="row">
               <div class="medium-4 columns"><i class="fa fa-user"></i> LOGGED IN</div>
-              <div class="medium-8 columns">{{$user->email}}</div>
+              <div class="medium-7 columns">{{$user->email}}</div>
+              <div class="medium-1 columns">
+                @if(strlen(Session::get('tmp_address')) > 5 || strlen($user->address) > 5)
+                <i class="fa fa-check fa-2x success"></i>
+                @endif
+              </div>
             </div>
           </a>
           <div id="to" class="content active">
             <div class="row">
-              <div class="medium-5 end columns">
-                <p>
-                  ADDRESS : 
-                  @if(strlen(Session::get('tmp_address')) > 2)
-                    {{Session::get('tmp_address')}}
-                    <br>
-                    <a href="/cart/myaddress" class="micro">My Address</a>
-                  @elseif(strlen($user->address) > 2)
-                     {{$user->address}}, {{$user->area->area_name}}
-                     <br>
-                     <a href="#" data-reveal-id="diffAddress" class="micro">Different Address?</a>
-                  @else
-                     <a href="/account?redirect=cart/paymentmode" class="button tiny">Add Address</a>
-                  @endif
-                    <br>
-                    <span class="tiny">
-                    Delivery Charges: 
-                    @if($delivery_cost > 0)
-                      {{$delivery_cost}}
+              <div class="medium-6 end columns">
+                <div class="row">
+                  <div class="medium-6 columns">
+                    <p>                     
+                      ADDRESS : 
+                    </p>
+                  </div>
+                  <div class="medium-6 columns">                      
+                    <p>
+                      @if(strlen(Session::get('tmp_address')) > 5)
+                        {{Session::get('tmp_address')}}
+                        <br>
+                        <a href="/cart/myaddress" class="micro">My Address</a>
+                      @elseif(strlen($user->address) > 5)
+                         {{$user->address}}, {{$user->area->area_name}}
+                         <br>
+                         <a href="#" data-reveal-id="diffAddress" class="micro">Different Address?</a>
+                      @else
+                         <a href="/account?redirect=cart/paymentmode" class="button tiny">Add Address</a>
+                      @endif
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="medium-6 columns">
+                    <p>
+                      DELIVERY CHARGES :
+                    </p>
+                  </div>
+                  <div class="medium-6 columns">
+                    <p class="text-right">
+                    @if($delivery_cost === 'unknown') 
+                      Unknown
                     @else
-                      Free
+                      @if($delivery_cost > 0)
+                        <i class="fa fa-rupee"></i> {{$delivery_cost}}
+                      @else
+                        Free
+                      @endif
                     @endif
-                    </span><br>
-                    <span class="tiny">
-                      Delivery Time
-                      <select name="" id="deli-time" class="tiny">
-                        @foreach($dts as $dt)
-                          <option value="{{$dt->id}}"
-                            @if(Session::has('deli_time'))
-                              @if(Session::get('deli_time') == $dt->id)
-                                selected
-                              @endif
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="medium-6 columns">
+                   <p> DELIVERY TIME :</p>
+                  </div>
+                  <div class="medium-6 columns">
+                   
+                    <select name="" id="deli-time" class="tiny">
+                      @foreach($dts as $dt)
+                        <option value="{{$dt->id}}"
+                          @if(Session::has('deli_time'))
+                            @if(Session::get('deli_time') == $dt->id)
+                              selected
                             @endif
-                          >{{$dt->start}}-{{$dt->stop}}</option>
-                        @endforeach
-                      </select>
-                    </span>
+                          @endif
+                        >{{$dt->start}}-{{$dt->stop}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <p class="text-right tight">
+
+                  @if(strlen(Session::get('tmp_address')) > 5 || strlen($user->address) > 5)
+                    <button data-trigger="items-link" class="button success trigger">Continue</button>
+                  @else
+                    <button class="button success trigger" disabled>Continue</button>
+                  @endif
+
                 </p>
               </div>
             </div>
           </div>
         </li>
         <li class="accordion-navigation">
-          <a href="#items">
+          <a href="#items" id="items-link">
             <div class="row">
               <div class="medium-4 columns"><i class="fa fa-shopping-cart"></i> ORDER LIST</div>
-              <div class="medium-8 columns">Items - {{$noofitems}} | Total  <i class="fa fa-rupee"></i> {{$total+$delivery_cost}}</div>
+              <div class="medium-7 columns">Items - {{$noofitems}} | Total  <i class="fa fa-rupee"></i> {{$total+$delivery_cost}}</div>
+              <div class="medium-1 columns valid">
+                @if(count($cart) > 0)
+                <i class="fa fa-check fa-2x success"></i>
+                @endif
+              </div>
             </div>
           </a>
+          <div class="accordin-mask">
+            
+          </div>
           <div id="items" class="content">
             <div class="row">
               <div class="medium-12">         
@@ -76,26 +127,44 @@
                     <th width="80">NOS</th>
                     <th>SUBTOTAL</th>
                   </tr>
-                  @foreach($cart as $item)
-                  <tr>
-                    <td>{{ $item->name }}
-                        <a href="#" class="danger link-anchor" data-url="cart/remove/{{ $item->rowid }}" data-method="get">remove</a>
-                    </td>
-                    <td>{{ $item->options->pqty }}{{ $item->options->pqunit }}</td>
-                    <td>{{ $item->price }}</td>
-                    <td><input type="number" value="{{ $item->qty }}" class="pnos" 
-                          data-proid="{{ $item->id }}" data-pqtyid="{{ $item->options->pid }}" data-rid="{{ $item->rowid }}" min="1"/></td>
-                    <td>{{ $item->subtotal }}</td>
-                  </tr>
-                  @endforeach
+                  @if(count($cart) > 0)
+                    @foreach($cart as $item)
+                    <tr>
+                      <td>{{ $item->name }}
+                          <a href="#" class="danger link-anchor" data-url="cart/remove/{{ $item->rowid }}" data-method="get">remove</a>
+                      </td>
+                      <td>{{ $item->options->pqty }}{{ $item->options->pqunit }}</td>
+                      <td>{{ $item->price }}</td>
+                      <td><input type="number" value="{{ $item->qty }}" class="pnos" 
+                            data-proid="{{ $item->id }}" data-pqtyid="{{ $item->options->pid }}" data-rid="{{ $item->rowid }}" min="1"/></td>
+                      <td>{{ $item->subtotal }}</td>
+                    </tr>
+                    @endforeach
+                  @else
+                    No products to checkout <a href="/" class="button success">Shop Now</a>
+                  @endif
                   
                 </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <p class="text-right tight">
+
+                  @if(count($cart) > 0)
+                    <button data-trigger="pay-link" class="button success trigger">Continue</button>
+                  @else
+                    <button class="button success trigger" disabled>Continue</button>
+                  @endif
+
+                </p>
               </div>
             </div>
           </div>
         </li>
         <li class="accordion-navigation">
-          <a href="#pay"><i class="fa fa-rupee"></i> PAYMENT MODE</a>
+          <a href="#pay" id="pay-link"><i class="fa fa-rupee"></i> PAYMENT MODE</a>
+          <div class="accordin-mask"></div>
           <div id="pay" class="content">
             <div class="row">
               <div class="medium-12 columns end">
@@ -212,6 +281,22 @@
       console.log('cart update failed');
     })
    });
+
+   //trigger accordion
+   var trigger = $('button.trigger');
+   trigger.on('mousedown', function(e){
+    e.preventDefault();
+    var tarid = $(this).data('trigger');
+    var tar = 'a#'+tarid;
+    $(tar).trigger('click');
+    $(tar).siblings('.accordin-mask').hide();
+    $(tar).find('.valid').show();
+
+   });
+
+    $('#paymentaccordin').on('toggled', function (event, accordion) {
+       console.log(accordion);
+    });
 
   </script>
 @stop

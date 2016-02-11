@@ -15,7 +15,7 @@
                     <a href="/product/{{$product->id}}">
                       <div class="img-wrapper prod-img">
                         <p class="tight text-center">
-                          <img src="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
+                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
                         </p>
                       </div>
                       
@@ -92,7 +92,7 @@
               </h4>
               <div class="section-body">
                 <p class="tight text-center">Ever wanted to be a cooking maestro</p>
-                <h4 class="text-center">Read Success Recipes <br> and Stories</h4>
+                <h4 class="text-center">Coming Soon.</h4>
               </div>
             </div>
 

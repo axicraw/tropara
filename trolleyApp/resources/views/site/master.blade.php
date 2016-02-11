@@ -7,33 +7,28 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trolleyin</title>
     <style>
-      .page-loader-wrapper{
+      .banner-loader-wrapper{
         /*display: none;*/
         background-color:#fff;
-        position:fixed;
+        position:absolute;
         z-index:2000;
-        width:100%;
-        height:100%;
+        width:87%;
+        height:350px;
       }
-      .page-loader-wrapper .ajax-loader-content{
+      .banner-loader-wrapper .banner-loader-content{
         display: none;
         overflow: hidden;
-        position:fixed;
+        position:relative;
         width:150px;
         height: 150px;
         padding:40px 10px;
         border-radius:50%;
+        margin:80px auto;
 
         border:1px solid $primary-color;
         background-color: $white;
         box-shadow:0px 3px 10px -5px #333;
         //background:url('../images/pat1.png') repeat;
-      }
-      .page-loader-wrapper img.ajax-loader{
-        width:64px;
-      }
-      .page-loader-wrapper img.logo{
-        width:150px;
       }
     </style>
     <link rel="icon" href="favicon.png" type="image/ico"> 
@@ -310,7 +305,7 @@
       
     </div>
 
-    <div class="page-loader-wrapper">
+    <!-- <div class="page-loader-wrapper">
       
       <div class="ajax-loader-content">
         <p class="tight text-center">
@@ -319,7 +314,7 @@
         </p>
       </div>
       
-    </div>
+    </div> -->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/foundation.min.js"></script>
@@ -335,14 +330,7 @@
     <script src="js/trolleycart.js"></script>
     <script src="js/jquery.marquee.min.js"></script>
     <script>
-    //preloader
-      pageWrapper = $('.page-loader-wrapper');
-      loader = pageWrapper.find('.ajax-loader-content');
-      loader.fadeIn("slow");
-      //alWrapper.show();
-      jQuery(window).load(function() {
-        pageWrapper.hide();
-      })
+    
 
 
     echo.init({
@@ -365,6 +353,28 @@
     @endif
 
     $(document).ready(function(){
+
+        $('.footer-middle').fadeIn();
+          
+
+
+      //footer sliders
+      $('.offer-slider').slick({
+        vertical: true,
+        verticalSwiping: true,
+        autoplay:true,
+        arrows:false,
+        rows:2,
+
+      });
+      $('.recent-slider').slick({
+        vertical: false,
+        autoplay:true,
+        rows:2,       
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        arrows:false
+      });
 
       ///////////////////// php conditioned /////////////////
       @if(session()->has('toasttext'))

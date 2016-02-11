@@ -17,6 +17,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		var pid = $(this).data('pid');
 		var priceId = $(this).data('price-id');
+		console.log(pid, priceId);
 		$.when(http_get('cart/add/'+pid+'/'+priceId)).then(function(response){
 			//updateCartView(response.count, response.total);
 			getCartData();
@@ -29,11 +30,12 @@ $(document).ready(function(){
 	//Category Page - update price on quantity change 
 	$('.quantity-price').on('change', function(){
 		val = $(this).find('option:selected').data('price');
-		console.log(val);
+		
 		$(this).parents(".quantity-wrapper").find('.qty-price-wrapper .price-num').html(val);
 		// $('#selected-price').html($(this).val());
 		var priceId = $(this).find('option:selected').data('priceId');
-		btnATC.data('price-Id', priceId);
+		console.log(priceId);
+		$(this).parents(".quantity-wrapper").find('button.ATC').data('price-Id', priceId);
 		
 	});
 	$('.quantity-price').trigger('change');

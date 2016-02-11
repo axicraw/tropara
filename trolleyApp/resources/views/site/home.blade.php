@@ -5,7 +5,18 @@
     @include('site.partials.header_top')
     @include('site.partials.header_middle')
     <div class="full-width content-top">
+
       <div class="row collapse">
+        <div class="banner-loader-wrapper">
+          
+          <div class="banner-loader-content">
+            <p class="tight text-center">
+              <img src="images/logo_color.png" class="logo" alt=""><br>Loading<br>
+              <img src="images/ajax_loader/loader.gif" alt="" class="ajax-loader">
+            </p>
+          </div>
+          
+        </div>
         <div class="small-3 columns">
            @include('site.partials.side_cate')
         </div>
@@ -160,7 +171,7 @@
                 <div class="img-wrapper prod-img">
                   <p class="tight text-center">
                    
-                    <img src="images/products/{{ $new_product->images->first()->image_name }}" alt="product-image">
+                    <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $new_product->images->first()->image_name }}" alt="product-image">
                   </p>
                 </div>
               
@@ -180,6 +191,7 @@
         </div>
       </div>
     </div>
+    
 
 @include('site.partials.footer_top')
 @include('site.partials.footer_middle')
@@ -191,6 +203,14 @@
 
 @section('scriptsContent')
 <script type="text/javascript">
+  //banner preloader
+    bannerWrapper = $('.banner-loader-wrapper');
+    loader = bannerWrapper.find('.banner-loader-content');
+    loader.fadeIn("slow");
+    //alWrapper.show();
+    jQuery('.content-top').ready(function() {
+      bannerWrapper.hide();
+    });
 
  $(document).ready(function() {
     console.log('inner script working');
@@ -202,21 +222,7 @@
         thumbnailWidth:170,
         thumbnailHeight:35
       });
-      $('.offer-slider').slick({
-        vertical: true,
-        verticalSwiping: true,
-        autoplay:true,
-        arrows:false,
-        rows:2,
 
-      });
-      $('.recent-slider').slick({
-        vertical: false,
-        autoplay:true,
-        rows:2,
-        slidesPerRow:2,
-        arrows:false,
-      });
 
       /**** sticky header ***/
         //sticky top

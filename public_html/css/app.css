@@ -9548,7 +9548,8 @@ a.caro-link {
       color: #333; }
   .product-wrapper .prod-det .prod-mrp {
     text-decoration: line-through;
-    color: #f04124; }
+    color: #f04124;
+    height: 22px; }
   .product-wrapper .prod-det .prod-our-price {
     font-size: 16px;
     color: #39A4EA; }
@@ -9651,13 +9652,11 @@ a.caro-link {
   .footer-top .recent-slider {
     padding: 10px;
     background-color: #EFEFEF;
-    height: 390px; }
+    height: 390px;
+    overflow: hidden; }
     .footer-top .recent-slider .recent-slide {
-      width: 45%;
-      height: 175px;
-      padding: 5px;
       overflow: hidden;
-      float: left;
+      padding: 5px;
       box-shadow: 0px 0px 5px -2px #AAAAAA;
       background-color: #FFFFFF; }
       .footer-top .recent-slider .recent-slide .img-wrapper {
@@ -9689,7 +9688,8 @@ a.caro-link {
 
 .footer-middle {
   background: #333333;
-  margin-top: 20px; }
+  margin-top: 20px;
+  display: none; }
   .footer-middle h5 {
     font-family: "Roboto Slab", serif;
     color: #EFEFEF; }
@@ -9766,10 +9766,21 @@ a.caro-link {
   box-shadow: 0px 0px 5px -2px #AAAAAA; }
   .payment-mode-wrapper .accordion li.accordion-navigation > a {
     background-color: #333333;
+    height: 58px;
+    overflow: hidden;
     color: #EFEFEF;
     border-bottom: 2px solid #EFEFEF; }
+    .payment-mode-wrapper .accordion li.accordion-navigation > a .valid {
+      display: none; }
   .payment-mode-wrapper .accordion li.accordion-navigation .content > .row {
     padding-left: 20px; }
+
+.payment-mode-wrapper .accordin-mask {
+  width: 100%;
+  height: 58px;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  margin-top: -60px; }
 
 .payment-mode-wrapper .tabs.vertical {
   max-width: 28%;

@@ -167,8 +167,14 @@ $(document).ready(function(){
 						+'<td><input type="checkbox" name="select_all"></td>'
 						+'<td>'+item.product_name+'</td>'
 						+'<td>'+item.category.category_name+'</td>'
-						+'<td>'+item.price+'</td>'
-						+'<td>'+item.mrp+'</td>'
+						+'<td>';
+			$.each(products[i].prices, function(i, price){
+				row 	+= 	'<span class="label info">'
+						+price.qty+' '+price.unit.shortform+'- Rs '+price.price+'</span>'
+			});
+				row +=  '</td><td>'			
+					 	+'<span class="label info">'
+						+products[i].mrp.qty+' '+products[i].mrp.unit.shortform+'- Rs '+products[i].mrp.mrp+'</span></td>'
 						+'<td>'+item.brand.brand_name+'</td>'
 						+'<td><ul class="table-row-controls">'
 						+'<li><input type="submit" class="button tiny delete alert link" value=""></li>'
