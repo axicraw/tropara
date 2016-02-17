@@ -53,6 +53,6 @@ class SmsOrderConfirmation
         
         $sender = 'TROLIN';
         $message = 'OrderNo '.$checkout->id.' Area '.$area->area_name.'. CMobile '.$user->mobile;
-        $response = $textlocal->sendSms($numbers, $message, $sender);
+        $response = $textlocal->sendSms($admin_numbers, $message, $sender);
     }
 }
