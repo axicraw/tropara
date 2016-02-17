@@ -50,6 +50,7 @@ class SmsOrderConfirmation
             array_push($admin_numbers, $admin->mobile);
         }
         
+        //dd($admins);
         $sender = 'TROLIN';
         $message = 'OrderNo '.$checkout->id.' Area '.$area->area_name.'. CMobile '.$user->mobile;
         $response = $textlocal->sendSms($admin_numbers, $message, $sender);
