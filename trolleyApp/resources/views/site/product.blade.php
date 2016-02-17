@@ -9,14 +9,9 @@
     <div class="small-3 columns">
       <div class="row">
         <ul class="side-menu">
-                  
-          @if(count($main_category->children) > 1)
-            <h5 class="highlight no-margin lshadow"><a class="cate-drop" href=""><i class="fi-list"></i> <span>Category</span></a> <i class="fa fa-angle-right"></i> <span class="sub-heading">{{$main_category->category_name}}</span></h5>
-            @foreach ( $main_category->children as $subcategory )
-                <li class="sub-cate"><a href="category/{{ $subcategory->category_name }}">{{ $subcategory->category_name }}</a>         </li>
-            @endforeach
-          @else
-            <h5 class="highlight no-margin lshadow"><a class="cate-drop" href=""><i class="fi-list"></i> <span>Category</span></a> <i class="fa fa-angle-right"></i> 
+        
+            <h5 class="highlight no-margin lshadow">
+              <a class="cate-drop" href=""><i class="fi-list"></i> <span>categories</span></a>  - 
               <span class="sub-heading">
                 @foreach ( $categories as $category )
                   @if($category->id === $main_category->parent_id)
@@ -25,14 +20,36 @@
                 @endforeach
               </span>
             </h5>
-            @foreach ( $categories as $category )
-              @if($category->parent_id === $main_category->parent_id)
-                <li class="sub-cate"><a href="category/{{ $category->category_name }}">{{ $category->category_name }}</a>
-                  
-                </li>
-              @endif
-            @endforeach
-          @endif
+            @if($parent_category != null)
+              @foreach ($parent_category->children as $child_cate)
+                  <li>
+                    <a href="category/{{ $child_cate->category_name }}">{{$child_cate->category_name}}</a>
+
+                  </li>              
+              @endforeach
+
+            @else
+              @foreach ($categories as $category)
+                @if(count($category->children) > 0)
+                  <li class="has-child">
+                    {{ $category->category_name }}
+                    <ul class="submenu">
+                    @foreach($category->children as $child)
+                      <li>
+                        <a href="category/{{ $child->category_name }}">{{$child->category_name}}</a>
+                      </li>
+                    @endforeach
+                    </ul>
+                  </li>
+                @else
+                  <li>
+                    <a href="category/{{ $category->category_name }}">{{ $category->category_name }}</a>
+                  </li>
+
+                @endif
+                
+              @endforeach
+            @endif
         </ul>
       </div>
 <!--       <div class="row collapse todays">

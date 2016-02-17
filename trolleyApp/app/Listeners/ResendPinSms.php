@@ -5,6 +5,7 @@ namespace App\Listeners;
 use Activation;
 use App\User;
 use App\Events\ResendPin;
+use App\Includes\Textlocal;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -35,10 +36,16 @@ class ResendPinSms
         $mobile = $user->mobile;
         $activation = Activation::create($user);
         $code  = $activation->code;
-        // $textlocal = new Textlocal('abel@parableu.com', '43bc47c06f42d41c9143e31b90013be0de43ed35');
-        // $numbers = [$mobile];
-        // $sender = 'TXTLCL';
-        // $message = 'Thank you for registering with us. Enter this pin '.$code.' to confirm registration.';
-        // $response = $textlocal->sendSms($numbers, $message, $sender);
+
+
+        $numbers = [$mobile];
+        $sender = 'TROLIN';
+        $test = 0;
+
+        
+        $message = 'Thank you for registering with us. Enter this pin '.$code.' to confirm registration.';
+
+        $textlocal = new Textlocal('seekaja@yahoo.com', '0d756599c39b32baab966c65f4a1b050975394e5');
+        $response = $textlocal->sendSms($numbers, $message, $sender);
     }
 }

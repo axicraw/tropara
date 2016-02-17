@@ -9339,7 +9339,6 @@ ul.side-menu {
     position: absolute;
     width: 0;
     right: 20px;
-    margin-top: -30px;
     color: #333333; }
   ul.side-menu li:last-child {
     border-bottom: none; }
@@ -9646,7 +9645,8 @@ a.caro-link {
       width: 100%; }
 
 .footer-top {
-  margin-top: 40px; }
+  margin-top: 40px;
+  display: none; }
   .footer-top .left-section h4.section-title {
     border-bottom: 3px solid #CCCCCC; }
   .footer-top .recent-slider {

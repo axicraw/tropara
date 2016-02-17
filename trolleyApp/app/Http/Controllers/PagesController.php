@@ -42,29 +42,39 @@ class PagesController extends Controller
         $categories = Category::with('children')->where('parent_id', '=', 0)->get();
         $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(12)->get();
         $banners = Banner::all();
-
       
         return view('site/home', compact('new_products', 'categories', 'banners', 'offers', 'hotpros', 'viewpros'));
 
     }
 
     public function category($catename){
-        $categories = Category::all();
+        $categories = Category::with('children')->where('parent_id', '=', 0)->get();
         $main_category = Category::with('parent', 'children', 'children.products')->where('category_name', $catename)->firstOrFail();
+        if(count($main_category->parent) > 0){
+            $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
+        }else{
+            $parent_category = null;
+        }
+        //dd($parent_category);
         $cate_products = Product::where('category_id', $main_category->id)
                         ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
         $sub_categories = Category::with('children')->where('parent_id', $main_category->id)->lists('id');
-        //dd($cate_products);
+
         $sub_products = Product::whereIn('category_id',$sub_categories)
                         ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
-        return view('site/category', compact('categories', 'main_category','cate_products', 'sub_products'));
+        return view('site/category', compact('categories', 'main_category','cate_products', 'parent_category', 'sub_products'));
     }
     public function product($id){
         $product = Product::with('images', 'brand', 'prices', 'prices.unit', 'offers', 'category', 'description')->find($id);
         $main_category = Category::with('offers', 'children', 'products')->find($product->category_id);
-        $categories = Category::all();
+        if(count($main_category->parent) > 0){
+            $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
+        }else{
+            $parent_category = null;
+        }
+        $categories = Category::with('children')->where('parent_id', '=', 0)->get();
         if($user = Sentinel::check())
         {
             $user_id = $user->id;
@@ -74,7 +84,7 @@ class PagesController extends Controller
             $user_id = 0;
         }
         Event::fire(new ProductViewed($user_id, $product->id));
-        return view('site/product', compact('product', 'categories', 'main_category'));
+        return view('site/product', compact('product', 'categories', 'main_category', 'parent_category'));
     }
 
     public function myaccount(Request $request){

@@ -215,11 +215,20 @@ class CartController extends Controller
 
                 }else{
                     $dt = DB::table('deliverytimes')->first();
+
                 }
                 //dd($dt);
-                $start =Carbon::parse($dt->start)->format('h:ia');
-                $stop = Carbon::parse($dt->stop)->format('h:ia');
-                $delivery_time = $start.'-'.$stop;
+                if($dt)
+                {
+                    $start =Carbon::parse($dt->start)->format('h:ia');
+                    $stop = Carbon::parse($dt->stop)->format('h:ia');
+                    $delivery_time = $start.'-'.$stop;
+                }
+                else{
+                    $start =Carbon::now()->format('h:ia');
+                    $stop = Carbon::now()->format('h:ia');
+                    $delivery_time = $start.'-'.$stop;
+                }
                 //create checkout and set user to it and also set payment status
                 $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$request->session()->get('deli_area'), 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed', 'deliverytime'=>$delivery_time]);
                 //if address is set then add to checkout 

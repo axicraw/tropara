@@ -354,6 +354,7 @@
 
     $(document).ready(function(){
 
+        $('.footer-top').fadeIn();
         $('.footer-middle').fadeIn();
           
 
