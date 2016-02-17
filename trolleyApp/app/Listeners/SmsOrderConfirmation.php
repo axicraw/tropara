@@ -49,7 +49,6 @@ class SmsOrderConfirmation
         {
             array_push($admin_numbers, $admin->mobile);
         }
-        $admin_numbers = implode(',', $admin_numbers);
         
         $sender = 'TROLIN';
         $message = 'OrderNo '.$checkout->id.' Area '.$area->area_name.'. CMobile '.$user->mobile;
