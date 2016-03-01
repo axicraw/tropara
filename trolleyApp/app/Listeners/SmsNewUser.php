@@ -37,7 +37,6 @@ class SmsNewUser
         // dd(count($threshold));
         $activation = Activation::create($user);
         $code  = $activation->code;
-
         $username = "seekaja@yahoo.com";
         $hash = "0d756599c39b32baab966c65f4a1b050975394e5";
         $numbers = [$mobile];
@@ -50,8 +49,7 @@ class SmsNewUser
 
         $textlocal = new Textlocal('seekaja@yahoo.com', '0d756599c39b32baab966c65f4a1b050975394e5');
         $response = $textlocal->sendSms($numbers, $message, $sender);
-        //return response()->json($textlocal);
-        //dd($response);
+
 
     }
 }

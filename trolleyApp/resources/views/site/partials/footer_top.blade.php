@@ -88,6 +88,30 @@
           <div class="row middle-section">
             <div class="small-12 columns">
               <h4 class="section-title tight">
+                Customer Talk
+              </h4>
+              <div class="customer-talk">
+                <div class="talks-slider">
+                 @if(isset($feedbacks))
+                   @if(count($feedbacks) > 0)
+                     @foreach($feedbacks as $feedback)
+                       <div class="talks-slide">
+                         <p>
+                          <br>
+                           <strong>{{$feedback->user->name}}</strong> says:
+                           <blockquote>{!! substr($feedback->feedback, 0, 20)  !!}...</blockquote>
+                         </p>
+                       </div>
+                     @endforeach
+                   @endif
+                 @endif
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row middle-section">
+            <div class="small-12 columns">
+              <h4 class="section-title tight">
                 Success Recipies
               </h4>
               <div class="section-body">
@@ -95,8 +119,6 @@
                 <h4 class="text-center">Coming Soon.</h4>
               </div>
             </div>
-
-
           </div>
         </div>
         <div class="small-4 columns">
@@ -107,12 +129,14 @@
               @if(isset($hotpros))
                 @if(count($hotpros) > 0)
                   @foreach($hotpros as $hotpro)
-                    <div class="recent-slide">
-                      <div class="img-wrapper">
-                        <img src="images/products/{{$hotpro->images[0]['image_name']}}" alt="">
+                    <a href="/product/{{$hotpro->id}}">
+                      <div class="recent-slide">
+                        <div class="img-wrapper">
+                          <img src="images/products/{{$hotpro->images[0]['image_name']}}" alt="">
+                        </div>
+                        <p class="side-offer-product tight text-center">{{$hotpro->product_name}}</p>
                       </div>
-                      <p class="side-offer-product tight text-center">{{$hotpro->product_name}}</p>
-                    </div>
+                    </a>
                   @endforeach
                 @endif
               @endif
@@ -121,4 +145,6 @@
           </div>
         </div>
       </div>
+
     </div>
+

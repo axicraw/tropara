@@ -112,6 +112,7 @@ class GeneralController extends Controller
         ];
         $admin = Sentinel::registerAndActivate($admin);
         $admin->active = 1;
+        $admin->mobile = '9952110335';
         $admin->save();
         $role = Sentinel::findRoleBySlug('admin');
         $role->users()->attach($admin);

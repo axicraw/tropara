@@ -39,7 +39,11 @@ class CheckSocialLogin
         if($user)
         {
             //user exists so login
-            return $user;
+            $social_user = [
+                'type'=>'return',
+                'user'=>$user
+            ];
+            return $social_user;
         }
         else 
         {
@@ -55,7 +59,11 @@ class CheckSocialLogin
             $user->save();
             $role = Sentinel::findRoleBySlug('customer');
             $role->users()->attach($user);
-            return $user;
+            $social_user = [
+                'type'=>'new',
+                'user'=>$user
+            ];
+            return $social_user;
         }
 
 

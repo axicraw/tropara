@@ -252,7 +252,14 @@ $(document).ready(function(){
 				console.log(response);
 			}else{
 				$('#loginModal').foundation('reveal', 'close');
-				location.reload();
+				if(response.activation === 'false'){
+					console.log('redirecting')
+					window.location.replace("/getpin?id="+response.id);
+				}
+				else{
+					location.reload();
+				}				
+				
 			}
 			
 		}, function(response){
@@ -365,4 +372,31 @@ $(document).ready(function(){
 		left: ($(window).width()/2 - ajaxLoaderWidth/2)+'px'
 	});
 
+
+	//feedback
+	$('#feedback-toogle').on('click', function(e){
+		e.preventDefault();
+		$('#feedback-form').show();
+		$(this).hide();
+	});
+	$('#close-feedback').on('click', function(e){
+		e.preventDefault();
+		$('#feedback-form').hide();
+		$('#feedback-toogle').show();
+	});
+	$('#post-feedback').on('click', function(e){
+		e.preventDefault();
+		var feedback = $('#feedback-text').val();
+		var postData = {};
+		postData['feedback'] = feedback;
+		$.when(http_post('newfeedback', postData)).then(function(response){
+			$('#feedback-text').val('');
+			$('#feedback-form').hide();
+
+			$('#feedback-toogle').show();
+			toastr.success('Feedback posted successfully');
+		});
+		
+		
+	});
 });

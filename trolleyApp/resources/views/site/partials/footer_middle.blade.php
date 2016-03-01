@@ -1,6 +1,7 @@
 
     <div class="full-width footer-middle">
-      <div class="row">
+
+     <div class="row">
         <div class="small-3 columns">
           <div class="row social-footer">
             <h5 class="tight">Stay With Us Everywhere</h5>

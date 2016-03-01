@@ -46,6 +46,14 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        if ($e instanceof Cartalyst\Sentinel\Checkpoints\NotActivatedException){
+
+                return response()->json($request);
+        }
+
+
+        //Cartalyst\Sentinel\Checkpoints
+
         return parent::render($request, $e);
     }
 }

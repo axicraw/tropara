@@ -30,62 +30,77 @@ class AuthController extends Controller
         $this->validate($request, [
             'email'=> 'required|email', 'password'=>'required',
         ]);
-        $user = [
+        $user_cred = [
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ];
-        $logged = Sentinel::authenticate($user);
 
-        $user = Sentinel::getUser();
-        $customer = Sentinel::findRoleBySlug('customer');
-        //checks if user
-
-        if($logged) //create temp cart
+        $user = User::where('email', $user_cred['email'])->where('type', 'native')->first();
+        if($user)
         {
-          //check if user is activated
-          $activation = Activation::exists($user);
-          if(!$activation)
-          {
+          
+          $user = Sentinel::findById($user->id);
+          
+          //checks if user exsists
 
-            if(Sentinel::inRole($customer)) ///check if is customer
+
+          $activation = Activation::completed($user);
+          if($activation)
+          {
+            $logged = Sentinel::authenticate($user_cred);
+            if($logged) //create temp cart
             {
-               $user = Sentinel::check();
-               $user = User::findorfail($user->id);
-               $request->session()->put('deli_area', $user->area_id);
-               $temporders = $user->tempcart()->get();
-               Event::fire(new LoggedIn($user));
-               if($request->ajax())
-               {
-                  return response()->json($logged);
-               }
-               //dd($request->session());
-               return redirect()->intended();
-            }
-            else  //if not a customer
-            {
-              Sentinel::logout();
-              if($request->ajax()){
-                  return response()->json(['error'=>'you are not a customer'], 422);
+              $customer = Sentinel::findRoleBySlug('customer');
+              if(Sentinel::inRole($customer)) ///check if is customer
+              {
+                 $user = Sentinel::check();
+                 $user = User::findorfail($user->id);
+                 $request->session()->put('deli_area', $user->area_id);
+                 $temporders = $user->tempcart()->get();
+                 Event::fire(new LoggedIn($user));
+                 if($request->ajax())
+                 {
+                    return response()->json($logged);
+                 }
+                 //dd($request->session());
+                 return redirect()->intended();
               }
-              return back()->withErrors();            
+              else  //if not a customer
+              {
+                Sentinel::logout();
+                if($request->ajax()){
+                    return response()->json(['error'=>'you are not a customer'], 422);
+                }
+                return back()->withErrors();            
+              }
+            }
+            else  //if not loggedin
+            {
+              if($request->ajax())
+              {
+                return response()->json(['error'=>'Invalid Email and Password Combination!'], 422);
+              }
+              $errors = new MessageBag(['password'=>'Invalid Email and Password Combination!']);
+              return redirect()->back()->withInput()->withErrors($errors);   
             }
           }
           else //if not activated
           {
+            if($request->ajax())
+            {
+              return response()->json(['id'=> $user->id, 'activation'=>'false'], 202);
+            }
             return redirect()->route('getpin', ['id'=>$user->id]);
-            //$notification = "";
-            //return view('notification', compact('notification'));
           }
         }
-        else  //if not loggedin
+        else
         {
-          if($request->ajax())
-          {
-            return response()->json(['serror'=>'Invalid Email and Password Combination!'], 422);
-          }
-          $errors = new MessageBag(['password'=>'Invalid Email and Password Combination!']);
-          return redirect()->back()->withInput()->withErrors($errors);   
+          $errors = new MessageBag(['email'=>'This email is not registered with Trolleyin.com']);
+          return redirect()->back()->withInput()->withErrors($errors);
         }
+
+
+        
     }
 
     public function adminlogin()
@@ -275,7 +290,9 @@ class AuthController extends Controller
             break;
        }
       $response = Event::fire(new SocialLogin($user_cred));
-      $user = $response[0];
+
+      //dd($response);
+      $user = $response[0]['user'];
 
       $user = Sentinel::findById($user->id);
       //if()
@@ -286,7 +303,9 @@ class AuthController extends Controller
   public function getpin(Request $request)
   {
 
+
     $user_id = $request->get('id');
+    //dd($user_id);
     $user = Sentinel::findById($user_id);
     return view('site.useractivate', compact('user'));
   }
@@ -318,6 +337,7 @@ class AuthController extends Controller
   }   
   public function savemobile(Request $request)
   {
+    Sentinel::logout();
     $this->validate($request, [
         'mobile' => 'required | digits:10'
       ]);

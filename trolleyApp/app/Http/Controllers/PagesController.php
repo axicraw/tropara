@@ -107,13 +107,28 @@ class PagesController extends Controller
         $this->validate($request, [
             'name'=>'required',
             'email'=> 'required|email|unique:users,email,'.$user->id, 
-            'mobile' => 'required|digits:10',
             'address' => 'required|min:10',
             'area_id' => 'required'
         ]);
 
+        if($request->has('mobile'))
+        {
+            $this->validate($request, [
+                'mobile' => 'required|digits:10',
+            ]);
+        }
+
         $user->fill($request->all());
         $user->save();
+
+
+        if($request->has('mobile'))
+        {
+            return redirect()->route('getsavemobile', [
+                    'mobile' => $request->mobile,
+                    'id' => $user->id,
+                ]);
+        }
 
         //redirecting
         if($request->session()->has('redirect'))

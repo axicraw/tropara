@@ -19,6 +19,7 @@
         </div>
         <div class="small-3 columns">
            @include('site.partials.side_cate')
+           
         </div>
         <div class="small-7 columns">
           <div class="row home-slider">

@@ -84,7 +84,11 @@
                       <label for="mobile" class="inline">Mobile *</label>
                     </div>
                     <div class="medium-6 end columns">
-                      <input id="mobile" type="text" name="mobile"  value="{{$user->mobile}}" required="required">
+                      @if(strlen($user->mobile) > 9)
+                      <label>{{$user->mobile}} / <a href="#" data-reveal-id="mobileModal">Change Mobile No</a></label> 
+                      @else
+                        <input id="mobile" type="text" name="mobile"  required="required">
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -139,7 +143,7 @@
                 <div class="medium-12 columns">
                   <div class="row">
                     <div class="medium-2 columns">
-                      <label for="email" class="">Password *</label>
+                      <label for="email" class="">Password </label>
                     </div>
                     <div class="medium-6 end columns">
                       <a href="#" data-reveal-id="passwordModal">Change Password</a>
@@ -173,7 +177,7 @@
 
 </div>
 <div id="passwordModal" class="reveal-modal small" data-reveal aria-hidden="false" role="dialog">
-  <div class="row collapse">
+  <div class="row">
     <div class="medium-6 columns">
       <h4>Change Password</h4>
     </div>
@@ -200,6 +204,36 @@
         <div class="row">
           <div class="medium-6 columns">
             <button class="submit button tiny">Change Password</button>
+          </div>
+        </div>
+      {!! Form::close() !!}
+    </div>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<div id="mobileModal" class="reveal-modal small" data-reveal aria-hidden="false" role="dialog">
+  <div class="row">
+    <div class="medium-6 columns">
+      <h4>Change Mobile No</h4>
+    </div>
+  </div>
+  <div class="row reg-wrapper">
+    <div class="medium-12 columns">
+      {!! Form::open(array('route'=>'savemobile')) !!}
+        <input type="hidden" value="{{$user->id}}" name="id">
+        <div class="row">
+          <div class="medium-6 columns">
+            <label for="mobile">
+              New Mobile No
+              <input type="text" name="mobile" id="mobile" >
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 columns">
+            <p class="text-right">
+              <button class="submit button tiny">Save Mobile No</button>
+            </p>
           </div>
         </div>
       {!! Form::close() !!}

@@ -25,6 +25,7 @@ Route::get('/getpin', ['as'=>'getpin', 'uses'=>'AuthController@getpin']);
 Route::get('/sendpinagain', ['as'=>'resendpin', 'uses'=>'AuthController@resendpin']);
 //Route::post('/resendpinAfterMobile', ['as'=>'resendpinAfterMobile', 'uses'=>'AuthController@resendpinAfterMobile']);
 Route::get('/changemobile', 'AuthController@changemobile');
+Route::get('/savemobile', ['as'=>'getsavemobile', 'uses'=>'AuthController@savemobile']);
 Route::post('/savemobile', ['as'=>'savemobile', 'uses'=>'AuthController@savemobile']);
 Route::post('/activateuser', ['as'=>'activateuser','uses'=>'AuthController@doactivation']);
 Route::group(['prefix' => 'admin'], function () {
@@ -54,6 +55,7 @@ Route::post('/processreturn', ['as'=>'processreturn', 'uses'=>'PagesController@p
 Route::get('/myorder/{id}', ['as'=>'orderdetail', 'uses'=>'PagesController@orderdetail']);
 Route::get('/contact', ['as'=>'contactus', 'uses'=>'PagesController@contactus']);
 Route::get('/justvisit', ['as'=>'contactus', 'uses'=>'PagesController@justvisit']);
+Route::post('/newfeedback', ['as'=>'newfeedback','middleware' => 'customer', 'uses'=>'ActionController@newfeedback']);
 
 /***
 ** plain pages

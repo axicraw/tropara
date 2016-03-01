@@ -11,7 +11,7 @@ class GlobalBasicSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
         DB::table('globalsettings')->insert([
         	[
 	        	'name' => 'appname',

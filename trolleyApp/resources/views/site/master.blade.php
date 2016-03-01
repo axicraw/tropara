@@ -304,7 +304,31 @@
       </div>
       
     </div>
+    @if ($user = Sentinel::check())
+      <div class="feedback-wrapper">
 
+            <button id="feedback-toogle" class="title vertical-img-feedback">    
+            </button>
+        <div class="feedback-form" id="feedback-form">
+          <div class="row">
+            <div class="medium-12 columns">
+              <h4 class="title">Feedback</h4>
+              <textarea id="feedback-text" name="feedback" id="" cols="30" rows="10" placeholder="Say something about Trolleyin"></textarea>
+            </div>
+            
+          <div class="row">
+            <div class="medium-12 columns">
+              <p class="text-right tight">
+                <button id="close-feedback" class="button tiny warning">Cancel</button>
+                <button id="post-feedback" class="button tiny primary">Post</button>
+              </p>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    @endif
     <!-- <div class="page-loader-wrapper">
       
       <div class="ajax-loader-content">
@@ -374,6 +398,14 @@
         rows:2,       
         slidesToShow: 2,
         slidesToScroll: 2,
+        arrows:false
+      });
+      $('.talks-slider').slick({
+        vertical: false,
+        autoplay:true,
+        rows:1,       
+        slidesToShow: 1,
+        slidesToScroll: 1,
         arrows:false
       });
 

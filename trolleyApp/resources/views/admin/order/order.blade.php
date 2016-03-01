@@ -24,7 +24,7 @@
 				@foreach($checkouts as $checkout)
 					<tr>
 						<td>{{$checkout->id}}</td>
-						<td>{{$checkout->user->id}}</td>
+						<td>{{$checkout->user->name}}</td>
 						<td>{{$checkout->address}}</td>
 						<td><a href="admin/order/{{$checkout->id}}" class="button tiny">view</a></td>
 						<td>

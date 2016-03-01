@@ -20,8 +20,8 @@
         <div class="medium-6 columns">
           <h4><i class="fa fa-Phone"></i> Contact</h4>
           <p class="tight">
-            Sales: 9952110335<br>
-            Enquiry: 0431 2472040<br>
+            Sales: 8122225588<br>
+            Enquiry: 9443385256<br>
             Email: info@trolleyin.com        
           </p>
         </div>

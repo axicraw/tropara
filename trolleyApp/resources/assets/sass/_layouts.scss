@@ -796,26 +796,69 @@ a.caro-link{
 		}
 		.section-body{
 			margin: 0px;
-			padding-top: 100px;
+			padding-top: 40px;
 			p{color:$white;padding-bottom: 10px;}
 			h4{
-				margin:0px 40px;
+				margin:0px 25px;
 				padding: 10px;
 				border: 3px solid $alert-color;
 				border-radius:3px;
 				color:$white;
 				font-family: $primeserif;
 			}
-			height: 365px;
+			height: 160px;
 			background-image: url(../images/recipie.png);
 			background-repeat: none;
 			background-position: center;
+		}
+		.talks-slider{
+			@include lshadow();
+			background:$ghost;
+			padding:15px;
+			margin-bottom: 20px !important;
+			blockquote{
+				background:url(../images/blockquote.png) no-repeat top left;
+				text-indent: 40px;
+			}
+
+			
 		}
 	}
 	.right-section{
 		h4.section-title{
 			border-bottom:3px solid $warning-color;
+
 		}
+	}
+}
+.feedback-wrapper{
+	position:fixed;
+	z-index:2000;
+	right:0;
+	top:200px;
+	width:300px;
+
+
+	button.title.vertical-img-feedback{
+		position:fixed;
+		top:200px;
+		right:0px;
+		background: $primary-color;
+		color:#fff;
+		width:34px !important;
+		padding:0px;
+		height: 120px;	
+		margin-top: 200px;
+		background-image:url(../images/feedback.png);
+		background-repeat:no-repeat;
+		background-position:top left;
+	}
+	.feedback-form{
+
+		@include lshadow();
+		display: none;
+		padding:10px;
+		background:$silver;
 	}
 }
 .footer-middle{

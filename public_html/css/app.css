@@ -8870,6 +8870,14 @@ ul.social-login-btns {
 .button.tw {
   background-color: #44AEEE; }
 
+h4.vertical-button {
+  /* IE 9 */
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  width: 140px !important;
+  height: 30px;
+  padding: 0 5px; }
+
 /****/
 /*******tables *************/
 table ul {
@@ -9668,8 +9676,8 @@ a.caro-link {
     border-bottom: 3px solid #f04124; }
   .footer-top .middle-section .section-body {
     margin: 0px;
-    padding-top: 100px;
-    height: 365px;
+    padding-top: 40px;
+    height: 160px;
     background-image: url(../images/recipie.png);
     background-repeat: none;
     background-position: center; }
@@ -9677,14 +9685,47 @@ a.caro-link {
       color: #FFFFFF;
       padding-bottom: 10px; }
     .footer-top .middle-section .section-body h4 {
-      margin: 0px 40px;
+      margin: 0px 25px;
       padding: 10px;
       border: 3px solid #f04124;
       border-radius: 3px;
       color: #FFFFFF;
       font-family: "Roboto Slab", serif; }
+  .footer-top .middle-section .talks-slider {
+    box-shadow: 0px 0px 5px -2px #AAAAAA;
+    background: #FAFAFA;
+    padding: 15px;
+    margin-bottom: 20px !important; }
+    .footer-top .middle-section .talks-slider blockquote {
+      background: url(../images/blockquote.png) no-repeat top left;
+      text-indent: 40px; }
   .footer-top .right-section h4.section-title {
     border-bottom: 3px solid #f08a24; }
+
+.feedback-wrapper {
+  position: fixed;
+  z-index: 2000;
+  right: 0;
+  top: 200px;
+  width: 300px; }
+  .feedback-wrapper button.title.vertical-img-feedback {
+    position: fixed;
+    top: 200px;
+    right: 0px;
+    background: #39A4EA;
+    color: #fff;
+    width: 34px !important;
+    padding: 0px;
+    height: 120px;
+    margin-top: 200px;
+    background-image: url(../images/feedback.png);
+    background-repeat: no-repeat;
+    background-position: top left; }
+  .feedback-wrapper .feedback-form {
+    box-shadow: 0px 0px 5px -2px #AAAAAA;
+    display: none;
+    padding: 10px;
+    background: #EFEFEF; }
 
 .footer-middle {
   background: #333333;

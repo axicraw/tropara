@@ -5,6 +5,7 @@ namespace App\Http\ViewComposers;
 use Sentinel;
 use Carbon\Carbon;
 use DB;
+use App\Feedback;
 use App\User;
 use App\Area;
 use App\Offer;
@@ -65,6 +66,7 @@ class ProfileComposer
                     ->where('start', '<=', Carbon::today()->toDateString())
                     ->where('end', '>=', Carbon::today()->toDateString())
                     ->take(10)->get();
+        $feedbacks = Feedback::with('user')->take(8)->get();
 
         if($user = Sentinel::check())
         {
@@ -84,6 +86,7 @@ class ProfileComposer
                 'offers'=>$offers,
                 'settings'=>$settings,
                 'dts'=>$dts,
+                'feedbacks'=>$feedbacks
                 ]);
         }
         else
@@ -101,6 +104,7 @@ class ProfileComposer
                 'offers'=>$offers,
                 'settings'=>$settings,
                 'dts'=>$dts,
+                'feedbacks'=>$feedbacks
                 ]);
         }
     }
