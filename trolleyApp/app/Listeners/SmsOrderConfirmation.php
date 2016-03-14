@@ -39,7 +39,7 @@ class SmsOrderConfirmation
         $numbers = [$user->mobile];
         $sender = 'TROLIN';
         $message = 'Thankyou for your purchase in Trolleyin. Your order has been confirmed. You Order id is '.$checkout->id;
-        //$response = $textlocal->sendSms($numbers, $message, $sender);
+        $response = $textlocal->sendSms($numbers, $message, $sender);
 
         //admin sms
         $admin = Sentinel::findRoleBySlug('admin');
@@ -53,6 +53,6 @@ class SmsOrderConfirmation
         //dd($admins);
         $sender = 'TROLIN';
         $message = 'OrderNo '.$checkout->id.' Area '.$area->area_name.'. CMobile '.$user->mobile;
-        //$response = $textlocal->sendSms($admin_numbers, $message, $sender);
+        $response = $textlocal->sendSms($admin_numbers, $message, $sender);
     }
 }

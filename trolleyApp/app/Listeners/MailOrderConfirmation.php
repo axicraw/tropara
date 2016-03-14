@@ -50,12 +50,12 @@ class MailOrderConfirmation
              $message->subject('Trolleyin.com Order Confirmation');
              $message->to($user->email);
         });
-        // foreach ($admins as $admin) {
-        //     Mail::send('email.admin.orderconfirmation', [], function ($message){
-        //         $message->from('admin@trolleyin.com');
-        //         $message->to($admin->email);
-        //     });
-        // }
+        foreach ($admins as $admin) {
+            Mail::send('email.admin.orderconfirmation', [], function ($message){
+                $message->from('admin@trolleyin.com');
+                $message->to($admin->email);
+            });
+        }
         
 
     }

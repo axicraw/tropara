@@ -107,10 +107,22 @@ class PagesController extends Controller
         $user = User::findorfail($user->id);
         $this->validate($request, [
             'name'=>'required',
-            'email'=> 'required|email|unique:users,email,'.$user->id, 
             'address' => 'required|min:10',
             'area_id' => 'required'
         ]);
+        if($user->type == 'native')
+        {
+            $this->validate($request, [
+                'email'=> 'required|email|unique:users,email,'.$user->id, 
+            ]);
+        }
+        else
+        {
+            $this->validate($request, [
+                'email'=> 'required|email', 
+            ]);
+        }
+        
 
         if($request->has('mobile'))
         {
