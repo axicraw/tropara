@@ -30,7 +30,7 @@ class ProductController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
         $itemsPerPage = 15;
-        $pageProducts = Product::with('prices', 'prices.unit', 'mrp', 'mrp.unit')->forPage($id, $itemsPerPage)->get();
+        $pageProducts = Product::with(['prices', 'prices.unit', 'mrps', 'mrps.unit'])->forPage($id, $itemsPerPage)->get();
         $count = Product::all()->count();
         $products = new LengthAwarePaginator($pageProducts, $count, $itemsPerPage, $id);
         return view('admin/product/product', compact('products', 'categories', 'brands'));
@@ -45,7 +45,7 @@ class ProductController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
         $itemsPerPage = 15;
-        $pageProducts = Product::with('prices', 'prices.unit', 'mrp', 'mrp.unit')->forPage($id, $itemsPerPage)->get();
+        $pageProducts = Product::with(['prices', 'prices.unit', 'mrps', 'mrps.unit'])->forPage($id, $itemsPerPage)->get();
         $count = Product::all()->count();
         $products = new LengthAwarePaginator($pageProducts, $count, $itemsPerPage, $id);
         //dd($products);
@@ -57,7 +57,7 @@ class ProductController extends Controller
         $key = trim($key);
         if(strlen($key) > 0){
 
-            $products = Product::with('category', 'brand', 'prices', 'prices.unit', 'mrp', 'mrp.unit')
+            $products = Product::with(['category', 'brand', 'prices', 'prices.unit', 'mrps', 'mrps.unit'])
                                 ->where('product_name', 'LIKE','%'.$key.'%')
                                 ->orWhereHas('category', function ($q) use ($key) {
                                     $q->where('category_name', 'LIKE', '%'.$key.'%');
@@ -78,7 +78,7 @@ class ProductController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
         $itemsPerPage = 15;
-        $pageProducts = Product::with('prices', 'prices.unit', 'mrp', 'mrp.unit')->forPage(1, $itemsPerPage)->get();
+        $pageProducts = Product::with(['prices', 'prices.unit', 'mrps', 'mrps.unit'])->forPage(1, $itemsPerPage)->get();
         $count = Product::all()->count();
         $products = new LengthAwarePaginator($pageProducts, $count, $itemsPerPage, 1);
         //dd($brands);
@@ -155,11 +155,11 @@ class ProductController extends Controller
         $categories = Category::all();
         $product = Product::with('description')->find($id);
         $prices = $product->prices;
-        $mrp = Mrp::with('unit')->where('product_id', $id)->first();
+        //$mrps = Mrp::with('unit')->where('product_id', $id)->get();
         //dd($mrp);
         $images = $product->images;
         $units = Unit::all();
-        return view('admin/product/edit', compact('product', 'categories', 'brands', 'images', 'units', 'prices', 'mrp'));
+        return view('admin/product/edit', compact('product', 'categories', 'brands', 'images', 'units', 'prices'));
     }
 
     /**
@@ -200,14 +200,6 @@ class ProductController extends Controller
             $product->active = 0;
         }
         $product->save();
-        $mrpInput = [
-            'qty' => $request->mrp_qty,
-            'unit_id' => $request->mrp_unit_id,
-            'mrp' => $request->mrp_mrp
-        ];
-        $mrp = Mrp::firstOrNew(array('product_id'=>$id));
-        $mrp->fill($mrpInput);
-        $mrp->save();
         if($request->hasFile('prod_image')){
            
             $images = $request->file('prod_image');
@@ -260,18 +252,44 @@ class ProductController extends Controller
 
         return response()->json('true');
     }
+    public function createMrp(Request $request){
+        $this->validate($request, [
+            'mrp'=>'required',
+            'qty'=>'required',
+            'unit_id'=>'required'
+        ]);
+
+        $product = Product::find($request->product_id);
+        Mrp::create($request->all());
+
+        return response()->json('true');
+    }
     public function updatePrice(Request $request, $id){
         $price = Price::find($id);
         $price->fill($request->all());
         $price->save();
         return response()->json('true');
     }
+    public function updateMrp(Request $request, $id){
+        $mrp = Mrp::find($id);
+        $mrp->fill($request->all());
+        $mrp->save();
+        return response()->json('true');
+    }
     public function getPrices($id){
         $prices = Price::where('product_id', $id)->get();
         return response()->json($prices);
     }
+    public function getmrp($id){
+        $mrps = Mrp::where('product_id', $id)->get();
+        return response()->json($mrps);
+    }
     public function deletePrice($id){
         Price::destroy($id);
+        return response()->json('true');
+    }
+    public function deleteMrp($id){
+        Mrp::destroy($id);
         return response()->json('true');
     }
     public function deleteImage($prod_id, $image_id){

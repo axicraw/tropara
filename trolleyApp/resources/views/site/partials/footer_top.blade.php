@@ -7,51 +7,109 @@
       <div class="row caro-offer-wrapper">
 
           @if(count($offers) > 0)
+            {{--*/ $limit=10; $id=0; /*--}}
             @foreach($offers as $offer)
               
-              @foreach($offer->products as $product)
-                <div class="col5-unit columns">
-                  <div class="caro-prod">
-                    <a href="/product/{{$product->id}}">
-                      <div class="img-wrapper prod-img">
-                        <p class="tight text-center">
-                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
-                        </p>
-                      </div>
-                      
-                      <p class="prod-title text-center tight">
-                        {{$product->product_name}} 
-                        <span class="label alert">
-                          {{$offer->amount}}
-                          @if($offer->offer_type === 1)
-                            %
-                          @else
-                            <i class="fa fa-rupee"></i>
-                          @endif
-                          Off
-                        </span>
-                      </p>
-                    </a>
-                    <!-- <div class="prod-det">
-                      <div class="row">
-                        <div class="small-6 columns">
-
-                          <p class="prod-price tight"><i class="fa fa-rupee"></i> 20</p>
-                        </div>
-                        <div class="small-6 columns prod-rating">
-                          <p class="text-right tight">
-                            <i class="fi-star"></i>
-                            <i class="fi-star"></i>
-                            <i class="fi-star"></i>
-                            <i class="fi-star"></i>
-                            <i class="fi-star"></i>
+              @if(count($offer->products) > 0)
+                @foreach($offer->products as $product)
+                  @if($id < $limit)
+                    {{--*/ $id++; /*--}}
+                    <div class="col5-unit columns">
+                      <div class="caro-prod">
+                        <a href="/product/{{$product->id}}">
+                          <div class="img-wrapper prod-img">
+                            <p class="tight text-center">
+                              <img src="images/img_loader/loader.gif" data-echo="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
+                            </p>
+                          </div>
+                          
+                          <p class="prod-title text-center tight">
+                            {{$product->product_name}} 
+                            <span class="label alert">
+                              {{$offer->amount}}
+                              @if($offer->offer_type === 1)
+                                %
+                              @else
+                                <i class="fa fa-rupee"></i>
+                              @endif
+                              Off
+                            </span>
                           </p>
-                        </div>
+                        </a>
+                        <!-- <div class="prod-det">
+                          <div class="row">
+                            <div class="small-6 columns">
+
+                              <p class="prod-price tight"><i class="fa fa-rupee"></i> 20</p>
+                            </div>
+                            <div class="small-6 columns prod-rating">
+                              <p class="text-right tight">
+                                <i class="fi-star"></i>
+                                <i class="fi-star"></i>
+                                <i class="fi-star"></i>
+                                <i class="fi-star"></i>
+                                <i class="fi-star"></i>
+                              </p>
+                            </div>
+                          </div>
+                        </div> -->
                       </div>
-                    </div> -->
-                  </div>
-                </div>
-              @endforeach
+                    </div>
+                  @endif
+                @endforeach
+              @endif
+              @if(count($offer->categories) > 0)
+                @foreach($offer->categories as $category) 
+                  @if(count($category->products) > 0)
+                    @foreach($category->products as $product)
+                      @if($id < $limit)
+                        {{--*/ $id++; /*--}}
+                        <div class="col5-unit columns">
+                          <div class="caro-prod">
+                            <a href="/product/{{$product->id}}">
+                              <div class="img-wrapper prod-img">
+                                <p class="tight text-center">
+                                  <img src="images/img_loader/loader.gif" data-echo="images/products/{{$product->images[0]['image_name']}}" alt="product-image">
+                                </p>
+                              </div>
+                              
+                              <p class="prod-title text-center tight">
+                                {{$product->product_name}} 
+                                <span class="label alert">
+                                  {{$offer->amount}}
+                                  @if($offer->offer_type === 1)
+                                    %
+                                  @else
+                                    <i class="fa fa-rupee"></i>
+                                  @endif
+                                  Off
+                                </span>
+                              </p>
+                            </a>
+                            <!-- <div class="prod-det">
+                              <div class="row">
+                                <div class="small-6 columns">
+
+                                  <p class="prod-price tight"><i class="fa fa-rupee"></i> 20</p>
+                                </div>
+                                <div class="small-6 columns prod-rating">
+                                  <p class="text-right tight">
+                                    <i class="fi-star"></i>
+                                    <i class="fi-star"></i>
+                                    <i class="fi-star"></i>
+                                    <i class="fi-star"></i>
+                                    <i class="fi-star"></i>
+                                  </p>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      @endif
+                    @endforeach
+                  @endif
+                @endforeach
+              @endif
             @endforeach
 
           @endif

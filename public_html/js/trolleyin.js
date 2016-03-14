@@ -173,9 +173,13 @@ $(document).ready(function(){
 						+price.qty+' '+price.unit.shortform+'- Rs '+price.price+'</span>'
 			});
 				row +=  '</td><td>'			
-					 	+'<span class="label info">'
-						+products[i].mrp.qty+' '+products[i].mrp.unit.shortform+'- Rs '+products[i].mrp.mrp+'</span></td>'
-						+'<td>'+item.brand.brand_name+'</td>'
+					 	+'<span class="label info">';
+				if(typeof products[i].mrp != 'undefined'){
+					row += products[i].mrp.qty+' '+products[i].mrp.unit.shortform+'- Rs '+products[i].mrp.mrp+'</span></td>';
+				}else{
+					row += '</span></td>';
+				}
+				row += '<td>'+item.brand.brand_name+'</td>'
 						+'<td><ul class="table-row-controls">'
 						+'<li><input type="submit" class="button tiny delete alert link" value=""></li>'
 						+'<li><a class="primary" href="admin/product/'+item.id+'"><i class="fa fa-pencil-square-o"></i></a></li></ul>'
@@ -292,11 +296,14 @@ $(document).ready(function(){
 
 	/****** Main Ajax search ********/
 	var searchtimer;
-	$('.ajax-search-input').on('keypress', function(){
+	$('.ajax-search-input').on('keypress', function(e){
 		var liststxt = '.ajax-search-lists[data-id="'+$(this).data('target')+'"]';
 		var lists = $(liststxt);
 		clearTimeout(searchtimer);
-		if($(this).val().length > 2){
+		if(e.which == 13) {
+	        $('#main-search-btn').trigger('click');
+	    }
+		else if($(this).val().length > 2){
 			$this = $(this);
 			searchtimer = setTimeout(function(){
 				var key = $this.val()
@@ -334,6 +341,17 @@ $(document).ready(function(){
 	
 		}
 	});
+
+	$('#main-search-btn').on('click', function(e){
+		e.preventDefault();
+		var keyword = $('.ajax-search-input').val();
+		if(keyword.length > 0){
+			window.location.href = '/searchproducts?key='+encodeURIComponent(keyword);
+		}
+	});
+
+
+
 	$('.ajax-search-input').on('blur', function(){
 		$this = $(this);
 		setTimeout(function(){

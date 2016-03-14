@@ -39,14 +39,13 @@ class PagesController extends Controller
     public function index(Request $request)
     {
         //dd($request->session()->all());
-        $categories = Category::with('children')->where('parent_id', '=', 0)->get();
+        $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->get();
         $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(12)->get();
         $banners = Banner::all();
       
         return view('site/home', compact('new_products', 'categories', 'banners', 'offers', 'hotpros', 'viewpros'));
 
     }
-
     public function category($catename){
         $categories = Category::with('children')->where('parent_id', '=', 0)->get();
         $main_category = Category::with('parent', 'children', 'children.products')->where('category_name', $catename)->firstOrFail();
@@ -57,18 +56,19 @@ class PagesController extends Controller
         }
         //dd($parent_category);
         $cate_products = Product::where('category_id', $main_category->id)
-                        ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
+                        ->with(['images', 'prices', 'prices.unit', 'mrps'])->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
         $sub_categories = Category::with('children')->where('parent_id', $main_category->id)->lists('id');
 
         $sub_products = Product::whereIn('category_id',$sub_categories)
                         ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
+        //dd($cate_products);
         return view('site/category', compact('categories', 'main_category','cate_products', 'parent_category', 'sub_products'));
     }
     public function product($id){
-        $product = Product::with('images', 'brand', 'prices', 'prices.unit', 'offers', 'category', 'description')->find($id);
-        $main_category = Category::with('offers', 'children', 'products')->find($product->category_id);
+        $product = Product::with(['images', 'brand', 'prices', 'prices.unit', 'offers', 'category', 'description', 'mrps', 'mrps.unit'])->find($id);
+        $main_category = Category::with(['offers', 'children', 'products'=>function($q){$q->has('images');}])->find($product->category_id);
         if(count($main_category->parent) > 0){
             $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
         }else{
@@ -83,6 +83,7 @@ class PagesController extends Controller
         {
             $user_id = 0;
         }
+        //dd($main_category);
         Event::fire(new ProductViewed($user_id, $product->id));
         return view('site/product', compact('product', 'categories', 'main_category', 'parent_category'));
     }
@@ -120,7 +121,6 @@ class PagesController extends Controller
 
         $user->fill($request->all());
         $user->save();
-
 
         if($request->has('mobile'))
         {
@@ -176,6 +176,7 @@ class PagesController extends Controller
                             ->orWhereHas('brand', function ($q) use ($key) {
                                 $q->where('brand_name', 'LIKE', '%'.$key.'%');
                             })
+                            ->has('images')
                             ->get();
         //dd(count($products));
         $count = count($products);
@@ -194,6 +195,40 @@ class PagesController extends Controller
             //fire command to store this keyword
         }
         return response()->json(['products'=>$products, 'count'=>$count]);
+    }
+    public function searchproducts(Request $request)
+    {
+        $key = $request->get('key');
+        $key = urldecode($key);
+        $search_products = Product::with(['category', 'images', 'brand', 'prices', 'prices.unit', 'mrps', 'mrps.unit'])
+                            ->where('product_name', 'LIKE','%'.$key.'%')
+                            ->orWhere('local_name', 'LIKE','%'.$key.'%')
+                            ->orWhereHas('category', function ($q) use ($key) {
+                                $q->where('category_name', 'LIKE', '%'.$key.'%');
+                            })
+                            ->orWhereHas('brand', function ($q) use ($key) {
+                                $q->where('brand_name', 'LIKE', '%'.$key.'%');
+                            })
+                            ->has('images')
+                            ->get();
+        $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->get();
+        //dd(count($products));
+        $count = count($search_products);
+        if($count < 1)
+        {
+            if($user = Sentinel::check())
+            {
+                $user = User::findorfail($user->id);
+            }
+            else
+            {   
+                $user = User::findorfail(1);
+            }
+            //dd($user);
+            Event::fire(new VoidSearch($user, $key));
+            //fire command to store this keyword
+        }
+        return view('site.searchresults', compact('search_products', 'key', 'categories'));
     }
 
     public function registersuccess(){

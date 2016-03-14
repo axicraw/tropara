@@ -33,7 +33,7 @@
               </ul>
             </div>
             <div class="small-2 columns">
-               <a href="#" class="button postfix"><i class="fi-magnifying-glass"></i> Search</a>
+               <a href="#" id="main-search-btn" class="button postfix"><i class="fi-magnifying-glass"></i> Search</a>
 
             </div>
           </div>

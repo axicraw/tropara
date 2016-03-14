@@ -9048,10 +9048,10 @@ form input[type='file'].thumb-input {
   padding: 5px;
   margin-bottom: 20px; }
 
-.quan-prices .quan-price.new {
+.quan-prices .quan-price.new, .quan-mrps .quan-price.new {
   background: #FFFFFF; }
 
-.quan-prices .quan-price {
+.quan-prices .quan-price, .quan-prices .quan-mrp, .quan-mrps .quan-price, .quan-mrps .quan-mrp {
   border: 1px solid #CCCCCC;
   background: #EFEFEF;
   width: 100%;
@@ -9059,15 +9059,15 @@ form input[type='file'].thumb-input {
   overflow: hidden;
   margin-bottom: 15px; }
 
-.quan-prices .action-icons {
+.quan-prices .action-icons, .quan-mrps .action-icons {
   margin: 0px 3px 0px 0px;
   padding: 0px; }
-  .quan-prices .action-icons li {
+  .quan-prices .action-icons li, .quan-mrps .action-icons li {
     display: inline-block;
     float: right;
     margin: 0px 3px;
     height: 24px; }
-    .quan-prices .action-icons li a {
+    .quan-prices .action-icons li a, .quan-mrps .action-icons li a {
       font-size: 20px; }
 
 .create-offer .content {
@@ -9361,7 +9361,8 @@ ul.side-menu {
 
 .offer-slider {
   height: 313px;
-  background: #FFFFFF; }
+  background: #FFFFFF;
+  overflow: hidden; }
   .offer-slider .offer-slide {
     height: 145px;
     overflow: hidden;
@@ -9430,7 +9431,7 @@ a.caro-link {
         padding: 10px; }
     .caro-wrapper .caro-prod .prod-title {
       margin-top: 0px;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 18px;
       color: #39A4EA; }
       .caro-wrapper .caro-prod .prod-title .local {
@@ -9540,6 +9541,23 @@ a.caro-link {
   box-shadow: 0px 0px 2px #EFEFEF;
   border-radius: 3px;
   margin-top: 20px; }
+  .product-wrapper .mrp-wrapper {
+    display: none; }
+  .product-wrapper .save-wrapper {
+    display: none;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    z-index: 999;
+    background-image: url(../images/save_bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    text-align: right;
+    padding-right: 3px;
+    line-height: 20px; }
   .product-wrapper .product-anchor:hover > .row {
     background: #F6F6F6; }
   .product-wrapper .prod-image-wrapper {
@@ -9548,9 +9566,11 @@ a.caro-link {
     .product-wrapper .prod-image-wrapper img {
       padding: 10px; }
   .product-wrapper .prod-title {
-    padding: 0px 10px; }
+    padding: 0px 10px;
+    height: 48px; }
     .product-wrapper .prod-title .title {
-      font-family: "Roboto Slab", serif; }
+      font-family: Roboto, sans-serif;
+      font-size: 14px; }
     .product-wrapper .prod-title .desc {
       color: #333; }
   .product-wrapper .prod-det .prod-mrp {
@@ -9614,6 +9634,23 @@ a.caro-link {
 	*/ }
   .product-view .sp-slides-container {
     height: 315px; }
+  .product-view .mrp-wrapper {
+    display: none; }
+  .product-view .save-wrapper {
+    display: none;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    z-index: 999;
+    background-image: url(../images/save_bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    text-align: right;
+    padding-right: 3px;
+    line-height: 20px; }
   .product-view .product-detail-wrapper h3.product-name .local-name {
     font-size: 20px;
     color: #222222; }

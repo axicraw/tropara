@@ -30,12 +30,48 @@ $(document).ready(function(){
 	//Category Page - update price on quantity change 
 	$('.quantity-price').on('change', function(){
 		val = $(this).find('option:selected').data('price');
-		
-		$(this).parents(".quantity-wrapper").find('.qty-price-wrapper .price-num').html(val);
+		$(this).parents(".quantity-wrapper").find('.qty-price-wrapper .price-num').html('<i class="fa fa-rupee"></i> '+val);
 		// $('#selected-price').html($(this).val());
 		var priceId = $(this).find('option:selected').data('priceId');
 		console.log(priceId);
-		$(this).parents(".quantity-wrapper").find('button.ATC').data('price-Id', priceId);
+		$(this).closest(".quantity-wrapper").find('button.ATC').data('price-Id', priceId);
+
+		var qty = $(this).find('option:selected').data('qty');
+		var unit = $(this).find('option:selected').data('unit');
+		var price = $(this).find('option:selected').data('price');
+
+
+		var mrps = $(this).closest('.product-wrapper').find('.mrp-wrapper');
+		var save = $(this).closest('.product-wrapper').find('.save-wrapper');
+		save.hide();
+
+		
+		$.each(mrps, function(i, item){
+			var temp = $(item);
+			var mrpQty = temp.data('qty');
+			var mrpUnit = temp.data('unit');
+			var mrp = temp.data('mrp');
+
+			mrps.hide();
+
+			var saveper = ((mrp-price)/mrp)*100;
+			saveper = Math.round(saveper);
+			console.log('save '+ saveper);
+			console.log(qty+' and '+mrpQty+' / '+unit+'and'+mrpUnit);
+			if(qty === mrpQty && unit === mrpUnit){
+				if(saveper > 0 && saveper < 100){
+					save.find('.save').text(saveper);
+					save.show();
+				}
+				console.log('showing');
+				temp.show();
+				return false;
+				
+			}else{
+				temp.hide();
+				save.hide();
+			}
+		});
 		
 	});
 	$('.quantity-price').trigger('change');
@@ -45,8 +81,44 @@ $(document).ready(function(){
 	$('#product-price').on('change', function(){
 		$('#selected-price').html($(this).val());
 		var priceId = $(this).find('option:selected').data('priceId');
-		btnATC.data('price-Id', priceId);
+		$('#product-buy-btn').data('price-Id', priceId);
 		console.log(priceId);
+
+		var qty = $(this).find('option:selected').data('qty');
+		var unit = $(this).find('option:selected').data('unit');
+		var price = $(this).find('option:selected').data('price');
+
+		var mrps = $(this).closest('.product-detail-wrapper').find('.mrp-wrapper');
+		var save = $(this).closest('.product-view').find('.save-wrapper');
+		//save.hide();
+
+		$.each(mrps, function(i, item){
+			var temp = $(item);
+			var mrpQty = temp.data('qty');
+			var mrpUnit = temp.data('unit');
+			var mrp = temp.data('mrp');
+
+			mrps.hide();
+
+			var saveper = ((mrp-price)/mrp)*100;
+			saveper = Math.round(saveper);
+			console.log(mrp+', '+price+'gives save '+ saveper);
+			console.log(qty+' and '+mrpQty+' / '+unit+'and'+mrpUnit);
+			if(qty === mrpQty && unit === mrpUnit){
+				if(saveper > 0 && saveper < 100){
+					save.find('.save').text(saveper);
+					save.show();
+				}
+				console.log('showing');
+				temp.show();
+				return false;
+				
+			}else{
+				temp.hide();
+				save.hide();
+			}
+		});
+
 		// console.log(btnATC.data('price-Id'));
 	});
 	$('#product-price').trigger('change');

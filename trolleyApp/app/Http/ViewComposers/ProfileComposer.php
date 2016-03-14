@@ -62,10 +62,11 @@ class ProfileComposer
             $settings[$name] = $value;
         }
 
-        $offers = Offer::with('products', 'products.images', 'products.prices')->where('active', true)
+        $offers = Offer::with(['categories', 'categories.products'=>function($q){$q->has('images');}, 'products'=>function($q){$q->has('images');}, 'products.images', 'products.prices'])->where('active', true)
                     ->where('start', '<=', Carbon::today()->toDateString())
                     ->where('end', '>=', Carbon::today()->toDateString())
-                    ->take(10)->get();
+                    ->take(16)->get();
+        //dd($offers);
         $feedbacks = Feedback::with('user')->take(8)->get();
 
         if($user = Sentinel::check())

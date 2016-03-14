@@ -23,7 +23,7 @@
             @if($parent_category != null)
               @foreach ($parent_category->children as $child_cate)
                   <li>
-                    <a href="category/{{ $child_cate->category_name }}">{{$child_cate->category_name}}</a>
+                    <a href="category/{{ $child_cate->category_name }}">{{$child_cate->category_name}} ({{count($child_cate->products)}})</a>
 
                   </li>              
               @endforeach
@@ -36,14 +36,16 @@
                     <ul class="submenu">
                     @foreach($category->children as $child)
                       <li>
-                        <a href="category/{{ $child->category_name }}">{{$child->category_name}}</a>
+                        <a href="category/{{ $child->category_name }}">{{$child->category_name}}
+                        ({{count($child->products)}})</a>
                       </li>
                     @endforeach
                     </ul>
                   </li>
                 @else
                   <li>
-                    <a href="category/{{ $category->category_name }}">{{ $category->category_name }}</a>
+                    <a href="category/{{ $category->category_name }}">{{ $category->category_name }}
+                    ({{count($category->products)}})</a>
                   </li>
 
                 @endif
@@ -108,7 +110,9 @@
           <div class="row">
             <div class="medium-5 columns">
               <div class="product-images-wrapper">
-
+                <div class="save-wrapper">                              
+                  SAVE <br><span class="save"></span>%
+                </div>
                 <img src="images/img_loader/loader.gif" data-echo="images/products/{{  $product->images[0]['image_name'] }}" alt="">
                 <!-- <div class="slider-pro" id="product-image-slider">
                   <div class="sp-slides">
@@ -160,11 +164,18 @@
                     @else
                       <h4 class="success"> In Stock</h4>
                     @endif
-                      @if (($product->mrp->mrp) > 0)
+                     
                         <p class="danger strike-through tight">
-                        MRP : Rs.{{ $product->mrp->mrp }}/{{ $product->mrp->qty }}{{ $product->mrp->unit->shortform }}
+                          @if(isset($product->mrps))
+                            @foreach($product->mrps as $mrp)
+                              @if(isset($mrp->mrp) && isset($mrp->qty) && isset($mrp->unit->shortform))
+                                <span class="mrp-wrapper" data-mrp="{{$mrp->mrp}}" data-qty="{{$mrp->qty}}" data-unit="{{$mrp->unit->shortform}}">
+                                MRP : Rs. 
+                                {{$mrp->mrp}}/{{$mrp->qty}}{{$mrp->unit->shortform}}</span>
+                              @endif
+                            @endforeach
+                          @endif
                         </p>
-                      @endif
                    </div>
                   <div class="medium-8 columns">
                     @if ( $product->offers->count() > 0)
@@ -222,7 +233,7 @@
                       <div class="medium-9 columns">
                         <select class="product-price" id="product-price">                          
                           @foreach($product->prices as $price)
-                            <option class="price" value="{{ $price->price }}" data-price-id="{{ $price->id }}"
+                            <option class="price" value="{{ $price->price }}" data-price-id="{{ $price->id }}" data-price="{{$price->price}}" data-qty="{{$price->qty}}" data-unit="{{$price->unit->shortform}}"
                               @if($price->id == $lowest->id)
                                 selected
                               @endif 
@@ -236,7 +247,7 @@
                 @if(!$product->out_of_stock)
                   <div class="row">
                     <div class="medium-6 columns end">
-                      <button class="button primary ATC" data-pid="{{ $product->id }}" data-price-id="0">Add To Cart</button>
+                      <button id="product-buy-btn" class="button primary ATC" data-pid="{{ $product->id }}" data-price-id="0">Add To Cart</button>
                       <!-- <button class="button success">Buy Now</button> -->
                     </div>
                   </div>
@@ -268,45 +279,32 @@
                     <div class="product-wrapper">
                       <a href="product/{{ $cate_product->id }}" class="product-anchor">
                         <div class="row">
-                          <div class="prod-image-wrapper">
-                            <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="">
+                        <div class="prod-image-wrapper">
+                            <div class="save-wrapper">                              
+                              SAVE <br><span class="save"></span>%
+                            </div>
+                            <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]['image_name'] }}" alt="">
                           </div>
                         </div>
                         <div class="row collapse">
                           <div class="prod-title">
-                              <p class="tight title">{{ $cate_product->product_name }}</p>
-                              <p class="micro tight">{!! substr($cate_product->description->description, 0, 24) !!}...</p>
+                              <p class="tight title">{!! substr($cate_product->product_name, 0, 32) !!}</p>
                           </div> 
                           <div class="prod-det">
                             <div class="small-12 columns">
                               <p class="tight prod-mrp tiny">
-                                @if (($cate_product->mrp->mrp) > 0)
-                                  MRP Rs.{{ $cate_product->mrp->mrp }}/
-                                  @if( $cate_product->mrp->qty > 1 )
-                                    {{ $cate_product->mrp->qty }}
-                                  @endif
-                                  {{ $cate_product->mrp->unit->shortform }}
+                                @if(count($cate_product->mrps) > 0)
+                                  @foreach($cate_product->mrps as $mrp)
+                                    <span class="mrp-wrapper" data-mrp="{{$mrp->mrp}}" data-qty="{{$mrp->qty}}" data-unit="{{$mrp->unit->shortform}}">
+                                    MRP : Rs. 
+                                    {{$mrp->mrp}}/{{$mrp->qty}}{{$mrp->unit->shortform}}</span>
+                                  @endforeach
                                 @else
                                   &nbsp;
                                 @endif
                               </p>
                             </div>
-                            <!-- <div class="small-12 columns">
-                              <p class="tight prod-our-price ">
-                                {{--*/ 
-                                  $sorted_products = $cate_product->prices->sortBy('price');
-                                  $lowest_product = $sorted_products->first();
-                                  /*--}}
-                                Rs.{{ $lowest_product->price }} / 
-                                  <span class="qty-fix">
-                                    @if($lowest_product->qty > 1 )
-                                    {{ $lowest_product->qty }}
-                                    @endif
-                                    {{ $lowest_product->unit->shortform }}
-                                    
-                                  </span>
-                              </p>
-                            </div> -->
+                            
                           </div>
                         </div>
                       </a>
@@ -320,7 +318,7 @@
                               <div class="small-9 columns">
                                 <select name="" id="" class="quantity-price">
                                   @foreach ($cate_product->prices->sortBy('price') as $price)
-                                      <option data-price-id="{{ $price->id }}" data-price="{{ $price->price }}" value="">{{ $price->qty }}{{ $price->unit->shortform }}</option>
+                                      <option data-price-id="{{ $price->id }}" data-price="{{ $price->price }}" data-unit="{{$price->unit->shortform}}" data-qty="{{$price->qty}}" value="">{{ $price->qty }}{{ $price->unit->shortform }}</option>
                                   @endforeach
                                 </select>
                               </div>
@@ -330,7 +328,7 @@
                             <div class="row collapse qty-price-wrapper">
                               <div class="small-7 columns">
                                 <p class="tight qty-price">
-                                  Rs. <span class="price-num"></span>
+                                  <span class="price-num"></span>
                                 </p>
                               </div>
                               <div class="small-5 columns">

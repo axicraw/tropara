@@ -36,14 +36,16 @@
                     <ul class="submenu">
                     @foreach($category->children as $child)
                       <li>
-                        <a href="category/{{ $child->category_name }}">{{$child->category_name}}</a>
+                        <a href="category/{{ $child->category_name }}">{{$child->category_name}}
+                        ({{count($child->products)}})</a>
                       </li>
                     @endforeach
                     </ul>
                   </li>
                 @else
                   <li>
-                    <a href="category/{{ $category->category_name }}">{{ $category->category_name }}</a>
+                    <a href="category/{{ $category->category_name }}">{{ $category->category_name }}
+                    ({{count($category->products)}})</a>
                   </li>
 
                 @endif
@@ -68,26 +70,30 @@
                     <a href="product/{{ $cate_product->id }}" class="product-anchor">
                       <div class="row">
                         <div class="prod-image-wrapper">
+                          <div class="save-wrapper">                              
+                              SAVE <br><span class="save"></span>%
+                            </div>
                           <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="">
                         </div>
                       </div>
                       <div class="row collapse">
                         <div class="prod-title">
-                            <p class="tight title">{{ $cate_product->product_name }}</p>
-                            <p class="micro tight desc">{!! substr($cate_product->description->description, 0, 24) !!}...</p>
+                            <p class="tight title">{!! substr($cate_product->product_name, 0, 32) !!}</p>
                         </div> 
                         <div class="prod-det">
-                          <div class="small-12 columns">
-                            <p class="tight prod-mrp tiny">
-                              @if (($cate_product->mrp->mrp) > 0)
-                                MRP Rs.{{ $cate_product->mrp->mrp }}/
-                                @if( $cate_product->mrp->qty > 1 )
-                                  {{ $cate_product->mrp->qty }}
+                           <div class="small-12 columns">
+                              <p class="tight prod-mrp tiny">
+                                @if(count($cate_product->mrps) > 0)
+                                  @foreach($cate_product->mrps as $mrp)
+                                    <span class="mrp-wrapper" data-mrp="{{$mrp->mrp}}" data-qty="{{$mrp->qty}}" data-unit="{{$mrp->unit->shortform}}">
+                                    MRP : Rs. 
+                                    {{$mrp->mrp}}/{{$mrp->qty}}{{$mrp->unit->shortform}}</span>
+                                  @endforeach
+                                @else
+                                  &nbsp;
                                 @endif
-                                {{ $cate_product->mrp->unit->shortform }}
-                              @endif
-                            </p>
-                          </div>
+                              </p>
+                            </div>
                           
                         </div>
                       </div>
@@ -102,7 +108,7 @@
                             <div class="small-9 columns">
                               <select name="" id="" class="quantity-price">
                                 @foreach ($cate_product->prices->sortBy('price') as $price)
-                                    <option data-price-id="{{ $price->id }}" data-price="{{ $price->price }}" value="">{{ $price->qty }}{{ $price->unit->shortform }}</option>
+                                    <option data-price-id="{{ $price->id }}" data-price="{{ $price->price }}" data-unit="{{$price->unit->shortform}}" data-qty="{{$price->qty}}" value="">{{ $price->qty }}{{ $price->unit->shortform }}</option>
                                 @endforeach
                               </select>
                             </div>

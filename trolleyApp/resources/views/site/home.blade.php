@@ -55,24 +55,52 @@
             @if(count($offers) > 0)
               @foreach($offers as $offer)
                 
-                @foreach($offer->products as $product)
-                  <div class="offer-slide">
-                    <a href="/product/{{$product->id}}">
-                      <div class="img-wrapper">
-                        <img src="images/products/{{$product->images[0]['image_name']}}" alt="">
-                      </div>
-                      <p class="side-offer-product tight text-center">{{$product->product_name}}<span class="label round alert off">
-                        {{$offer->amount}}
-                        @if($offer->offer_type === 1)
-                          %
-                        @else
-                          <i class="fa fa-rupee"></i>
-                        @endif
-                        Off
-                      <!-- </span><br><span class="side-offer-price"><i class="fa fa-rupee"></i>100</span></p> -->
-                    </a>
-                  </div>
-                @endforeach
+                @if(count($offer->products) > 0)
+                  @foreach($offer->products as $product)
+                    <div class="offer-slide">
+                      <a href="/product/{{$product->id}}">
+                        <div class="img-wrapper">
+                          <img src="images/products/{{$product->images[0]['image_name']}}" alt="">
+                        </div>
+                        <p class="side-offer-product tight text-center">{{$product->product_name}}<span class="label round alert off">
+                          {{$offer->amount}}
+                          @if($offer->offer_type === 1)
+                            %
+                          @else
+                            <i class="fa fa-rupee"></i>
+                          @endif
+                          Off
+                        <!-- </span><br><span class="side-offer-price"><i class="fa fa-rupee"></i>100</span></p> -->
+                      </a>
+                    </div>
+                  @endforeach
+                @endif
+                @if(count($offer->categories) > 0)
+                  @foreach($offer->categories as $category)
+                  
+                    
+                    @if(count($category->products) > 0)
+                      @foreach($category->products as $product)
+                        <div class="offer-slide">
+                          <a href="/product/{{$product->id}}">
+                            <div class="img-wrapper">
+                              <img src="images/products/{{$product->images[0]['image_name']}}" alt="">
+                            </div>
+                            <p class="side-offer-product tight text-center">{{$product->product_name}}<span class="label round alert off">
+                              {{$offer->amount}}
+                              @if($offer->offer_type === 1)
+                                %
+                              @else
+                                <i class="fa fa-rupee"></i>
+                              @endif
+                              Off
+                            <!-- </span><br><span class="side-offer-price"><i class="fa fa-rupee"></i>100</span></p> -->
+                          </a>
+                        </div>
+                      @endforeach
+                    @endif
+                  @endforeach
+                @endif
               @endforeach
 
             @endif
@@ -177,9 +205,7 @@
                 </div>
               
                 <p class="prod-title text-center tight">
-                  {{ $new_product->product_name }}
-                  <br>
-                  <span class="local">{{ $new_product->local_name }} </span>
+                  {!! substr($new_product->product_name, 0, 32) !!}                  
                 </p>
                 <div class="prod-det">
                   <div class="row">

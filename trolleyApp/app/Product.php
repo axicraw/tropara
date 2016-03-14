@@ -26,8 +26,8 @@ class Product extends Model
     public function prices(){
         return $this->hasMany('App\Price');
     }
-    public function mrp(){
-        return $this->hasOne('App\Mrp');
+    public function mrps(){
+        return $this->hasMany('App\Mrp');
     }
 
     public function description(){

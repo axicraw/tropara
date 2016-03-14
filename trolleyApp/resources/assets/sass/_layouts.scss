@@ -374,6 +374,7 @@ ul.side-menu{
 .offer-slider{
 	height: 313px;
 	background: $white;
+	overflow: hidden;
 	.offer-slide{
 		height: 145px;
 		overflow: hidden;
@@ -464,7 +465,7 @@ a.caro-link{
 		}
 		.prod-title{
 			margin-top: 0px;
-			font-size: 16px;
+			font-size: 14px;
 			line-height: 18px;
 			color:$primary-color;
 			.local{
@@ -613,6 +614,27 @@ a.caro-link{
 	box-shadow: 0px 0px 2px $silver;
 	border-radius: 3px;
 	margin-top: 20px;
+	.mrp-wrapper{
+		display: none;
+	}
+
+
+	.save-wrapper{
+		display: none;
+		width:75px;
+		height: 75px;
+		position:absolute;
+		right: 8px;
+		color:#fff;
+		z-index: 999;
+		background-image:url(../images/save_bg.png);
+		background-size:100%;
+		background-repeat:no-repeat;
+		background-position:top right;
+		text-align: right;
+		padding-right:3px;
+		line-height: 20px;
+	}
 	.product-anchor:hover > .row{
 		background:$vapor;
 	}
@@ -625,8 +647,10 @@ a.caro-link{
 	}
 	.prod-title{
 		padding: 0px 10px;
+		height: 48px;
 		.title{
-			font-family: $primeserif;
+			font-family: $primesans;
+			font-size: 14px;
 		}
 		.desc{
 			color:#333;
@@ -673,6 +697,25 @@ a.caro-link{
 	margin-top: 20px;
 	.sp-slides-container{
 		height: 315px;
+	}
+	.mrp-wrapper{
+		display: none;
+	}
+	.save-wrapper{
+		display: none;
+		width:75px;
+		height: 75px;
+		position:absolute;
+		right: 8px;
+		color:#fff;
+		z-index: 999;
+		background-image:url(../images/save_bg.png);
+		background-size:100%;
+		background-repeat:no-repeat;
+		background-position:top right;
+		text-align: right;
+		padding-right:3px;
+		line-height: 20px;
 	}
 	.product-detail-wrapper{
 		h3.product-name{

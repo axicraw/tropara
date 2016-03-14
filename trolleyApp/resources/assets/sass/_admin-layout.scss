@@ -115,11 +115,11 @@ form input[type='file'].thumb-input{
 	padding:5px;
 	margin-bottom:20px;
 }
-.quan-prices{
+.quan-prices, .quan-mrps{
 	.quan-price.new{
 		background:$white;
 	}
-	.quan-price{
+	.quan-price, .quan-mrp{
 		border:1px solid $iron;
 		background:$silver;
 		width:100%;

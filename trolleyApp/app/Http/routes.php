@@ -55,6 +55,7 @@ Route::post('/processreturn', ['as'=>'processreturn', 'uses'=>'PagesController@p
 Route::get('/myorder/{id}', ['as'=>'orderdetail', 'uses'=>'PagesController@orderdetail']);
 Route::get('/contact', ['as'=>'contactus', 'uses'=>'PagesController@contactus']);
 Route::get('/justvisit', ['as'=>'contactus', 'uses'=>'PagesController@justvisit']);
+Route::get('/searchproducts', ['as'=>'searchproducts', 'uses'=>'PagesController@searchproducts']);
 Route::post('/newfeedback', ['as'=>'newfeedback','middleware' => 'customer', 'uses'=>'ActionController@newfeedback']);
 
 /***
@@ -169,9 +170,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	Route::resource('/product', 'ProductController');
 	Route::get('/product/search/{key}/', 'ProductController@search');
 	Route::put('/product/updatePrice/{id}', 'ProductController@updatePrice');
+	Route::put('/product/updateMrp/{id}', 'ProductController@updateMrp');
 	Route::post('/product/createPrice', 'ProductController@createPrice');
+	Route::post('/product/createMrp', 'ProductController@createMrp');
 	Route::delete('/product/deletePrice/{id}', 'ProductController@deletePrice');
+	Route::delete('/product/deleteMrp/{id}', 'ProductController@deleteMrp');
 	Route::get('/product/{id}/prices', 'ProductController@getprices');
+	Route::get('/product/{id}/mrp', 'ProductController@getmrp');
 	Route::delete('/product/deleteImage/{prod_id}/{image_id}', 'ProductController@deleteImage');
 	Route::post('/product/updateImage', 'ProductController@updateImage');
 	Route::get('/product/pagin/{id}/', 'ProductController@pagin');

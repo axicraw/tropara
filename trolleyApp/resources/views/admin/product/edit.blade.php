@@ -113,6 +113,7 @@
 												@foreach ($units as $unit)
 													<option value="{{ $unit->id }}">{{ $unit->shortform }}</option>
 												@endforeach
+												
 											</select>
 										</div>
 									</div>
@@ -141,36 +142,42 @@
 				<div class="medium-2 columns">
 					<label for="quantity" class="right inline">MRP</label>
 				</div>
+				
 				<div class="medium-10 end columns">
 					<div class="row">
-						<div class="quan-prices">
+						<div class="quan-mrps"  id="quan-mrps">
 							<div class="medium-2 end columns">
-								<div class="row">
-									<div class="medium-6 columns">
-										<input type="text" class="quantity" name="mrp_qty" placeholder="Quantity" value="{{ $mrp->qty or ""}}">
+								<div class="quan-mrp new" data-product="{{ $product->id }}" >
+									<div class="row">
+										<div class="medium-6 columns">
+											<input type="text" class="quantity" placeholder="Quantity">
+										</div>
+										<div class="medium-6 columns">
+											<select class="quan-unit">
+												@foreach ($units as $unit)
+													<option value="{{ $unit->id }}">{{ $unit->shortform }}</option>
+												@endforeach
+											</select>
+										</div>
 									</div>
-									<div class="medium-6 columns">
-										<select class="quan-unit" name="mrp_unit_id">
-											@foreach ($units as $unit)
-												<option value="{{ $unit->id }}" 
-													@if($mrp['unit_id'] == $unit['id'])
-														selected="selected" 
-													@endif
-												>{{ $unit->shortform }}</option>
-											@endforeach
-										</select>
+									<div class="row collapse">
+										<div class="medium-3 columns">
+											<span class="prefix">Rs.</span>
+										</div>
+										<div class="medium-9 columns">
+											<input type="text" class="mrp">
+										</div>
 									</div>
-								</div>
-								<div class="row collapse">
-									<div class="medium-3 columns">
-										<span class="prefix">Rs.</span>
-									</div>
-									<div class="medium-9 columns">
-										<input type="text" name="mrp_mrp" class="quan-price" value="{{ $mrp->mrp or "" }}">
+									<div class="row">
+										<ul class="action-icons">
+											<li><a href="#" class="primary save-quan-mrp" ><i class="fa fa-plus-circle"></i></a></li>
+										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
+
+						<!-- <a href="3" class="button link-anchor tiny" id="empty-quan-price">Add Another</a> -->
 					</div>
 				</div>
 			</div>	
@@ -275,6 +282,40 @@
 					<ul class="action-icons">
 						<li><a href="#" class="success save-quan-price" data-id="{%>id %}"><i class="fa fa-check-circle"></i></a></li>
 						<li><a href="#" class="danger del-quan-price" data-id="{%>id %}"><i class="fa fa-times-circle"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{%/for%}
+	</script>
+	<script id="quant-mrp-tmpl" type="text/x-jsrender">
+		{%for #data%}
+		<div class="medium-2 columns">
+			<div class="quan-mrp old" data-product="{{ $product->id }}" >
+				<div class="row">
+					<div class="medium-6 columns">
+						<input type="text" class="quantity" placeholder="Quantity" value={%>qty%}>
+					</div>
+					<div class="medium-6 columns">
+						<select class="quan-unit">
+							@foreach ($units as $unit)
+								<option {%if unit_id == {{$unit->id}}%} selected="selected" {%/if%} value="{{ $unit->id }}">{{ $unit->shortform }}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="medium-3 columns">
+						<span class="prefix">Rs.</span>
+					</div>
+					<div class="medium-9 columns">
+						<input type="text" class="mrp" value="{%>mrp%}">
+					</div>
+				</div>
+				<div class="row">
+					<ul class="action-icons">
+						<li><a href="#" class="success save-quan-mrp" data-id="{%>id %}"><i class="fa fa-check-circle"></i></a></li>
+						<li><a href="#" class="danger del-quan-mrp" data-id="{%>id %}"><i class="fa fa-times-circle"></i></a></li>
 					</ul>
 				</div>
 			</div>
