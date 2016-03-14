@@ -92,6 +92,8 @@
                 <p>Sorry, No Products in {{ $main_category->category_name }}</p>
               @endif -->
             </div>
+          @else
+            <p class="text-center"><i class="fa fa-ban"></i> No products found matching '{{$key}}'</p>
           @endif
           
       </div>

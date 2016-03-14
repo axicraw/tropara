@@ -247,7 +247,7 @@
                 @if(!$product->out_of_stock)
                   <div class="row">
                     <div class="medium-6 columns end">
-                      <button id="product-buy-btn" class="button primary ATC" data-pid="{{ $product->id }}" data-price-id="0">Add To Cart</button>
+                      <button id="product-buy-btn" class="button primary ATC" data-pname="{{$product->product_name}}" data-pid="{{ $product->id }}" data-price-id="0">Add To Cart</button>
                       <!-- <button class="button success">Buy Now</button> -->
                     </div>
                   </div>
@@ -333,7 +333,7 @@
                               </div>
                               <div class="small-5 columns">
                                 <p class="text-right tight">
-                                  <button data-pid="{{ $cate_product->id }}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                  <button data-pid="{{ $cate_product->id }}" data-pname="{{$cate_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
                                 </p>
                               </div>
                             </div>

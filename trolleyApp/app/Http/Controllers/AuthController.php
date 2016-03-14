@@ -95,6 +95,9 @@ class AuthController extends Controller
         }
         else
         {
+          if($request->ajax()){
+            return response()->json(['error'=>'This email is not registered with Trolleyin.com!'], 403);
+          }
           $errors = new MessageBag(['email'=>'This email is not registered with Trolleyin.com']);
           return redirect()->back()->withInput()->withErrors($errors);
         }

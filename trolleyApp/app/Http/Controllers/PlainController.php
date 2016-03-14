@@ -14,7 +14,7 @@ class PlainController extends Controller
     {
         $title = "Terms And Conditions";
         $content = File::get('text/terms.txt');
-        return view('site.plain', compact('title', 'content'));
+        return view('site.terms');
 
     }
 }

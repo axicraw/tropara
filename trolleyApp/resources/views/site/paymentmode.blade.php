@@ -169,16 +169,16 @@
             <div class="row">
               <div class="medium-12 columns end">
                 <ul class="tabs vertical" data-tab>
-                  <li class="tab-title active"><a href="#credit">Credit Card</a></li>
+                  <li class="tab-title"><a href="#credit">Credit Card</a></li>
                   <li class="tab-title"><a href="#net">Net Banking</a></li>
                   <li class="tab-title"><a href="#debit">Debit Card</a></li>
-                  <li class="tab-title"><a href="#cod">Cash On Delivery</a></li>
+                  <li class="tab-title active"><a href="#cod">Cash On Delivery</a></li>
                 </ul>
                 <div class="tabs-content">
-                  <div class="content active" id="credit">Credit Card details</div>
-                  <div class="content" id="net">Net Banking details</div>
-                  <div class="content" id="debit">Debit Card details</div>
-                  <div class="content" id="cod">
+                  <div class="content" id="credit">Will be available soon.</div>
+                  <div class="content" id="net">Will be available soon.</div>
+                  <div class="content" id="debit">Will be available soon.</div>
+                  <div class="content active" id="cod">
                     <div class="inner-content">
                       <a href="cart/checkout" class="button">Confirm Order</a>
                     </div>

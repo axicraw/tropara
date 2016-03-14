@@ -18,8 +18,15 @@ $(document).ready(function(){
 		var pid = $(this).data('pid');
 		var priceId = $(this).data('price-id');
 		console.log(pid, priceId);
+		var pname = $(this).data('pname');
 		$.when(http_get('cart/add/'+pid+'/'+priceId)).then(function(response){
 			//updateCartView(response.count, response.total);
+			if(pname.length > 0){
+				toastr.success(pname + ' added to cart', {timeOut:3500});
+			}
+			else{
+				toastr.success('product added to cart', {timeOut:3500});
+			}
 			getCartData();
 		},
 		function(){

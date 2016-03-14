@@ -123,7 +123,7 @@
                             </div>
                             <div class="small-5 columns">
                               <p class="text-right tight">
-                                <button data-pid="{{ $cate_product->id }}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                <button data-pid="{{ $cate_product->id }}" data-pname="{{$cate_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
                               </p>
                             </div>
                           </div>

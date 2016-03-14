@@ -180,6 +180,7 @@ class PagesController extends Controller
     {
         $key = $request->get('search');
         $products = Product::with('category', 'brand', 'prices', 'prices.unit', 'images')
+                            ->has('images')
                             ->where('product_name', 'LIKE','%'.$key.'%')
                             ->orWhere('local_name', 'LIKE','%'.$key.'%')
                             ->orWhereHas('category', function ($q) use ($key) {
@@ -188,7 +189,6 @@ class PagesController extends Controller
                             ->orWhereHas('brand', function ($q) use ($key) {
                                 $q->where('brand_name', 'LIKE', '%'.$key.'%');
                             })
-                            ->has('images')
                             ->get();
         //dd(count($products));
         $count = count($products);
@@ -213,6 +213,7 @@ class PagesController extends Controller
         $key = $request->get('key');
         $key = urldecode($key);
         $search_products = Product::with(['category', 'images', 'brand', 'prices', 'prices.unit', 'mrps', 'mrps.unit'])
+                            ->has('images')
                             ->where('product_name', 'LIKE','%'.$key.'%')
                             ->orWhere('local_name', 'LIKE','%'.$key.'%')
                             ->orWhereHas('category', function ($q) use ($key) {
@@ -221,7 +222,6 @@ class PagesController extends Controller
                             ->orWhereHas('brand', function ($q) use ($key) {
                                 $q->where('brand_name', 'LIKE', '%'.$key.'%');
                             })
-                            ->has('images')
                             ->get();
         $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->get();
         //dd(count($products));
