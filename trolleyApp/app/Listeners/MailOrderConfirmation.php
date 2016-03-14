@@ -38,8 +38,8 @@ class MailOrderConfirmation
         $checkout = $event->checkout;
 
         $orders = Order::with('product')->where('checkout_id', $checkout->id)->get();
-        //$adminids = DB::role_users()->where('role_id', 1)->get();
-        //$admins = User::whereIn('id', $adminids->user_id)->get();
+        $adminids = DB::role_users()->where('role_id', 1)->get();
+        $admins = User::whereIn('id', $adminids->user_id)->get();
         $data = [
             'orders' => $orders,
             'user' => $user
