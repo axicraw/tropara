@@ -7,6 +7,7 @@ use Log;
 use DB;
 use Sentinel;
 use App\Order;
+use App\User;
 use App\Includes\Textlocal;
 use App\Events\MadeCheckout;
 use Illuminate\Queue\InteractsWithQueue;
@@ -38,8 +39,14 @@ class MailOrderConfirmation
         $checkout = $event->checkout;
 
         $orders = Order::with('product')->where('checkout_id', $checkout->id)->get();
-        $adminids = DB::table('role_users')->where('role_id', 1)->get();
-        $admins = User::whereIn('id', $adminids->user_id)->get();
+        $admin = Sentinel::findRoleBySlug('admin');
+        $admins =  $admin->users()->get();
+        $admin_emails = [];
+        foreach($admins as $admin)
+        {
+            array_push($admin_emails, $admin->email);
+        }
+
         $data = [
             'orders' => $orders,
             'user' => $user
@@ -50,10 +57,11 @@ class MailOrderConfirmation
              $message->subject('Trolleyin.com Order Confirmation');
              $message->to($user->email);
         });
-        foreach ($admins as $admin) {
-            Mail::send('email.admin.orderconfirmation', [], function ($message){
+        foreach ($admin_emails as $email) {
+            Mail::send('email.admin.orderconfirmation', $data, function ($message) use($email){
                 $message->from('admin@trolleyin.com');
-                $message->to($admin->email);
+                $message->subject('New Order Placed');
+                $message->to($email);
             });
         }
         

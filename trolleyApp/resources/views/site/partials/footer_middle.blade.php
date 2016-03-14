@@ -46,7 +46,6 @@
               <li><a href="">Return Policy</a></li>
               <li><a href="/termsandconditions">Terms & Conditions</a></li>
               <li><a href="">Privacy Policy</a></li>
-              <li><a href="">Disclaimer</a></li>
             </ul>
           </div>
         </div>

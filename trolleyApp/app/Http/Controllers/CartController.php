@@ -266,12 +266,13 @@ class CartController extends Controller
                 }
                 $checkout->status = "Order Placed";
                 $checkout->save();
+                Cart::destroy();  
                 if($user = Sentinel::check()){
                     $user = User::findorfail($user->id);
                     Event::fire(new MadeCheckout($user, $checkout));
                     //temp cart gets deleted in the listener
                 }
-                Cart::destroy(); //clear cart data
+                 //clear cart data
                
             }
 

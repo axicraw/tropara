@@ -39,7 +39,8 @@ class SendReset
 
             $data['url'] = url('/resetpassword/?token='.$token->token);
             Mail::send('email.reset', $data, function ($message) use ($user) {
-                     $message->from('postmaster@sandbox832d8fcfab3c4dc6888feed3be7e49f3.mailgun.org');
+                     $message->from('reset@trolleyin.com');
+                     $message->subject('Trolleyin.com Password Reset');
                      $message->to($user->email);
             });
     }
