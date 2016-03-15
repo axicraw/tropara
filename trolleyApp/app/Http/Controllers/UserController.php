@@ -85,7 +85,7 @@ class UserController extends Controller
         $registered = Sentinel::registerAndActivate($new_user);
         if($registered){
           $user = User::find($registered->id);
-          $user->name = $requset->name;
+          $user->name = $request->name;
           $user->mobile = $request->mobile;
           $user->type = 'native';
           $user->active = 1;
