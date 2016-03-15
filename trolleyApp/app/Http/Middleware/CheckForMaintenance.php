@@ -19,7 +19,7 @@ class CheckForMaintenance
      */
     public function handle($request, Closure $next)
     {
-        dd($request);
+        //dd($request);
         // if ($this->app->isDownForMaintenance() && 
         //             !in_array($this->request->getClientIp(), ['86.10.190.248', '86.4.7.24']))
         // {

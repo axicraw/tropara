@@ -18,15 +18,15 @@ class IsAdmin
     {
         if($user = Sentinel::check())
         {
-            dd($request);
-            // if($user->hasAccess(['product.manage', 'order.manage', 'user.manage']))
-            // {
-            //     return $next($request);
-            // }
-            // else{
-            //     //dd($user);
-            //     return('You dont have the admin access');
-            // }
+            //dd($request);
+            if($user->hasAccess(['product.manage', 'order.manage', 'user.manage']))
+            {
+                return $next($request);
+            }
+            else{
+                //dd($user);
+                return('You dont have the admin access');
+            }
         }
         return redirect()->route('adminlogin');
     }
