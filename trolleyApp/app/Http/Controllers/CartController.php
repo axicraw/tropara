@@ -207,6 +207,24 @@ class CartController extends Controller
                 }else{
                     $address = $user->address;
                 }
+
+                $areas = Area::where('deliverable', '1')->get();
+                if($total < 250)
+                {
+                    if($area_id = $user->area_id)
+                    {
+                        //$delivery_cost = $areas->find($area_id)->delivery_cost;
+                    }
+                    elseif($area_id = $request->session()->get('deli_area'))
+                    {
+                        //$delivery_cost = $areas->find($area_id)->delivery_cost;
+                    }
+                    else
+                    {
+                        $area_id = "unknown";
+                    }
+                }
+
                 //dd($address);
                 if ($request->session()->has('deli_time')) {
                     //
@@ -230,7 +248,7 @@ class CartController extends Controller
                     $delivery_time = $start.'-'.$stop;
                 }
                 //create checkout and set user to it and also set payment status
-                $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$request->session()->get('deli_area'), 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed', 'deliverytime'=>$delivery_time]);
+                $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$area_id, 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed', 'deliverytime'=>$delivery_time]);
                 //if address is set then add to checkout 
                 if($address){
                     $checkout->address = $address;
@@ -290,6 +308,9 @@ class CartController extends Controller
         $tmp_address = $input['title'].'.'.$input['name'].",\r\n";
         $tmp_address .= $input['address'];
         $request->session()->put('tmp_address', $tmp_address);
+
+        $areaid = $input['area_id'];
+        $request->session()->put('deli_area', $areaid);
         return back();
     }
 

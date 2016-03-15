@@ -236,6 +236,20 @@
                <textarea id="address" name="address" cols="30" rows="4"></textarea>
              </div>
            </div>
+           <div class="row">
+             <div class="medium-2 columns">
+               <label for="area_id" class="inline">Area *</label>
+             </div>
+             <div class="medium-6 end columns">
+               <select name="area_id" id="area_id" required="required">
+                 @if(count($areas) > 0)
+                   @foreach($areas as $area)
+                     <option value="{{$area->id}}">{{$area->area_name}}</option>
+                   @endforeach
+                 @endif
+               </select>
+             </div>
+           </div>
           </div>
         </div>
         <div class="row">
