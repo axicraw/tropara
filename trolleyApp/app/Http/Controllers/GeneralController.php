@@ -124,4 +124,5 @@ class GeneralController extends Controller
 
         return back();
    }
+   
 }

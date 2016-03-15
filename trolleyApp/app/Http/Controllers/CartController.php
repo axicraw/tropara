@@ -342,9 +342,16 @@ class CartController extends Controller
         $areas = Area::where('deliverable', '1')->get();
         if($total < 250)
         {
-            if($area_id = $request->session()->get('deli_area')){
+            if($area_id = $user->area_id)
+            {
                 $delivery_cost = $areas->find($area_id)->delivery_cost;
-            }else{
+            }
+            elseif($area_id = $request->session()->get('deli_area'))
+            {
+                $delivery_cost = $areas->find($area_id)->delivery_cost;
+            }
+            else
+            {
                 $delivery_cost = "unknown";
             }
         }

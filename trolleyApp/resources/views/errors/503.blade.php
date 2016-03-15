@@ -35,12 +35,23 @@
                 font-size: 72px;
                 margin-bottom: 40px;
             }
+            .text-center{
+                text-align: center;
+            }
+            .tiny{
+                font-size: 16px;
+                color: #333;
+                letter-spacing: 2px;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <p class="text-center">
+                    <img src="images/logo_color.png" alt="Trolleyin.com" width="200">
+                </p>
+                <div class="title">Will be right back.</div>
             </div>
         </div>
     </body>

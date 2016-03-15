@@ -12,6 +12,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/mainten', ['middleware'=>'mainten',function(){
+
+}]);
 
 /**
  * Auth

@@ -32,5 +32,6 @@ class Kernel extends HttpKernel
         'customer' => \App\Http\Middleware\IsCustomer::class,
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'staff' => \App\Http\Middleware\IsStaff::class,
+        'mainten' => \App\Http\Middleware\CheckForMaintenance::class,
     ];
 }
