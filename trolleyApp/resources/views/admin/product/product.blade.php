@@ -60,9 +60,9 @@
 						<td>
 							<ul class="table-row-controls">
 								<li>
-									{!! Form::open(array('method'=>'delete', 'route'=>array('admin.product.destroy', $product->id))) !!}
-										<input type="submit" class="button tiny delete alert link delalert" value="">
-									{!! Form::close(); !!}
+									
+									<input data-id="{{ $product->id }}" type="submit" class="button tiny delete alert link prodel delalert" value="">
+									
 								</li>
 								<li>
 									<a class="primary" href="admin/product/{{ $product->id }}" ><i class="fa fa-pencil-square-o"></i></a>

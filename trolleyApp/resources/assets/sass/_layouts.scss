@@ -356,7 +356,9 @@ ul.side-menu{
 	background-color:$steel;
 	height:350px;
 	overflow: hidden;
-
+	h5.sp-thumbnail-text{
+		padding-top: 8px;
+	}
 }
 // .row.home-slider{
 // 	margin:0px;

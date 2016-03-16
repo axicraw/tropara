@@ -9357,6 +9357,8 @@ ul.side-menu {
   background-color: #666666;
   height: 350px;
   overflow: hidden; }
+  .home-slider h5.sp-thumbnail-text {
+    padding-top: 8px; }
 
 .offer-slider.slick-slider {
   margin-bottom: 0px; }

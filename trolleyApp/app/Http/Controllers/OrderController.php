@@ -22,7 +22,7 @@ class OrderController extends Controller
     {
         //
         //dd('this is orders');
-        $checkouts = Checkout::with('user', 'orders')->where("status", '!=', 'not confirmed')->get();
+        $checkouts = Checkout::with('user', 'orders')->where("status", '!=', 'not confirmed')->orderBy('updated_at', 'desc')->get();
         //dd($checkouts);
         return view('admin.order.order', compact('checkouts'));
     }

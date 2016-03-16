@@ -172,6 +172,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	//products
 	Route::resource('/product', 'ProductController');
 	Route::get('/product/search/{key}/', 'ProductController@search');
+	Route::get('/product/delete/{id}/', 'ProductController@destroy');
 	Route::put('/product/updatePrice/{id}', 'ProductController@updatePrice');
 	Route::put('/product/updateMrp/{id}', 'ProductController@updateMrp');
 	Route::post('/product/createPrice', 'ProductController@createPrice');

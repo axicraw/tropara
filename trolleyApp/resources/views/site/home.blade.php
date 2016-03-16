@@ -243,11 +243,11 @@
     console.log('inner script working');
       $( '#tro-slider' ).sliderPro({
         width:700,
-        height:310,
+        height:315,
         buttons:false,
         thumbnailsPosition:'top',
         thumbnailWidth:170,
-        thumbnailHeight:35
+        thumbnailHeight:48
       });
 
 

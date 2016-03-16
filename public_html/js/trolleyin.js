@@ -127,6 +127,16 @@ $(document).ready(function(){
 		}
 	});
 
+	/**product del btn **/
+	$(document).on('click', '.prodel', function(e){
+		e.preventDefault();
+		var id = $(this).data('id');
+		$('#formyes').on('click', function(f){
+			f.preventDefault();
+			window.location.href = 'admin/product/delete/'+id;
+		});
+	});
+
 	/****ajax search on data table*****
 	**************************************/
 	var searcbox = $('input.data-table-search');
@@ -181,7 +191,7 @@ $(document).ready(function(){
 				}
 				row += '<td>'+item.brand.brand_name+'</td>'
 						+'<td><ul class="table-row-controls">'
-						+'<li><input type="submit" class="button tiny delete alert link" value=""></li>'
+						+'<li><input data-id="'+item.id+'" type="submit" class="button prodel tiny delete alert link delalert" value=""></li>'
 						+'<li><a class="primary" href="admin/product/'+item.id+'"><i class="fa fa-pencil-square-o"></i></a></li></ul>'
 						+'</td></tr>';
 			targetTable.append(row);
