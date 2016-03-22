@@ -242,8 +242,32 @@ class CartController extends Controller
                     $stop = Carbon::now()->format('h:ia');
                     $delivery_time = $start.'-'.$stop;
                 }
+                //dd($delivery_time);
+                $total = Cart::total();
+                $areas = Area::all();
+                //calculate the total and delivery cost
+                if($total < 250)
+                {
+                    if($area_id)
+                    {
+                        $delivery_cost = $areas->find($area_id)->delivery_cost;
+                    }
+                    else
+                    {
+                        $delivery_cost = "0";
+                    }
+                }
+                else
+                {
+                    $delivery_cost = "0";
+                }
+
+                $total = $total + $delivery_cost;
+
+                //dd($total);
                 //create checkout and set user to it and also set payment status
-                $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$area_id, 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed', 'deliverytime'=>$delivery_time]);
+                $checkout = Checkout::create(['user_id'=>$user->id, 'area_id'=>$area_id, 'payment'=>false, 'payment_type'=>$payment_type, 'status'=>'not confirmed', 'deliverytime'=>$delivery_time, 'total'=>$total]);
+                //dd($checkout);
                 //if address is set then add to checkout 
                 if($address){
                     $checkout->address = $address;

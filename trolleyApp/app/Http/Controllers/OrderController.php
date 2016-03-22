@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PDF;
+use Event;
 use App\Order;
 use App\User;
+use App\Area;
 use App\Checkout;
 use App\Orderreturn;
+use App\Events\OrderDelivered;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -23,6 +26,7 @@ class OrderController extends Controller
         //
         //dd('this is orders');
         $checkouts = Checkout::with('user', 'orders')->where("status", '!=', 'not confirmed')->orderBy('updated_at', 'desc')->get();
+
         //dd($checkouts);
         return view('admin.order.order', compact('checkouts'));
     }
@@ -32,8 +36,9 @@ class OrderController extends Controller
     {
         //
         $checkout = Checkout::with('user','orders', 'orders.product')->findOrFail($id);
+        $area = Area::findOrFail($checkout->area_id);
         //dd($checkout);
-        return view('admin.order.item', compact('checkout'));
+        return view('admin.order.item', compact('checkout', 'area'));
 
     }
     public function printItems($id)
@@ -68,6 +73,8 @@ class OrderController extends Controller
     {
         //
         //dd($id);
+        $checkout = Checkout::findOrFail($id);
+        $user = User::findOrFail($checkout->user_id);
         $current_status = "Order Placed";
         if($status === '1')
         {
@@ -85,6 +92,7 @@ class OrderController extends Controller
         elseif($status === '4')
         {
             $current_status = "Delivered";
+            Event::fire(new OrderDelivered($user, $checkout));
         }
         $checkout = Checkout::find($id);
         $checkout->status = $current_status;

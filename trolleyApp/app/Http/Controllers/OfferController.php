@@ -8,6 +8,7 @@ use DB;
 use Carbon\Carbon;
 use App\Offerable;
 use App\Category;
+use App\Brand;
 use App\Product;
 use App\Offer;
 use App\Http\Requests;
@@ -84,6 +85,12 @@ class OfferController extends Controller
             foreach ($categoryIds as $id) {
                 $category = Category::find($id);
                 $offer->categories()->attach($offer->id, ['offerable_id' => $id, 'offerable_type' => 'App\Category']);
+            }
+        }elseif($offerfor == 'brand'){
+            $brandIds = $request->brands;
+            foreach ($brandIds as $id) {
+                $brand = Category::find($id);
+                $offer->brands()->attach($offer->id, ['offerable_id' => $id, 'offerable_type' => 'App\Brand']);
             }
         }  
         return redirect()->route('admin.offers');
@@ -173,8 +180,9 @@ class OfferController extends Controller
     public function ajax_search(){
         $categories = Category::all();
         $products = Product::all();
+        $brands = Brand::all();
 
-        $data = ['products'=>$products, 'categories'=>$categories];
+        $data = ['products'=>$products, 'categories'=>$categories, 'brands'=>$brands];
         //dd($data);
         return response()->json($data);
     }

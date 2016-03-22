@@ -14,7 +14,7 @@
                 @foreach($offer->products as $product)
                   @if($id < $limit)
                     {{--*/ $id++; /*--}}
-                    <div class="col5-unit columns">
+                    <div class="col5-unit columns end">
                       <div class="caro-prod">
                         <a href="/product/{{$product->id}}">
                           <div class="img-wrapper prod-img">

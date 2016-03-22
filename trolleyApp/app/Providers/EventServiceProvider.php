@@ -43,7 +43,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\ProductViewed'=>[
             'App\Listeners\AddViewStats'
-        ]
+        ],
+        'App\Events\OrderDelivered'=>[
+            'App\Listeners\SmsConfirmDelivery'
+        ], 
+
 
     ];
 

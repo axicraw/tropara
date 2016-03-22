@@ -62,7 +62,12 @@ class ProfileComposer
             $settings[$name] = $value;
         }
 
-        $offers = Offer::with(['categories', 'categories.products'=>function($q){$q->has('images');}, 'products'=>function($q){$q->has('images');}, 'products.images', 'products.prices'])->where('active', true)
+        $offers = Offer::with(['categories', 
+                    'categories.products'=>function($q){$q->has('images');}, 
+                    'brands', 'brands.products'=>function($q){$q->has('images');},
+                    'products'=>function($q){$q->has('images');}, 
+                    'products.images', 'products.prices'])
+                    ->where('active', true)
                     ->where('start', '<=', Carbon::today()->toDateString())
                     ->where('end', '>=', Carbon::today()->toDateString())
                     ->take(16)->get();

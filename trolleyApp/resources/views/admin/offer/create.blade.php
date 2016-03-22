@@ -64,6 +64,7 @@
 							<select id="selectFor" name="offerfor">
 								<option value="product">Products</option>
 								<option value="category" selected>Categories</option>
+								<option value="brand" selected>Brands</option>
 							</select>
 						</div>
 					</div>
@@ -78,6 +79,9 @@
 								</div>
 								<div class="medium-6 columns end categories-wrapper">
 									<select name="categories[]" id="sel_category" multiple="multiple"></select>
+								</div>
+								<div class="medium-6 columns end brands-wrapper">
+									<select name="brands[]" id="sel_brand" multiple="multiple"></select>
 								</div>
 							</div>
 						</div>
@@ -150,20 +154,28 @@
 			//select for 
 			var cateWrapper = $('.categories-wrapper');
 			var prodWrapper = $('.products-wrapper');
+			var brandWrapper = $('.brands-wrapper');
 			$('#selectFor').on('change', function(){
 				var selected = $(this).val();
 				if(selected == 'product'){
 					cateWrapper.hide();
+					brandWrapper.hide();
 					prodWrapper.show();
 				}else if(selected == 'category'){
+					brandWrapper.hide()
 					prodWrapper.hide();
 					cateWrapper.show();
+				}else if(selected == 'brand'){
+					cateWrapper.hide();
+					prodWrapper.hide();
+					brandWrapper.show();
 				}
 			});
 			$('#selectFor').trigger('change');
 			//var data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
 			var productLists =[];
 			var categoryLists =[];
+			var brandLists =[];
 			$.when(http_get('admin/offer/data/sync')).then(function(response){
 				$.each(response.products, function(i, item){
 					var product = {};
@@ -177,15 +189,26 @@
 					category['text'] = item.category_name;
 					categoryLists[i] = category;
 				});
-				populateSelects(productLists, categoryLists);
+				$.each(response.brands, function(i, item){
+					var brand = {};
+					brand['id'] = item.id;
+					brand['text'] = item.brand_name;
+					brandLists[i] = brand;
+				});
+				populateSelects(productLists, categoryLists, brandLists);
 			});
-			function populateSelects(productLists, categoryLists){
-				console.log(productLists);
+			function populateSelects(productLists, categoryLists, brandLists){
 				$('#sel_product').select2({
-					data: productLists
+					data: productLists,
+					width:'100%'
 				});
 				$('#sel_category').select2({
-					data: categoryLists
+					data: categoryLists,
+					width:'100%'
+				});
+				$('#sel_brand').select2({
+					data: brandLists,
+					width:'100%'
 				});
 			}
 		});

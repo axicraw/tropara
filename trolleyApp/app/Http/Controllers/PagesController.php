@@ -39,7 +39,7 @@ class PagesController extends Controller
     public function index(Request $request)
     {
         //dd($request->session()->all());
-        $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->get();
+        $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->orderBy('category_name')->get();
         $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(12)->get();
         $banners = Banner::all();
       
@@ -47,7 +47,7 @@ class PagesController extends Controller
 
     }
     public function category($catename){
-        $categories = Category::with('children')->where('parent_id', '=', 0)->get();
+        $categories = Category::with('children')->where('parent_id', '=', 0)->orderBy('category_name')->get();
         $main_category = Category::with('parent', 'children', 'children.products')->where('category_name', $catename)->firstOrFail();
         if(count($main_category->parent) > 0){
             $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
@@ -61,20 +61,20 @@ class PagesController extends Controller
         $sub_categories = Category::with('children')->where('parent_id', $main_category->id)->lists('id');
 
         $sub_products = Product::whereIn('category_id',$sub_categories)
-                        ->with('images', 'prices', 'prices.unit')->has('images')->has('prices')
+                        ->with('images', 'prices', 'prices.unit', 'mrps', 'mrps.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
         //dd($cate_products);
         return view('site/category', compact('categories', 'main_category','cate_products', 'parent_category', 'sub_products'));
     }
     public function product($id){
-        $product = Product::with(['images', 'brand', 'prices', 'prices.unit', 'offers', 'category', 'description', 'mrps', 'mrps.unit'])->find($id);
+        $product = Product::with(['images', 'brand', 'brand.offers','prices', 'prices.unit', 'offers', 'category', 'description', 'mrps', 'mrps.unit'])->find($id);
         $main_category = Category::with(['offers', 'children', 'products'=>function($q){$q->has('images');}])->find($product->category_id);
         if(count($main_category->parent) > 0){
             $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
         }else{
             $parent_category = null;
         }
-        $categories = Category::with('children')->where('parent_id', '=', 0)->get();
+        $categories = Category::with('children')->where('parent_id', '=', 0)->orderBy('category_name')->get();
         if($user = Sentinel::check())
         {
             $user_id = $user->id;

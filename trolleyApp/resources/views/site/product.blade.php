@@ -7,53 +7,7 @@
 <div class="full-width content-top veg">
   <div class="row collapse">
     <div class="small-3 columns">
-      <div class="row">
-        <ul class="side-menu">
-        
-            <h5 class="highlight no-margin lshadow">
-              <a class="cate-drop" href=""><i class="fi-list"></i> <span>categories</span></a>  - 
-              <span class="sub-heading">
-                @foreach ( $categories as $category )
-                  @if($category->id === $main_category->parent_id)
-                    {{$category->category_name}}
-                  @endif
-                @endforeach
-              </span>
-            </h5>
-            @if($parent_category != null)
-              @foreach ($parent_category->children as $child_cate)
-                  <li>
-                    <a href="category/{{ $child_cate->category_name }}">{{$child_cate->category_name}} ({{count($child_cate->products)}})</a>
-
-                  </li>              
-              @endforeach
-
-            @else
-              @foreach ($categories as $category)
-                @if(count($category->children) > 0)
-                  <li class="has-child">
-                    {{ $category->category_name }}
-                    <ul class="submenu">
-                    @foreach($category->children as $child)
-                      <li>
-                        <a href="category/{{ $child->category_name }}">{{$child->category_name}}
-                        ({{count($child->products)}})</a>
-                      </li>
-                    @endforeach
-                    </ul>
-                  </li>
-                @else
-                  <li>
-                    <a href="category/{{ $category->category_name }}">{{ $category->category_name }}
-                    ({{count($category->products)}})</a>
-                  </li>
-
-                @endif
-                
-              @endforeach
-            @endif
-        </ul>
-      </div>
+      @include('site.partials.side_cate')
 <!--       <div class="row collapse todays">
         <div class="small-12 columns">
           <h5 class="highlight">
@@ -208,6 +162,25 @@
                                     {{ $offer->amount }}% Off for all {{ $main_category->category_name }}
                                   @elseif ( $offer->offer_type == 2 )
                                     Rs.{{ $offer->amount }} Off on all {{ $main_category->category_name }}
+                                  @endif
+                              </p>
+                            </div>
+                          </div>
+                        @endif
+                      @endforeach
+                      <!-- <p class="micro">* Only one offer will be applicable. Whichever is higher will be reduced on checkout.</p> -->
+                    @endif
+                    @if ( $product->brand->offers->count() > 0)
+                      @foreach ($product->brand->offers as $offer)
+                        @if($offer->active == 1)
+                          <div class="row collapse">
+                            <div class="small-12 columns">
+                              <p class="tiny success tight">
+                                <span class="label success">Offer *</span>
+                                  @if ( $offer->offer_type == 1 )
+                                    {{ $offer->amount }}% Off for all {{ $product->brand->brand_name }}
+                                  @elseif ( $offer->offer_type == 2 )
+                                    Rs.{{ $offer->amount }} Off on all {{ $product->brand->brand_name }}
                                   @endif
                               </p>
                             </div>

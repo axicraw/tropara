@@ -66,6 +66,7 @@ Route::post('/newfeedback', ['as'=>'newfeedback','middleware' => 'customer', 'us
 **/
 
 Route::get('/termsandconditions', 'PlainController@terms');
+Route::get('/privacy', 'PlainController@privacy');
 
 
 /***

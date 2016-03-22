@@ -8,7 +8,7 @@ class Offer extends Model
 {
     //
     protected $table = 'offers';
-    protected $fillable = ['offer_name', 'start', 'end', 'product_id', 'category_id', 'offer_type', 'amount', 'active'] ;
+    protected $fillable = ['offer_name', 'start', 'end', 'product_id', 'category_id', 'brand_id', 'offer_type', 'amount', 'active'] ;
 
     public function products()
     {
@@ -16,7 +16,11 @@ class Offer extends Model
     }
     public function categories()
     {
-    	return $this->morphedByMany('App\Category', 'offerable');
+        return $this->morphedByMany('App\Category', 'offerable');
+    }
+    public function brands()
+    {
+    	return $this->morphedByMany('App\Brand', 'offerable');
     }
 
 

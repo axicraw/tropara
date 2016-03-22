@@ -12,9 +12,11 @@ class PlainController extends Controller
 {
     public function terms()
     {
-        $title = "Terms And Conditions";
-        $content = File::get('text/terms.txt');
         return view('site.terms');
 
+    }
+    public function privacy()
+    {
+        return view('site.privacy');
     }
 }

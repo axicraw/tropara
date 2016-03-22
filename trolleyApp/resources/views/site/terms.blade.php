@@ -7,132 +7,98 @@
   <div class="row page-content ">
     <div class="columns medium-10 medium-offset-1">
      <div class="plain-content">
-        <h4 class="title main text-center">Terms and Conditions</h4>
-        <div class="row">
-          <div class="medium-12 columns">
-            <ol style="list-style-type: decimal !important;">
-              <li>Context
-                <ol type="I">
-                  <li>What is <a href="http://www.trolleyin.com">www.trolleyin.com?</a>
-                    <ol type="a">
-                      <li><a href="http://www.trolleyin.com">www.trolleyin.com</a> ("Website") is an internet based portal owned and operated by GOLDEN TECHNOLOGIES, a company duly incorporated under the provisions of the Companies Act, 1956. The Website is a platform that facilitates the online sale and purchase of groceries/vegetable products and services offered by various merchants/ vendors/service providers ("Sellers") (collectively the "Services"). The Services are offered to the Users through various modes which shall include issue of discount coupons and vouchers that can be redeemed for various services. These terms and conditions of use ("Terms of Use") of the Website between trolleyin and the users/ Sellers/registrants of the Website ("You" or "Your" or "Yourself" or "User") describe the terms on which trolleyin offers You access to the Website and the Services through the Website.</li>
-                      <li>Customer Data : For providing its Services, trolleyin will host data and information. trolleyin will not review, share, distribute, or reference any such User data except as provided in the Terms of Use, or as may be required by law. Individual records of User data may be viewed or accessed only for the purpose of resolving a problem, support issues, or suspected violation of the Terms of Use, or as may be required by law. We would take all reasonable precautions for maintaining confidentiality of data.</li>
-                      <li>trolleyin can be reached, for all questions and directions related to this privacy policy, by
-                        <ol>
-                          <li>Send an email care@trolleyin.com or </li>
-                          <li>send us your query at  <a href="http://www.trolleyin.com">www.trolleyin.com</a> </li>
-                        </ol>
-                      </li>
-                    </ol> 
-                  </li>         
-                  <li>Why this privacy policy?
-                    <ol type="a">
-                      <li>This privacy policy is published in compliance of:
-                        <ol>
-                          <li>Section 43A of the Information Technology Act, 2000;</li>
-                          <li>Regulation 4 of the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Information) Rules, 2011 (the "SPI Rules"); and</li>
-                          <li>Regulation 3(1) of the Information Technology (Intermediaries Guidelines) Rules, 2011.</li>
-                        </ol>
-                      </li>
-                    </ol>
-                  </li>         
-                  <li>What is personal information?
-                    <ol type="a">
-                      <li>"Personal information" is defined under the SPI Rules to mean any information that relates to a natural person, which, either directly or indirectly, in combination with other information available or likely to be available with a body corporate, is capable of identifying such person.</li>
-                      <li>The SPI Rules further define "sensitive personal data or information" of a person to mean personal information about that person relating to:
-                        <ol>
-                          <li>passwords;</li>
-                          <li>financial information such as bank accounts, credit and debit card details or other payment instrument details;</li>
-                          <li>records and history.</li>
-                          <li>information received by body corporate under lawful contract or otherwise;</li>
-                          <li>visitor details as provided at the time of registration or thereafter; and</li>
-                          <li>call data records.</li>
-                        </ol>
-                      </li>
-                      <li>Information that is freely available in the public domain or accessible under the Right to Information Act, 2005 or any other law will not be regarded as sensitive personal data or information.</li>
-                    </ol>
-                  </li>
-                </ol>
-              </li>
-              <li>
-                Privacy Statements
-                <ol type="I">
-                  <li>All Visitors and Users Note:
-                    <ol type="a">
-                      <li>This section applies to all visitors and the Users.</li>
-                      <li>Accordingly, a condition of each User's use of and access to the Website and to the other services provided by golden technologies to Users is their acceptance of the Terms of Use located at Part B below, which also involves acceptance of the terms of this privacy policy. Any User that does not agree with any provisions of the same is required to leave the Website immediately.</li>
-                      <li>A User may have limited access to the Website and utilize some of the Services provided by golden technologies without creating an account on the Website. Unregistered Users can access some of the information and details available on the Website. In order to have access to all the features and benefits on our Website, a User may be required to first create an account on our Website. To create an account a User is required to provide the following information, which such User recognizes and expressly acknowledges is personal information allowing others, including Goldentechnologies, to identify the User: name, User ID, email address, country, ZIP/postal code, age, phone number, password chosen by the User and valid financial account information. Other information requested on the registration page, including the ability to receive promotional offers from golden technologies, is optional. Golden tech may, in future, include other optional requests for information from the User to help goldentech to customize the Website to deliver personalized information to the User. Without User's agreement, goldentech will not share, rent or sell any personal information with third parties in any way other than what is disclosed in this privacy policy.</li>
-                      <li>All the information provided to trolleyin by a User, including sensitive personal information, is voluntary. User has the right to withdraw his/her/its consent at any time, in accordance with the terms of this privacy policy and the Terms of Use, but please note that withdrawal of consent will not be retroactive.</li>
-                      <li>User can access, modify, correct and eliminate the data about him/her/it which has been collected pursuant to his/her/its decision to become a User. If User updates any of his/her/its information, trolleyin may keep a copy of the information which User originally provided to trolleyin in its archives for uses documented herein. trolleyin takes User's rights seriously and encourages User to use them if User deems this to be appropriate. User may exercise these rights by emailing trolleyin at  care@trolleyin.com.</li>
-                      <li>Due to the communications standards on the Internet, when a User visits the Website, trolleyin automatically receive the URL of the site from which such User came and the site to which such User is going when he/she/it leaves. trolleyin also receives the Internet Protocol (IP) address of each User's computer (or the proxy server a User used to access the World Wide Web), User's computer operating system and type of web browser the User is using, email patterns, as well as the name of User's ISP. This information is used to analyze overall trends to help trolleyin improve its Service. The linkage between User's IP address and User's personally identifiable information is not shared with third-parties without such User's permission or except when required by law. Notwithstanding the above, trolleyin may share some of the aggregate findings (not the specific data) with advertisers, sponsors, investors, strategic partners, and others in order to help grow its business.</li>
-                      <li>The Website uses temporary cookies to store certain data (that is not sensitive personal data or information) that is used by trolleyin and its service providers for the technical administration of the Website, research and development, and for User administration. In the course of serving advertisements or optimizing services to its Users, trolleyin may allow authorized third parties to place or recognize a unique cookie on the User's browser. trolleyin does not store personally identifiable information in the cookies.</li>
-                      <li>trolleyin may keep records of telephone calls received and made for making inquiries, orders or other purposes for the purpose of administration of Services, research and development and for User administration.</li>
-                      <li>Golden tech allows other companies, to serve advertisements to the Users. These companies include third party ad servers, ad agencies, ad technology vendors and research firms. trolleyin may "target" some ads to User that fit a certain general profile. trolleyin does NOT use personally identifiable information to target ads.</li>
-                      <li>This privacy policy applies to web sites and services that are owned and operated by goldentech. trolleyin does not exercise control over the sites displayed as search results or links from within its Services. These other sites may place their own cookies or other files on the Users computer, collect data or solicit personal information from the Users, for which trolleyin is not responsible or liable. Accordingly,trolleyin does not make any representations concerning the privacy practices or policies of such third parties or terms of use of such websites, nor does trolleyin guarantee the accuracy, integrity, or quality of the information, data, text, software, sound, photographs, graphics, videos, messages or other materials available on such websites. The inclusion or exclusion does not imply any endorsement by goldentech of the website, the website's provider, or the information on the website. Golden tech encourages the User to read the privacy policies of that website.</li>
-                      <li>The Website may enable User to communicate with other Users or to post information to be accessed by others, whereupon other Users may collect such data. goldentech hereby expressly disclaims any liability for any misuse of such information that is made available by visitors in such a manner.</li>
-                      <li>trolleyin does not collect information about the visitors of the Website from other sources, such as public records or bodies, or private organizations, save and except for the purposes of registration of the Users (the collection, storage and disclosure of which each User must agree to under the terms of use in order for trolleyin to effectively render the Services).</li>
-                      <li>trolleyin does not knowingly collect personal data from children.</li>
-                      <li>Golden tech has implemented Indian legal industry standard security policies, rules and technical measures to protect the personal data that it has under its control from unauthorized access, improper use or disclosure, unauthorized modification and unlawful destruction or accidental loss.</li>
-                      <li>trolleyin will not disclose any personal information or data to governmental institutions or authorities unless such disclosure is requisitioned under any Indian law or judicial decree or when golden technologies, in its sole discretion, deems it necessary in order to protect its rights or the rights of others, to prevent harm to persons or property, to fight fraud and credit risk, or to enforce or apply our terms of use.</li>
-                      <li>trolleyin addresses any discrepancies and grievances of all Users with respect to processing of information in a time bound manner. For this purpose, trolleyin has designated a Grievance Officer, who will redress the grievances of the Users expeditiously but within one month from the date of receipt of grievance, and who can be reached by:
-                        <ol>
-                          <li>Send an email to care@trolleyin.com or</li>
-                          <li>send us your query at: <a href="http://www.trolleyin.com">www.trolleyin.com</a> </li>
-                        </ol>
-                      </li>
-                    </ol>
-                  </li>
-                  <li>Users Note:
-                    <ol type="a">
-                      <li>As part of the registration/application creation and submission process that is available to Users on this website, certain information, including sensitive personal data or information is collected from the Users.</li>
-                      <li>All the statements in this privacy policy apply to all Users, and all Users are therefore required to read and understand the privacy statements set out herein prior to submitting any sensitive personal data or information to golden tech, failing which they are required to leave this Website immediately.</li>
-                      <li>If you have inadvertently submitted any such information to trolleyin prior to reading the privacy statements set out herein, and you do not agree with the manner in which such information is collected, stored or used, then you may access, modify and delete all information stored about You by trolleyin by clicking on the "Edit Profile" link on the navigation bar of the Website. In addition, any User can ask trolleyin, by sending an email care@trolleyin.com whether trolleyin is keeping personal data about him/her, and every User is also entitled to require trolleyin to delete and destroy all such information relating to him/her (but not other Users) in its possession.</li>
-                      <li>Users' personally identifiable information they choose to provide on the Website is used to help the Users describe / identify themselves. Other information that does not personally identify the Users as an individual, is collected by trolleyin from Users (such as, patterns of utilization described above) and is exclusively owned by GOLDEN TECHNOLOGIES. trolleyin may also use such information in an aggregated or non-personally identifiable form for research, statistical analysis and business intelligence purposes, and may sell or otherwise transfer such research, statistical or intelligence data in an aggregated or non-personally identifiable form to third parties and affiliates. If trolleyin wishes to use any User's personal data for a new purpose, it will seek such User's permission before doing so.</li>
-                      <li>trolleyin will communicate with the Users through email and notices posted on the Website or through other means available through the service, including text and other forms of messaging. The Users can change their e-mail and contact preferences at any time by logging into their "Account" at <a href="http://www.trolleyin.com">www.trolleyin.com</a> and changing the account settings.</li>
-                      <li>At times, trolleyin conducts a User survey to collect information about Users' preferences. These surveys are optional and if Users choose to respond, their responses will be kept anonymous. Similarly, trolleyin may offer contests to qualifying Users in which we ask for contact and demographic information such as name, email address and mailing address. None of this information is shared with third parties, except in summary form, if at all. The demographic information that trolleyin collects in the registration process and through surveys is used to help trolleyin improve its Services to meet the needs and preferences of Users. This may include targeting advertising to Users about our Services. Information we gather through a contest may also be disclosed to third parties, as necessary, for prize fulfillment and other aspects of any contest or similar offering.</li>
-                      <li>All trolleyin employees and data processors, who have access to, and are associated with the processing of sensitive personal data or information, are obliged to respect the confidentiality of every User's sensitive personal data and information.</li>
-                      <li>trolleyin may also disclose or transfer User's personal and other information a User provides, to another third party as part of reorganization or a sale of the assets of a golden technologies corporation division or company. Any third party to which golden tech transfers or sells its assets will have the right to continue to use the personal and other information that a User provide to us.</li>
-                      <li>To the extent necessary to provide Users with the services on the Website, trolleyin may provide their Personal Information to third party contractors who work on behalf of or with trolleyin to provide Users with such services, to help trolleyin communicate with Users or to maintain the Website. Generally these contractors do not have any independent right to share this information, however certain contractors who provide services on the Website, including the providers of online communications services, will have rights to use and disclose the personal information collected in connection with the provision of these services in accordance with their own privacy policies.</li>                
-                    </ol>
-                  </li>
-                  <li>Registration Process
-                    <ol type="a">
-                      <li>As part of the registration process, trolleyin collects the following personal information from the Users:
-                        <ol>
-                          <li>Name;</li>
-                          <li>User ID;</li>
-                          <li>Email address;</li>
-                          <li>Address (including country and ZIP/postal code);</li>
-                          <li>Phone number;</li>
-                          <li>Password chosen by the User;</li>
-                          <li>Valid financial account information; and</li>
-                          <li>Other details as the User may volunteer.</li>
-                        </ol>
-                      </li>
-                      <li>All the information listed in 3.1 of this privacy policy ("User Information") is maintained by trolleyin in electronic form on its equipment, and on the equipment of its employees. User Information may also be converted to physical form from time to time. Regardless of the manner of storage, trolleyin will keep all User Information confidential, and will only disclose End User Information in the following manner:
-                        <ol>
-                          <li>
-                            Trolleyin makes all User Information accessible to its employees only on a need-to-know basis, and binds all such employees to strict confidentiality obligations.
-                          </li>
-                          <li>Part of the functionality of the Website is assisting the Sellers to maintain and organise such information to effect sale and purchase of products. trolleyin may, therefore, retain and submit all such records to the appropriate authorities, or to Sellers who request access to such information.</li>
-                          <li>Part of the functionality of the Website is assisting the Users to access information relating to groceries products. trolleyin may, therefore, retain and submit all such records to the relevant Users.</li>
-
-                        </ol>
-                      </li>
-                      <li>Notwithstanding the above, trolleyin shall not be responsible for any breach of security or for any actions of any third parties that receive Users personal data or events that are beyond the reasonable control of trolleyin  including, acts of government, computer hacking, unauthorized access to computer data and storage device, computer crashes, breach of security and encryption, etc.</li>
-                    </ol>
-                  </li>
-                  <li>Change to privacy policy
-                    <ol type="a">
-                      <li>The Users acknowledge that this privacy policy is part of the Terms of Use and unconditionally agree that becoming a User of the Website and its Services signifies their assent to this privacy policy. User's visit and any dispute over privacy is subject to this policy and Terms of Use. trolleyin may update this privacy policy at any time, with or without advance notice. In the event there are significant changes in the way trolleyin treats User's personally identifiable information, trolleyin will display a notice on the Website or send Users an email, as provided for above. Unless stated otherwise, trolleyin current privacy policy applies to all information that trolleyin has about Users and their account. Notwithstanding the above, trolleyin  shall not be required to notify the Users of any changes made to the privacy policy.</li>
-                      <li>If a User uses the Service after notice of changes have been sent to such User or published on the Website, such User hereby provides his/her/its consent to the changed practices.</li>                
-                    </ol>
-                  </li>
-                </ol>
-              </li>
-            </ol>
-          </div>
+      <h4 class="title main text-center">Terms of Use at www.trolleyin.com</h4>
+      <div class="row">
+        <div class="medium-12 columns">
+          <ol>
+            <li>Context</li>
+            <p>What is this document?</p>
+            <p>These Terms of Use, read together with the privacy policy located at Part A above, constitute a legal and binding contract between you the User (whether you are a visitor or a User) of the one part, and www.trolleyin.com of the other Part (the "Agreement") providing, among other things, the terms and conditions for use of Services hosted and managed remotely through the Website. The site www.strolleyin.com is owned and operated by Golden Technologies.
+            You must be 18 years of age or older to register, use this computer resource, or visit or use the Website in any manner. By registering, visiting the Website or accepting this Agreement, you represent and warrant to www.trolleyin.com that you are 18 years of age or older, and that you have the right, authority and capacity to use the Website and agree to and abide by this Agreement.
+            The Agreement is published in compliance of, and is governed by the provisions of Indian law, including but limited to:
+            The Indian Contract Act, 1872,
+            The (Indian) Information Technology Act, 2000, and
+            the rules, regulations, guidelines and clarifications framed thereunder, including the (Indian) Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Information) Rules, 2011 (the "SPI Rules"), and the (Indian) Information Technology (Intermediaries Guidelines) Rules, 2011 (the "IG Rules").
+            A condition of the User's use of and access to the Website and to the other services provided by www.trolleyin.com to Users (together with the Website, the "Services") is the User's acceptance of this Agreement. Any User that does not agree with any provisions of the same is required to leave this computer resource / the Website immediately and immediately discontinue use of all other Services
+            www.trolleyin.com recommends that you must read the terms of use carefully. Your use of services on the website means you are consenting to this agreement.
+            www.trolleyin.com authorizes the User to view and access the content available on or from the Website solely for visiting, ordering, receiving, delivering and communicating only as per this Agreement. The contents of the Website, information, text, graphics, images, logos, button icons, software code, design, and the collection, arrangement and assembly of content on the Website (collectively, "www.trolleyin.com Content"), are the property of www.trolleyin.com and are protected under copyright, trademark and other laws. User shall not modify the www.trolleyin.com Content or reproduce, display, publicly perform, distribute, or otherwise use the www.trolleyin.com Content in any way for any public or commercial purpose or for personal gain. Multiple people are not permitted to share the same/single log in.</p>
+            <li>Services and use of Website:</li>
+            <p>The content of the Website, including without limitation, text, copy, audio, video, photographs, illustrations, graphics and other visuals, is for informational purposes only. Reliance on any information appearing on the Website, whether provided by www.trolleyin.com, its content provides, visitors to the Website or others, is solely at Your own risk.
+            You do hereby grant us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sub-licensable right to exercise the copyright, publicity, and database rights (but no other rights) You have in Your information, in any media now known or not currently known, with respect to Your information to enable www.trolleyin.com to use the information for the purpose of providing the Services.
+            www.trolleyin.com provides Services through the Website,
+            www.trolleyin.com may, at its sole discretion, suspend User's ability to use or access the Website at any time while www.trolleyin.com investigates complaints or alleged violations of this Agreement, or for any other reason. If Users find any wrong information on the Website in relation to such User, they can correct it themselves or contact www.trolleyin.com immediately for such corrections. www.trolleyin.com shall have no liability or responsibility in this regard.
+            Payment, Fees and Taxes:
+            Registration on the Website and the information is free. www.trolleyin.com does not charge any fee for browsing and buying on the Website. The User agrees to make all payments directly to the site owner purchase of products from  www.trolleyin.com  
+            Each User / member is solely responsible for payment of all taxes, legal compliances, statutory registrations and reporting. www.trolleyin.com is in no way responsible for any of the taxes.
+            Collection, Use, Storage and Transfer of Personal Information
+            The terms "personal information" and "sensitive personal data or information" are defined under the SPI Rules, and are reproduced in the privacy policy</p>
+            <li>The privacy policy sets out:</li>
+            <p>The type of information collected from Users, including sensitive personal data or information;
+            The purpose, means and modes of usage of such information; and
+            How and to whom www.trolleyin.com will disclose such information.
+            www.trolleyin.com shall not be responsible in any manner for the authenticity of the personal information or sensitive personal data or information supplied by the User to www.trolleyin.com.
+            The use of this computer resource involves every User's registration information and browsing history being stored and submitted to the appropriate authorities. The consent and procedure for such collection and submission is provided in the privacy policy. The other information collected by www.trolleyin.com from Users as part of the registration process is described in the privacy policy. The consent and revocation procedures in relation to the same are set out in the privacy policy.
+            The User is responsible for maintaining the confidentiality of the User's account access information and password. The User shall be responsible for all uses of the User's account and password, whether or not authorized by the User. The User shall immediately notify www.trolleyin.com of any actual or suspected unauthorized use of the User's account or password.
+            If a User provides any information that is untrue, inaccurate, not current or incomplete (or becomes untrue, inaccurate, not current or incomplete), or www.trolleyin.com has reasonable grounds to suspect that such information is untrue, inaccurate, not current or incomplete, www.trolleyin.com has the right to suspend or terminate such account at its sole discretion.</p>
+            <li>Covenants</li>
+            <p>As mandated by Regulation 3(2) of the IG Rules, www.trolleyin.com hereby informs the User that the User is not permitted to host, display, upload, modify, publish, transmit, update or share any information that —
+            Belongs to another person and to which the User does not have any right to;
+            is grossly harmful, harassing, blasphemous, defamatory, obscene, pornographic, paedophilic, libelous, invasive of another's privacy, hateful, or racially, ethnically objectionable, disparaging, relating or encouraging money laundering or gambling, or otherwise unlawful in any manner whatever;
+            Harm minors in any way;
+            Infringes any patent, trademark, copyright or other proprietary rights;
+            Violates any law for the time being in force;
+            Deceives or misleads the addressee about the origin of such messages or communicates any information which is grossly offensive or menacing in nature;
+            Impersonate another person;
+            contains software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer resource;
+            is prohibited under applicable law for the time being in force 
+            Threatens the unity, integrity, defence, security or sovereignty of India, friendly relations with foreign states, or public order or causes incitement to the commission of any cognisable offence or prevents investigation of any offence or is insulting any other nation.
+            The User is also prohibited from:
+            Violating or attempting to violate the integrity or security of the Website or any www.trolleyin.com Content;
+            Transmitting any information (including job posts, messages and hyperlinks) on or through the Website that is disruptive or competitive to the provision of Services by www.trolleyin.com;
+            Intentionally submitting on the Website any incomplete, false or inaccurate information;
+            Making any unsolicited communications to other Users;
+            Using any engine, software, tool, agent or other device or mechanism (such as spiders, robots, avatars or intelligent agents) to navigate or search the Website;
+            Attempting to decipher, decompile, disassemble or reverse engineer any part of the Website;
+            Copying or duplicating in any manner any of the www.trolleyin.com Content or other information available from the Website;
+            Framing or hot linking or deep linking any www.trolleyin.com Content
+            www.trolleyin.com, upon obtaining knowledge by itself or been brought to actual knowledge by an affected person in writing or through email signed with electronic signature about any such information as mentioned in 4.2 above, shall be entitled to disable such information that is in contravention of 4.2. www.trolleyin.com shall be entitled to preserve such information and associated records for at least 90 (ninety) days for production to governmental authorities for investigation purposes.
+            In case of non-compliance with any applicable laws, rules or regulations, or the Agreement (including the privacy policy) by a User, www.trolleyin.com has the right to immediately terminate the access or usage rights of the User to the Services and to remove non compliant information.
+            www.trolleyin.com may disclose or transfer User Information (as defined in the privacy policy) to its affiliates in other countries, and you hereby consent to such transfer. The SPI Rules only permit www.trolleyin.com to transfer sensitive personal data or information including any information, to any other body corporate or a person in India, or located in any other country, that ensures the same level of data protection that is adhered to by www.trolleyin.com as provided for under the SPI Rules, only if such transfer is necessary for the performance of the lawful contract between www.trolleyin.com or any person on its behalf and the user or where the User has consented to data transfer.</p>
+            <li>Liability</li>
+            <p>www.trolleyin.com shall not be responsible or liable in any manner to the Users for any losses, damage, injuries or expenses incurred by the Users as a result of any disclosures made by www.trolleyin.com, where the User has consented to the making of disclosures by www.trolleyin.com. If the User had revoked such consent under the terms of the privacy policy, then www.trolleyin.com shall not be responsible or liable in any manner to the User for any losses, damage, injuries or expenses incurred by the User as a result of any disclosures made by www.trolleyin.com prior to its actual receipt of such revocation.
+            The User shall not hold www.trolleyin.com responsible or liable in any way for any disclosures by www.trolleyin.com under Regulation 6 of the SPI Rules.
+            The Services provided by www.trolleyin.com or any of its licensors or providers are provided "as is," as available, and without any warranties or conditions (express or implied, including the implied warranties of merchantability, accuracy, fitness for a particular purpose, title and non-infringement, arising by statute or otherwise in law or from a course of dealing or usage or trade). www.trolleyin.com does not provide or make any representation, warranty or guaranty, express or implied about the Website or the Services. 
+            The Website may be linked to the website of third parties, affiliates and business partners. www.trolleyin.com has no control over, and not liable or responsible for content, accuracy, validity, reliability, quality of such websites or made available by/through our Website.
+            Inclusion of any link on the Website does not imply that www.trolleyin.com endorses the linked site. User may use the links and these services at User's own risk.
+            www.trolleyin.com assumes no responsibility, and shall not be liable for, any damages to, or viruses that may infect User's equipment on account of User's access to, use of, or browsing the Website or the downloading of any material, data, text, images, video content, or audio content from the Website. If a User is dissatisfied with the Website, User's sole remedy is to discontinue using the Website.
+            In no event, including but not limited to negligence, shall www.trolleyin.com, or any of its directors, officers, employees, agents or content or service providers (collectively, the "protected entities") be liable for any direct, indirect, special, incidental, consequential, exemplary or punitive damages arising from, or directly or indirectly related to, the use of, or the inability to use, the Website or the content, materials and functions related thereto, User's provision of information via the Website, lost business or lost sales,even if such protected entity has been advised of the possibility of such damages. In no event shall the protected entities be liable for provision of or failure to provide all . In no event shall the protected entities be liable for or in connection with any content posted, transmitted, exchanged or received by or on behalf of any User or other person on or through the Website. In no event shall the total aggregate liability of the protected entities to a User for all damages,
+            losses, and causes of action (whether in contract or tort, including, but not limited to, negligence or otherwise) arising from the terms and conditions or a User's use of the Website exceed, in the aggregate Rs. 1000.
+            In no event shall the protected entities be liable for failure on the part of the Sellers to provide agreed products or services. In no event shall the protected entities be liable for any comments or feedback given by any of the Users in relation to the services provided.including User's comments and feedbacks. In no event shall the protected entities be liable or responsible for the listing order of  the Website.</p>
+            <li>Indemnity</li>
+            <p>User agrees to indemnify and hold harmless www.trolleyin.com, its affiliates, officers, directors, employees, consultants, licensors, agents, and representatives from any and all third party claims, losses, liability, damages, and/or costs (including reasonable attorney fees and costs) arising from his/her/its access to or use of Website, violation of this Agreement, or infringement by any other user of his/her/its account, of any intellectual property or other right of any person or entity. www.trolleyin.com will notify you promptly of any such claim, loss, liability, or demand, and in addition to Your foregoing obligations, You agree to provide us with reasonable assistance, at Your expense, in defending any such claim, loss, liability, damage, or cost.</p>
+            <li>Term, Termination and Disputes</li>
+            <p>This Agreement will remain in full force and effect while the User is a user of the Website in any form or capacity.
+            www.trolleyin.com reserves the right to terminate any account in cases:
+            A User breaches any terms and conditions of this Terms of Use or privacy policy;
+            www.trolleyin.com is unable to verify or authenticate any information provided to www.trolleyin.com by a User; or
+            www.trolleyin.com believes in its sole discretion that User's actions may cause legal liability for such User, other Users or for www.trolleyin.com or are contrary to the interests of the Website.
+            Once temporarily suspended, indefinitely suspended or terminated, the User may not continue to use the Website under the same account, a different account or re-register under a new account.
+            www.trolleyin.com shall have no obligation to maintain or provide any of User's data and shall thereafter, unless legally prohibited, delete all User's data in its systems or otherwise in its possession or under its control.
+            www.trolleyin.com reserves the right, at its sole discretion, to pursue all of its legal remedies, including but not limited to deletion of the User's content from the Website and immediate termination of the User's account with or without ability to access the Website and the other Services, upon any breach by the User of this Agreement or if www.trolleyin.com is unable to verify or authenticate any information the User submits to www.trolleyin.com, or if the User fails to provide (or after providing such consent, later revokes) the consents necessary or desirable for www.trolleyin.com to provide the Services to the User.
+            This Agreement and any contractual obligation between www.trolleyin.com and User will be governed by the laws of India, subject to the exclusive jurisdiction of Courts in Trichy
+            All disputes will be subject to arbitration in TRICHY in English or Tamil by a single arbitrator appointed by www.trolleyin.com under the Arbitration and Conciliation Act, 1996.
+            Even after termination, certain obligations mentioned under Covenants, Liability, Indemnity, Intellectual Property, Dispute Resolution will continue and survive termination.
+            Severability and Waiver Contact Information
+            If any provision of this Terms of Use is held to be invalid or unenforceable, such provision shall be struck and the remaining provisions shall be enforced.
+          
+            Contact Information
+            If a User has any questions, issue, complaint regarding any of our Services, Website, this Agreement, or anything related to any of the foregoing, www.trolleyin.com can be reached at the following
+            email address care@trolleyin.com or
+            send us your query at: www.trolleyin.com contact page</p>
+          </ol>
         </div>
+      </div>
+    </div>
      </div>
     </div>
   </div>

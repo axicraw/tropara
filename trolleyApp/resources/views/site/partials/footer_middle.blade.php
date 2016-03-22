@@ -42,10 +42,10 @@
           <div class="row policy">
             <h5 class="tight">Policies</h5>
             <ul>
-              <li><a href="">Shipping</a></li>
+              <li><a href="#">Shipping</a></li>
               <li><a href="">Return Policy</a></li>
               <li><a href="/termsandconditions">Terms & Conditions</a></li>
-              <li><a href="">Privacy Policy</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
             </ul>
           </div>
         </div>

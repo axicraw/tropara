@@ -3,10 +3,12 @@
 	<div class="row page-title">
 		<div class="medium-6 columns">
 			<h3 class="title">Order No - {{$checkout->id}}</h3>
-			<h5>Customer : {{$checkout->user->id}}</h5>
+			<h5>Customer : {{$checkout->user->id}} / {{$checkout->user->name}}</h5>
 			<p>
 				Address:<br>
-				{{$checkout->address}}
+				{{$checkout->address}} <br>
+				{{$area->area_name}}
+
 			</p>
 		</div>
 		<div class="medium-6 columns">
@@ -32,6 +34,9 @@
 					</tr>
 				@endforeach
 			</table>
+			<p class="text-right">
+				Total (including shipping) : <i class="fa fa-ruppee"></i>{{$checkout->total}}
+			</p>
 
 		</div>
 		<div class="medium-8 end columns">

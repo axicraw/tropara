@@ -29,7 +29,6 @@ class ProdCate extends Migration
            $table->boolean('active');
            $table->integer('brand_id')->unsigned();
            $table->integer('category_id')->unsigned();
-
            $table->timestamps();
        });
        Schema::create('prices', function(Blueprint $table) {

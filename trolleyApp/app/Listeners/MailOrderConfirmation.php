@@ -48,6 +48,7 @@ class MailOrderConfirmation
         }
 
         $data = [
+            'checkout' => $checkout,
             'orders' => $orders,
             'user' => $user
         ];

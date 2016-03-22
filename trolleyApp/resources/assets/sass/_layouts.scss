@@ -112,6 +112,8 @@ body > .row{
 	border-bottom: $primary-color solid 2px;
 	//box-shadow:0px 2px 5px -2px #777;
 	margin-bottom:20px;
+	position:relative;
+	z-index:2000;
 	.logo-wrapper{
 		padding: 5px 0px 0px 0px;
 		img{
@@ -283,6 +285,11 @@ ul.side-menu{
 	.cate-drop{
 		color:$white;
 	}
+	li, li.has-child{
+		a{
+			font-size: 13px !important;
+		}
+	}
 	//border: 2px solid $primary-color;
 	 >li{
 	 	/*padding: 5px 0px;*/
@@ -292,14 +299,63 @@ ul.side-menu{
 	 		display: block;
 	 		padding: 5px 0px;
 	 		color:$oil;
-	 		font-size: 14px;
 
 	 		text-transform: uppercase;
 	 		i{
 	 			margin-right: 10px;
 	 		}
 	 	}
+		.sublevel{
+			@include lshadow();
+			position: absolute;
+			height: 315px;
+			width: 270px;
+			display: none;
+			background:#fff;
+			left: 290px;
+			top:47px;
+			z-index: 1000;
+			.sublists{
+				margin:0px;
+				padding:0px;
+				li{
+					padding-left:20px;
+					border-bottom: 1px solid $smoke;
+					.sublevel2{
+						position: absolute;
+						height: 315px;
+						width: 270px;
+						display: none;
+						background:#fff;
+						left: 270px;
+						top:0px;
+						z-index: 1001;
+					}
+				}
+				li:hover{
+					
+					background: $silver;
+					border-bottom:1px solid $primary-color;
+					.sublevel2{
+						display: block;
+					}
+				}
+				>li.has-child:after {
+				    content: '\f0da';
+				    font-family: FontAwesome;
+				        font-style: normal;
+				        font-weight: normal;
+				        text-decoration: inherit;
+				      height: 0;
+				      position: absolute;
+				      width: 0;
+				      right:20px;
+				      color:$oil;
+				      margin-top: -27px;
+				}
 
+			}
+		}
 	 	ul.submenu{
 			position:absolute;
 			z-index: 400;
@@ -311,39 +367,73 @@ ul.side-menu{
 			margin-top: -35px;
 			li{
 				margin:0px;
-				padding:0px 0px 0px 25px;
 				border-bottom: 1px solid $smoke;
+				ul.submenu.level2{
+					margin: 0px;
+					li{
+						margin:0px;
+					}
+				}
 			}
 	 	}
 	 }
+	 :nth-child(2){
+	 	//margin-top:12px;
+	 }
 	 >li:hover{
 	 	background: $silver;
+	 	border-bottom:1px solid $primary-color;
+	 	.sublevel{
+	 		display: block;
+	 	}
 	 	ul.submenu{
 	 		display: block;
 	 		li{
 				a{
 
 				}
+				
 	 		}
 	 		li:hover{
 	 			background-color: $silver;
 	 			a{
 
 	 			}
+
+	 			ul.submenu{
+	 				display: block;
+	 				li{
+
+	 				}
+	 			}
+	 		}
+
+	 		>li.has-child:after {
+	 		    content: '\f0da';
+	 		    font-family: FontAwesome;
+	 		        font-style: normal;
+	 		        font-weight: normal;
+	 		        text-decoration: inherit;
+	 		      height: 0;
+	 		      position: absolute;
+	 		      width: 0;
+	 		      right:20px;
+	 		      color:$oil;
 	 		}
 	 	}
 	 }
 	 >li.has-child:after {
 	     content: '\f0da';
 	     font-family: FontAwesome;
-	         font-style: normal;
-	         font-weight: normal;
-	         text-decoration: inherit;
-	       height: 0;
-	       position: absolute;
-	       width: 0;
-	       right:20px;
-	       color:$oil;
+	     font-style: normal;
+	     font-weight: normal;
+	     text-decoration: inherit;
+	     height: 0;
+	     position: absolute;
+	     width: 0;
+	     right:20px;
+	     color:$oil;
+	     margin-top: -27px;
 	 }
 	 li:last-child{
 	 	border-bottom: none;

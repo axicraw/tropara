@@ -8,7 +8,7 @@ class Checkout extends Model
 {
     //
     protected $table = "checkouts";
-    protected $fillable = ["user_id", "payment", "address", "status", "area_id"];
+    protected $fillable = ["user_id", "payment", "address", "payment_type","status", "area_id", "total", 'deliverytime'];
 
     public function orders(){
     	return $this->hasMany('App\Order', 'checkout_id', 'id');

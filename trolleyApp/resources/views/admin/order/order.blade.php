@@ -18,6 +18,7 @@
 					<th>Address</th>
 					<th>Items</th>
 					<th>Payment</th>
+					<th>Delivery Time</th>
 					<th>Status</th>
 					<th></th>
 				</tr>
@@ -34,6 +35,7 @@
 								Cash On Delivery
 							@endif
 						</td>
+						<td>{{$checkout->deliverytime}}</td>
 						<td>
 							{{$checkout->status}}
 						</td>

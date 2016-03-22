@@ -8729,7 +8729,7 @@ body, p, div, li, a, label, input, option, h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF; }
 
 h5.highlight {
-  padding: 5px 10px; }
+  padding: 11px 10px; }
 
 .no-margin {
   margin: 0px; }
@@ -9180,7 +9180,9 @@ body > .row {
 .header-middle {
   background-color: #1A2A42;
   border-bottom: #39A4EA solid 2px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2000; }
   .header-middle .logo-wrapper {
     padding: 5px 0px 0px 0px; }
     .header-middle .logo-wrapper img {
@@ -9306,6 +9308,8 @@ ul.side-menu {
     font-size: 16px; }
   ul.side-menu .cate-drop {
     color: #FFFFFF; }
+  ul.side-menu li a, ul.side-menu li.has-child a {
+    font-size: 13px !important; }
   ul.side-menu > li {
     /*padding: 5px 0px;*/
     border-bottom: 1px solid #EEEEEE;
@@ -9314,10 +9318,51 @@ ul.side-menu {
       display: block;
       padding: 5px 0px;
       color: #333333;
-      font-size: 14px;
       text-transform: uppercase; }
       ul.side-menu > li a i {
         margin-right: 10px; }
+    ul.side-menu > li .sublevel {
+      box-shadow: 0px 0px 5px -2px #AAAAAA;
+      position: absolute;
+      height: 315px;
+      width: 270px;
+      display: none;
+      background: #fff;
+      left: 290px;
+      top: 47px;
+      z-index: 1000; }
+      ul.side-menu > li .sublevel .sublists {
+        margin: 0px;
+        padding: 0px; }
+        ul.side-menu > li .sublevel .sublists li {
+          padding-left: 20px;
+          border-bottom: 1px solid #EEEEEE; }
+          ul.side-menu > li .sublevel .sublists li .sublevel2 {
+            position: absolute;
+            height: 315px;
+            width: 270px;
+            display: none;
+            background: #fff;
+            left: 270px;
+            top: 0px;
+            z-index: 1001; }
+        ul.side-menu > li .sublevel .sublists li:hover {
+          background: #EFEFEF;
+          border-bottom: 1px solid #39A4EA; }
+          ul.side-menu > li .sublevel .sublists li:hover .sublevel2 {
+            display: block; }
+        ul.side-menu > li .sublevel .sublists > li.has-child:after {
+          content: '\f0da';
+          font-family: FontAwesome;
+          font-style: normal;
+          font-weight: normal;
+          text-decoration: inherit;
+          height: 0;
+          position: absolute;
+          width: 0;
+          right: 20px;
+          color: #333333;
+          margin-top: -27px; }
     ul.side-menu > li ul.submenu {
       position: absolute;
       z-index: 400;
@@ -9329,14 +9374,33 @@ ul.side-menu {
       margin-top: -35px; }
       ul.side-menu > li ul.submenu li {
         margin: 0px;
-        padding: 0px 0px 0px 25px;
         border-bottom: 1px solid #EEEEEE; }
+        ul.side-menu > li ul.submenu li ul.submenu.level2 {
+          margin: 0px; }
+          ul.side-menu > li ul.submenu li ul.submenu.level2 li {
+            margin: 0px; }
   ul.side-menu > li:hover {
-    background: #EFEFEF; }
+    background: #EFEFEF;
+    border-bottom: 1px solid #39A4EA; }
+    ul.side-menu > li:hover .sublevel {
+      display: block; }
     ul.side-menu > li:hover ul.submenu {
       display: block; }
       ul.side-menu > li:hover ul.submenu li:hover {
         background-color: #EFEFEF; }
+        ul.side-menu > li:hover ul.submenu li:hover ul.submenu {
+          display: block; }
+      ul.side-menu > li:hover ul.submenu > li.has-child:after {
+        content: '\f0da';
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        height: 0;
+        position: absolute;
+        width: 0;
+        right: 20px;
+        color: #333333; }
   ul.side-menu > li.has-child:after {
     content: '\f0da';
     font-family: FontAwesome;
@@ -9347,7 +9411,8 @@ ul.side-menu {
     position: absolute;
     width: 0;
     right: 20px;
-    color: #333333; }
+    color: #333333;
+    margin-top: -27px; }
   ul.side-menu li:last-child {
     border-bottom: none; }
   ul.side-menu li.sub-cat {

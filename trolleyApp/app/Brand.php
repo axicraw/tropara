@@ -13,4 +13,8 @@ class Brand extends Model
     public function products(){
     	return $this->hasMany('App\Product');
     }
+    
+    public function offers(){
+        return $this->morphToMany('App\Offer', 'offerable');
+    }
 }

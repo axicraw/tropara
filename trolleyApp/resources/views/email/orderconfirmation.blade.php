@@ -1,6 +1,7 @@
 <h3>Hello <?=$user->name?>! <br>Your order has been placed..</h3>
 
 
+<img src="" alt="">
 <table width="100%" class="cart-table" border="1">
   <tr>
     <th>Product</th>
@@ -24,5 +25,11 @@
   <?php
     }
   ?>
-  
+    <tr>
+    <p style="text-align:right">Total : Rs. <?=$checkout->total?></p>
+  </tr>
 </table>
+
+
+For Enquiry: 9500877750
+<img src="http://trolleyin.com/images/logo_color_white.png" alt="Trolleyin" style="width:100px;">

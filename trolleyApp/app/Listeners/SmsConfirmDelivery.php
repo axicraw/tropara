@@ -5,12 +5,12 @@ namespace App\Listeners;
 use App\User;
 use App\Area;
 use Sentinel;
-use App\Events\MadeCheckout;
+use App\Events\OrderDelivered;
 use App\Includes\Textlocal;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SmsOrderConfirmation
+class SmsConfirmDelivery
 {
     /**
      * Create the event listener.
@@ -25,11 +25,12 @@ class SmsOrderConfirmation
     /**
      * Handle the event.
      *
-     * @param  MadeCheckout  $event
+     * @param  OrderDelivered  $event
      * @return void
      */
-    public function handle(MadeCheckout $event)
+    public function handle(OrderDelivered $event)
     {
+        //
         $user = $event->user;
         $checkout = $event->checkout;
         $total = $checkout->total;
@@ -39,21 +40,8 @@ class SmsOrderConfirmation
         $textlocal = new Textlocal('seekaja@yahoo.com', '0d756599c39b32baab966c65f4a1b050975394e5');
         $numbers = [$user->mobile];
         $sender = 'TROLIN';
-        $message = 'Thankyou for your purchase in Trolleyin. Your order of value '.$total.' has been confirmed. You Order id is '.$checkout->id;
+        $message = 'Your Trolleyin order-no '.$checkout->id.' of value Rs. '.$total.' has been delivered. Thank you for your purchase.';
+        //dd($message);
         $response = $textlocal->sendSms($numbers, $message, $sender);
-
-        //admin sms
-        $admin = Sentinel::findRoleBySlug('admin');
-        $admins =  $admin->users()->get();
-        $admin_numbers = [];
-        foreach($admins as $admin)
-        {
-            array_push($admin_numbers, $admin->mobile);
-        }
-        
-        //dd($admins);
-        $sender = 'TROLIN';
-        $message = 'OrderNo '.$checkout->id.'. Total '.$total.' Area '.$area->area_name.'. CMobile '.$user->mobile;
-        $response = $textlocal->sendSms($admin_numbers, $message, $sender);
     }
 }
