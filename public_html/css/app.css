@@ -8787,6 +8787,9 @@ a.plain {
 a.link-normal {
   color: #333; }
 
+ul.plaintxt li {
+  margin-bottom: 20px; }
+
 /*inputs*/
 select, input[type='text'], input[type='password'], input[type='email'] {
   height: 30px;

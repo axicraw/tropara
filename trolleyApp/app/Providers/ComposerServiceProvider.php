@@ -19,7 +19,8 @@ class ComposerServiceProvider extends ServiceProvider
             'site.cart', 'site.login', 'site.account', 'site.myorders', 'site.paymentmode', 
             'site.adminlogin', 'site.forgotpassword', 'site.newpassword', 'site.useractivate',
             'site.changemobile', 'site.plain', 'site.returnproduct', 'site.myorderdetail',
-            'site.myreturns', 'site.contact', 'site.searchresults', 'site.terms', 'site.privacy'], 'App\Http\ViewComposers\ProfileComposer'
+            'site.myreturns', 'site.contact', 'site.searchresults', 'site.terms', 'site.privacy',
+            'site.shipping'], 'App\Http\ViewComposers\ProfileComposer'
         );
 
         // Using Closure based composers...

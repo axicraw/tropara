@@ -39,6 +39,8 @@ body > .row{
 	//@include grad1();
 	background-color: #333;
 	height: 30px;
+	position: relative;
+	z-index: 2100;
 	a{
 		color:$silver;
 	}

@@ -19,4 +19,8 @@ class PlainController extends Controller
     {
         return view('site.privacy');
     }
+    public function shipping()
+    {
+        return view('site.shipping');
+    }
 }
