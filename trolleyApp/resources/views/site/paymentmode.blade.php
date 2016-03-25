@@ -3,16 +3,22 @@
 @section ('content')
 @include('site.partials.header_middle')
 <div class="full-width payment-mode-wrapper">
-
+  <div class="row">
+    <div class="small-12 columns">
+      <h1 class="main-page-title text-center">
+       Make Payment
+      </h1>
+    </div>
+  </div>
   <div class="row page-content">
-    <div class="medium-8 columns medium-offset-2">
+    <div class="small-12 large-8 columns large-centered">
       <ul class="accordion" data-accordion id="paymentaccordin">
         <li class="accordion-navigation">
           <a href="#to">
             <div class="row">
-              <div class="medium-4 columns"><i class="fa fa-user"></i> LOGGED IN</div>
-              <div class="medium-7 columns">{{$user->email}}</div>
-              <div class="medium-1 columns">
+              <div class="small-4 columns"><i class="fa fa-user"></i> LOGGED IN</div>
+              <div class="small-7 columns">{{$user->email}}</div>
+              <div class="small-1 columns">
                 @if(strlen(Session::get('tmp_address')) > 5 || strlen($user->address) > 5)
                 <i class="fa fa-check fa-2x success"></i>
                 @endif
@@ -21,14 +27,14 @@
           </a>
           <div id="to" class="content active">
             <div class="row">
-              <div class="medium-6 end columns">
+              <div class="small-12 large-6 end columns">
                 <div class="row">
-                  <div class="medium-6 columns">
+                  <div class="small-6 columns">
                     <p>                     
                       ADDRESS : 
                     </p>
                   </div>
-                  <div class="medium-6 columns">                      
+                  <div class="small-6 columns">                      
                     <p>
                       @if(strlen(Session::get('tmp_address')) > 5)
                         {{Session::get('tmp_address')}}
@@ -46,12 +52,12 @@
                 </div>
                 
                 <div class="row">
-                  <div class="medium-6 columns">
+                  <div class="small-6 columns">
                     <p>
                       DELIVERY CHARGES :
                     </p>
                   </div>
-                  <div class="medium-6 columns">
+                  <div class="small-6 columns">
                     <p class="text-right">
                     @if($delivery_cost === 'unknown') 
                       Unknown
@@ -66,10 +72,10 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="medium-6 columns">
+                  <div class="small-6 columns">
                    <p> DELIVERY TIME :</p>
                   </div>
-                  <div class="medium-6 columns">
+                  <div class="small-6 columns">
                    
                     <select name="" id="deli-time" class="tiny">
                       @foreach($dts as $dt)
@@ -87,7 +93,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="medium-12 columns">
+              <div class="small-12 columns">
                 <p class="text-right tight">
 
                   @if(strlen(Session::get('tmp_address')) > 5 || strlen($user->address) > 5)
@@ -104,9 +110,9 @@
         <li class="accordion-navigation">
           <a href="#items" id="items-link">
             <div class="row">
-              <div class="medium-4 columns"><i class="fa fa-shopping-cart"></i> ORDER LIST</div>
-              <div class="medium-7 columns">Items - {{$noofitems}} | Total  <i class="fa fa-rupee"></i> {{$total+$delivery_cost}}</div>
-              <div class="medium-1 columns valid">
+              <div class="small-4 columns"><i class="fa fa-shopping-cart"></i> ORDER LIST</div>
+              <div class="small-7 columns">Items - {{$noofitems}} | Total  <i class="fa fa-rupee"></i> {{$total+$delivery_cost}}</div>
+              <div class="small-1 columns valid">
                 @if(count($cart) > 0)
                 <i class="fa fa-check fa-2x success"></i>
                 @endif
@@ -118,7 +124,7 @@
           </div>
           <div id="items" class="content">
             <div class="row">
-              <div class="medium-12">         
+              <div class="small-12">         
                 <table width="96%" class="payment-cart-table">
                   <tr>
                     <th>Product</th>
@@ -148,7 +154,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="medium-12 columns">
+              <div class="small-12 columns">
                 <p class="text-right tight">
 
                   @if(count($cart) > 0)
@@ -167,20 +173,23 @@
           <div class="accordin-mask"></div>
           <div id="pay" class="content">
             <div class="row">
-              <div class="medium-12 columns end">
+              <div class="small-4 large-3 columns end">
                 <ul class="tabs vertical" data-tab>
                   <li class="tab-title"><a href="#credit">Credit Card</a></li>
                   <li class="tab-title"><a href="#net">Net Banking</a></li>
                   <li class="tab-title"><a href="#debit">Debit Card</a></li>
                   <li class="tab-title active"><a href="#cod">Cash On Delivery</a></li>
                 </ul>
-                <div class="tabs-content">
-                  <div class="content" id="credit">Will be available soon.</div>
-                  <div class="content" id="net">Will be available soon.</div>
-                  <div class="content" id="debit">Will be available soon.</div>
-                  <div class="content active" id="cod">
-                    <div class="inner-content">
-                      <a href="cart/checkout" class="button">Confirm Order</a>
+              </div>
+                <div class="small-8 large-9 columns">
+                  <div class="tabs-content">
+                    <div class="content" id="credit">Will be available soon.</div>
+                    <div class="content" id="net">Will be available soon.</div>
+                    <div class="content" id="debit">Will be available soon.</div>
+                    <div class="content active" id="cod">
+                      <div class="inner-content">
+                        <a href="cart/checkout" class="button">Confirm Order</a>
+                      </div>
                     </div>
                   </div>
                 </div>

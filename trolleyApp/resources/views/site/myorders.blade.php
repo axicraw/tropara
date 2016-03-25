@@ -4,9 +4,9 @@
 @include('site.partials.header_middle')
 <div class="full-width account-view">
   <div class="row page-content">
-    <div class="medium-10 columns medium-offset-1 account-wrapper">
+    <div class="large-10 columns large-centered account-wrapper">
       <div class="row collapse">
-        <div class="medium-3 columns">
+        <div class="small-3 columns">
           <div class="side-menu">
             
             <div class="row">
@@ -18,7 +18,7 @@
             </div>  
           </div>
         </div>
-        <div class="medium-9 columns">
+        <div class="small-9 columns">
           <div class="tab-content-wrapper">
            
             <ul class="tabs" data-tab>
@@ -106,15 +106,15 @@
 </div>
 <div id="passwordModal" class="reveal-modal small" data-reveal aria-hidden="false" role="dialog">
   <div class="row collapse">
-    <div class="medium-6 columns">
+    <div class="small-6 columns">
       <h4>Change Password</h4>
     </div>
   </div>
   <div class="row reg-wrapper">
-    <div class="medium-12 columns">
+    <div class="small-12 columns">
       {!! Form::open(array('route'=>'account.changepassword')) !!}
         <div class="row">
-          <div class="medium-12 columns">
+          <div class="small-12 columns">
             <label for="password">
               New Password
               <input type="password" name="password" id="password" >
@@ -122,7 +122,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="medium-12 columns">
+          <div class="small-12 columns">
             <label for="cpassword">
               Confirm Password
               <input type="password" name="cpassword" id="cpassword" >
@@ -130,7 +130,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="medium-6 columns">
+          <div class="small-6 columns">
             <button class="submit button tiny">Change Password</button>
           </div>
         </div>

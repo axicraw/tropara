@@ -4,9 +4,9 @@
 @include('site.partials.header_middle')
 <div class="full-width account-view">
   <div class="row page-content">
-    <div class="medium-10 columns medium-offset-1 account-wrapper">
+    <div class="small-12 large-10 columns large-centered account-wrapper">
       <div class="row collapse">
-        <div class="medium-3 columns">
+        <div class="small-3 columns">
           <div class="side-menu">
             
             <div class="row">
@@ -18,7 +18,7 @@
             </div>  
           </div>
         </div>
-        <div class="medium-9 columns">
+        <div class="small-9 columns">
           <div class="tab-content-wrapper">
             
 
@@ -94,31 +94,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  //change the price based on quantity select
-   $(".quantity-price").on('change', function(){
-    var opt = $(this).find('option:selected');
-    var price = opt.data('qprice');
-    console.log(price);
-    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
-    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
-   });
-   $(".quantity-price").trigger('change');
-
-   //update cart nos
-   $('input.pnos').on('change', function(){
-    var rid = $(this).data('rid');
-    var nos = $(this).val();
-    var postData = {};
-    postData['nos'] = nos;
-    postData['id'] = rid;
-    console.log(rid);
-    $.when(http_post('cart/updateNos', postData)).then(function(response){
-      location.reload();
-    }, function(response){
-      console.log('cart update failed');
-    })
-   });
-
-  </script>
+  
 @stop

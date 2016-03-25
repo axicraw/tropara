@@ -4,10 +4,10 @@
 @include('site.partials.header_middle')
 <div class="full-width account-view">
   <div class="row page-content">
-    <div class="medium-10 columns medium-offset-1 account-wrapper">
+    <div class="small-12 large-10 columns large-centered account-wrapper">
       <div class="row collapse">
         <h4>Order Detail - No {{$checkout->id}}</h4>
-        <div class="medium-12 columns">
+        <div class="small-12 columns">
           <table width="100%" class="cart-table">
             <tr>
               <th>Product</th>
@@ -29,7 +29,7 @@
             @endforeach
             
           </table>
-          <div class="medium-12 columns">
+          <div class="small-12 columns">
             <p class="micro">
               <a class="link-normal" href="/productreturn/{{$checkout->id}}">Return</a>
             </p>

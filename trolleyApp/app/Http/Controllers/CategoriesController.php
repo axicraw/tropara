@@ -62,6 +62,7 @@ class CategoriesController extends Controller
         $new_catgory = [
             'category_name' => $request->category_name,
             'parent_id' => $parent_id,
+            'did'=>$request->did,
             'level'=> 0
         ];
         $category = Category::create($new_catgory);
@@ -84,6 +85,7 @@ class CategoriesController extends Controller
         $new_catgory = [
             'category_name' => $request->category_name,
             'parent_id' => $parent_id,
+            'did'=>$request->did,
             'level'=> 0
         ];
         $category = Category::create($new_catgory);
@@ -131,6 +133,7 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         $category->category_name = $request->category_name;
         $category->parent_id = $request->parent_id;
+        $category->did = $request->did;
         $category->save();
         return redirect()->route('admin.category.index');
     }

@@ -8,7 +8,7 @@
 
   <div class="row ">
 
-    <div class="medium-8 columns medium-offset-2">
+    <div class="small-12 large-8 columns large-centered">
       <div class="plain-content">
         <h4 class="text-center title">Product Return Form</h4>
         {!! Form::open(array('route'=>'processreturn')) !!}
@@ -27,13 +27,13 @@
             @endif
           </div>
           <div class="row">
-            <div class="medium-12 columns">
+            <div class="small-12 columns">
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="small-4 columns">
                   <label for="pids" class="right inline">Products *</label>
                 </div>
 
-                <div class="medium-6 end columns">
+                <div class="small-6 end columns">
                   <select name="products[]" id="pids" multiple="multiple">
                     @if(isset($checkout))
                       @foreach($checkout->orders as $order)
@@ -52,48 +52,48 @@
             </div>
           </div>  
           <div class="row">
-            <div class="medium-12 columns">
+            <div class="small-12 columns">
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="small-4 columns">
                   <label for="name" class="right inline">Name *</label>
                 </div>
-                <div class="medium-6 end columns">
+                <div class="small-6 end columns">
                   <input id="name" type="text" name="name" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="medium-12 columns">
+            <div class="small-12 columns">
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="small-4 columns">
                   <label for="email" class="right inline">Email *</label>
                 </div>
-                <div class="medium-6 end columns">
+                <div class="small-6 end columns">
                   <input id="email" type="email" name="email" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="medium-12 columns">
+            <div class="small-12 columns">
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="small-4 columns">
                   <label for="mobile" class="right inline">Mobile *</label>
                 </div>
-                <div class="medium-6 end columns">
+                <div class="small-6 end columns">
                   <input id="mobile" type="text" name="mobile" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="medium-12 columns">
+            <div class="small-12 columns">
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="small-4 columns">
                   <label for="address" class="right inline">Address *</label>
                 </div>
-                <div class="medium-6 end columns">
+                <div class="small-6 end columns">
                   <textarea id="address" name="address" required></textarea>
                 </div>
               </div>
@@ -101,19 +101,19 @@
           </div>
           
           <div class="row">
-            <div class="medium-12 columns">
+            <div class="small-12 columns">
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="small-4 columns">
                   <label for="reason" class="right inline">Reason *</label>
                 </div>
-                <div class="medium-6 end columns">
+                <div class="small-6 end columns">
                   <textarea id="reason" name="reason" required></textarea>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="medium-10 columns">
+            <div class="small-10 columns">
               <p class="text-right tight">
                 <button type="button tiny">Confirm Return</button>
               </p>

@@ -13,6 +13,7 @@ use App\Product;
 use App\Salesstats;
 use App\Viewstats;
 use App\Flashtext;
+use App\Category;
 use Illuminate\Contracts\View\View;
 
 class ProfileComposer
@@ -44,6 +45,7 @@ class ProfileComposer
      */
     public function compose(View $view)
     {
+        $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->orderBy('did')->get();
         $hotpros_id = Salesstats::groupBy('product_id')->take(16)->get();
         $hotpros_id = $hotpros_id->lists('product_id');
         $hotpros = Product::with('images')->has('images')->has('prices')->wherein('id', $hotpros_id)->take(16)->get();
@@ -92,7 +94,8 @@ class ProfileComposer
                 'offers'=>$offers,
                 'settings'=>$settings,
                 'dts'=>$dts,
-                'feedbacks'=>$feedbacks
+                'feedbacks'=>$feedbacks,
+                'categories'=>$categories
                 ]);
         }
         else
@@ -110,7 +113,8 @@ class ProfileComposer
                 'offers'=>$offers,
                 'settings'=>$settings,
                 'dts'=>$dts,
-                'feedbacks'=>$feedbacks
+                'feedbacks'=>$feedbacks,
+                'categories'=>$categories
                 ]);
         }
     }

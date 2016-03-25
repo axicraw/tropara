@@ -5,11 +5,11 @@
 <div class="full-width page-content payment-mode-wrapper">
 
   <div class="row page-content ">
-    <div class="columns medium-10 medium-offset-1">
+    <div class="small-12 columns large-10 large-centered">
      <div class="plain-content">
-      <h4 class="title main text-center">Terms of Use at www.trolleyin.com</h4>
+      <h1 class="title main main-page-title text-center">Terms of Use at www.trolleyin.com</h1>
       <div class="row">
-        <div class="medium-12 columns">
+        <div class="small-12 columns">
           <ol>
             <li>Context</li>
             <p>What is this document?</p>
@@ -112,10 +112,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  
-  $(document).ready(function(){
-    
-  });
-  </script>
+
 @stop

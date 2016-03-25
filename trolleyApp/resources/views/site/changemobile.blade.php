@@ -5,7 +5,7 @@
 <div class="full-width page-content payment-mode-wrapper">
 
   <div class="row">
-    <div class="medium-4 columns medium-offset-4">
+    <div class="small-12 medium-8 large-4 columns medium-centered large-centered">
        
       <div class="panel">
         <h4 class="text-center">Change Modile No:</h4>
@@ -48,10 +48,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  
-  $(document).ready(function(){
 
-  });
-  </script>
 @stop

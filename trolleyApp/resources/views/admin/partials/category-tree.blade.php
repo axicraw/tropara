@@ -1,7 +1,10 @@
 <li>
 	<a href="" class="">
 		<div class="row">
-			<div class="medium-10 columns">
+			<div class="medium-1 columns">
+				{{ $category->did}}
+			</div>
+			<div class="medium-9 columns">
 				{{ $category['category_name'] }}
 			</div>
 			<div class="medium-2 columns">

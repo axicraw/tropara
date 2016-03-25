@@ -8,12 +8,12 @@ $primeserif:'Roboto Slab', serif;
 body, p, div, li, a, label, input, option, h1, h2, h3, h4, h5, h6{
 	font-family:$primesans;
 }
-.full-width > .row{
-	min-width: 1170px !important;
-}
 .highlight{
 	background: $highlight-dark;
 	color:$white;
+}
+h1.main-page-title{
+	font-size: 22px;
 }
 h5.highlight{
 	padding:11px 10px;
@@ -109,6 +109,7 @@ input[type="submit"].delete.link{
 	margin:0px;
 	float:right;
 }
+
 
 
 /**icons**/
@@ -260,6 +261,7 @@ table ul{
 /*********modals **************/
 .reveal-modal{
 	padding:0px;
+	z-index: 2600;
 	//border-bottom:10px solid $primary-main;
 	.login-wrapper{
 		margin-top:20px;

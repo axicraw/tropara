@@ -6,28 +6,28 @@
 @include('site.partials.header_middle')
 <div class="full-width content-top veg">
   <div class="row collapse">
-    <div class="small-3 columns">
+    <div class="large-3 columns show-for-large-up">
       @include('site.partials.side_cate')
     </div>
-    <div class="small-9 columns">
+    <div class="small-12 large-9 columns">
       <div class="product-grid-1">
           @if(count($search_products) > 0)
             <div class="row caro-title collapse">
               <div class="small-12 columns">
-                <h5 class="tight"><span class="inner-text">Search Results {{$key}}</span></h5>
+                <h1 class="tight main-page-title"><span class="inner-text">Search Results {{$key}}</span></h1>
               </div>
             </div>
             <div class="row">
               @foreach ( $search_products as $search_product)
-                <div class="small-3 end columns">
+                <div class="small-6 medium-4 large-3 end columns">
                   <div class="product-wrapper">
-                    <a href="product/{{ $search_product->id }}" class="product-anchor">
+                    <a href="product/{{$search_product->product_name}}?id={{ $search_product->id }}" class="product-anchor">
                       <div class="row">
                         <div class="prod-image-wrapper">
                           <div class="save-wrapper">                              
                               SAVE <br><span class="save"></span>%
                           </div>
-                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $search_product->images[0]->image_name }}" alt="">
+                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $search_product->images[0]->image_name }}" alt="{{$search_product->product_name}}">
                         </div>
                       </div>
                       <div class="row collapse">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="small-5 columns">
                               <p class="text-right tight">
-                                <button data-pid="{{ $search_product->id }}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                <button data-pid="{{ $search_product->id }}" data-pname="{{$search_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
                               </p>
                             </div>
                           </div>

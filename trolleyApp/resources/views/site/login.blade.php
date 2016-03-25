@@ -5,19 +5,19 @@
 <div class="full-width page-content login-wrapper">
 
   <div class="row ">
-    <div class="medium-4 columns">
+    <div class="medium-4 columns show-for-medium-up">
       <p class="text-center"> 
         <img src="images/gro_basket.png" alt="">
       </p>
     </div>
-    <div class="medium-4 columns">
+    <div class="small-6 medium-4 columns">
       <div class="logo-wrapper">
         <img src="images/logo_color.png" alt="">
       </div>
       <p>Hello. Welcome to Trolleyin.com. Its a great pleasure to sign you up with us. You can register with us and have an incredible shopping exprience.</p>
       <a href="#" class="button success" data-reveal-id="signupModal">Register Here.</a>
     </div>
-    <div class="medium-4 columns">
+    <div class="small-6 medium-4 columns">
        <h4 >Login / Create Account</h4>
       <h5>Already Registered</h5>
         {!! Form::open(array('route'=>'authenticate')) !!}
@@ -77,7 +77,7 @@
               </div>
           @endif
         </div>
-<!--         <div class="row">
+      <!--         <div class="row">
          <div class="social-login">
             <h6>Login with social accounts</h6>
            <ul>
@@ -99,17 +99,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  //change the price based on quantity select
-   $(".quantity-price").on('change', function(){
-    var opt = $(this).find('option:selected');
-    var price = opt.data('qprice');
-    console.log(price);
-    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
-    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
-   });
-   $(".quantity-price").trigger('change');
 
-
-  </script>
 @stop

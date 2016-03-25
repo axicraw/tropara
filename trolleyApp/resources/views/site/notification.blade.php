@@ -5,7 +5,7 @@
 <div class="full-width page-content payment-mode-wrapper">
 
   <div class="row">
-    <div class="medium-8 columns medium-offset-2">
+    <div class="small-12 large-8 columns large-centered">
       <div class="panel">
         <p class="text-center">  {!! html_entity_decode($notification) !!} .</p>
       </div>
@@ -21,10 +21,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  
-  $(document).ready(function(){
 
-  });
-  </script>
 @stop

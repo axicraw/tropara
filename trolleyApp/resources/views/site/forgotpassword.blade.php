@@ -5,23 +5,23 @@
 <div class="full-width page-content login-wrapper">
 
   <div class="row ">
-    <div class="medium-4 columns medium-offset-4">
+    <div class="small-12 medium-8 large-4 columns large-centered medium-centered">
       <h4 class="text-center">Forgot Your Password?</h4>
       {!! Form::open(array('route'=>'forgotconfirm')) !!}
 
       <div class="row">
-        <div class="medium-12 columns">
+        <div class="small-12 columns">
           <label for="email">Enter your email</label>
           <input type="text" name="email">
         </div>
       </div>
       <div class="row">
-        <div class="mediu 12 columns">
+        <div class="small-12 columns">
           <p class="tiny tex-center">You will receive an email with a link to reset your password. Click it to reset it.</p>
         </div>
       </div>
       <div class="row">
-        <div class="medium-12 columns">
+        <div class="small-12 columns">
           @if (count($errors) > 0)
               <div class="alert alert-danger">
                   <ul>
@@ -52,17 +52,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  //change the price based on quantity select
-   $(".quantity-price").on('change', function(){
-    var opt = $(this).find('option:selected');
-    var price = opt.data('qprice');
-    console.log(price);
-    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
-    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
-   });
-   $(".quantity-price").trigger('change');
 
-
-  </script>
 @stop

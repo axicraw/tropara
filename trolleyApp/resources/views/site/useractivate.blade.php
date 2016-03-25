@@ -5,7 +5,7 @@
 <div class="full-width page-content payment-mode-wrapper">
 
   <div class="row">
-    <div class="medium-4 columns medium-offset-4">
+    <div class="small-12 medium-8 large-4 columns large-centered medium-centered">
       <p class="tight tiny">A pin has been sent to your mobile ending with <span class="main"><strong>***{{ substr($user->mobile, 6)}}.</strong></span><br>Enter the pin to activate.</p>
       
       <div class="panel">
@@ -27,7 +27,7 @@
           <input type="text" class="text-center activate-pin" name="pin">
 
           <div class="row collapse">
-            <div class="columns medium-8">
+            <div class="small-12 columns large-8">
               <p class="text-left micro tight">Why is this necessary <a data-dropdown="activationNeed" aria-controls="drop1" aria-expanded="false"><i class="fa fa-question-circle"></i></a>
                     <br>Did'nt receive sms? <a href="/sendpinagain?id={{$user->id}}" class="plain">Send Again.</a>
               </p>
@@ -37,7 +37,7 @@
                 </p>
               </div>
             </div>
-            <div class="columns medium-4">
+            <div class="small-12 medium-10 columns large-4">
               <p class="text-right tight">
                 <button type="submit" class="button tiny tight">Activate</button><br>
               </p>
@@ -64,10 +64,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  
-  $(document).ready(function(){
 
-  });
-  </script>
 @stop

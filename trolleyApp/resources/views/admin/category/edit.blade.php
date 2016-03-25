@@ -12,13 +12,19 @@
 	</div>
 	<div class="row page-body">
 		{!! Form::open(array('method'=>'put', 'route'=>array('admin.category.update', $currCategory->id))) !!}
-		<div class="medium-6 columns">			
+		<div class="medium-1 columns">			
+			<label for="did">
+				Index
+				<input type="number" id="did" name="did" value="{{ $currCategory['did'] }}">
+			</label>
+		</div>
+		<div class="medium-4 columns">			
 			<label for="category_name">
 				Category Name
 				<input type="text" id="category_name" name="category_name" value="{{ $currCategory['category_name'] }}">
 			</label>
 		</div>
-		<div class="medium-6 columns">			
+		<div class="medium-3 columns">			
 			<label for="parent_id">
 				Parent
 			</label>
@@ -33,23 +39,24 @@
 				@endforeach
 			</select>
 		</div>
-		<div class="medium-6 columns">
-			@if (count($errors) > 0)
-			    <div class="alert alert-danger">
-			        <ul>
-			            @foreach ($errors->all() as $error)
-			                <li class="danger">{{ $error }}</li>
-			            @endforeach
-			        </ul>
-			    </div>
-			@endif
+		<div class="row">
+			<div class="medium-6 columns">
+				@if (count($errors) > 0)
+				    <div class="alert alert-danger">
+				        <ul>
+				            @foreach ($errors->all() as $error)
+				                <li class="danger">{{ $error }}</li>
+				            @endforeach
+				        </ul>
+				    </div>
+				@endif
+			</div>
+			<div class="medium-3 columns">
+				<p class="text-right">
+					<input type="submit" class="button tiny primary" value="Update">
+				</p>
+			</div>
 		</div>
-		<div class="medium-6 columns">
-			<p class="text-right">
-				<input type="submit" class="button tiny primary" value="Update">
-			</p>
-		</div>
-
 		{!! Form::close(); !!}
 	</div>
 

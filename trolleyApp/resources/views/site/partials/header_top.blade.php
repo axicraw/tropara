@@ -1,6 +1,6 @@
     <div class="full-width header-top">
       <div class="row">
-        <div class="small-2 columns left-sect">
+        <div class="large-2 columns left-sect show-for-large-up">
           <div class="row">
             <div class="small-4 columns">
               <p>Newbie?</p>
@@ -14,7 +14,7 @@
             </div>
           </div>
         </div>
-        <div class="small-2 columns middle-sect">
+        <div class="small-6 medium-3 large-2 columns middle-sect">
           <p><i class="fa fa-phone"></i> <a href="#" data-dropdown="helpline" data-options="is_hover:true; hover_timeout:5000;align:bottom;">Helpline : {{$settings['helpline']}}</a></p>
           <ul id="helpline" class="f-dropdown" data-dropdown-content>
             <li><strong>Help</strong> {{$settings['helpline']}}</li>
@@ -22,9 +22,9 @@
             <li><strong>Delivery</strong> {{$settings['delivery']}}</li>
           </ul>
         </div>
-        <div class="small-8 columns right-sect">
+        <div class="small-6 medium-9 large-8  end columns right-sect">
           <div class="row">
-            <div class="small-3 columns">
+            <div class="large-3 columns show-for-large-up">
               <div class="row">
                 <div class="small-3 columns">
                   <label class="right inline">City</label>
@@ -36,7 +36,7 @@
                 </div>
               </div>
             </div>
-            <div class="small-3 columns">
+            <div class="medium-4 large-3 columns show-for-medium-up">
               <div class="row">
                 <div class="small-3 columns">
                   <label class="right inline">Area</label>
@@ -62,7 +62,7 @@
                 </div>
               </div>
             </div>
-            <div class="small-4 columns">
+            <div class="medium-5 large-4 columns show-for-medium-up">
               <div class="row">
                 <div class="small-5 columns">
                   <label class="right inline">Delivery Time</label>
@@ -82,7 +82,7 @@
                 </div>
               </div>
             </div>
-            <div class="small-2 columns">
+            <div class="small-12 medium-3 large-2 columns">
               <div class="row">
                 <div class="small-12 columns">
                   <p class="text-right">

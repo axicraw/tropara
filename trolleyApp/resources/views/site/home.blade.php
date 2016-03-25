@@ -11,17 +11,17 @@
           
           <div class="banner-loader-content">
             <p class="tight text-center">
-              <img src="images/logo_color.png" class="logo" alt=""><br>Loading<br>
+              <img src="images/logo_color.png" class="logo" alt="Trolleyin Logo"><br>Loading<br>
               <img src="images/ajax_loader/loader.gif" alt="" class="ajax-loader">
             </p>
           </div>
           
         </div>
-        <div class="small-3 columns">
+        <div class="large-3 columns show-for-large-up">
            @include('site.partials.side_cate')
            
         </div>
-        <div class="small-7 columns">
+        <div class="medium-9 large-7 small-12 columns">
           <div class="row home-slider">
             
             <div class="slider-pro" id="tro-slider">
@@ -36,7 +36,7 @@
               <div class="sp-slides">
                 @foreach($banners as $banner)
                 <div class="sp-slide">
-                  <img src="images/banners/{{$banner->image['image_name']}}" alt="">
+                  <img src="images/banners/{{$banner->image['image_name']}}" alt="{{$banner->title}}">
                 </div>                
                 @endforeach
               </div>
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-        <div class="small-2 columns">
+        <div class="medium-3 large-2 columns show-for-medium-up">
           <h5 class="text-center highlight no-margin">OFFERS</h5>
           <!-- <div class="row">
             <button class="button button-secondary"><i class="fi-arrow-up"></i></button>
@@ -58,9 +58,9 @@
                 @if(count($offer->products) > 0)
                   @foreach($offer->products as $product)
                     <div class="offer-slide">
-                      <a href="/product/{{$product->id}}">
+                      <a href="/product/{{$product->product_name}}id={{$product->id}}">
                         <div class="img-wrapper">
-                          <img src="images/products/{{$product->images[0]['image_name']}}" alt="">
+                          <img src="images/products/{{$product->images[0]['image_name']}}" alt="{{$product->product_name}}">
                         </div>
                         <p class="side-offer-product tight text-center">{{$product->product_name}}<span class="label round alert off">
                           {{$offer->amount}}
@@ -82,9 +82,35 @@
                     @if(count($category->products) > 0)
                       @foreach($category->products as $product)
                         <div class="offer-slide">
-                          <a href="/product/{{$product->id}}">
+                          <a href="/product/{{$product->product_name}}?id={{$product->id}}">
                             <div class="img-wrapper">
-                              <img src="images/products/{{$product->images[0]['image_name']}}" alt="">
+                              <img src="images/products/{{$product->images[0]['image_name']}}" alt="{{$product->product_name}}">
+                            </div>
+                            <p class="side-offer-product tight text-center">{{$product->product_name}}<span class="label round alert off">
+                              {{$offer->amount}}
+                              @if($offer->offer_type === 1)
+                                %
+                              @else
+                                <i class="fa fa-rupee"></i>
+                              @endif
+                              Off
+                            <!-- </span><br><span class="side-offer-price"><i class="fa fa-rupee"></i>100</span></p> -->
+                          </a>
+                        </div>
+                      @endforeach
+                    @endif
+                  @endforeach
+                @endif
+                @if(count($offer->brands) > 0)
+                  @foreach($offer->brands as $category)
+                  
+                    
+                    @if(count($category->products) > 0)
+                      @foreach($category->products as $product)
+                        <div class="offer-slide">
+                          <a href="/product/{{$product->product_name}}?id={{$product->id}}">
+                            <div class="img-wrapper">
+                              <img src="images/products/{{$product->images[0]['image_name']}}" alt="{{$product->product_name}}">
                             </div>
                             <p class="side-offer-product tight text-center">{{$product->product_name}}<span class="label round alert off">
                               {{$offer->amount}}
@@ -127,7 +153,7 @@
         </div>
       </div>
     </div>
-    <div class="full-width content-feats">
+    <div class="full-width content-feats show-for-large-up">
       <div class="row collapse">
         <div class="small-3 columns">
           <div class="row content-feat">
@@ -181,13 +207,13 @@
     <div class="full-width new-arrivals">
       <div class="row caro-title collapse">
         <div class="small-12 columns">
-          <h4 class="tight"><span class="inner-text">New Products</span></h4>
+          <h1 class="tight main-page-title"><span class="inner-text">New Products</span></h1>
         </div>
       </div>
       <div class="row caro-wrapper">
           @foreach($new_products as $new_product)
-          <div class="small-2 end columns">
-            <a href="product/{{ $new_product->id }}" class="caro-link">
+          <div class="small-4 medium-3 large-2 end columns">
+            <a href='product/{{ $new_product->product_name }}?id={{$new_product->id}}' class="caro-link">
               <div class="caro-prod">
                 <div class="row add-to-wrapper">
                   <div class="small-6 columns">
@@ -200,7 +226,7 @@
                 <div class="img-wrapper prod-img">
                   <p class="tight text-center">
                    
-                    <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $new_product->images->first()->image_name }}" alt="product-image">
+                    <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $new_product->images->first()->image_name }}" alt="{{$new_product->product_name}}">
                   </p>
                 </div>
               

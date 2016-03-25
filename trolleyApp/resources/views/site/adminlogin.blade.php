@@ -53,17 +53,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  //change the price based on quantity select
-   $(".quantity-price").on('change', function(){
-    var opt = $(this).find('option:selected');
-    var price = opt.data('qprice');
-    console.log(price);
-    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
-    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
-   });
-   $(".quantity-price").trigger('change');
 
-
-  </script>
 @stop

@@ -39,15 +39,15 @@ class PagesController extends Controller
     public function index(Request $request)
     {
         //dd($request->session()->all());
-        $categories = Category::with('children', 'products')->where('parent_id', '=', 0)->orderBy('category_name')->get();
+       
         $new_products = Product::with('images', 'prices', 'prices.unit')->has('images')->has('prices')->orderBy('created_at', 'desc')->take(12)->get();
         $banners = Banner::all();
-      
-        return view('site/home', compact('new_products', 'categories', 'banners', 'offers', 'hotpros', 'viewpros'));
+        $page_title = "Trolleyin - The Best online store in Trichy - Right store at Right price.";
+        return view('site/home', compact('new_products', 'categories', 'banners', 'offers', 'hotpros', 'viewpros', 'page_title'));
 
     }
     public function category($catename){
-        $categories = Category::with('children')->where('parent_id', '=', 0)->orderBy('category_name')->get();
+        //$categories = Category::with('children')->where('parent_id', '=', 0)->orderBy('did')->get();
         $main_category = Category::with('parent', 'children', 'children.products')->where('category_name', $catename)->firstOrFail();
         if(count($main_category->parent) > 0){
             $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
@@ -64,17 +64,28 @@ class PagesController extends Controller
                         ->with('images', 'prices', 'prices.unit', 'mrps', 'mrps.unit')->has('images')->has('prices')
                         ->orderBy('updated_at', 'desc')->get();
         //dd($cate_products);
-        return view('site/category', compact('categories', 'main_category','cate_products', 'parent_category', 'sub_products'));
+        $page_title = $main_category->category_name .' - Best '.$main_category->category_name.' in Trichy';
+        //dd($page_title);
+        return view('site/category', compact('categories', 'main_category','cate_products', 'parent_category', 'sub_products', 'page_title'));
     }
-    public function product($id){
-        $product = Product::with(['images', 'brand', 'brand.offers','prices', 'prices.unit', 'offers', 'category', 'description', 'mrps', 'mrps.unit'])->find($id);
+    public function product(Request $request, $product_name){
+        $getid = $request->id;
+        $id = (int)$getid;
+        if($id){
+            $product = Product::with(['images', 'brand', 'brand.offers','prices', 'prices.unit', 'offers', 'category', 'description', 'mrps', 'mrps.unit'])->find($id);
+        }
+        else{
+            $product = Product::with(['images', 'brand', 'brand.offers','prices', 'prices.unit', 'offers', 'category', 'description', 'mrps', 'mrps.unit'])
+                                ->where('product_name', $product_name)->first();
+        }
+        //dd($id);
         $main_category = Category::with(['offers', 'children', 'products'=>function($q){$q->has('images');}])->find($product->category_id);
         if(count($main_category->parent) > 0){
             $parent_category = Category::with('children')->findOrFail($main_category->parent->id);
         }else{
             $parent_category = null;
         }
-        $categories = Category::with('children')->where('parent_id', '=', 0)->orderBy('category_name')->get();
+        //$categories = Category::with('children')->where('parent_id', '=', 0)->orderBy('did')->get();
         if($user = Sentinel::check())
         {
             $user_id = $user->id;
@@ -84,8 +95,9 @@ class PagesController extends Controller
             $user_id = 0;
         }
         //dd($main_category);
+        $page_title = $product->product_name . ' - Best '.$product->product_name.' in Trichy';
         Event::fire(new ProductViewed($user_id, $product->id));
-        return view('site/product', compact('product', 'categories', 'main_category', 'parent_category'));
+        return view('site/product', compact('product', 'categories', 'main_category', 'parent_category', 'page_title'));
     }
 
     public function myaccount(Request $request){
@@ -97,7 +109,7 @@ class PagesController extends Controller
         {
             $request->session()->put('redirect', $redirect);
         }
-
+        $page_title = "Trolleyin - The Best online store in Trichy - Right store at Right price.";
         return view('site.account', compact('user'));
     }
 

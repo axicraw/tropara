@@ -2,7 +2,7 @@
     <div class="full-width footer-middle">
 
      <div class="row">
-        <div class="small-3 columns">
+        <div class="small-6 medium-5 large-3 columns">
           <div class="row social-footer">
             <h5 class="tight">Stay With Us Everywhere</h5>
             <ul>
@@ -13,7 +13,7 @@
             <p class="tight"><a href="/contact"><i class="fa fa-map-marker"></i> Contact Us</a></p>
           </div>
         </div>
-        <div class="small-4 columns">
+        <div class="small-6 medium-7 large-4 columns">
          <div class="security-footer">
             <div class="payment">
               <h5 class="tight">
@@ -38,7 +38,7 @@
             </div>
          </div>
         </div>
-        <div class="small-2 columns">
+        <div class="small-6 medium-5 large-2 columns">
           <div class="row policy">
             <h5 class="tight">Policies</h5>
             <ul>
@@ -49,7 +49,7 @@
             </ul>
           </div>
         </div>
-        <div class="small-3 columns">
+        <div class="small-6 medium-7 large-3 columns">
           <div class="mobileapp-footer">
             <h5 class="tight">
               Try our mobile application

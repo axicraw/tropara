@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Trolleyin - The Best online store in Trichy - Right store at Right price.</title>
+    <title>{{$page_title or 'Trolleyin - The Best online store in Trichy - Right store at Right price.'}}</title>
     <style>
       .banner-loader-wrapper{
         /*display: none;*/
@@ -32,12 +32,7 @@
       }
     </style>
     <link rel="icon" href="favicon.png" type="image/ico"> 
-    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" />
-    <link rel="stylesheet" href="css/flaticon/flaticon.css" />
-    <link rel="stylesheet" href="css/slider-pro.min.css" />
-    <link rel="stylesheet" href="css/slick.css" />
-    <link rel="stylesheet" href="css/slick-theme.css" />
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/allstyles.css" />
     @yield ('cssContent')
 
     <script src="js/modernizr.js"></script>
@@ -57,11 +52,11 @@
       </div>
       <div class="modal-body">
         <div class="row login-wrapper">
-          <div class="medium-6 columns veg-bg">
+          <div class="medium-12 large-6 columns veg-bg">
            <div class="white-overlay">
               <div class="logo-wrapper">
                <p class="text-center tight">
-                 <img src="images/logo_color.png" alt="">
+                 <img src="images/logo_color.png" alt="Trolleyin logo">
                </p>
              </div>
              <p><br>Hello. Welcome to Trolleyin.com. Its a great pleasure to sign you up with us. You can register with us and have an incredible shopping exprience</p>
@@ -71,15 +66,15 @@
                    <a href="#" class="button success" data-reveal-id="signupModal">Register Here.</a>
                  </p>
                </div>
-               <div class="medium-6 columns">
+               <div class="medium-6 columns show-for-large-up">
                  <div class="shop-image-wrapper">
-                   <img src="../images/manwithcart.png" alt="">
+                   <img src="../images/manwithcart.png" alt="Trolleyin Manwithcart">
                  </div>
                </div>
              </div>
            </div>
           </div>
-          <div class="medium-6 columns">
+          <div class="medium-12 large-6 columns">
             <h5>Already Registered</h5>
               <div class="row">
                 <div class="medium-12 columns">
@@ -207,7 +202,7 @@
               <div class="row">
                 <div class="medium-6 columns">
                   <div class="logo-wrapper" style="width:100px">
-                    <img src="images/logo_color.png" alt="">
+                    <img src="images/logo_color.png" alt="Trolleyin logo">
                   </div>
                 </div>
                 <div class="medium-6 columns">
@@ -271,17 +266,17 @@
                 </div>
               </div>
               <div class="row">
-                <div class="medium-4 columns">
+                <div class="medium-4 columns small-4">
                   <div class="logo-wrapper" style="width:100px">
-                    <img src="images/logo_color.png" alt="">
+                    <img src="images/logo_color.png" alt="Trolleyin logo">
                   </div>
                 </div>
-                <div class="medium-4 columns">
+                <div class="medium-4 columns small-4">
                   <p class="text-center">
                     <a href="/justvisit" class="button warning tiny">JUST VISIT </a>
                   </p>
                 </div>
-                <div class="medium-4 columns">
+                <div class="medium-4 columns small-4">
                   <p class="tight text-right">
                     <button type="submit" class="button">Select</button>
                   </p>
@@ -298,7 +293,7 @@
       
       <div class="ajax-loader-content">
         <p class="tight text-center">
-          <img src="images/logo_color.png" class="logo" alt=""><br>Loading<br>
+          <img src="images/logo_color.png" class="logo" alt="Trolleyin logo"><br>Loading<br>
           <img src="images/ajax_loader/loader.gif" alt="" class="ajax-loader">
         </p>
       </div>
@@ -313,7 +308,7 @@
           <div class="row">
             <div class="medium-12 columns">
               <h4 class="title">Feedback</h4>
-              <textarea id="feedback-text" name="feedback" id="" cols="30" rows="10" placeholder="Say something about Trolleyin"></textarea>
+              <textarea id="feedback-text" name="feedback" id="" cols="30" rows="5" placeholder="Say something about Trolleyin"></textarea>
             </div>
             
           <div class="row">
@@ -339,20 +334,8 @@
       </div>
       
     </div> -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script src="js/velocity.min.js"></script>
-    <script src="js/sliderPro.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/toastr.min.js"></script>
-
+    <script src="js/dist/allscripts.min.js"></script>
     <script src="js/echo.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/services/ajax.js"></script>
-    <script src="js/trolleyin.js"></script>
-    <script src="js/trolleycart.js"></script>
-    <script src="js/jquery.marquee.min.js"></script>
     <script>
     
 

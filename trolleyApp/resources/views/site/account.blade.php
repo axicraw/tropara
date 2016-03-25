@@ -4,9 +4,9 @@
 @include('site.partials.header_middle')
 <div class="full-width page-content account-view">
   <div class="row">
-    <div class="medium-8 columns medium-offset-2 account-wrapper">
+    <div class="small-12 large-8 columns large-centered account-wrapper">
       <div class="row collapse">
-        <div class="medium-3 columns">
+        <div class="small-3 medium-3 columns">
           <div class="side-menu">
             
             <div class="row">
@@ -18,15 +18,15 @@
             </div>  
           </div>
         </div>
-        <div class="medium-9 columns">
+        <div class="small-9 columns">
          <div class="tab-content-wrapper"><div class="row">
-             <div class="medium-6 columns medium-offset-2">
-                <h3>Personal Profile</h3>
+             <div class="large-6 columns large-centered">
+                <h1 class="main-page-title">Personal Profile</h1>
              </div>
            </div>
             {!! Form::open(array('route'=>'account.save')) !!}
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
                     &nbsp;
                     @if (count($errors) > 0)
@@ -40,10 +40,10 @@
                     @endif
                   </div>
                   <div class="row">
-                    <div class="medium-2 columns">
+                    <div class="small-3 large-2 columns">
                       <label for="title" class="inline">Title</label>
                     </div>
-                    <div class="medium-3 end columns">
+                    <div class="small-9 large-3 end columns">
                       <select name="title" id="title">
                         <option 
                           @if($user->title == "Mr.")
@@ -66,24 +66,24 @@
                 </div>
               </div>
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
-                    <div class="medium-2 columns">
+                    <div class="small-3 large-2 columns">
                       <label for="name" class="inline">Name *</label>
                     </div>
-                    <div class="medium-6 end columns">
+                    <div class="small-9 large-6 end columns">
                       <input id="name" type="text" name="name" value="{{$user->name}}" required="required">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
-                    <div class="medium-2 columns">
+                    <div class="small-3 large-2 columns">
                       <label for="mobile" class="inline">Mobile *</label>
                     </div>
-                    <div class="medium-6 end columns">
+                    <div class="small-9 large-6 end columns">
                       @if(strlen($user->mobile) > 9)
                       <label>{{$user->mobile}} / <a href="#" data-reveal-id="mobileModal">Change Mobile No</a></label> 
                       @else
@@ -94,36 +94,36 @@
                 </div>
               </div>
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
-                    <div class="medium-2 columns">
+                    <div class="small-3 large-2 columns">
                       <label for="email" class="inline" >Email *</label>
                     </div>
-                    <div class="medium-6 end columns">
+                    <div class="small-3 large-6 end columns">
                       <input id="email" type="email" name="email" value="{{$user->email}}" required="required">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
-                    <div class="medium-2 columns">
+                    <div class="small-3 large-2 columns">
                       <label for="address" class="inline">Address *</label>
                     </div>
-                    <div class="medium-6 end columns">
+                    <div class="small-9 largw-6 end columns">
                       <textarea id="address" name="address" cols="30" rows="4" required="required">{{$user->address}}</textarea>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
-                    <div class="medium-2 columns">
+                    <div class="small-3 large-2 columns">
                       <label for="area_id" class="inline">Area *</label>
                     </div>
-                    <div class="medium-6 end columns">
+                    <div class="small-9 large-6 end columns">
                       <select name="area_id" id="area_id" required="required">
                         @if(count($areas) > 0)
                           @foreach($areas as $area)
@@ -140,19 +140,19 @@
                 </div>
               </div>
               <div class="row">
-                <div class="medium-12 columns">
+                <div class="small-12 columns">
                   <div class="row">
-                    <div class="medium-2 columns">
-                      <label for="email" class="">Password </label>
+                    <div class="small-3 large-2 columns">
+                      <label for="cpas" class="">Password </label>
                     </div>
-                    <div class="medium-6 end columns">
+                    <div class="small-9 large-6 end columns">
                       <a href="#" data-reveal-id="passwordModal">Change Password</a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="medium-8 columns">
+                <div class="small-8 columns">
                   <p class="text-right"><button type="submit" class="button tiny">Save</button></p>
                 </div>
               </div>
@@ -249,31 +249,5 @@
 @stop
 
 @section('scriptsContent')
-  <script type="text/javascript">
-  //change the price based on quantity select
-   $(".quantity-price").on('change', function(){
-    var opt = $(this).find('option:selected');
-    var price = opt.data('qprice');
-    console.log(price);
-    var clo = $(this).parents('.quantity-wrapper').find('.qty-price');
-    clo.html('<span class="price-num">&#8377;'+ price+'</span>')
-   });
-   $(".quantity-price").trigger('change');
-
-   //update cart nos
-   $('input.pnos').on('change', function(){
-    var rid = $(this).data('rid');
-    var nos = $(this).val();
-    var postData = {};
-    postData['nos'] = nos;
-    postData['id'] = rid;
-    console.log(rid);
-    $.when(http_post('cart/updateNos', postData)).then(function(response){
-      location.reload();
-    }, function(response){
-      console.log('cart update failed');
-    })
-   });
-
-  </script>
+  
 @stop

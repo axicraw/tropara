@@ -6,14 +6,14 @@
 @include('site.partials.header_middle')
 <div class="full-width content-top veg">
   <div class="row collapse">
-    <div class="small-3 columns">
+    <div class="large-3 columns show-for-large-up">
       @include('site.partials.side_cate')
     </div>
-    <div class="small-9 columns">
+    <div class="large-9 medium-12 columns">
       <div class="product-grid-1">
         <div class="row caro-title collapse">
           <div class="small-12 columns">
-            <h5 class="tight"><span class="inner-text">In {{$main_category->category_name}}</span></h5>
+            <h1 class="tight main-page-title"><span class="inner-text">In {{$main_category->category_name}}</span></h1>
           </div>
         </div>
 
@@ -21,15 +21,15 @@
           @if(count($cate_products) > 0)
 
               @foreach ( $cate_products as $cate_product)
-                <div class="small-3 end columns">
+                <div class="small-6 medium-4 large-3 end columns">
                   <div class="product-wrapper">
-                    <a href="product/{{ $cate_product->id }}" class="product-anchor">
+                    <a href="product/{{$cate_product->product_name}}?id={{ $cate_product->id }}" class="product-anchor">
                       <div class="row">
                         <div class="prod-image-wrapper">
                           <div class="save-wrapper">                              
                               SAVE <br><span class="save"></span>%
                             </div>
-                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="">
+                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="{{$cate_product->product_name}}">
                         </div>
                       </div>
                       <div class="row collapse">
@@ -98,15 +98,15 @@
           @endif
           @if(count($sub_products) > 0)
               @foreach ( $sub_products as $cate_product)
-                <div class="small-3 end columns">
+                <div class="small-6 medium-4 large-3 end columns">
                   <div class="product-wrapper">
-                    <a href="product/{{ $cate_product->id }}" class="product-anchor">
+                    <a href="product/{{$cate_product->product_name}}?id={{ $cate_product->id }}" class="product-anchor">
                       <div class="row">
                         <div class="prod-image-wrapper">
                           <div class="save-wrapper">                              
                               SAVE <br><span class="save"></span>%
                             </div>
-                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="">
+                          <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]->image_name }}" alt="{{$cate_product->product_name}}">
                         </div>
                       </div>
                       <div class="row collapse">

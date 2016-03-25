@@ -7,7 +7,7 @@
     <div class="medium-12 columns">
       
       @if($count > 0)
-      <h3 class=""><i class="fa fa-shopping-cart "></i> Your Cart</h3>
+      <h1 class="main-page-title"><i class="fa fa-shopping-cart "></i> Your Cart</h1>
         <table width="100%" class="cart-table">
           <tr>
             <th>Product</th>
@@ -32,7 +32,7 @@
         </table>
       
         <div class="row">
-          <div class="medium-6 columns">
+          <div class="small-6 columns">
             @if($user)
               Ship To: 
               <p>
@@ -51,7 +51,7 @@
               </p>
             @endif
           </div>
-          <div class="medium-6 columns">
+          <div class="small-6 columns">
             @if($delivery_cost > 0)
               <p class="text-right tight">Delivery Cost: <i class="fa fa-rupee"></i> {{$delivery_cost}}
                 <br><span class="micro">Delivery Free for orders above <i class="fa fa-rupee micro"></i> 250.</span>
@@ -76,7 +76,7 @@
         </div>
       @else
         <div class="row">
-          <div class="medium-8 columns medium-offset-2">
+          <div class="small-8 columns small-centered">
             <div class="panel">
               <p class="text-center">There are no products in the cart</p>
             </div>
@@ -88,20 +88,20 @@
 </div>
 <div id="diffAddress" class="reveal-modal small" data-reveal aria-hidden="false" role="dialog">
   <div class="row collapse">
-    <div class="medium-6 columns">
+    <div class="small-6 columns">
       <h4>Ship to a different Address</h4>
     </div>
   </div>
   <div class="row reg-wrapper">
-    <div class="medium-12 columns">
+    <div class="small-12 columns">
       {!! Form::open(array('route'=>'cart.changeaddress')) !!}
         <div class="row">
-          <div class="medium-12 columns">
+          <div class="small-12 columns">
            <div class="row">
-             <div class="medium-2 columns">
+             <div class="small-3 large-2 columns">
                <label for="title" class="right inline">Title</label>
              </div>
-             <div class="medium-3 end columns">
+             <div class="small-9 large-3 end columns">
                <select name="title" id="title">
                  <option value="Mr.">Mr</option>
                  <option value="Mrs.">Mrs</option>
@@ -110,30 +110,30 @@
              </div>
            </div>
            <div class="row">
-             <div class="medium-12 columns">
+             <div class="small-12 columns">
                <div class="row">
-                 <div class="medium-2 columns">
+                 <div class="small-3 large-2 columns">
                    <label for="name" class="right inline">Name</label>
                  </div>
-                 <div class="medium-6 end columns">
+                 <div class="small-9 large-6 end columns">
                    <input id="name" type="text" name="name">
                  </div>
                </div>
              </div>
            </div>
            <div class="row">
-             <div class="medium-2 columns">
+             <div class="small-3 large-2 columns">
                <label for="address" class="right inline">Address</label>
              </div>
-             <div class="medium-6 end columns">
+             <div class="small-9 large-6 end columns">
                <textarea id="address" name="address" cols="30" rows="4"></textarea>
              </div>
            </div>
            <div class="row">
-             <div class="medium-2 columns">
+             <div class="small-3 large-2 columns">
                <label for="area_id" class="inline">Area *</label>
              </div>
-             <div class="medium-6 end columns">
+             <div class="small-9 large-6 end columns">
                <select name="area_id" id="area_id" required="required">
                  @if(count($areas) > 0)
                    @foreach($areas as $area)
@@ -146,7 +146,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="medium-6 columns">
+          <div class="small-6 columns">
             <button class="submit button tiny">Add Address</button>
           </div>
         </div>
@@ -199,14 +199,6 @@
       console.log('cart update failed');
     })
    });
-   //  trigger.on('click', function(e){
-   //    console.log('clicked');
-   //    e.preventDefault();
-   //    scooter.show();
-   //    setTimeout(function(){
-   //      scooter.hide()
-   //    }, 1000);
-   //  })
-   // });
+
   </script>
 @stop

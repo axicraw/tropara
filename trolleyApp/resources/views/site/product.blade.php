@@ -6,60 +6,10 @@
 
 <div class="full-width content-top veg">
   <div class="row collapse">
-    <div class="small-3 columns">
+    <div class="large-3 columns show-for-large-up">
       @include('site.partials.side_cate')
-<!--       <div class="row collapse todays">
-        <div class="small-12 columns">
-          <h5 class="highlight">
-            Todays Special
-          </h5>
-          <div class="row caro-wrapper collapse">
-              <div class="small-12 columns">
-                <div class="caro-prod">
-                  <div class="row add-to-wrapper">
-                    <div class="small-6 columns">
-                      <p class="text-center add-to-cart tight"><button class="button warning">Add to Cart</button></p>
-                    </div>
-                    <div class="small-6 columns">
-                      <p class="text-center buy-now"><button class="button success">Buy Now</button></p>
-                    </div>
-                  </div>
-                  <div class="img-wrapper prod-img">
-                    <p class="tight text-center">
-                      <img src="images/fruits.jpg" alt="product-image">
-                    </p>
-                  </div>
-                  
-                  <p class="prod-title text-center tight">
-                    Product1
-                  </p>
-                  <p class="text-center tight prod-desc">
-                    This is desc
-                  </p>
-                  <div class="prod-det">
-                    <div class="row">
-                      <div class="small-6 columns">
-                        <p class="prod-price tight">&#8377; 20</p>
-                      </div>
-                      <div class="small-6 columns prod-rating">
-                        <p class="text-right tight">
-                          <i class="fi-star"></i>
-                          <i class="fi-star"></i>
-                          <i class="fi-star"></i>
-                          <i class="fi-star"></i>
-                          <i class="fi-star"></i>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-           
-          </div>
-        </div>
-      </div> -->
     </div>
-    <div class="small-9 columns">
+    <div class="small-12 large-9 columns">
       <div class="product-view">
           <div class="row">
             <div class="medium-5 columns">
@@ -67,29 +17,15 @@
                 <div class="save-wrapper">                              
                   SAVE <br><span class="save"></span>%
                 </div>
-                <img src="images/img_loader/loader.gif" data-echo="images/products/{{  $product->images[0]['image_name'] }}" alt="">
-                <!-- <div class="slider-pro" id="product-image-slider">
-                  <div class="sp-slides">
-                    @foreach ( $product->images as $image)
-                      <div class="sp-slide">
-                        <img src="images/products/{{ $image->image_name }}" alt="">
-                      </div>                    
-                    @endforeach
-                  </div>
-                  <div class="sp-thumbnails">
-                    @foreach ( $product->images as $image)
-                        <img src="images/products/{{ $image->image_name }}" alt="" class="sp-thumbnail">                   
-                    @endforeach
-                  </div>
+                <img src="images/img_loader/loader.gif" data-echo="images/products/{{$product->images[0]['image_name'] }}" alt="{{$product->product_name}}">
 
-                </div> -->
               </div>
             </div>
             <div class="medium-7 columns">
               <div class="product-detail-wrapper">
                 <div class="row">
                   <div class="medium-12 columns">
-                    <h3 class="product-name">{{ $product->product_name }} <span class="local-name">({{$product->local_name}})</span></h3>
+                    <h1 class="product-name main-page-title">{{ $product->product_name }} <span class="local-name">({{$product->local_name}})</span></h1>
                   </div>
                 </div>
                 <!-- <div class="row">
@@ -200,10 +136,10 @@
                   </div>
                   <div class="medium-6 end columns">
                     <div class="row qty-select collapse">
-                      <div class="medium-3 columns">
+                      <div class="small-3 medium-3 columns">
                         <span class="prefix">Qty</span>
                       </div>
-                      <div class="medium-9 columns">
+                      <div class="small-9 medium-9 columns">
                         <select class="product-price" id="product-price">                          
                           @foreach($product->prices as $price)
                             <option class="price" value="{{ $price->price }}" data-price-id="{{ $price->id }}" data-price="{{$price->price}}" data-qty="{{$price->qty}}" data-unit="{{$price->unit->shortform}}"
@@ -248,15 +184,15 @@
               </div>
               <div class="row">
                 @foreach ( $main_category->products as $cate_product)
-                  <div class="small-3 end columns">
+                  <div class="small-6 medium-4 large-3 end columns">
                     <div class="product-wrapper">
-                      <a href="product/{{ $cate_product->id }}" class="product-anchor">
+                      <a href="product/{{$cate_product->product_name}}?id={{ $cate_product->id }}" class="product-anchor">
                         <div class="row">
                         <div class="prod-image-wrapper">
                             <div class="save-wrapper">                              
                               SAVE <br><span class="save"></span>%
                             </div>
-                            <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]['image_name'] }}" alt="">
+                            <img src="images/img_loader/loader.gif" data-echo="images/products/{{ $cate_product->images[0]['image_name'] }}" alt="{{$cate_product->product_name}}">
                           </div>
                         </div>
                         <div class="row collapse">

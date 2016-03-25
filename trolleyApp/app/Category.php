@@ -8,7 +8,7 @@ class Category extends Model
 {
     //
     protected $table = "categories";
-    protected $fillable = ['category_name', 'parent_id', 'level'];
+    protected $fillable = ['category_name', 'parent_id', 'level', 'did'];
 
     public function parent(){
     	return $this->belongsTo('App\Category', 'parent_id');

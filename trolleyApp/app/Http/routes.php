@@ -46,7 +46,7 @@ Route::group(['prefix'=>'authsocial'], function(){
 
 Route::get('/', ['as'=>'home', 'uses'=>'PagesController@index']);
 Route::get('/category/{cate_name}', ['as'=>'category', 'uses'=>'PagesController@category']);
-Route::get('/product/{id}', ['as'=>'product', 'uses'=>'PagesController@product']);
+Route::get('/product/{product_name}', ['as'=>'product', 'uses'=>'PagesController@product']);
 Route::post('/changeArea', ['as'=>'change.area', 'uses'=>'CartController@changeArea']);
 Route::get('/mainsearch', ['as'=>'mainsearch', 'uses'=>'PagesController@mainsearch']);
 Route::get('/forgotpassword', ['as'=>'forgotpassword', 'uses'=>'PagesController@forgotpassword']);
@@ -146,6 +146,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	//categories
 	Route::resource('/category', 'CategoriesController');
 	Route::post('/category/add', 'CategoriesController@add');
+	Route::post('/category/changeDid',['as'=>'admin.category.changeDid','uses'=>'CategoriesController@changeDid']);
 
 
 	//offers
