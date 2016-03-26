@@ -67,7 +67,14 @@
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     
-    <script src="js/dist/allscripts.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jsrender.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/ajax.js"></script>
+    <script src="js/trolleyin.js"></script>
     <script>
 
 
