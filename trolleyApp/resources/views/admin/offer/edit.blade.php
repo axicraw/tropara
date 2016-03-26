@@ -121,7 +121,6 @@
 @section ('scriptsContent')
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/select2.min.js"></script>
-	<script type="text/javascript" src="js/trolley-forms.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 

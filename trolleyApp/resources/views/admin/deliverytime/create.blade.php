@@ -76,7 +76,6 @@
 @stop
 @section ('scriptsContent')
 	<script src="js/jquery.timepicker.min.js"></script>
-	<script type="text/javascript" src="js/trolley-forms.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 

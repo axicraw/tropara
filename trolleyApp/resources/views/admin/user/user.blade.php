@@ -158,6 +158,4 @@
 	</div>
 @stop
 @section ('scriptsContent')
-<script type="text/javascript" src="js/modals.js"></script>
-
 @stop

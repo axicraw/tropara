@@ -73,6 +73,5 @@
 	
 @stop
 @section ('scriptsContent')
-	<script type="text/javascript" src="js/trolley-forms.js"></script>
 
 @stop

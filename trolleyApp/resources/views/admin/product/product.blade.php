@@ -1,6 +1,5 @@
 @extends ('admin/master')
 @section ('content')
-	{!! $products->render() !!}
 	<div class="row page-title">
 		<div class="medium-6 columns">
 			<h3 class="title">Products</h3>

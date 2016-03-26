@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trolleyin</title>
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/allstyles.css" />
     @yield ('cssContent')
 
     <script src="js/modernizr.js"></script>
@@ -67,16 +67,7 @@
       <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jsrender.js"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script src="js/velocity.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/services/ajax.js"></script>
-    <script src="js/trolleyin.js"></script>
-    <script src="js/trolley_admin.js"></script>
-    <script src="js/admin.js"></script>
+    <script src="js/dist/allscripts.min.js"></script>
     <script>
 
 
