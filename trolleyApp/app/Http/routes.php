@@ -12,93 +12,96 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-// Route::get('/mainten', ['middleware'=>'mainten',function(){
 
-// }]);
 
-/**
- * Auth
- */
-Route::post('authenticate',['as'=>'authenticate', 'uses'=>'AuthController@authenticate']);
-Route::get('/login',['as'=>'login', 'uses'=>'AuthController@login']);
-Route::get('/logout',['as'=>'logout', 'uses'=>'AuthController@logout']);
-Route::post('register',['as'=>'register', 'uses'=>'AuthController@register']);
-Route::get('/registration/success',['as'=>'register', 'uses'=>'PagesController@registersuccess']);
-Route::get('/getpin', ['as'=>'getpin', 'uses'=>'AuthController@getpin']);
-Route::get('/sendpinagain', ['as'=>'resendpin', 'uses'=>'AuthController@resendpin']);
-//Route::post('/resendpinAfterMobile', ['as'=>'resendpinAfterMobile', 'uses'=>'AuthController@resendpinAfterMobile']);
-Route::get('/changemobile', 'AuthController@changemobile');
-Route::get('/savemobile', ['as'=>'getsavemobile', 'uses'=>'AuthController@savemobile']);
-Route::post('/savemobile', ['as'=>'savemobile', 'uses'=>'AuthController@savemobile']);
-Route::post('/activateuser', ['as'=>'activateuser','uses'=>'AuthController@doactivation']);
-Route::group(['prefix' => 'admin'], function () {
-	Route::post('authenticate',['as'=>'admin_authenticate', 'uses'=>'AuthController@admin_authenticate']);
-	Route::get('/logout',['as'=>'admin_logout', 'uses'=>'AuthController@admin_logout']);
+Route::group(['middleware' => 'maintenance'], function(){
+
+	/**
+	 * Auth
+	 */
+	Route::post('authenticate',['as'=>'authenticate', 'uses'=>'AuthController@authenticate']);
+	Route::get('/login',['as'=>'login', 'uses'=>'AuthController@login']);
+	Route::get('/logout',['as'=>'logout', 'uses'=>'AuthController@logout']);
+	Route::post('register',['as'=>'register', 'uses'=>'AuthController@register']);
+	Route::get('/registration/success',['as'=>'register', 'uses'=>'PagesController@registersuccess']);
+	Route::get('/getpin', ['as'=>'getpin', 'uses'=>'AuthController@getpin']);
+	Route::get('/sendpinagain', ['as'=>'resendpin', 'uses'=>'AuthController@resendpin']);
+	//Route::post('/resendpinAfterMobile', ['as'=>'resendpinAfterMobile', 'uses'=>'AuthController@resendpinAfterMobile']);
+	Route::get('/changemobile', 'AuthController@changemobile');
+	Route::get('/savemobile', ['as'=>'getsavemobile', 'uses'=>'AuthController@savemobile']);
+	Route::post('/savemobile', ['as'=>'savemobile', 'uses'=>'AuthController@savemobile']);
+	Route::post('/activateuser', ['as'=>'activateuser','uses'=>'AuthController@doactivation']);
+	Route::group(['prefix' => 'admin'], function () {
+		Route::post('authenticate',['as'=>'admin_authenticate', 'uses'=>'AuthController@admin_authenticate']);
+		Route::get('/logout',['as'=>'admin_logout', 'uses'=>'AuthController@admin_logout']);
+	});
+	Route::group(['prefix'=>'authsocial'], function(){
+		Route::get('/login/{type}',['as'=>'social.login', 'uses'=>'AuthController@redirectToProvider']);
+		Route::get('/{type}/callback',['as'=>'social.callback', 'uses'=>'AuthController@handleProviderCallback']);
+	});
+
+	/***
+	** site pages
+	**/
+
+	Route::get('/', ['as'=>'home', 'uses'=>'PagesController@index']);
+	Route::get('/category/{cate_name}', ['as'=>'category', 'uses'=>'PagesController@category']);
+	Route::get('/product/{product_name}', ['as'=>'product', 'uses'=>'PagesController@product']);
+	Route::post('/changeArea', ['as'=>'change.area', 'uses'=>'CartController@changeArea']);
+	Route::get('/mainsearch', ['as'=>'mainsearch', 'uses'=>'PagesController@mainsearch']);
+	Route::get('/forgotpassword', ['as'=>'forgotpassword', 'uses'=>'PagesController@forgotpassword']);
+	Route::post('/forgotpassword', ['as'=>'forgotconfirm', 'uses'=>'PagesController@forgotconfirm']);
+	Route::get('/resetpassword', ['as'=>'receivereset', 'uses'=>'PagesController@receivereset']);
+	Route::post('/resetpassword', ['as'=>'resetpassword', 'uses'=>'PagesController@newpassword']);
+	Route::get('/productreturn/{id}', ['as'=>'returnform', 'uses'=>'PagesController@returnform']);
+	Route::post('/processreturn', ['as'=>'processreturn', 'uses'=>'PagesController@processreturn']);
+	Route::get('/myorder/{id}', ['as'=>'orderdetail', 'uses'=>'PagesController@orderdetail']);
+	Route::get('/contact', ['as'=>'contactus', 'uses'=>'PagesController@contactus']);
+	Route::get('/justvisit', ['as'=>'contactus', 'uses'=>'PagesController@justvisit']);
+	Route::get('/searchproducts', ['as'=>'searchproducts', 'uses'=>'PagesController@searchproducts']);
+	Route::post('/newfeedback', ['as'=>'newfeedback','middleware' => 'customer', 'uses'=>'ActionController@newfeedback']);
+
+	/***
+	** plain pages
+	**/
+
+	Route::get('/termsandconditions', 'PlainController@terms');
+	Route::get('/privacy', 'PlainController@privacy');
+	Route::get('/shipping', 'PlainController@shipping');
+
+
+	/***
+	*CART
+	*/
+	Route::group(['prefix' => 'cart'], function(){
+		Route::get('/add/{prodID}/{priceID}', 'CartController@addP2C');
+		Route::post('/updateNos', 'CartController@updateNos');
+		Route::get('/remove/{id}', 'CartController@remove');
+		Route::get('/view', ['as'=>'cart.view','uses'=>'CartController@view']);
+		Route::get('/checkout', ['as'=>'cart.checkout','middleware' => 'customer', 'uses'=>'CartController@checkout']);
+		Route::get('/paymentmode', ['as'=>'cart.paymentmode','middleware' => 'customer', 'uses'=>'CartController@paymentmode']);
+		Route::get('/get', 'CartController@get');
+		Route::post('/changeaddress',['as'=>'cart.changeaddress','middleware' => 'customer', 'uses'=>'CartController@changeaddress']);
+		Route::get('/myaddress',['middleware' => 'customer', 'uses'=>'CartController@myaddress']);
+		Route::get('/confirmorder/{id}',['as'=>'cart.confirmorder','middleware' => 'customer', 'uses'=>'CartController@confirmOrder']);
+		Route::get('/orderplaced',['as'=>'cart.orderplaced','middleware' => 'customer', 'uses'=>'CartController@orderplaced']);
+
+	});
+	/***
+	*User Account
+	*/
+	Route::group(['prefix' => 'account', 'middleware'=>'customer'], function(){
+		Route::get('/',['as'=>'myaccount', 'uses'=>'PagesController@myaccount']);
+		Route::get('/myreturns', 'PagesController@myreturns');
+		Route::post('/saveaccount',['as'=>'account.save', 'uses'=>'PagesController@saveaccount']);
+		Route::get('/myorders', ['as'=>'myorders', 'uses'=>'PagesController@myorders']);
+		Route::post('/changepassword', ['as'=>'account.changepassword', 'uses'=>'PagesController@changepassword']);
+		Route::get('/tempcart', 'CartController@tempcart');
+
+	});
 });
-Route::group(['prefix'=>'authsocial'], function(){
-	Route::get('/login/{type}',['as'=>'social.login', 'uses'=>'AuthController@redirectToProvider']);
-	Route::get('/{type}/callback',['as'=>'social.callback', 'uses'=>'AuthController@handleProviderCallback']);
-});
-
-/***
-** site pages
-**/
-
-Route::get('/', ['as'=>'home', 'uses'=>'PagesController@index']);
-Route::get('/category/{cate_name}', ['as'=>'category', 'uses'=>'PagesController@category']);
-Route::get('/product/{product_name}', ['as'=>'product', 'uses'=>'PagesController@product']);
-Route::post('/changeArea', ['as'=>'change.area', 'uses'=>'CartController@changeArea']);
-Route::get('/mainsearch', ['as'=>'mainsearch', 'uses'=>'PagesController@mainsearch']);
-Route::get('/forgotpassword', ['as'=>'forgotpassword', 'uses'=>'PagesController@forgotpassword']);
-Route::post('/forgotpassword', ['as'=>'forgotconfirm', 'uses'=>'PagesController@forgotconfirm']);
-Route::get('/resetpassword', ['as'=>'receivereset', 'uses'=>'PagesController@receivereset']);
-Route::post('/resetpassword', ['as'=>'resetpassword', 'uses'=>'PagesController@newpassword']);
-Route::get('/productreturn/{id}', ['as'=>'returnform', 'uses'=>'PagesController@returnform']);
-Route::post('/processreturn', ['as'=>'processreturn', 'uses'=>'PagesController@processreturn']);
-Route::get('/myorder/{id}', ['as'=>'orderdetail', 'uses'=>'PagesController@orderdetail']);
-Route::get('/contact', ['as'=>'contactus', 'uses'=>'PagesController@contactus']);
-Route::get('/justvisit', ['as'=>'contactus', 'uses'=>'PagesController@justvisit']);
-Route::get('/searchproducts', ['as'=>'searchproducts', 'uses'=>'PagesController@searchproducts']);
-Route::post('/newfeedback', ['as'=>'newfeedback','middleware' => 'customer', 'uses'=>'ActionController@newfeedback']);
-
-/***
-** plain pages
-**/
-
-Route::get('/termsandconditions', 'PlainController@terms');
-Route::get('/privacy', 'PlainController@privacy');
-Route::get('/shipping', 'PlainController@shipping');
 
 
-/***
-*CART
-*/
-Route::group(['prefix' => 'cart'], function(){
-	Route::get('/add/{prodID}/{priceID}', 'CartController@addP2C');
-	Route::post('/updateNos', 'CartController@updateNos');
-	Route::get('/remove/{id}', 'CartController@remove');
-	Route::get('/view', ['as'=>'cart.view','uses'=>'CartController@view']);
-	Route::get('/checkout', ['as'=>'cart.checkout','middleware' => 'customer', 'uses'=>'CartController@checkout']);
-	Route::get('/paymentmode', ['as'=>'cart.paymentmode','middleware' => 'customer', 'uses'=>'CartController@paymentmode']);
-	Route::get('/get', 'CartController@get');
-	Route::post('/changeaddress',['as'=>'cart.changeaddress','middleware' => 'customer', 'uses'=>'CartController@changeaddress']);
-	Route::get('/myaddress',['middleware' => 'customer', 'uses'=>'CartController@myaddress']);
-	Route::get('/confirmorder/{id}',['as'=>'cart.confirmorder','middleware' => 'customer', 'uses'=>'CartController@confirmOrder']);
-	Route::get('/orderplaced',['as'=>'cart.orderplaced','middleware' => 'customer', 'uses'=>'CartController@orderplaced']);
-
-});
-/***
-*User Account
-*/
-Route::group(['prefix' => 'account', 'middleware'=>'customer'], function(){
-	Route::get('/',['as'=>'myaccount', 'uses'=>'PagesController@myaccount']);
-	Route::get('/myreturns', 'PagesController@myreturns');
-	Route::post('/saveaccount',['as'=>'account.save', 'uses'=>'PagesController@saveaccount']);
-	Route::get('/myorders', ['as'=>'myorders', 'uses'=>'PagesController@myorders']);
-	Route::post('/changepassword', ['as'=>'account.changepassword', 'uses'=>'PagesController@changepassword']);
-	Route::get('/tempcart', 'CartController@tempcart');
-
-});
 /***
 *AdminPanel
 */
@@ -124,6 +127,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 	//dashboard
 	// Route::get('/admin/logout', ['as'=>'adminlogout', 'uses'=>'AuthController@adminlogout']);
 	Route::get('/dashboard', ['as'=>'dashboard', 'middleware'=>'admin', 'uses'=>'ApanelController@index']);
+	Route::post('/changeMaintenanceMode', ['as'=>'changeMaintenanceMode', 'middleware'=>'admin', 'uses'=>'ApanelController@changeMaintenanceMode']);
+	Route::get('/getMaintenanceMode', ['middleware'=>'admin', 'uses'=>'ApanelController@getMaintenanceMode']);
+
 	Route::get('/voidsearch', 'SettingsController@voidsearch');
 
 	Route::get('/globalsettings', ['as'=>'admin.settings', 'uses'=>'SettingsController@globalsettings']);
@@ -196,6 +202,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     
 });
 
-Route::get('initApp', 'GeneralController@initApp');
+//Route::get('initApp', 'GeneralController@initApp');
 
 

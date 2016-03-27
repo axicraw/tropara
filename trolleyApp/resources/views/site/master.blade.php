@@ -195,7 +195,7 @@
                 <div class="medium-12 columns">
                   <label for="iagree">
                   <input id="iagree" type="checkbox" value="1" required name="terms">
-                  I Agree with the <a href="/TermsAndConditions">Terms and conditions.</a>
+                  I Agree with the <a href="/termsandconditions">Terms and conditions.</a>
                   </label>
                 </div>
               </div>

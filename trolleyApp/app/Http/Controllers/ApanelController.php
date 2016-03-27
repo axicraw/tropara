@@ -10,6 +10,7 @@ use App\Category;
 use App\Product;
 use App\Area;
 use App\Order;
+use App\Globalset;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -29,6 +30,31 @@ class ApanelController extends Controller
         $areas = Area::select('id')->get();
         $orders = Order::select('id')->get();
         return view('admin.dashboard', compact('users', 'products', 'categories', 'areas', 'orders'));
+    }
+
+    public function changeMaintenanceMode(Request $request){
+        $mode = $request->get('maintenance');
+        if($mode === 'on'){
+           $global = Globalset::where('name', 'maintenance')->firstorfail();
+           $global->value = 'on';
+           $global->save();
+
+        }
+        elseif($mode === 'off'){
+            $global = Globalset::where('name', 'maintenance')->firstorfail();
+           $global->value = 'off';
+           $global->save();
+        }
+        else{
+            return response()->json('error');
+        }
+
+        return response()->json('success');
+    }
+    public function getMaintenanceMode(){
+            $global = Globalset::where('name', 'maintenance')->firstorfail();
+            $value = $global->value;
+        return response()->json($value);
     }
 
 

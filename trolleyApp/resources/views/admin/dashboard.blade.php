@@ -1,7 +1,20 @@
 @extends ('admin/master')
 @section ('content')
 	<div class="row page-title">
-		<h3>Dashboard - Trolleyin.com</h3>
+		<div class="small-9 columns">
+			<h3>Dashboard - Trolleyin.com</h3>
+		</div>
+		<div class="small-3 end columns">
+			<div class="row">
+				<div class="medium-6 columns end">
+					<label for="salesemail">Maintenance Mode</label>
+				</div>
+				<div class="switch round">
+				  <input id="maintenance" type="checkbox" name="maintenance">
+				  <label for="maintenance"></label> 
+				</div> 
+			</div>
+		</div>
 	</div>
 
 	<div class="row">
@@ -42,8 +55,47 @@
 @section ('scriptsContent')
 <script type="text/javascript" src="js/modals.js"></script>
 <script>
-		$('a.cate').on('click', function(e){
+	$('a.cate').on('click', function(e){
 		e.preventDefault();
+	});
+
+	$(document).ready(function(){
+
+		$.when(http_get('admin/getMaintenanceMode')).then(function(response){
+			if(response == 'on'){
+				$('#maintenance').prop( "checked", true );	
+			}else{
+				$('#maintenance').prop( "checked", false );
+			}
+		}, function(){
+			console.log('Something wrong in getting maintenance status');
+		});
+
+	});
+
+	$('#maintenance').on('change', function(){
+		var data = {};
+		if($(this).is(':checked')) {
+			var $this = $(this);
+			data['maintenance'] = 'on';
+			$.when(http_post('admin/changeMaintenanceMode', data)).then(function(){
+				alert('The site is in Maintenance Mode');
+			}, function(){
+				$this.prop( "checked", false );			
+				alert('Something went wrong cannot change mode.');
+
+			});
+		}
+		else{
+			data['maintenance'] = 'off';
+			$.when(http_post('admin/changeMaintenanceMode', data)).then(function(){
+				alert('The site is in Working Mode');
+			}, function(){
+				$this.prop( "checked", true );
+				alert('Something went wrong cannot change mode.');
+			});
+		}
+
 	});
 </script>
 

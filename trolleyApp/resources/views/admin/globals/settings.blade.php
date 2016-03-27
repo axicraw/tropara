@@ -80,6 +80,7 @@
 					<input id="salesemail" type="text" name="salesemail" value="{{$settings['salesemail']}}">
 				</div>
 			</div>
+			
 			<div class="row">
 			
 				<div class="medium-8 columns end">
