@@ -116,7 +116,7 @@ class DeliveryController extends Controller
           if($request->has('active')){
                 $active = $request->active;
           }else{
-                $active->active = 0;
+                $active = 0;
           }
 
         //dd($start, $stop, $request->name, $active);
