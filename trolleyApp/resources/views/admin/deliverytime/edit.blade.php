@@ -47,8 +47,8 @@
 					<label for="active" class="right inline">Active</label>
 				</div>
 				<div class="medium-2 end columns">
-					<input type="checkbox" checked id="active" name="active" value="1"
-						@if($dt->active)
+					<input type="checkbox" id="active" name="active" value="1"
+						@if($dt->active > 0)
 							checked="checked"
 						@endif
 					>
