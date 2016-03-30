@@ -571,7 +571,7 @@ $(document).ready(function(){
 					console.log(response.products);
 					if(response.count > 0){
 						$.each(response.products, function(i, item){
-							var list = '<li><a class="link-anchor" data-method="redirect" data-url="/product/'+item.id+'">'
+							var list = '<li><a class="link-anchor" data-method="redirect" data-url="/product/'+item.product_name+'?id='+item.id+'">'
 	                    				+'<div class="row"><div class="small-2 columns"><div class="img-wrapper">'
 	                          			+'<img src="images/products/'+item.images[0]['image_name']+'" alt="">'
 	                        			+'</div></div><div class="small-6 end columns">'
