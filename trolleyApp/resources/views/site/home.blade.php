@@ -58,7 +58,7 @@
                 @if(count($offer->products) > 0)
                   @foreach($offer->products as $product)
                     <div class="offer-slide">
-                      <a href="/product/{{$product->product_name}}id={{$product->id}}">
+                      <a href="/product/{{$product->product_name}}?id={{$product->id}}">
                         <div class="img-wrapper">
                           <img src="images/products/{{$product->images[0]['image_name']}}" alt="{{$product->product_name}}">
                         </div>

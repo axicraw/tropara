@@ -79,7 +79,11 @@
                             </div>
                             <div class="small-5 columns">
                               <p class="text-right tight">
-                                <button data-pid="{{ $cate_product->id }}" data-pname="{{$cate_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                @if($cate_product->out_of_stock)
+                                  <span class="danger micro">Out of stock</span>
+                                @else
+                                  <button data-pid="{{ $cate_product->id }}" data-pname="{{$cate_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                @endif
                               </p>
                             </div>
                           </div>
@@ -156,7 +160,11 @@
                             </div>
                             <div class="small-5 columns">
                               <p class="text-right tight">
-                                <button data-pid="{{ $cate_product->id }}" data-pname="{{$cate_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                @if($cate_product->out_of_stock)
+                                  <span class="danger">Out of stock</span>
+                                @else
+                                  <button data-pid="{{ $cate_product->id }}" data-pname="{{$cate_product->product_name}}" data-price-id="" class="button success tiny ATC">Add <i class="fi-shopping-cart"></i></button>
+                                @endif
                               </p>
                             </div>
                           </div>

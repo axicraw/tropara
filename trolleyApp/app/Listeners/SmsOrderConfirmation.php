@@ -48,7 +48,11 @@ class SmsOrderConfirmation
         $admin_numbers = [];
         foreach($admins as $admin)
         {
-            array_push($admin_numbers, $admin->mobile);
+            if(strlen($admin->mobile) == 10)
+            {
+                array_push($admin_numbers, $admin->mobile);
+            }
+
         }
         
         //dd($admins);

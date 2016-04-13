@@ -62,7 +62,7 @@
 				</div>
 				<div class="medium-2 end columns">
 					<p class="text-right">
-						<input type="submit" class="button tiny" value="Create Staff">
+						<input type="submit" class="button tiny" value="Create Admin">
 					</p>
 				</div>
 			</div>			
