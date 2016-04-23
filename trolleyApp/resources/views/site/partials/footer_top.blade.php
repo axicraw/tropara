@@ -330,9 +330,10 @@
                      @foreach($feedbacks as $feedback)
                        <div class="talks-slide">
                          <p>
-                          <br>
                            <strong>{{$feedback->user->name}}</strong> says:
-                           <blockquote>{!! substr($feedback->feedback, 0, 20)  !!}...</blockquote>
+                          </p>
+                        <p class="quote micro">
+                           <span class="quote">{{$feedback->feedback}}</span>
                          </p>
                        </div>
                      @endforeach
